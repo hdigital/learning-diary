@@ -1,0 +1,24 @@
+---
+title: "TIL // February"
+author: "Holger Döring"
+date: "2023-02-25"
+date-modified: ""
+image: computer-argonne.jpg
+categories: [packaging]
+---
+
+# TIL February
+
+## 25.2.
+
+I worked on [code](https://github.com/hdigital/mixtape) from a causal inference book. It includes Stata, R and Python versions of the examples.
+
+For R and Python I wanted to have one environment to install all dependencies. This led me to [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html).
+
+Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.
+
+At the end, VS Code seems to be the move convinient interface.
+
+---
+
+![](computer-argonne.jpg)

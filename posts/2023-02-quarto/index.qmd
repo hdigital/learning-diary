@@ -1,0 +1,49 @@
+---
+title: "A few days of Quarto"
+author: "Holger Döring"
+date: "2023-02-26"
+date-modified: ""
+image: thumbnail.png
+jupyter: python3
+categories: [Docker, Python, Quarto]
+---
+
+## Quarto
+
+So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on _Things I Learned_ worked well.
+
+Only working with Python was really challenging. For some time several attempts to find the local Python version in the `env` folder did not work. `quarto check` found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option `jupyter: python3` in the qmd-document that did the trick.
+
+Rendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting `#| python.reticulate: false` in a Python cell solved the issue.
+
+Many of my Python struggles in Quarto may have been related to the [reticulate](https://rstudio.github.io/reticulate/) R package.
+
+## Docker
+
+To get there I also created a `Dockerfile` to have an OS independent version of Quarto. That was another challenge until I first found a [Rocker](https://github.com/rocker-org/rocker) configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.
+
+Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.
+
+I'll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well.
+
+## Python in Quarto
+
+Here is a [Quarto Guide](https://quarto.org/docs/computations/python.html#code-blocks) demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'}
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```

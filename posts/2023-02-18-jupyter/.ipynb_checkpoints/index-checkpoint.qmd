@@ -1,0 +1,20 @@
+---
+title: "Jupyter notebooks with Quarto"
+author: "Holger Döring"
+date: "2023-02-18"
+date-modified: ""
+image: img_jupyterlab-preview.png
+categories: [Python]
+---
+
+[Jupyter](https://jupyter.org/try-jupyter/lab/index.html) notebooks can be rendered with [Quarto](https://quarto.org/docs/tools/jupyter-lab.html).
+
+In a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a [Raw first cell](https://quarto.org/docs/tools/jupyter-lab.html#yaml-front-matter). Finally, I converted the original notebook into a Quarto document with `quarto convert`.
+
+I rendered all versions of the Jupyter notebook with Quarto and here are the results:
+
++ [Jupyter notebook](jupyter.html)
++ [notebook with Quarto first cell](jupyter-options.html)
++ [notebook converted to Quarto document](jupyter-quarto.html)
+
+![Jupyter Lab](jupyterlab-preview.png)

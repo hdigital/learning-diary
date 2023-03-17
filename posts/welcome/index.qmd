@@ -1,0 +1,60 @@
+---
+title: "Things I learned: A new TIL"
+author: "Holger Döring"
+date: "2023-02-16"
+image: thumbnail.png
+categories: [R, Python, Quarto]
+---
+
+My idea is to keep a more systematic collection of _things I learned_ (TIL).
+
+I was inspired by posts of [Simon Wilson](https://til.simonwillison.net/) and [Peter Baumgartner](https://lincolnloop.com/insights/by-author/peter-baumgartner/) that documented things they have learned.
+
+So here is an initial version and today the TIL has been [Quarto](https://quarto.org/).
+
+Here is an example of integrating __Tidyverse-R__ code.
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+mtcars <- as_tibble(datasets::mtcars)
+
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(aes(color = factor(cyl))) +
+  geom_smooth()
+```
+
+Here is an example of integrating __Python__ code.
+
+
+```{python}
+#| python.reticulate: false
+
+import statsmodels.api as sm
+import pandas as pd
+
+mtcars = sm.datasets.get_rdataset('mtcars').data
+
+mtcars.plot(x = "hp", y = "mpg", kind = "scatter")
+```
+
+---
+
+## Some background
+
+Setting up a blog in Quarto was easy and well documented. So I started quickly.
+
+Getting the right Python version running in Quarto was quite a challenge. ~~At the end, the documented recommendation to work with a virtual environment in an `env` folder worked. It took me some time to get there.~~
+
+It only worked temporarily and I will try to run Python in Quarto again at some later point.
+
+## Afterwards
+
+It turned out that the particular challenge was having a page with R and Python.
+
+For Python pages a header option was missing. `jupyter: python3` solved the Python challenge that took quite some time.
+
+Rendering a Quarto document with __R and Python__ was only possible with a version Docker on the computer.

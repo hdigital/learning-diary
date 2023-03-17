@@ -1,0 +1,60 @@
+---
+title: "Horizontal bar chart"
+author: "Holger Döring"
+date: "2023-02-17"
+date-modified: ""
+image: thumbnail.png
+categories: [R, ggplot]
+---
+
+To have horizontal bar charts ordered by frequency, I have used `geom_bar()` and `coord_flip` for a long time.
+
+I have now learned in an [example](https://www.eoda.de/en/wissen/blog/10-tidyverse-functions-that-might-save-your-day/#fct_reorder) that this is not necessary.
+
+Here are a few examples and the code for future references.
+
+```{r, message=FALSE}
+library(tidyverse)
+
+mtcars <- as_tibble(datasets::mtcars)
+```
+
+```{r}
+ggplot(mtcars, aes(x = cyl)) +
+  geom_bar(fill = "lightgreen")
+```
+
+I used to do some pre-processing to prepare data for the plot.
+
+```{r}
+pl_dt <-
+  mtcars |>
+  mutate(cyl = fct_infreq(factor(cyl)) |> fct_rev())
+```
+
+For the figure, I used `coord_flip`.
+
+```{r}
+ggplot(pl_dt, aes(cyl)) +
+  geom_bar(fill = "grey") +
+  coord_flip()
+```
+
+That was not necessary, as I have learned now.
+
+```{r}
+ggplot(pl_dt, aes(y = cyl)) +
+  geom_bar(fill = "lightblue")
+```
+
+Here is an alternative approach with `geom_col()`.
+
+```{r}
+pl_dt <-
+  mtcars |>
+  count(cyl) |>
+  mutate(cyl = fct_reorder(factor(cyl), n))
+
+ggplot(pl_dt, aes(x = n, y = cyl)) +
+  geom_col(fill = "lightblue")
+```

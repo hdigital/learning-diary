@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  datascience:
+    build:
+      dockerfile: ./docker/Dockerfile-datascience
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/datascience
+    user: root
+    environment:
+        GRANT_SUDO: "yes"
+  # jupyter:
+  #   build:
+  #     dockerfile: ./docker/Dockerfile-jupyter
+  #   ports:
+  #     - "8888:8888"
+  #   volumes:
+  #     - .:/home/jupyter

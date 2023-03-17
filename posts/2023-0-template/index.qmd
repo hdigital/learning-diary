@@ -1,0 +1,25 @@
+---
+title: ""
+# description: ""
+author: "Holger Döring"
+date: "2023-0x-xx"
+date-modified: ""
+image: thumbnail.png
+# jupyter: python3
+categories: [R, Python]
+draft: true
+---
+
+post text and snippets
+
+```{r}
+#| message=FALSE
+
+library(tidyverse)
+
+mtcars <- as_tibble(datasets::mtcars)
+
+ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(aes(color = factor(cyl))) +
+  geom_smooth()
+```

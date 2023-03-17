@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Code snippets of smaller things I learned – Today I learned (TIL)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Learning snippets",
+    "section": "",
+    "text": "A few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 25, 2023\n\n\nHolger Döring\n\n\n\n\n\n\n  \n\n\n\n\nTIL // February\n\n\n\n\n\n\n\npackaging\n\n\n\n\n\n\n\n\n\n\n\nFeb 25, 2023\n\n\nHolger Döring\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\nHolger Döring\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\nHolger Döring\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\nHolger Döring\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nHolger Döring\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2023-0-quarto/index.html",
+    "href": "posts/2023-0-quarto/index.html",
+    "title": "A few days of Quarto",
+    "section": "",
+    "text": "So I have had my first experience with creating dynamic documents with Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the locoal Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nTo get there I also created a Dockerfile to have an OS independent version of Quarto. That was another challenge until I found a Rocker configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files. I’ll try to work with the local Quarto versions mainly but it is good to have an OS independent Docker version as well.\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "posts/2023-02-17-geom-col/index.html",
+    "href": "posts/2023-02-17-geom-col/index.html",
+    "title": "Horizontal bar chart",
+    "section": "",
+    "text": "To have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars <- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt <-\n  mtcars |>\n  mutate(cyl = fct_infreq(factor(cyl)) |> fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt <-\n  mtcars |>\n  count(cyl) |>\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
+  },
+  {
+    "objectID": "posts/2023-02-18-jupyter/index.html",
+    "href": "posts/2023-02-18-jupyter/index.html",
+    "title": "Jupyter notebooks with Quarto",
+    "section": "",
+    "text": "Jupyter notebooks can be rendered with Quarto.\nIn a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a Raw first cell. Finally, I converted the original notebook into a Quarto document with quarto convert.\nI rendered all versions of the Jupyter notebook with Quarto and here are the results:\n\nJupyter notebook\nnotebook with Quarto first cell\nnotebook converted to Quarto document\n\nI also learned that you have to pass an option when rendering ipynb-files – quarto render notebook.ipynb --execute. The assumption is that a notebook was already run and that the results shall be rendered.\nThis all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.\n\n\n\nJupyter Lab"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Things I learned: A new TIL",
+    "section": "",
+    "text": "My idea is to keep a more systematic collection of things I learned (TIL).\nI was inspired by posts of Simon Wilson and Peter Baumgartner that documented things they have learned.\nSo here is an initial version and today the TIL has been Quarto.\nHere is an example of integrating Tidyverse-R code.\nHere is an example of integrating Python code."
+  },
+  {
+    "objectID": "posts/welcome/index.html#some-background",
+    "href": "posts/welcome/index.html#some-background",
+    "title": "Things I learned: A new TIL",
+    "section": "Some background",
+    "text": "Some background\nSetting up a blog in Quarto was easy and well documented. So I started quickly.\nGetting the right Python version running in Quarto was quite a challenge. At the end, the documented recommendation to work with a virtual environment in an env folder worked. It took me some time to get there.\nIt only worked temporarily and I will try to run Python in Quarto again at some later point."
+  },
+  {
+    "objectID": "posts/welcome/index.html#afterwards",
+    "href": "posts/welcome/index.html#afterwards",
+    "title": "Things I learned: A new TIL",
+    "section": "Afterwards",
+    "text": "Afterwards\nIt turned out that the particular challenge was having a page with R and Python.\nFor Python pages a header option was missing. jupyter: python3 solved the Python challenge that took quite some time.\nRendering a Quarto document with R and Python was only possible with a version Docker on the computer."
+  },
+  {
+    "objectID": "snippets/jupyter-options.html",
+    "href": "snippets/jupyter-options.html",
+    "title": "Jupyter Quarto",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "snippets/jupyter-quarto.html",
+    "href": "snippets/jupyter-quarto.html",
+    "title": "learning-hd",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "snippets/jupyter.html",
+    "href": "snippets/jupyter.html",
+    "title": "learning-hd",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "posts/2023-02-quarto/index.html",
+    "href": "posts/2023-02-quarto/index.html",
+    "title": "A few days of Quarto",
+    "section": "",
+    "text": "So I have had my first experience with creating dynamic documents with Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the local Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nRendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting #| python.reticulate: false in a Python cell solved the issue.\nMany of my Python struggles in Quarto may have been related to the reticulate R package."
+  },
+  {
+    "objectID": "posts/2023-02-quarto/index.html#docker",
+    "href": "posts/2023-02-quarto/index.html#docker",
+    "title": "A few days of Quarto",
+    "section": "Docker",
+    "text": "Docker\nTo get there I also created a Dockerfile to have an OS independent version of Quarto. That was another challenge until I first found a Rocker configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.\nLater I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than\nI’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well."
+  },
+  {
+    "objectID": "posts/2023-02-quarto/index.html#python-in-quarto",
+    "href": "posts/2023-02-quarto/index.html#python-in-quarto",
+    "title": "A few days of Quarto",
+    "section": "Python in Quarto",
+    "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "posts/2023-02-22-hello-jupyter/index.html",
+    "href": "posts/2023-02-22-hello-jupyter/index.html",
+    "title": "Hello Jupyter",
+    "section": "",
+    "text": "I used my new Quarto and Jupyter skills to create web pages for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS."
+  },
+  {
+    "objectID": "posts/2023-02-til/index.html",
+    "href": "posts/2023-02-til/index.html",
+    "title": "TIL // February",
+    "section": "",
+    "text": "I worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the move convinient interface."
+  }
+]

@@ -1,0 +1,12 @@
+---
+title: "Hello Jupyter"
+author: "Holger Döring"
+date: "2023-02-22"
+date-modified: ""
+image: arnim-fork.png
+categories: [Python, Quarto]
+---
+
+I used my new Quarto and Jupyter skills to [create web pages](https://github.com/hdigital/HalloJupyterDSS/commits/main) for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS.
+
+![](arnim-fork.png)

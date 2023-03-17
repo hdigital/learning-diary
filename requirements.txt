@@ -1,0 +1,9 @@
+jupyter
+pandas
+matplotlib
+
+statsmodels
+seaborn
+
+# VS Code interactive shell
+ipykernel
