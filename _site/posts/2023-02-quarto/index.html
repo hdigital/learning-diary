@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Holger Döring">
-<meta name="dcterms.date" content="2023-02-25">
+<meta name="dcterms.date" content="2023-02-26">
 
 <title>learning-hd - A few days of Quarto</title>
 <style>
@@ -195,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 25, 2023</p>
+        <p class="date">February 26, 2023</p>
       </div>
     </div>
     
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>So I have had my first experience with creating dynamic documents with Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
+<p>So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
 <p>Only working with Python was really challenging. For some time several attempts to find the local Python version in the <code>env</code> folder did not work. <code>quarto check</code> found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option <code>jupyter: python3</code> in the qmd-document that did the trick.</p>
 <p>Rendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting <code>#| python.reticulate: false</code> in a Python cell solved the issue.</p>
 <p>Many of my Python struggles in Quarto may have been related to the <a href="https://rstudio.github.io/reticulate/">reticulate</a> R package.</p>
@@ -223,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="docker" class="level2">
 <h2 class="anchored" data-anchor-id="docker">Docker</h2>
 <p>To get there I also created a <code>Dockerfile</code> to have an OS independent version of Quarto. That was another challenge until I first found a <a href="https://github.com/rocker-org/rocker">Rocker</a> configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.</p>
-<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than</p>
+<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.</p>
 <p>I’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well.</p>
 </section>
 <section id="python-in-quarto" class="level2">

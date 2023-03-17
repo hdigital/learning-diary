@@ -1,5 +1,6 @@
 /.cache/
 /_freeze/
+/.venv/
 
 # RStudio Docker files
 /.config/rstudio/
@@ -32,7 +33,7 @@
 # RStudio files
 .Rproj.user/
 
-# produced vignettes
+# produced whignettes
 vignettes/*.html
 vignettes/*.pdf
 
