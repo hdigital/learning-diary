@@ -22,7 +22,7 @@
 
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
+<p>So I have had my first experience with creating dynamic documents with Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
 <p>Only working with Python was really challenging. For some time several attempts to find the local Python version in the <code>env</code> folder did not work. <code>quarto check</code> found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option <code>jupyter: python3</code> in the qmd-document that did the trick.</p>
 <p>Rendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting <code>#| python.reticulate: false</code> in a Python cell solved the issue.</p>
 <p>Many of my Python struggles in Quarto may have been related to the <a href="https://rstudio.github.io/reticulate/">reticulate</a> R package.</p>
@@ -30,7 +30,7 @@
 <section id="docker" class="level2">
 <h2 class="anchored" data-anchor-id="docker">Docker</h2>
 <p>To get there I also created a <code>Dockerfile</code> to have an OS independent version of Quarto. That was another challenge until I first found a <a href="https://github.com/rocker-org/rocker">Rocker</a> configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.</p>
-<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.</p>
+<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than</p>
 <p>I’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well.</p>
 </section>
 <section id="python-in-quarto" class="level2">
@@ -95,10 +95,40 @@
 </section>
 
  ]]></description>
-  <category>packaging</category>
+  <category>TIL-monthly</category>
   <guid>https://hdigital.github.io/teaching/posts/2023-02-til/index.html</guid>
   <pubDate>Fri, 24 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/teaching/posts/2023-02-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>TIL // February</title>
+  <dc:creator>Holger Döring</dc:creator>
+  <link>https://hdigital.github.io/teaching/posts/2023-03-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="til-february" class="level1">
+<h1>TIL February</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">25.2.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the move convinient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/teaching/posts/2023-03-til/computer-argonne.jpg" class="img-fluid"></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>TIL-monthly</category>
+  <guid>https://hdigital.github.io/teaching/posts/2023-03-til/index.html</guid>
+  <pubDate>Fri, 24 Feb 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/teaching/posts/2023-03-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Hello Jupyter</title>
