@@ -5,5 +5,9 @@ matplotlib
 statsmodels
 seaborn
 
+# Quarto
+nbclient
+nbformat
+
 # VS Code interactive shell
 ipykernel
