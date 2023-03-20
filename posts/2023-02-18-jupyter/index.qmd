@@ -1,11 +1,10 @@
 ---
-title: "Jupyter notebooks with Quarto"
-author: "Holger Döring"
 date: "2023-02-18"
-date-modified: ""
 image: jupyterlab-preview.png
 categories: [Python, Quarto]
 ---
+
+# Jupyter notebooks with Quarto
 
 [Jupyter](https://jupyter.org/try-jupyter/lab/index.html) notebooks can be rendered with [Quarto](https://quarto.org/docs/tools/jupyter-lab.html).
 

@@ -1,11 +1,10 @@
 ---
-title: "Horizontal bar chart"
-author: "Holger Döring"
 date: "2023-02-17"
-date-modified: ""
 image: thumbnail.png
 categories: [R, ggplot]
 ---
+
+# Horizontal bar chart
 
 To have horizontal bar charts ordered by frequency, I have used `geom_bar()` and `coord_flip` for a long time.
 

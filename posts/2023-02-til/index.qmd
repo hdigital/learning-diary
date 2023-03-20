@@ -1,13 +1,10 @@
 ---
-title: "TIL // February"
-author: "Holger Döring"
 date: "2023-02-25"
-date-modified: ""
 image: computer-argonne.jpg
 categories: [TIL-monthly]
 ---
 
-# TIL February
+# TIL // February
 
 ## 25.2.
 

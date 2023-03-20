@@ -1,14 +1,12 @@
 ---
-title: ""
-# description: ""
-author: "Holger Döring"
 date: "2023-0x-xx"
-date-modified: ""
 image: thumbnail.png
 # jupyter: python3
 categories: [R, Python]
 draft: true
 ---
+
+# Title
 
 post text and snippets
 

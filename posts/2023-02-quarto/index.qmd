@@ -1,12 +1,11 @@
 ---
-title: "A few days of Quarto"
-author: "Holger Döring"
 date: "2023-02-26"
-date-modified: ""
 image: thumbnail.png
 jupyter: python3
 categories: [Docker, Python, Quarto]
 ---
+
+# A few days of Quarto
 
 ## Quarto
 
