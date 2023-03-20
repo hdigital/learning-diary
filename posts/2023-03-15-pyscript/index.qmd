@@ -9,6 +9,10 @@ image: emojis.png
 categories: [Python]
 ---
 
+
+# PyScript (WebAssembly)
+
+
 I used [pyscript](https://pyscript.net/) for the first time and created a web page that run some Python code.
 
 So here is the script I run.
