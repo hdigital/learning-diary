@@ -10,10 +10,140 @@
 <atom:link href="https://hdigital.github.io/teaching/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.2.335</generator>
-<lastBuildDate>Sat, 25 Feb 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 19 Mar 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <dc:creator>Holger Döring</dc:creator>
+  <link>https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="webr-webassembly" class="level1">
+<h1>WebR (WebAssembly)</h1>
+<p>I read about the <a href="https://docs.r-wasm.org/webr/latest/">webR</a> release on the <a href="https://www.tidyverse.org/blog/2023/03/webr-0-1-0/">Tidyverse blog</a>. It allows to run R in a browser.</p>
+<p>So I went to <a href="https://webr.r-wasm.org/latest/">webr.r-wasm.org</a> and gave it a try.</p>
+<p>I tried to install the <em>tidyverse</em> with <code>webr::install("tidyverse")</code>. That did not work. For me, there is little use of R without the tidyverse.</p>
+<p>Installing <em>dplyr</em> and <em>ggplot2</em> individually worked. So that I could run the following code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">dt <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as_tibble</span>(mtcars)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">glimpse</span>(dt)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 32
+Columns: 11
+$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
+$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
+$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
+$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
+$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
+$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
+$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
+$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
+$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
+$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
+$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>hp, <span class="at" style="color: #657422;">y=</span>mpg, <span class="at" style="color: #657422;">color=</span>cyl)) <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">geom_point</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Typing the R commands in a browser shell without tab completion and no R help was challenging though.</p>
+<p>Having R in a browser quickly available is nice 😊.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index.html</guid>
+  <pubDate>Sun, 19 Mar 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/r-wasm.png" medium="image" type="image/png" height="62" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/teaching/posts/2023-03-15-pyscript/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="pyscript" class="level1">
+<h1>PyScript</h1>
+<p>I used <a href="https://pyscript.net/">pyscript</a> for the first time and created a web page that run some Python code.</p>
+<p>So here is the script I run.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> random</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">n <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span></span>
+<span id="cb1-4">emojis <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
+<span id="cb1-5"></span>
+<span id="cb1-6">lines <span class="op" style="color: #5E5E5E;">=</span> [<span class="st" style="color: #20794D;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;">=</span>n)) <span class="cf" style="color: #003B4F;">for</span> index <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(n)]</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join(lines))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>🙂🤗😆😁😂😁😄😄😂😅😆🤗😃😋😀🙂😋😃🙂😂
+😊🙂🤗😋😊😎😁😆🤗😆😁😉😋😆😂😇🙂😃😋😁
+😂😂😃😂😄😅😅😊😋😆🤗😇😀😎🙂😂😎🙂😂😃
+😎🤗😂😂🙂😅🙂😆😎😉😊😎😂🤗😎😂😆😀😁😄
+😆🤗😇🙂😀😉😄😊😆😁😃😀😃😀😅😀😃😃😅🙂
+😎😋😉😋😃😎😋🤗😇🙂😊😆😃😀😆😎🙂😎🙂😇
+😆😁😃😇😇🤗🙂😁🙂😄😇😁😁😅🙂😊😅🤗🙂🙂
+😄😋😊😊😁😅😀😇😆😆😊😂🙂😃😄🙂😅🤗😎😃
+😊🤗😎😀😅😄😇😁😂😎😃😅😊😁😅😎😆😆🤗🤗
+😀😄😎🤗😄😃😃🙂😊🤗😄😃😋😀😃🤗😄😎🙂😃
+😀🤗😅😎😁🙂😋🤗😆😅😇😊😀😁😀😄😁🙂😂😀
+😎😆🤗🙂😃😄😂😅🙂😃😅😁😅😎😎🙂😉😇😄😀
+😄🙂😃🤗😁😎😋😅😃😅😅😄😎😆😄😎😉😎😉🙂
+😀😅😂😎😆😄😇😉🤗😇😇🙂😋😂😊😄😎🙂😇🤗
+🙂😂😆😀😎😆😊😋😀😉🙂🙂🤗😅😊😂😃😊😉😇
+😎🙂🙂🙂😅😀😋😄😄😇😋😃😎🤗😃😀😇😉😎😉
+😊🙂😁😉😎🤗😅😊😋😋😂😉😄😇😃😁😉😁😅😉
+😀😂😉🙂😃😎🤗🙂😋😀🙂😆😁😄🙂🙂🙂😂🙂😇
+😄😉😎😎😂😆😋😇😋😂😅😇😁😂🤗😉😁😇😅😀
+😊😆😃🤗😋🙂😀😇😎😃😊😋😆😇🙂😂😁😆🙂😁</code></pre>
+</div>
+</div>
+<p>Here is the full html page that uses pyscript.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;">&lt;!</span>DOCTYPE html<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-2"><span class="op" style="color: #5E5E5E;">&lt;</span>html lang<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"en"</span><span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="op" style="color: #5E5E5E;">&lt;</span>head<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-5">    <span class="op" style="color: #5E5E5E;">&lt;</span>meta charset<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"UTF-8"</span><span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-6">    <span class="op" style="color: #5E5E5E;">&lt;</span>title<span class="op" style="color: #5E5E5E;">&gt;</span>Happy DSS Hacking<span class="op" style="color: #5E5E5E;">&lt;/</span>title<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-7">    <span class="op" style="color: #5E5E5E;">&lt;</span>link rel<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"stylesheet"</span> href<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"https://pyscript.net/latest/pyscript.css"</span> <span class="op" style="color: #5E5E5E;">/&gt;</span></span>
+<span id="cb3-8">    <span class="op" style="color: #5E5E5E;">&lt;</span>script defer src<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"https://pyscript.net/latest/pyscript.js"</span><span class="op" style="color: #5E5E5E;">&gt;&lt;/</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-9"></span>
+<span id="cb3-10">    <span class="op" style="color: #5E5E5E;">&lt;</span>head<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-11"></span>
+<span id="cb3-12">    <span class="op" style="color: #5E5E5E;">&lt;</span>body<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-13">        <span class="op" style="color: #5E5E5E;">&lt;</span>py<span class="op" style="color: #5E5E5E;">-</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-14">            <span class="im" style="color: #00769E;">import</span> random</span>
+<span id="cb3-15"></span>
+<span id="cb3-16">            n <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">100</span></span>
+<span id="cb3-17">            emojis <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
+<span id="cb3-18"></span>
+<span id="cb3-19">            lines <span class="op" style="color: #5E5E5E;">=</span> [<span class="st" style="color: #20794D;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;">=</span>n)) <span class="cf" style="color: #003B4F;">for</span> index <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(n)]</span>
+<span id="cb3-20"></span>
+<span id="cb3-21">            <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join(lines))</span>
+<span id="cb3-22">        <span class="op" style="color: #5E5E5E;">&lt;/</span>py<span class="op" style="color: #5E5E5E;">-</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-23">    <span class="op" style="color: #5E5E5E;">&lt;/</span>body<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-24"></span>
+<span id="cb3-25"><span class="op" style="color: #5E5E5E;">&lt;/</span>html<span class="op" style="color: #5E5E5E;">&gt;</span></span></code></pre></div>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/teaching/posts/2023-03-15-pyscript/index.html</guid>
+  <pubDate>Tue, 14 Mar 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/teaching/posts/2023-03-15-pyscript/emojis.png" medium="image" type="image/png" height="141" width="144"/>
+</item>
 <item>
   <title>A few days of Quarto</title>
-  <dc:creator>Holger Döring</dc:creator>
   <link>https://hdigital.github.io/teaching/posts/2023-02-quarto/index.html</link>
   <description><![CDATA[ 
 
@@ -71,16 +201,14 @@
   <media:content url="https://hdigital.github.io/teaching/posts/2023-02-quarto/thumbnail.png" medium="image" type="image/png" height="35" width="144"/>
 </item>
 <item>
-  <title>TIL // February</title>
-  <dc:creator>Holger Döring</dc:creator>
+  <title></title>
   <link>https://hdigital.github.io/teaching/posts/2023-02-til/index.html</link>
   <description><![CDATA[ 
 
 
 
-
 <section id="til-february" class="level1">
-<h1>TIL February</h1>
+<h1>TIL // February</h1>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">25.2.</h2>
 <p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
@@ -101,48 +229,19 @@
   <media:content url="https://hdigital.github.io/teaching/posts/2023-02-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>TIL // February</title>
-  <dc:creator>Holger Döring</dc:creator>
-  <link>https://hdigital.github.io/teaching/posts/2023-03-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="til-february" class="level1">
-<h1>TIL February</h1>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">25.2.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the move convinient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/teaching/posts/2023-03-til/computer-argonne.jpg" class="img-fluid"></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>TIL-monthly</category>
-  <guid>https://hdigital.github.io/teaching/posts/2023-03-til/index.html</guid>
-  <pubDate>Fri, 24 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/teaching/posts/2023-03-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Hello Jupyter</title>
-  <dc:creator>Holger Döring</dc:creator>
+  <title></title>
   <link>https://hdigital.github.io/teaching/posts/2023-02-22-hello-jupyter/index.html</link>
   <description><![CDATA[ 
 
 
 
-
+<section id="hello-jupyter" class="level1">
+<h1>Hello Jupyter</h1>
 <p>I used my new Quarto and Jupyter skills to <a href="https://github.com/hdigital/HalloJupyterDSS/commits/main">create web pages</a> for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS.</p>
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-22-hello-jupyter/arnim-fork.png" class="img-fluid"></p>
 
 
+</section>
 
  ]]></description>
   <category>Python</category>
@@ -152,14 +251,14 @@
   <media:content url="https://hdigital.github.io/teaching/posts/2023-02-22-hello-jupyter/arnim-fork.png" medium="image" type="image/png" height="111" width="144"/>
 </item>
 <item>
-  <title>Jupyter notebooks with Quarto</title>
-  <dc:creator>Holger Döring</dc:creator>
+  <title></title>
   <link>https://hdigital.github.io/teaching/posts/2023-02-18-jupyter/index.html</link>
   <description><![CDATA[ 
 
 
 
-
+<section id="jupyter-notebooks-with-quarto" class="level1">
+<h1>Jupyter notebooks with Quarto</h1>
 <p><a href="https://jupyter.org/try-jupyter/lab/index.html">Jupyter</a> notebooks can be rendered with <a href="https://quarto.org/docs/tools/jupyter-lab.html">Quarto</a>.</p>
 <p>In a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a <a href="https://quarto.org/docs/tools/jupyter-lab.html#yaml-front-matter">Raw first cell</a>. Finally, I converted the original notebook into a Quarto document with <code>quarto convert</code>.</p>
 <p>I rendered all versions of the Jupyter notebook with Quarto and here are the results:</p>
@@ -178,6 +277,7 @@
 </div>
 
 
+</section>
 
  ]]></description>
   <category>Python</category>
@@ -188,7 +288,6 @@
 </item>
 <item>
   <title>Horizontal bar chart</title>
-  <dc:creator>Holger Döring</dc:creator>
   <link>https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index.html</link>
   <description><![CDATA[ 
 
