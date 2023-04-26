@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Holger Döring">
 <meta name="dcterms.date" content="2023-03-20">
 
 <title>learning-hd – index</title>
@@ -157,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>WebR (WebAssembly)</h1>
 <p>I read about the <a href="https://docs.r-wasm.org/webr/latest/">webR</a> release on the <a href="https://www.tidyverse.org/blog/2023/03/webr-0-1-0/">Tidyverse blog</a>. It allows to run R in a browser.</p>
 <p>So I went to <a href="https://webr.r-wasm.org/latest/">webr.r-wasm.org</a> and gave it a try.</p>
-<p>I tried to install the <em>tidyverse</em> with <code>webr::install("tidyverse")</code>. That did not work. For me, there is little use of R without the tidyverse.</p>
+<p>I tried to install the <em>tidyverse</em> with <code>webr::install("tidyverse")</code>. That did not work. For me, there is little use of R without the <em>tidyverse</em>.</p>
 <p>Installing <em>dplyr</em> and <em>ggplot2</em> individually worked. So that I could run the following code.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -187,6 +186,8 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 <p>Typing the R commands in a browser shell without tab completion and no R help was challenging though.</p>
 <p>Having R in a browser quickly available is nice 😊.</p>
+<hr>
+<p><img src="r-wasm.png" class="img-fluid"></p>
 
 
 </section>
