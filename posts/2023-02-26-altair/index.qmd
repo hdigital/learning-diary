@@ -1,0 +1,42 @@
+---
+date: "2023-02-26"
+image: altair-logo.png
+jupyter: python3
+categories: [Python, ggplot]
+---
+
+# Python visualization with Altair
+
+I have been interested in finding a visualization library for Python that is similiar to [ggplot2](https://ggplot2.tidyverse.org/) in R. I like the quick plots in [pandas](https://pandas.pydata.org/) but [Matplotlib](https://matplotlib.org/) has never worked for me.
+
+For customized visualizations I like the _ggplot2_ approach with layers. Its _grammar of graphics_ provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.
+
+[Vega-Altair](https://altair-viz.github.io/), a Python library, uses a grammar to create visualization as well. So I gave it a try and it went well -- see code below.
+
+_pandas_ and _Altaire_ are likely to be the visualization tools that I use primarily in Python.
+
+Here is some information on the [penguins dataset](https://allisonhorst.github.io/palmerpenguins/) 🐧 in the visualization. I didn't want to use _mtcars_ 🚗 again.
+
+```{python}
+import altair as alt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+dt = sns.load_dataset("penguins")
+
+(alt.Chart(dt)
+    .mark_circle()
+    .encode(
+      alt.X('flipper_length_mm', scale=alt.Scale(zero=False)),
+      alt.Y('body_mass_g', scale=alt.Scale(zero=False)),
+      color='species',
+      tooltip=['species', 'island', 'sex']
+    )
+)
+```
+
+
+```{python}
+dt
+```
