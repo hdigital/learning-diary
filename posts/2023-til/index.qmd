@@ -1,12 +1,18 @@
 ---
-date: "2023-02-25"
+date: "2023-04-25"
 image: computer-argonne.jpg
-categories: [TIL-monthly]
+format:
+  html:
+    toc: true
 ---
 
-# TIL // February
+# Today I learned (TIL)
 
-## 25.2.
+I keep brief information here. Mainly things I learned that don't create a post.
+
+---
+
+## 25. Feb.
 
 I worked on [code](https://github.com/hdigital/mixtape) from a causal inference book. It includes Stata, R and Python versions of the examples.
 
@@ -14,7 +20,7 @@ For R and Python I wanted to have one environment to install all dependencies. T
 
 Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.
 
-At the end, VS Code seems to be the move convinient interface.
+At the end, VS Code seems to be the more convinient interface.
 
 ---
 
