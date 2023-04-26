@@ -6,8 +6,9 @@ website:
   site-url: https://hdigital.github.io/teaching/
   description: Things I learned
   navbar:
-    right:
+    left:
       - about.qmd
+    right:
       - icon: github
         href: https://github.com/
       - icon: twitter
