@@ -11,7 +11,8 @@ draft: true
 post text and snippets
 
 ```{r}
-#| message=FALSE
+#| code-fold: false
+#| message: false
 
 library(tidyverse)
 
