@@ -17,6 +17,10 @@ I got back into [Quarto](https://quarto.org/) and created a website for a learni
 
 Setting up the page worked well. I got a little confused by the quarto difference between _freeze_ and _cache_. I also wondered why the _cache_ was added into several folders in the main directory and not into a *\_cache* folder.
 
+## 3. Apr.
+
+I read about the new [pandas release](https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html). None of the changes seem to be relevant for my work with _pandas_
+
 ## 25. Feb.
 
 I worked on [code](https://github.com/hdigital/mixtape) from a causal inference book. It includes Stata, R and Python versions of the examples.
@@ -25,7 +29,7 @@ For R and Python I wanted to have one environment to install all dependencies. T
 
 Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.
 
-At the end, VS Code seems to be the more convinient interface.
+At the end, VS Code seems to be the more convenient interface.
 
 ---
 
