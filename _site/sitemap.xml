@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hdigital.github.io/teaching/about.html</loc>
-    <lastmod>2023-03-20T11:56:38.338Z</lastmod>
+    <lastmod>2023-04-26T05:38:24.133Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/index.html</loc>
-    <lastmod>2023-03-20T11:56:41.152Z</lastmod>
+    <lastmod>2023-04-26T05:38:27.737Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index.html</loc>
-    <lastmod>2023-03-20T11:56:43.643Z</lastmod>
+    <lastmod>2023-04-26T05:38:29.816Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-02-18-jupyter/index.html</loc>
-    <lastmod>2023-03-20T11:56:44.682Z</lastmod>
+    <lastmod>2023-04-26T05:38:30.663Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-02-22-hello-jupyter/index.html</loc>
-    <lastmod>2023-03-20T11:56:45.726Z</lastmod>
+    <lastmod>2023-04-26T05:38:31.541Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-02-quarto/index.html</loc>
-    <lastmod>2023-03-20T11:56:47.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hdigital.github.io/teaching/posts/2023-02-til/index.html</loc>
-    <lastmod>2023-03-20T11:56:48.230Z</lastmod>
+    <lastmod>2023-04-26T05:38:33.393Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-03-15-pyscript/index.html</loc>
-    <lastmod>2023-03-20T11:56:50.035Z</lastmod>
+    <lastmod>2023-04-26T05:38:35.374Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index.html</loc>
-    <lastmod>2023-03-20T11:56:51.257Z</lastmod>
+    <lastmod>2023-04-26T05:38:36.353Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hdigital.github.io/teaching/posts/2023-til/index.html</loc>
+    <lastmod>2023-04-26T05:38:37.108Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/posts/welcome/index.html</loc>
-    <lastmod>2023-03-20T11:56:53.693Z</lastmod>
+    <lastmod>2023-04-26T05:38:38.155Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/snippets/jupyter-options.html</loc>
-    <lastmod>2023-03-20T11:56:54.742Z</lastmod>
+    <lastmod>2023-04-26T05:38:38.974Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/snippets/jupyter-quarto.html</loc>
-    <lastmod>2023-03-20T11:56:56.700Z</lastmod>
+    <lastmod>2023-04-26T05:38:41.162Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/teaching/snippets/jupyter.html</loc>
-    <lastmod>2023-03-20T11:56:57.723Z</lastmod>
+    <lastmod>2023-04-26T05:38:41.938Z</lastmod>
   </url>
 </urlset>

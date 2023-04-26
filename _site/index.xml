@@ -9,11 +9,42 @@
 <link>https://hdigital.github.io/teaching/index.html</link>
 <atom:link href="https://hdigital.github.io/teaching/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.2.335</generator>
-<lastBuildDate>Sun, 19 Mar 2023 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.340</generator>
+<lastBuildDate>Mon, 24 Apr 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/teaching/posts/2023-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I keep brief information here. Mainly things I learned that don’t create a post.</p>
+<hr>
+<section id="apr." class="level2">
+<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
+<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
+</section>
+<section id="feb." class="level2">
+<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the more convinient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/teaching/posts/2023-til/computer-argonne.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/teaching/posts/2023-til/index.html</guid>
+  <pubDate>Mon, 24 Apr 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/teaching/posts/2023-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title></title>
-  <dc:creator>Holger Döring</dc:creator>
   <link>https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index.html</link>
   <description><![CDATA[ 
 
@@ -26,11 +57,21 @@
 <p>I tried to install the <em>tidyverse</em> with <code>webr::install("tidyverse")</code>. That did not work. For me, there is little use of R without the tidyverse.</p>
 <p>Installing <em>dplyr</em> and <em>ggplot2</em> individually worked. So that I could run the following code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
 <span id="cb1-3"></span>
-<span id="cb1-4">dt <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as_tibble</span>(mtcars)</span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">glimpse</span>(dt)</span></code></pre></div>
+<span id="cb1-4">dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>(mtcars)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(dt)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 32
 Columns: 11
@@ -46,7 +87,21 @@ $ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0
 $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
 $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>hp, <span class="at" style="color: #657422;">y=</span>mpg, <span class="at" style="color: #657422;">color=</span>cyl)) <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span>hp, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span>mpg, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span>cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-03-20-r-wasm/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -75,14 +130,44 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <p>I used <a href="https://pyscript.net/">pyscript</a> for the first time and created a web page that run some Python code.</p>
 <p>So here is the script I run.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> random</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> random</span>
 <span id="cb1-2"></span>
-<span id="cb1-3">n <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">20</span></span>
-<span id="cb1-4">emojis <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
+<span id="cb1-3">n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span></span>
+<span id="cb1-4">emojis <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
 <span id="cb1-5"></span>
-<span id="cb1-6">lines <span class="op" style="color: #5E5E5E;">=</span> [<span class="st" style="color: #20794D;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;">=</span>n)) <span class="cf" style="color: #003B4F;">for</span> index <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(n)]</span>
+<span id="cb1-6">lines <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>n)) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> index <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(n)]</span>
 <span id="cb1-7"></span>
-<span id="cb1-8"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join(lines))</span></code></pre></div>
+<span id="cb1-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.join(lines))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🙂🤗😆😁😂😁😄😄😂😅😆🤗😃😋😀🙂😋😃🙂😂
 😊🙂🤗😋😊😎😁😆🤗😆😁😉😋😆😂😇🙂😃😋😁
@@ -107,31 +192,143 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 </div>
 </div>
 <p>Here is the full html page that uses pyscript.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;">&lt;!</span>DOCTYPE html<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-2"><span class="op" style="color: #5E5E5E;">&lt;</span>html lang<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"en"</span><span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;!</span>DOCTYPE html<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>html lang<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"en"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb3-3"></span>
-<span id="cb3-4"><span class="op" style="color: #5E5E5E;">&lt;</span>head<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-5">    <span class="op" style="color: #5E5E5E;">&lt;</span>meta charset<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"UTF-8"</span><span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-6">    <span class="op" style="color: #5E5E5E;">&lt;</span>title<span class="op" style="color: #5E5E5E;">&gt;</span>Happy DSS Hacking<span class="op" style="color: #5E5E5E;">&lt;/</span>title<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-7">    <span class="op" style="color: #5E5E5E;">&lt;</span>link rel<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"stylesheet"</span> href<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"https://pyscript.net/latest/pyscript.css"</span> <span class="op" style="color: #5E5E5E;">/&gt;</span></span>
-<span id="cb3-8">    <span class="op" style="color: #5E5E5E;">&lt;</span>script defer src<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"https://pyscript.net/latest/pyscript.js"</span><span class="op" style="color: #5E5E5E;">&gt;&lt;/</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>head<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-5">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>meta charset<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"UTF-8"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-6">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span>Happy DSS Hacking<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;/</span>title<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-7">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>link rel<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stylesheet"</span> href<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://pyscript.net/latest/pyscript.css"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/&gt;</span></span>
+<span id="cb3-8">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>script defer src<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://pyscript.net/latest/pyscript.js"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;&lt;/</span>script<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb3-9"></span>
-<span id="cb3-10">    <span class="op" style="color: #5E5E5E;">&lt;</span>head<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-10">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>head<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb3-11"></span>
-<span id="cb3-12">    <span class="op" style="color: #5E5E5E;">&lt;</span>body<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-13">        <span class="op" style="color: #5E5E5E;">&lt;</span>py<span class="op" style="color: #5E5E5E;">-</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-14">            <span class="im" style="color: #00769E;">import</span> random</span>
+<span id="cb3-12">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>body<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-13">        <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>py<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>script<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-14">            <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> random</span>
 <span id="cb3-15"></span>
-<span id="cb3-16">            n <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">100</span></span>
-<span id="cb3-17">            emojis <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
+<span id="cb3-16">            n <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span></span>
+<span id="cb3-17">            emojis <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
 <span id="cb3-18"></span>
-<span id="cb3-19">            lines <span class="op" style="color: #5E5E5E;">=</span> [<span class="st" style="color: #20794D;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;">=</span>n)) <span class="cf" style="color: #003B4F;">for</span> index <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(n)]</span>
+<span id="cb3-19">            lines <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>n)) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> index <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(n)]</span>
 <span id="cb3-20"></span>
-<span id="cb3-21">            <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"</span><span class="ch" style="color: #20794D;">\n</span><span class="st" style="color: #20794D;">"</span>.join(lines))</span>
-<span id="cb3-22">        <span class="op" style="color: #5E5E5E;">&lt;/</span>py<span class="op" style="color: #5E5E5E;">-</span>script<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb3-23">    <span class="op" style="color: #5E5E5E;">&lt;/</span>body<span class="op" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb3-21">            <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>.join(lines))</span>
+<span id="cb3-22">        <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;/</span>py<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>script<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb3-23">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;/</span>body<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb3-24"></span>
-<span id="cb3-25"><span class="op" style="color: #5E5E5E;">&lt;/</span>html<span class="op" style="color: #5E5E5E;">&gt;</span></span></code></pre></div>
+<span id="cb3-25"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;/</span>html<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span></code></pre></div>
 
 
 </section>
@@ -167,23 +364,65 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <h2 class="anchored" data-anchor-id="python-in-quarto">Python in Quarto</h2>
 <p>Here is a <a href="https://quarto.org/docs/computations/python.html#code-blocks">Quarto Guide</a> demonstration of a line plot on a polar axis, see Figure&nbsp;1.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">import</span> numpy <span class="im" style="color: #00769E;">as</span> np</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;">as</span> plt</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
 <span id="cb1-3"></span>
-<span id="cb1-4">r <span class="op" style="color: #5E5E5E;">=</span> np.arange(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="fl" style="color: #AD0000;">0.01</span>)</span>
-<span id="cb1-5">theta <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">2</span> <span class="op" style="color: #5E5E5E;">*</span> np.pi <span class="op" style="color: #5E5E5E;">*</span> r</span>
-<span id="cb1-6">fig, ax <span class="op" style="color: #5E5E5E;">=</span> plt.subplots(</span>
-<span id="cb1-7">  subplot_kw <span class="op" style="color: #5E5E5E;">=</span> {<span class="st" style="color: #20794D;">'projection'</span>: <span class="st" style="color: #20794D;">'polar'</span>}</span>
+<span id="cb1-4">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.arange(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>)</span>
+<span id="cb1-5">theta <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.pi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> r</span>
+<span id="cb1-6">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(</span>
+<span id="cb1-7">  subplot_kw <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'projection'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'polar'</span>}</span>
 <span id="cb1-8">)</span>
 <span id="cb1-9">ax.plot(theta, r)</span>
-<span id="cb1-10">ax.set_rticks([<span class="fl" style="color: #AD0000;">0.5</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="fl" style="color: #AD0000;">1.5</span>, <span class="dv" style="color: #AD0000;">2</span>])</span>
-<span id="cb1-11">ax.grid(<span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb1-10">ax.set_rticks([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])</span>
+<span id="cb1-11">ax.grid(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
 <span id="cb1-12">plt.show()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-polar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-quarto/index_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption>
 </figure>
 </div>
 </div>
@@ -199,34 +438,6 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
   <guid>https://hdigital.github.io/teaching/posts/2023-02-quarto/index.html</guid>
   <pubDate>Sat, 25 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/teaching/posts/2023-02-quarto/thumbnail.png" medium="image" type="image/png" height="35" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/teaching/posts/2023-02-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="til-february" class="level1">
-<h1>TIL // February</h1>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">25.2.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the move convinient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/teaching/posts/2023-02-til/computer-argonne.jpg" class="img-fluid"></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>TIL-monthly</category>
-  <guid>https://hdigital.github.io/teaching/posts/2023-02-til/index.html</guid>
-  <pubDate>Fri, 24 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/teaching/posts/2023-02-til/computer-argonne.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title></title>
@@ -272,7 +483,7 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-18-jupyter/jupyterlab-preview.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Jupyter Lab</figcaption><p></p>
+<figcaption class="figure-caption">Jupyter Lab</figcaption>
 </figure>
 </div>
 
@@ -298,49 +509,149 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <p>I have now learned in an <a href="https://www.eoda.de/en/wissen/blog/10-tidyverse-functions-that-might-save-your-day/#fct_reorder">example</a> that this is not necessary.</p>
 <p>Here are a few examples and the code for future references.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"></span>
-<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;">::</span>mtcars)</span></code></pre></div>
+<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>mtcars)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> cyl)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"lightgreen"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgreen"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>I used to do some pre-processing to prepare data for the plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">pl_dt <span class="ot" style="color: #003B4F;">&lt;-</span></span>
-<span id="cb3-2">  mtcars <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">cyl =</span> <span class="fu" style="color: #4758AB;">fct_infreq</span>(<span class="fu" style="color: #4758AB;">factor</span>(cyl)) <span class="sc" style="color: #5E5E5E;">|&gt;</span> <span class="fu" style="color: #4758AB;">fct_rev</span>())</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">pl_dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb3-2">  mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cyl =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_infreq</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_rev</span>())</span></code></pre></div>
 </div>
 <p>For the figure, I used <code>coord_flip</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;">aes</span>(cyl)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"grey"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"grey"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>That was not necessary, as I have learned now.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;">geom_bar</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"lightblue"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Here is an alternative approach with <code>geom_col()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">pl_dt <span class="ot" style="color: #003B4F;">&lt;-</span></span>
-<span id="cb6-2">  mtcars <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;">count</span>(cyl) <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb6-4">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">cyl =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(<span class="fu" style="color: #4758AB;">factor</span>(cyl), n))</span>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">pl_dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb6-2">  mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count</span>(cyl) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cyl =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_reorder</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(cyl), n))</span>
 <span id="cb6-5"></span>
-<span id="cb6-6"><span class="fu" style="color: #4758AB;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> n, <span class="at" style="color: #657422;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"lightblue"</span>)</span></code></pre></div>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>)</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -369,25 +680,79 @@ $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1
 <p>So here is an initial version and today the TIL has been <a href="https://quarto.org/">Quarto</a>.</p>
 <p>Here is an example of integrating <strong>Tidyverse-R</strong> code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
 <span id="cb1-2"></span>
-<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;">::</span>mtcars)</span>
+<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>mtcars)</span>
 <span id="cb1-4"></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> hp, <span class="at" style="color: #657422;">y =</span> mpg)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-6">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">color =</span> <span class="fu" style="color: #4758AB;">factor</span>(cyl))) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-7">  <span class="fu" style="color: #4758AB;">geom_smooth</span>()</span></code></pre></div>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> hp, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mpg)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(cyl))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_smooth</span>()</span></code></pre></div>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/teaching/posts/welcome/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Here is an example of integrating <strong>Python</strong> code.</p>
 <div class="cell" data-python.reticulate="false">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;">import</span> statsmodels.api <span class="im" style="color: #00769E;">as</span> sm</span>
-<span id="cb2-2"><span class="im" style="color: #00769E;">import</span> pandas <span class="im" style="color: #00769E;">as</span> pd</span>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> statsmodels.api <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> sm</span>
+<span id="cb2-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
 <span id="cb2-3"></span>
-<span id="cb2-4">mtcars <span class="op" style="color: #5E5E5E;">=</span> sm.datasets.get_rdataset(<span class="st" style="color: #20794D;">'mtcars'</span>).data</span>
+<span id="cb2-4">mtcars <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sm.datasets.get_rdataset(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mtcars'</span>).data</span>
 <span id="cb2-5"></span>
-<span id="cb2-6">mtcars.plot(x <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"hp"</span>, y <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"mpg"</span>, kind <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"scatter"</span>)</span></code></pre></div>
+<span id="cb2-6">mtcars.plot(x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hp"</span>, y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mpg"</span>, kind <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"scatter"</span>)</span></code></pre></div>
 </div>
 <hr>
 <section id="some-background" class="level2">

@@ -1,1 +1,3 @@
+User-agent: *
+Disallow: /
 Sitemap: https://hdigital.github.io/teaching/sitemap.xml
