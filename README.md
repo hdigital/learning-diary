@@ -16,6 +16,13 @@ Posts are [frozen](https://quarto.org/docs/projects/code-execution.html#freeze) 
 quarto render posts/welcome/index.qmd
 ```
 
+Run page locally at <http://localhost:8000/>
+
+```sh
+cd _site
+python -m http.server 8000
+```
+
 ## Installation
 
 + [Quarto](https://quarto.org/docs/get-started/)
