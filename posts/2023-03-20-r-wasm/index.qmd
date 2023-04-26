@@ -29,3 +29,7 @@ ggplot(dt, aes(x=hp, y=mpg, color=cyl)) + geom_point()
 Typing the R commands in a browser shell without tab completion and no R help was challenging though.
 
 Having R in a browser quickly available is nice 😊.
+
+---
+
+![](r-wasm.png)
