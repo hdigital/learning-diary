@@ -1,6 +1,6 @@
 ---
 date: "2023-02-26"
-image: thumbnail.png
+image: quarto.png
 jupyter: python3
 categories: [Docker, Python, Quarto]
 ---
