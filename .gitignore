@@ -2,6 +2,7 @@
 /_freeze/
 /.luarc.json
 /.quarto/
+/.vscode/
 
 # Python virtual environment folders
 /env/
