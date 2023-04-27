@@ -1,0 +1,94 @@
+---
+date: "2023-04-27"
+image: dataverse-url.png
+categories: [R]
+---
+
+# Dataverse URLs
+
+I followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with [Elections Global](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OGOURC) gave a good overview -- see below.
+
+The technical point is that I wanted to access the original data file at the [Harvard Dataverse](https://dataverse.harvard.edu/).
+
+Data uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.
+
+Here is an example for the Elections Global data used in the snippet -- see page screenshot below.
+
+[doi:10.7910/DVN/OGOURC/YK9DOZ&version=2.0](https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ&version=2.0)
+
+So I tried to find the permanent link to the original data file.
+
+First, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.
+
+Second, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.
+
+For now, I will start to using the imported data version with the provided url for data files from the Dataverse.
+
+
+```{r}
+#| code-fold: true
+#| message: false
+
+library(conflicted)
+library(tidyverse)
+conflicts_prefer(dplyr::filter)
+```
+
+```{r}
+#| code-fold: false
+#| message: false
+
+if(FALSE) {
+  url_csv <- "https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"
+  elec_raw <- read_csv(url_csv)
+}
+
+url <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ"
+
+if(! exists("elec_raw")) {
+  elec_raw <- read_tsv(url)
+}
+
+# glimpse(elec_raw)
+```
+
+```{r}
+#| code-fold: true
+#| message: false
+
+hnd <-
+  elec_raw |>
+  filter(country == "HND") |>
+  mutate(
+    year = as.integer(substr(election_date, 1, 4)),
+    seats_share = 100*seats/seats_total
+    )
+
+hnd |>
+  summarise(
+    n = n(),
+    share_mean = mean(seats_share, na.rm = TRUE) |> round(1),
+    share_max = max(seats_share, na.rm = TRUE) |> round(1),
+    year_first = min(year, na.rm = TRUE),
+    year_last = max(year, na.rm = TRUE),
+    .by = party
+  ) |>
+  select(party, n, n:year_last) |>
+  arrange(desc(n), desc(share_mean)) |>
+  knitr::kable()
+```
+
+```{r}
+#| code-fold: true
+#| message: false
+
+hnd |>
+  mutate(n = n(), .by = party) |>
+  filter(n > 10) |>
+  ggplot(aes(year, seats_share, colour = party)) +
+  geom_line()
+```
+
+---
+
+![](dataverse-url.png)
