@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /
-Sitemap: https://hdigital.github.io/teaching/sitemap.xml
+Sitemap: https://hdigital.github.io/learning-diary/sitemap.xml
