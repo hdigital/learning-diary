@@ -4,6 +4,9 @@
 /.quarto/
 /.vscode/
 
+# MacOS
+.DS_Store
+
 # Python virtual environment folders
 /env/
 /venv/
