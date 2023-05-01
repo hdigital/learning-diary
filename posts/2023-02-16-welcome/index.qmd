@@ -1,6 +1,5 @@
 ---
 title: "Things I learned: A new TIL"
-author: "Holger Döring"
 date: "2023-02-16"
 image: thumbnail.png
 categories: [R, Python, Quarto]
