@@ -24,7 +24,7 @@ print("\n".join(lines))
 
 Here is the full html page that uses pyscript.
 
-```py
+```html
 <!DOCTYPE html>
 <html lang="en">
 
