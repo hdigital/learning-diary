@@ -14,6 +14,8 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
 RUN gdebi --non-interactive quarto-linux-amd64.deb
 
+ENV QUARTO_PYTHON="/usr/bin/python3"
+
 # install R packages
 RUN install2.r \
     gapminder \
@@ -26,5 +28,3 @@ COPY requirements.txt .
 
 RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
-
-ENV QUARTO_PYTHON="/usr/bin/python3"

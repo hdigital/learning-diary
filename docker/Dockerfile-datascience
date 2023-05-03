@@ -4,11 +4,13 @@ FROM jupyter/datascience-notebook
 USER root
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends gdebi-core
-RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
 
+RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
 RUN gdebi --non-interactive quarto-linux-amd64.deb
 
-USER $NB_UID
+ENV QUARTO_PYTHON="/usr/bin/python3"
 
+# configure datascience-notebook
+USER $NB_UID
 
 WORKDIR /home/datascience
