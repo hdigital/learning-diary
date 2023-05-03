@@ -1,5 +1,6 @@
-/.cache/
 /_freeze/
+/.cache/
+/.ipython/
 /.luarc.json
 /.quarto/
 /.vscode/
