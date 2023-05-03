@@ -11,6 +11,12 @@ I keep brief information here. Mainly things I learned that don't create a post.
 
 ---
 
+## 2. May
+
+A [bug](https://github.com/rstudio/rstudio/issues/12452) in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the [daily build](https://dailies.rstudio.com/rstudio/mountain-hydrangea/) and had R/RStudio running again.
+
+Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between. 
+
 ## 25. Apr.
 
 I got back into [Quarto](https://quarto.org/) and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.
