@@ -3,6 +3,7 @@ pandas
 matplotlib
 
 altair
+folium
 statsmodels
 seaborn
 

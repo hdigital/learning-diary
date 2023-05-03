@@ -1,0 +1,112 @@
+---
+date: "2023-05-01"
+image: wikipedia-berlin.png
+jupyter: python3
+categories: [Python]
+format:
+  html:
+    toc: true
+---
+
+# Wikipedia, Python, ChatGPT
+
+I wanted to get the first image of a Wikipedia page and the coordinates.
+
+![](wikipedia-berlin.png){width=40% fig-align="left"}
+
+ChatGPT was very helpful here as well.
+
+The code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below.
+
+
+## Image
+
+```{python}
+#| code-fold: true
+
+try:
+    import wikipedia
+except ImportError:
+    ! pip install wikipedia
+```
+
+ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.
+
+
+```{python}
+#| message: false
+
+import urllib
+
+import requests
+import wikipedia
+
+from bs4 import BeautifulSoup
+
+# Set the Wikipedia page title and get page
+page_title = "Berlin"
+page = wikipedia.page(page_title)
+
+# Get html content of page and parse it with BeautifulSoup
+html = page.html()
+soup = BeautifulSoup(html, "html.parser")
+
+# Find the infobox image element and get url image
+image_element = soup.find("table", class_="infobox").find("img")
+image_url = "https:" + image_element["src"]
+
+# Download the image
+urllib.request.urlretrieve(image_url, 'image.jpg')
+```
+
+![](image.jpg)
+
+
+## Coordinates
+
+```{python}
+import requests
+import json
+
+# function to get the coordinates from the infobox of a Wikipedia article
+def get_coordinates(title):
+    url = "https://en.wikipedia.org/w/api.php"
+    params = {
+        "action": "query",
+        "prop": "coordinates",
+        "titles": title,
+        "format": "json",
+        "formatversion": 2
+    }
+    response = requests.get(url, params=params)
+    data = json.loads(response.text)
+    pages = data["query"]["pages"]
+    coordinates = None
+    for page in pages:
+        if "coordinates" in page:
+            coordinates = page["coordinates"][0]
+            break
+    return coordinates
+
+# example usage
+title = "Berlin"
+coordinates = get_coordinates(title)
+print(coordinates["lat"], coordinates["lon"])
+```
+
+## Map
+
+```{python}
+import folium
+
+map_coord = [coordinates['lat'], coordinates['lon']]
+
+# create the map
+map = folium.Map(location=map_coord, zoom_start=3.5)
+
+# add a marker at the location
+folium.Marker(location=map_coord, popup=title).add_to(map)
+
+# display the map
+map
+```
