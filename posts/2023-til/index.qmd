@@ -11,17 +11,21 @@ I keep brief information here. Mainly things I learned that don't create a post.
 
 ---
 
+## 5. May
+
+Used [Quarto](https://quarto.org/) a lot and got more comfortable with the options — esp. caching, creating pdf, figures.
+
 ## 3. May
 
 Convert an RMarkdown file into an R file with `knitr::purl("purl.Rmd")` -- see [details](https://bookdown.org/yihui/rmarkdown-cookbook/purl.html).
 
-ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed. 
+ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.
 
 ## 2. May
 
 A [bug](https://github.com/rstudio/rstudio/issues/12452) in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the [daily build](https://dailies.rstudio.com/rstudio/mountain-hydrangea/) and had R/RStudio running again.
 
-Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between. 
+Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.
 
 ## 25. Apr.
 
