@@ -1,0 +1,25 @@
+---
+date: "2023-04-27"
+image: posit-cloud.png
+categories: [R, cloud]
+---
+
+# Posit Cloud
+
+I use RStudio in [Posit Cloud](https://posit.cloud/) sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project that I work on from different machines.
+
+Over the last days, I used it a little more. One goal was to figure out how a more extensive use would work out.
+
+This worked out well. I like just opening a browser and start working with R in RStudio. Especially, a Chrome browser with the tab in full screen mode works very well. It almost feels like working on a desktop application.
+
+Working in Posit Cloud, I am still struggling slightly with two issues.
+
+First, not all shortcuts work the way I am used to from the RStudio desktop application. Some browser shortcuts take precedence over RStudio shortcuts. Showing the _command pallete_ works. So I can use it to run a command from the keyboard. However, I am just used to some shortcuts that I am irritated if typing them does not lead to the expected next step working in RStudio.
+
+Second, I find the file handling still a little inconvenient. Uploading a file into to project folder or moving files across project folders takes some steps and mulitple clicks. Here, the Posit Cloud interface to RStudio is just not as reactive as for example file handling in Google Drive.
+
+Using RStudio with Posit Cloud regularly remains a regular part of my data science tools.
+
+Actually, this time I used it so extensivly that I exceeded the free quota of my account. So I have to wait for a while until I can start using it again.
+
+![Posit Cloud limit](posit-cloud.png)
