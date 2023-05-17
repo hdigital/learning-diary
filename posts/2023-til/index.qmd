@@ -11,6 +11,12 @@ I keep brief information here. Mainly things I learned that don't create a post.
 
 ---
 
+## 17. May
+
+Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use `.x` now for the local variable name to make the local context more explicit.
+
+`add_three <- \(.x) .x+3`
+
 ## 6. May
 
 Excluding variables in _tidyselect_ is now done with `!` as I found out by reading the [documentation](https://tidyselect.r-lib.org/reference/language.html) more carfully. I have still used `-` to exclude variables by their name. This is not documented in the tidyselect help page anymore.
