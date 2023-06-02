@@ -16,6 +16,12 @@ Posts are [frozen](https://quarto.org/docs/projects/code-execution.html#freeze) 
 quarto render posts/welcome/index.qmd
 ```
 
+Publish page on [GitHub Pages](https://quarto.org/docs/publishing/github-pages.html).
+
+```sh
+quarto publish
+```
+
 Run page locally at <http://localhost:8000/>
 
 ```sh
