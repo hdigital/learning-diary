@@ -1,5 +1,4 @@
 ---
-title: "Learning snippets"
 listing:
   contents: posts
   sort: "date desc"
