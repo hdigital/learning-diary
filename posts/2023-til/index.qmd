@@ -61,4 +61,4 @@ At the end, VS Code seems to be the more convenient interface.
 
 ---
 
-![](computer-ai.jpg)
+![](computer_ai.jpg)
