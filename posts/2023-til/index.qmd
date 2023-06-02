@@ -1,7 +1,7 @@
 ---
 date: "2023-05-03"
 title: Today I learned (TIL)
-image: computer-argonne.jpg
+image: computer_ai.png
 format:
   html:
     toc: true
@@ -61,4 +61,4 @@ At the end, VS Code seems to be the more convenient interface.
 
 ---
 
-![](computer-argonne.jpg)
+![](computer-ai.jpg)
