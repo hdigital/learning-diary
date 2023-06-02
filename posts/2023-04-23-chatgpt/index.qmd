@@ -1,7 +1,7 @@
 ---
 date: "2023-04-23"
 image: ChatGPT-logo.png
-categories: [R]
+categories: [R, AI]
 ---
 
 # R coding with ChatGPT
