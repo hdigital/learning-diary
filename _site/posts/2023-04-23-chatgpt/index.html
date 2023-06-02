@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-04-23">
 
-<title>learning-hd – index</title>
+<title>Learning – index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">learning-hd</span>
+    <span class="navbar-title">Learning</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -121,12 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/hdigital/learning-diary/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -152,16 +147,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="coding-with-chatgpt" class="level1">
-<h1>Coding with ChatGPT</h1>
+<section id="r-coding-with-chatgpt" class="level1">
+<h1>R coding with ChatGPT</h1>
 <p>Finally I got into <a href="">ChatGPT</a> and started using it.</p>
 <p>I was inspired to give ChatGPT a try after reading a <a href="https://statmodeling.stat.columbia.edu/2023/04/18/chatgpt4-writes-stan-code-so-i-dont-have-to/">post</a>. The author describes using ChatGPT to code a <a href=""></a> model.</p>
-<p>TODO</p>
-<ul>
-<li>review ChatGPT interaction</li>
-<li>add summary</li>
-<li><em>maybe</em> – add chat log</li>
-</ul>
+<p>So I had a conversation with ChatGPT about the social sciences, statistics and R.</p>
+<p>I have to say that I am impressed.</p>
+<p>ChatGPT and I had an exchange about R. I asked for some examples. ChatGPT originally had a preference for Base-R code but it used more Tidyverse-R approaches after I asked for it. Or it converted the Base-R code to Tidyverse-R at my request.</p>
+<p>The code examples were good and I really liked the comments it added to the code. At some point ChatGPT went back to Base-R and I could not fully convince it to use a Tidyverse-R first approach.</p>
+<p>So here is a nice output from our exchange. I asked for a text analysis of a Biden speech in R.</p>
+<p>Parts from the content of the exchange are below.</p>
+<p>I added the <code>rvest::read_html</code> parts from the ChatGPT suggestion. I did not find a way that ChatGPT added it to its initial script. ChatGPT had some Base-R and Tidyverse-R confusion at this point. I updated the title of the figure to the new speech title used as well.</p>
+<p>I don’t use <code>tidytext</code> regularly so looking up the information would have taken some time for me. Here, ChatGPT was very helpful. Thanks.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -204,6 +201,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<hr>
+<p><strong>user</strong> can we analyse a biden speech?</p>
+<p><strong>ChatGPT</strong> Yes, we can use text analysis techniques to analyze a speech by Joe Biden. Here’s an example using the <code>tidytext</code> package:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load speech data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>biden_speech <span class="ot">&lt;-</span> <span class="fu">read_lines</span>(<span class="st">"https://www.rev.com/blog/transcripts/joe-biden-covid-speech-transcript-september-9"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize speech</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>biden_words <span class="ot">&lt;-</span> biden_speech <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">enframe</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">value =</span> <span class="st">"text"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove stop words</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>biden_words <span class="ot">&lt;-</span> biden_words <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate word frequencies</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>word_freq <span class="ot">&lt;-</span> biden_words <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize word frequencies</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>word_freq <span class="sc">%&gt;%</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">reorder</span>(word, n))) <span class="sc">+</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Frequency"</span>, <span class="at">y =</span> <span class="st">"Word"</span>, <span class="at">title =</span> <span class="st">"Most common words in Joe Biden's COVID speech"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we load the transcript of a speech by Joe Biden on the topic of COVID-19, which is available as a text file from the Rev.com blog. We tokenize the speech using the <code>unnest_tokens()</code> function, remove stop words using the <code>anti_join()</code> function, and calculate word frequencies using the <code>count()</code> function. Finally, we visualize the most common words using <code>ggplot2</code>. Note that in order to run this code, you will need to have the <code>readr</code> package installed to read in the text file from the web.</p>
+<p><strong>user</strong> the url does not work</p>
+<p><strong>ChatGPT</strong> I apologize for that. Here’s an updated example using a different speech by Joe Biden that is available as a text file from the University of Pennsylvania:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load speech data</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>biden_speech <span class="ot">&lt;-</span> <span class="fu">read_lines</span>(<span class="st">"https://www.sas.upenn.edu/~jkingsby/BidenIowaSpeech.txt"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize speech</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>biden_words <span class="ot">&lt;-</span> biden_speech <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">enframe</span>(<span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">value =</span> <span class="st">"text"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove stop words</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>biden_words <span class="ot">&lt;-</span> biden_words <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(stop_words)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate word frequencies</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>word_freq <span class="ot">&lt;-</span> biden_words <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize word frequencies</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>word_freq <span class="sc">%&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n, <span class="at">y =</span> <span class="fu">reorder</span>(word, n))) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Frequency"</span>, <span class="at">y =</span> <span class="st">"Word"</span>, <span class="at">title =</span> <span class="st">"Most common words in Joe Biden's Iowa speech"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we load a different speech by Joe Biden that is available as a text file from the University of Pennsylvania. The rest of the code is the same as in the previous example.</p>
+<p><strong>user</strong> that url is also not working. do you have a link for a biden speech</p>
+<p><strong>ChatGPT</strong> I apologize for the inconvenience. Here is a link to a transcript of a recent speech by Joe Biden on infrastructure:</p>
+<p>https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/</p>
+<p>You can copy the text of the speech from this page and use it in the <code>read_lines()</code> function to load it into R for analysis using the <code>tidytext</code> package.</p>
+<p><strong>user</strong> how can i convert a html document to text in r?</p>
+<p><strong>ChatGPT</strong> You can use the <code>rvest</code> package in R to extract text from HTML documents. Here’s an example code snippet that shows how to do this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the HTML document</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>html_doc <span class="ot">&lt;-</span> <span class="fu">read_html</span>(<span class="st">"https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the text</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> <span class="fu">html_text</span>(html_doc)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the text</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we use the <code>read_html()</code> function from <code>rvest</code> to read in the HTML document from the provided URL. We then use the <code>html_text()</code> function to extract the text from the HTML document. Finally, we use <code>cat()</code> to print the text to the console.</p>
+<p>Note that the <code>rvest</code> package is designed for web scraping, so it is important to respect the terms of use and not use it to scrape websites without permission.</p>
+<p><strong>user</strong> ok, can you add that to the r code snippet above?</p>
+<p><strong>ChatGPT</strong></p>
+<p>(…)</p>
 
 
 </section>

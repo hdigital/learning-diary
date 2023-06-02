@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-04-27">
 
-<title>learning-hd – index</title>
+<title>Learning – index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">learning-hd</span>
+    <span class="navbar-title">Learning</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -121,12 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img">
-</i> 
- <span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/hdigital/learning-diary/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -154,11 +149,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="dataverse-urls" class="level1">
 <h1>Dataverse URLs</h1>
-<p>I followed a talk on electoral politcs in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OGOURC&amp;version=2.0">Elections Global</a> gave a good overview – see below.</p>
+<p>I followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OGOURC">Elections Global</a> gave a good overview – see below.</p>
 <p>The technical point is that I wanted to access the original data file at the <a href="https://dataverse.harvard.edu/">Harvard Dataverse</a>.</p>
-<p>Data uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue so that I work with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.</p>
-<p>First, I checked the documentation of the Dataverse API but could not find a way to access an original datafile through API parameters. Only the imported file is available through the API.</p>
-<p>Second, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is rather cumbersom.</p>
+<p>Data uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.</p>
+<p>Here is an example for the Elections Global data used in the snippet – see page screenshot below.</p>
+<p><a href="https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0">doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0</a></p>
+<p>So I tried to find the permanent link to the original data file.</p>
+<p>First, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.</p>
+<p>Second, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.</p>
 <p>For now, I will start to using the imported data version with the provided url for data files from the Dataverse.</p>
 <div class="cell">
 <details>
