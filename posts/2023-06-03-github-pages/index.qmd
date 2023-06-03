@@ -1,0 +1,24 @@
+---
+date: "2023-06-03"
+image: github-pages.png
+categories: [Quarto]
+---
+
+# GitHub Pages
+
+I published my first two web sites with [GithHub Pages](https://pages.github.com/).
+
++ [learning diary](https://hdigital.github.io/learning-diary/)
++ [data snippets](https://hdigital.github.io/data-snippets/)
+
+Quarto has a [tutorial](https://quarto.org/docs/publishing/github-pages.html) about publishing Quarto sites to GitHub Pages. This worked well.
+
+I was a little confused by the different options: docs folder, publish command, GitHub Actions.
+
+The `quarto publish` command worked well for the [learning diary](https://hdigital.github.io/learning-diary/) page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.
+
+For the [data snippets](https://hdigital.github.io/data-snippets/) page I used the [GitHub Actions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow) approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push.
+
+---
+
+![](github-pages.png)
