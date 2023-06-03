@@ -21,6 +21,34 @@
     "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html",
+    "href": "posts/2023-05-01-wikipedia-data/index.html",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "",
+    "text": "I wanted to get the first image of a Wikipedia page and the coordinates.\nChatGPT was very helpful here as well.\nThe code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below."
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#image",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#image",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Image",
+    "text": "Image\n\n\nCode\ntry:\n    import wikipedia\nexcept ImportError:\n    ! pip install wikipedia\n\n\nChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.\n\nimport urllib\n\nimport requests\nimport wikipedia\n\nfrom bs4 import BeautifulSoup\n\n# Set the Wikipedia page title and get page\npage_title = \"Berlin\"\npage = wikipedia.page(page_title)\n\n# Get html content of page and parse it with BeautifulSoup\nhtml = page.html()\nsoup = BeautifulSoup(html, \"html.parser\")\n\n# Find the infobox image element and get url image\nimage_element = soup.find(\"table\", class_=\"infobox\").find(\"img\")\nimage_url = \"https:\" + image_element[\"src\"]\n\n# Download the image\nurllib.request.urlretrieve(image_url, 'image.jpg')\n\n('image.jpg', &lt;http.client.HTTPMessage at 0x1198e4160&gt;)"
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Coordinates",
+    "text": "Coordinates\n\nimport requests\nimport json\n\n# function to get the coordinates from the infobox of a Wikipedia article\ndef get_coordinates(title):\n    url = \"https://en.wikipedia.org/w/api.php\"\n    params = {\n        \"action\": \"query\",\n        \"prop\": \"coordinates\",\n        \"titles\": title,\n        \"format\": \"json\",\n        \"formatversion\": 2\n    }\n    response = requests.get(url, params=params)\n    data = json.loads(response.text)\n    pages = data[\"query\"][\"pages\"]\n    coordinates = None\n    for page in pages:\n        if \"coordinates\" in page:\n            coordinates = page[\"coordinates\"][0]\n            break\n    return coordinates\n\n# example usage\ntitle = \"Berlin\"\ncoordinates = get_coordinates(title)\nprint(coordinates[\"lat\"], coordinates[\"lon\"])\n\n52.52 13.405"
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#map",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#map",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Map",
+    "text": "Map\n\nimport folium\n\nmap_coord = [coordinates['lat'], coordinates['lon']]\n\n# create the map\nmap = folium.Map(location=map_coord, zoom_start=3.5)\n\n# add a marker at the location\nfolium.Marker(location=map_coord, popup=title).add_to(map)\n\n# display the map\nmap\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+  },
+  {
     "objectID": "posts/2023-04-27-posit-cloud/index.html",
     "href": "posts/2023-04-27-posit-cloud/index.html",
     "title": "Posit Cloud",
@@ -203,34 +231,6 @@
     "text": "Horizontal bar chart\nTo have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars &lt;- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt &lt;-\n  mtcars |&gt;\n  mutate(cyl = fct_infreq(factor(cyl)) |&gt; fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt &lt;-\n  mtcars |&gt;\n  count(cyl) |&gt;\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
   },
   {
-    "objectID": "posts/2023-05-01-wikipedia/index.html",
-    "href": "posts/2023-05-01-wikipedia/index.html",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "",
-    "text": "I wanted to get the first image of a Wikipedia page and the coordinates.\nChatGPT was very helpful here as well.\nThe code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below."
-  },
-  {
-    "objectID": "posts/2023-05-01-wikipedia/index.html#image",
-    "href": "posts/2023-05-01-wikipedia/index.html#image",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Image",
-    "text": "Image\n\n\nCode\ntry:\n    import wikipedia\nexcept ImportError:\n    ! pip install wikipedia\n\n\nChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.\n\nimport urllib\n\nimport requests\nimport wikipedia\n\nfrom bs4 import BeautifulSoup\n\n# Set the Wikipedia page title and get page\npage_title = \"Berlin\"\npage = wikipedia.page(page_title)\n\n# Get html content of page and parse it with BeautifulSoup\nhtml = page.html()\nsoup = BeautifulSoup(html, \"html.parser\")\n\n# Find the infobox image element and get url image\nimage_element = soup.find(\"table\", class_=\"infobox\").find(\"img\")\nimage_url = \"https:\" + image_element[\"src\"]\n\n# Download the image\nurllib.request.urlretrieve(image_url, 'image.jpg')\n\n('image.jpg', &lt;http.client.HTTPMessage at 0x1245f82e0&gt;)"
-  },
-  {
-    "objectID": "posts/2023-05-01-wikipedia/index.html#coordinates",
-    "href": "posts/2023-05-01-wikipedia/index.html#coordinates",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Coordinates",
-    "text": "Coordinates\n\nimport requests\nimport json\n\n# function to get the coordinates from the infobox of a Wikipedia article\ndef get_coordinates(title):\n    url = \"https://en.wikipedia.org/w/api.php\"\n    params = {\n        \"action\": \"query\",\n        \"prop\": \"coordinates\",\n        \"titles\": title,\n        \"format\": \"json\",\n        \"formatversion\": 2\n    }\n    response = requests.get(url, params=params)\n    data = json.loads(response.text)\n    pages = data[\"query\"][\"pages\"]\n    coordinates = None\n    for page in pages:\n        if \"coordinates\" in page:\n            coordinates = page[\"coordinates\"][0]\n            break\n    return coordinates\n\n# example usage\ntitle = \"Berlin\"\ncoordinates = get_coordinates(title)\nprint(coordinates[\"lat\"], coordinates[\"lon\"])\n\n52.52 13.405"
-  },
-  {
-    "objectID": "posts/2023-05-01-wikipedia/index.html#map",
-    "href": "posts/2023-05-01-wikipedia/index.html#map",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Map",
-    "text": "Map\n\nimport folium\n\nmap_coord = [coordinates['lat'], coordinates['lon']]\n\n# create the map\nmap = folium.Map(location=map_coord, zoom_start=3.5)\n\n# add a marker at the location\nfolium.Marker(location=map_coord, popup=title).add_to(map)\n\n# display the map\nmap\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
-  },
-  {
     "objectID": "posts/2023-06-03-github-pages/index.html",
     "href": "posts/2023-06-03-github-pages/index.html",
     "title": "GitHub Pages",
@@ -242,7 +242,7 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "GitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nMay 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "GitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nMay 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\nmap\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

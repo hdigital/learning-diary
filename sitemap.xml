@@ -2,82 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hdigital.github.io/learning-diary/snippets/jupyter.html</loc>
-    <lastmod>2023-06-03T06:25:47.156Z</lastmod>
+    <lastmod>2023-06-03T08:36:16.241Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/snippets/jupyter-quarto.html</loc>
-    <lastmod>2023-06-03T06:25:49.341Z</lastmod>
+    <lastmod>2023-06-03T08:36:18.535Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/snippets/jupyter-options.html</loc>
-    <lastmod>2023-06-03T06:25:49.748Z</lastmod>
+    <lastmod>2023-06-03T08:36:18.994Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/index.html</loc>
+    <lastmod>2023-06-03T08:36:19.637Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-04-27-posit-cloud/index.html</loc>
-    <lastmod>2023-06-03T06:25:50.130Z</lastmod>
+    <lastmod>2023-06-03T08:36:20.070Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index.html</loc>
-    <lastmod>2023-06-03T06:25:50.782Z</lastmod>
+    <lastmod>2023-06-03T08:36:20.684Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-16-welcome/index.html</loc>
-    <lastmod>2023-06-03T06:25:51.471Z</lastmod>
+    <lastmod>2023-06-03T08:36:21.370Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/index.html</loc>
-    <lastmod>2023-06-03T06:25:51.817Z</lastmod>
+    <lastmod>2023-06-03T08:36:21.723Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/index.html</loc>
-    <lastmod>2023-06-03T06:25:52.469Z</lastmod>
+    <lastmod>2023-06-03T08:36:22.538Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/index.html</loc>
-    <lastmod>2023-06-03T06:25:53.050Z</lastmod>
+    <lastmod>2023-06-03T08:36:23.129Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</loc>
-    <lastmod>2023-06-03T06:25:53.659Z</lastmod>
+    <lastmod>2023-06-03T08:36:23.694Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-26-altair/index.html</loc>
-    <lastmod>2023-06-03T06:25:54.410Z</lastmod>
+    <lastmod>2023-06-03T08:36:24.486Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/index.html</loc>
-    <lastmod>2023-06-03T06:25:54.710Z</lastmod>
+    <lastmod>2023-06-03T08:36:24.808Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</loc>
-    <lastmod>2023-06-03T06:25:55.395Z</lastmod>
+    <lastmod>2023-06-03T08:36:25.604Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</loc>
-    <lastmod>2023-06-03T06:25:55.776Z</lastmod>
+    <lastmod>2023-06-03T08:36:25.995Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</loc>
-    <lastmod>2023-06-03T06:25:56.191Z</lastmod>
+    <lastmod>2023-06-03T08:36:26.331Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index.html</loc>
-    <lastmod>2023-06-03T06:25:56.836Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia/index.html</loc>
-    <lastmod>2023-06-03T06:25:57.450Z</lastmod>
+    <lastmod>2023-06-03T08:36:26.883Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</loc>
-    <lastmod>2023-06-03T06:25:57.786Z</lastmod>
+    <lastmod>2023-06-03T08:36:27.238Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/index.html</loc>
-    <lastmod>2023-06-03T06:25:59.736Z</lastmod>
+    <lastmod>2023-06-03T08:36:29.155Z</lastmod>
   </url>
   <url>
     <loc>https://hdigital.github.io/learning-diary/about.html</loc>
-    <lastmod>2023-06-03T06:26:00.062Z</lastmod>
+    <lastmod>2023-06-03T08:36:29.461Z</lastmod>
   </url>
 </urlset>
