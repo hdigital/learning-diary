@@ -10,7 +10,37 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.353</generator>
-<lastBuildDate>Thu, 01 Jun 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 02 Jun 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="github-pages" class="level1">
+<h1>GitHub Pages</h1>
+<p>I published my first two web sites with <a href="https://pages.github.com/">GithHub Pages</a>.</p>
+<ul>
+<li><a href="https://hdigital.github.io/learning-diary/">learning diary</a></li>
+<li><a href="https://hdigital.github.io/data-snippets/">data snippets</a></li>
+</ul>
+<p>Quarto has a <a href="https://quarto.org/docs/publishing/github-pages.html">tutorial</a> about publishing Quarto sites to GitHub Pages. This worked well.</p>
+<p>I was a little confused by the different options: docs folder, publish command, GitHub Actions.</p>
+<p>The <code>quarto publish</code> command worked well for the <a href="https://hdigital.github.io/learning-diary/">learning diary</a> page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.</p>
+<p>For the <a href="https://hdigital.github.io/data-snippets/">data snippets</a> page I used the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow">GitHub Actions</a> approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Quarto</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</guid>
+  <pubDate>Fri, 02 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</link>
@@ -40,6 +70,7 @@
 </section>
 
  ]]></description>
+  <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</guid>
   <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" medium="image" type="image/png" height="144" width="144"/>
@@ -94,7 +125,7 @@
 <p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
 <p>At the end, VS Code seems to be the more convenient interface.</p>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer-ai.jpg" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.jpg" class="img-fluid"></p>
 
 
 </section>
@@ -215,7 +246,7 @@ font-style: inherit;"># Download the image</span></span>
 background-color: null;
 font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x1216ff7f0&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x1245f82e0&gt;)</code></pre>
 </div>
 </div>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia/image.jpg" class="img-fluid"></p>
@@ -412,7 +443,7 @@ font-style: inherit;">map</span></span></code></pre></div>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_fe658fd67fb289c3fede0b0cb38e02a6 {
+                #map_3cf93ac6f29e1082921bb557f63e1ef5 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -426,14 +457,14 @@ font-style: inherit;">map</span></span></code></pre></div>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_fe658fd67fb289c3fede0b0cb38e02a6&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_3cf93ac6f29e1082921bb557f63e1ef5&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_fe658fd67fb289c3fede0b0cb38e02a6 = L.map(
-                &quot;map_fe658fd67fb289c3fede0b0cb38e02a6&quot;,
+            var map_3cf93ac6f29e1082921bb557f63e1ef5 = L.map(
+                &quot;map_3cf93ac6f29e1082921bb557f63e1ef5&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -447,28 +478,28 @@ font-style: inherit;">map</span></span></code></pre></div>
 
         
     
-            var tile_layer_173683d6118ffffd35fd9a31d6cee714 = L.tileLayer(
+            var tile_layer_cfff5f9cf2676aa88c761b0692fe0d38 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_fe658fd67fb289c3fede0b0cb38e02a6);
+            ).addTo(map_3cf93ac6f29e1082921bb557f63e1ef5);
         
     
-            var marker_db210c5165f45e256831f88f35016e8d = L.marker(
+            var marker_21fb52d1304f44ed285ef11954b3396c = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_fe658fd67fb289c3fede0b0cb38e02a6);
+            ).addTo(map_3cf93ac6f29e1082921bb557f63e1ef5);
         
     
-        var popup_9bc9ad00e5f8e557337343681aa654d7 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_cd3374ef50e2aceac77db477064bc6c7 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_fc9dc2701236a28ba45dd77ecc31ab93 = $(`<div id=&quot;html_fc9dc2701236a28ba45dd77ecc31ab93&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_9bc9ad00e5f8e557337343681aa654d7.setContent(html_fc9dc2701236a28ba45dd77ecc31ab93);
+                var html_c2971f07b06cccea1fcce688aeb2177c = $(`<div id=&quot;html_c2971f07b06cccea1fcce688aeb2177c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_cd3374ef50e2aceac77db477064bc6c7.setContent(html_c2971f07b06cccea1fcce688aeb2177c);
             
         
 
-        marker_db210c5165f45e256831f88f35016e8d.bindPopup(popup_9bc9ad00e5f8e557337343681aa654d7)
+        marker_21fb52d1304f44ed285ef11954b3396c.bindPopup(popup_cd3374ef50e2aceac77db477064bc6c7)
         ;
 
         
@@ -483,6 +514,7 @@ font-style: inherit;">map</span></span></code></pre></div>
 
  ]]></description>
   <category>Python</category>
+  <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia/index.html</guid>
   <pubDate>Sun, 30 Apr 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia/wikipedia-berlin.png" medium="image" type="image/png" height="135" width="144"/>
@@ -1334,6 +1366,7 @@ font-style: inherit;">cat</span>(text)</span></code></pre></div>
 
  ]]></description>
   <category>R</category>
+  <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/index.html</guid>
   <pubDate>Sat, 22 Apr 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/ChatGPT-logo.png" medium="image" type="image/png" height="144" width="144"/>
