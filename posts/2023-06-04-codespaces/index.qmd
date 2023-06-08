@@ -1,0 +1,21 @@
+---
+date: "2023-06-04"
+image: codespaces-logo.png
+categories: [cloud, Python]
+---
+
+# GitHub Codespaces
+
+GitHub offered me to review the code of a pull request in [GitHub Codespaces](https://github.com/features/codespaces). It is an environment to run code online. I used it briefly before but not for one of my GitHub repositories. Today, I gave it a try for the pull request of a repository.
+
+For the pull request, it created an environment with VS Code as the IDE and included Python as well as Git. I used it for a small Django project of mine. Two things were required to run my code. First, I needed to install the Python packages used by the project. The project includes a requirements file with pinned versions so that installing the dependencies was easy. Second, it asked me to add some VS Code extensions which I did as well.
+
+Completing these two steps allowed me to work in an online enviroment very similiar to my local VS Code set up. It was linked to the GitHub repository so that I could sync my cloud changes with the project. I was impressed how smoothly it went and how little configuration it required.
+
+I made some minor modifications to the project to use Codespaces even more effortlessly in the future. First, I updated my `settings.json.example` so that I can quickly create a copy in a Codesspaces `settings.json` that includes my settings. Second, I specified the VS Code extensions I am regularly using in a `launch.json`. These two additions should allow me to work in new Codespaces in the future even more quickly.
+
+Overall, I really liked my first more in depth usage of Codespaces and plan to use it more in the future. I have yet to figure out how much I can use it with free quota and what monthly costs may occur by using it more regularly.
+
+---
+
+![](codespace-hd.png)
