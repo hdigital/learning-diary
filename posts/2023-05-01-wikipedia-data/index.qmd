@@ -2,7 +2,7 @@
 date: "2023-05-01"
 image: wikipedia-berlin.png
 jupyter: python3
-categories: [Python, AI, map]
+categories: [Python, AI, geo]
 format:
   html:
     toc: true
