@@ -1,0 +1,39 @@
+---
+date: "2023-04-27"
+image: map-cologne.png
+jupyter: python3
+categories: [Python, geo]
+---
+
+# Geocoding in Python
+
+Get geographic coordinates for an address with [Nominatim](https://nominatim.org/) from [OpenStreetMap](https://www.openstreetmap.org/#map=6/51.330/10.453) data.
+
+```{python}
+from geopy.geocoders import Nominatim
+
+# Create a geolocator object
+geolocator = Nominatim(user_agent="get-the-geocode")
+
+# Define the address for geocoding
+address = "Unter Sachsenhausen 6, Köln, Germany"
+
+# Retrieve the geolocation (latitude and longitude) for the given address
+location = geolocator.geocode(address)
+
+print((location.latitude, location.longitude))
+```
+
+```{python}
+import folium
+
+coordinates = [location.latitude, location.longitude]
+
+# Create a map object
+m = folium.Map(location=coordinates, zoom_start=15)
+
+# Add a marker for each coordinate
+folium.Marker(location=coordinates, popup=address).add_to(m)
+
+m  # Display the map in Jupyter Notebook
+```

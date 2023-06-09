@@ -4,6 +4,7 @@ matplotlib
 
 altair
 folium
+geopy
 statsmodels
 seaborn
 
