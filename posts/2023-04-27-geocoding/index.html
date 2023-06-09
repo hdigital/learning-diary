@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-05-01">
+<meta name="dcterms.date" content="2023-04-27">
 
 <title>Learning – index</title>
 <style>
@@ -90,7 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -100,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,10 +145,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Wikipedia, Python, ChatGPT</h1>
+      <h1 class="title">Geocoding in Python</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
-                <div class="quarto-category">AI</div>
+                <div class="quarto-category">geo</div>
               </div>
                   </div>
   </div>
@@ -159,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 1, 2023</p>
+        <p class="date">April 27, 2023</p>
       </div>
     </div>
     
@@ -170,122 +171,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#image" id="toc-image" class="nav-link active" data-scroll-target="#image">Image</a></li>
-  <li><a href="#coordinates" id="toc-coordinates" class="nav-link" data-scroll-target="#coordinates">Coordinates</a></li>
-  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map">Map</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>I wanted to get the first image of a Wikipedia page and the coordinates.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="wikipedia-berlin.png" class="img-fluid figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p>ChatGPT was very helpful here as well.</p>
-<p>The code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below.</p>
-<section id="image" class="level2">
-<h2 class="anchored" data-anchor-id="image">Image</h2>
+<p>Get geographic coordinates for an address with <a href="https://nominatim.org/">Nominatim</a> from <a href="https://www.openstreetmap.org/#map=6/51.330/10.453">OpenStreetMap</a> data.</p>
 <div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> wikipedia</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span> pip install wikipedia</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> wikipedia</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the Wikipedia page title and get page</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>page_title <span class="op">=</span> <span class="st">"Berlin"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> wikipedia.page(page_title)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Get html content of page and parse it with BeautifulSoup</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>html <span class="op">=</span> page.html()</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(html, <span class="st">"html.parser"</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the infobox image element and get url image</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>image_element <span class="op">=</span> soup.find(<span class="st">"table"</span>, class_<span class="op">=</span><span class="st">"infobox"</span>).find(<span class="st">"img"</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>image_url <span class="op">=</span> <span class="st">"https:"</span> <span class="op">+</span> image_element[<span class="st">"src"</span>]</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the image</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>urllib.request.urlretrieve(image_url, <span class="st">'image.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x1245f82e0&gt;)</code></pre>
-</div>
-</div>
-<p><img src="image.jpg" class="img-fluid"></p>
-</section>
-<section id="coordinates" class="level2">
-<h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># function to get the coordinates from the infobox of a Wikipedia article</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_coordinates(title):</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"https://en.wikipedia.org/w/api.php"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"action"</span>: <span class="st">"query"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"prop"</span>: <span class="st">"coordinates"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"titles"</span>: title,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"format"</span>: <span class="st">"json"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"formatversion"</span>: <span class="dv">2</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url, params<span class="op">=</span>params)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> json.loads(response.text)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    pages <span class="op">=</span> data[<span class="st">"query"</span>][<span class="st">"pages"</span>]</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    coordinates <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> page <span class="kw">in</span> pages:</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"coordinates"</span> <span class="kw">in</span> page:</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            coordinates <span class="op">=</span> page[<span class="st">"coordinates"</span>][<span class="dv">0</span>]</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> coordinates</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co"># example usage</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> <span class="st">"Berlin"</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>coordinates <span class="op">=</span> get_coordinates(title)</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coordinates[<span class="st">"lat"</span>], coordinates[<span class="st">"lon"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geopy.geocoders <span class="im">import</span> Nominatim</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a geolocator object</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>geolocator <span class="op">=</span> Nominatim(user_agent<span class="op">=</span><span class="st">"get-the-geocode"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the address for geocoding</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>address <span class="op">=</span> <span class="st">"Unter Sachsenhausen 6, Köln, Germany"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve the geolocation (latitude and longitude) for the given address</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>location <span class="op">=</span> geolocator.geocode(address)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((location.latitude, location.longitude))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>52.52 13.405</code></pre>
+<pre><code>(50.9426253, 6.9524319)</code></pre>
 </div>
 </div>
-</section>
-<section id="map" class="level2">
-<h2 class="anchored" data-anchor-id="map">Map</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>map_coord <span class="op">=</span> [coordinates[<span class="st">'lat'</span>], coordinates[<span class="st">'lon'</span>]]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create the map</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">map</span> <span class="op">=</span> folium.Map(location<span class="op">=</span>map_coord, zoom_start<span class="op">=</span><span class="fl">3.5</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add a marker at the location</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>folium.Marker(location<span class="op">=</span>map_coord, popup<span class="op">=</span>title).add_to(<span class="bu">map</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># display the map</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">map</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coordinates <span class="op">=</span> [location.latitude, location.longitude]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a map object</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>coordinates, zoom_start<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a marker for each coordinate</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>folium.Marker(location<span class="op">=</span>coordinates, popup<span class="op">=</span>address).add_to(m)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>m  <span class="co"># Display the map in Jupyter Notebook</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
 <html>
 <head>
@@ -313,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_3cf93ac6f29e1082921bb557f63e1ef5 {
+                #map_d394a7396e2f791011302657817d4c4e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -327,18 +250,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_3cf93ac6f29e1082921bb557f63e1ef5&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_d394a7396e2f791011302657817d4c4e&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_3cf93ac6f29e1082921bb557f63e1ef5 = L.map(
-                &quot;map_3cf93ac6f29e1082921bb557f63e1ef5&quot;,
+            var map_d394a7396e2f791011302657817d4c4e = L.map(
+                &quot;map_d394a7396e2f791011302657817d4c4e&quot;,
                 {
-                    center: [52.52, 13.405],
+                    center: [50.9426253, 6.9524319],
                     crs: L.CRS.EPSG3857,
-                    zoom: 3.5,
+                    zoom: 15,
                     zoomControl: true,
                     preferCanvas: false,
                 }
@@ -348,28 +271,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         
     
-            var tile_layer_cfff5f9cf2676aa88c761b0692fe0d38 = L.tileLayer(
+            var tile_layer_230f1b7917e85fcc8e3a1f5aef0436fe = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_3cf93ac6f29e1082921bb557f63e1ef5);
+            ).addTo(map_d394a7396e2f791011302657817d4c4e);
         
     
-            var marker_21fb52d1304f44ed285ef11954b3396c = L.marker(
-                [52.52, 13.405],
+            var marker_d64570e0627d047b59cb098f6a5804a4 = L.marker(
+                [50.9426253, 6.9524319],
                 {}
-            ).addTo(map_3cf93ac6f29e1082921bb557f63e1ef5);
+            ).addTo(map_d394a7396e2f791011302657817d4c4e);
         
     
-        var popup_cd3374ef50e2aceac77db477064bc6c7 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_fdb3ffd6415da67be5d499fdb2bae660 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_c2971f07b06cccea1fcce688aeb2177c = $(`<div id=&quot;html_c2971f07b06cccea1fcce688aeb2177c&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_cd3374ef50e2aceac77db477064bc6c7.setContent(html_c2971f07b06cccea1fcce688aeb2177c);
+                var html_5c4775153e2bfe768deb3eb93913f67f = $(`<div id=&quot;html_5c4775153e2bfe768deb3eb93913f67f&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
+                popup_fdb3ffd6415da67be5d499fdb2bae660.setContent(html_5c4775153e2bfe768deb3eb93913f67f);
             
         
 
-        marker_21fb52d1304f44ed285ef11954b3396c.bindPopup(popup_cd3374ef50e2aceac77db477064bc6c7)
+        marker_d64570e0627d047b59cb098f6a5804a4.bindPopup(popup_fdb3ffd6415da67be5d499fdb2bae660)
         ;
 
         
@@ -380,7 +303,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

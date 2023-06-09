@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -90,7 +90,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -148,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
                 <div class="quarto-category">AI</div>
-                <div class="quarto-category">map</div>
+                <div class="quarto-category">geo</div>
               </div>
                   </div>
   </div>
@@ -231,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the image</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>urllib.request.urlretrieve(image_url, <span class="st">'image.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x1198e4160&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x1224642b0&gt;)</code></pre>
 </div>
 </div>
 <p><img src="image.jpg" class="img-fluid"></p>
@@ -314,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_e4393f1992a9a841e67927caeb10a751 {
+                #map_72a12350f8b7ca7a799356381a33bc23 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -328,14 +329,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_e4393f1992a9a841e67927caeb10a751&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_72a12350f8b7ca7a799356381a33bc23&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_e4393f1992a9a841e67927caeb10a751 = L.map(
-                &quot;map_e4393f1992a9a841e67927caeb10a751&quot;,
+            var map_72a12350f8b7ca7a799356381a33bc23 = L.map(
+                &quot;map_72a12350f8b7ca7a799356381a33bc23&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -349,28 +350,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         
     
-            var tile_layer_00d7a1ef534a7766fcd73f12760f6d14 = L.tileLayer(
+            var tile_layer_14bbc7ff93e21953e10a86aadd12500f = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_e4393f1992a9a841e67927caeb10a751);
+            ).addTo(map_72a12350f8b7ca7a799356381a33bc23);
         
     
-            var marker_b2f67f8c06572ba84023696d592ffed8 = L.marker(
+            var marker_6cfb1595a4aab1b9d544cda017f1358e = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_e4393f1992a9a841e67927caeb10a751);
+            ).addTo(map_72a12350f8b7ca7a799356381a33bc23);
         
     
-        var popup_1c0e544ae2725452c3e70a3d903068ae = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_6f5229b88f75cecb55ae936bec6f50a4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_4ed63a763531ed682cd54f476edd2454 = $(`<div id=&quot;html_4ed63a763531ed682cd54f476edd2454&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_1c0e544ae2725452c3e70a3d903068ae.setContent(html_4ed63a763531ed682cd54f476edd2454);
+                var html_fd379b9d7fe18970234868b8bbe4ace1 = $(`<div id=&quot;html_fd379b9d7fe18970234868b8bbe4ace1&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_6f5229b88f75cecb55ae936bec6f50a4.setContent(html_fd379b9d7fe18970234868b8bbe4ace1);
             
         
 
-        marker_b2f67f8c06572ba84023696d592ffed8.bindPopup(popup_1c0e544ae2725452c3e70a3d903068ae)
+        marker_6cfb1595a4aab1b9d544cda017f1358e.bindPopup(popup_6f5229b88f75cecb55ae936bec6f50a4)
         ;
 
         
