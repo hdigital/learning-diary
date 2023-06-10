@@ -11,6 +11,24 @@ I keep brief information here. Mainly things I learned that don't create a post.
 
 ---
 
+## 10. June
+
+Adding a [page break](https://quarto.org/docs/authoring/article-layout.html#page-breaks) to a pdf in Quarto.
+
+```{.markdown shortcodes="false"}
+---
+format: pdf
+---
+
+Page 1
+
+{{< pagebreak >}}
+
+Page 2
+```
+
+In addition, I learned to ignore shortcuts in a cell with `{.markdown shortcodes="false"}`
+
 ## 9. June
 
 I wanted to run a [Bash]() shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.
