@@ -10,7 +10,192 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Sat, 03 Jun 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Jun 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I keep brief information here. Mainly things I learned that don’t create a post.</p>
+<hr>
+<section id="june" class="level2">
+<h2 class="anchored" data-anchor-id="june">10. June</h2>
+<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
+<div class="sourceCode" id="cb1" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb1-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> pdf</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5">Page 1</span>
+<span id="cb1-6"></span>
+<span id="cb1-7">{{&lt; pagebreak &gt;}}</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">Page 2</span></code></pre></div>
+<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
+</section>
+<section id="june-1" class="level2">
+<h2 class="anchored" data-anchor-id="june-1">9. June</h2>
+<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use path relative to script location, if feasible</span></span>
+<span id="cb2-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb2-3">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-P</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb2-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span></span>
+<span id="cb2-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">! </span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb2-6">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Run script in project folder"</span></span>
+<span id="cb2-7">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exit</span> 1</span>
+<span id="cb2-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span>
+<span id="cb2-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span></code></pre></div>
+</section>
+<section id="may" class="level2">
+<h2 class="anchored" data-anchor-id="may">17. May</h2>
+<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
+<p><code>add_three &lt;- \(.x) .x+3</code></p>
+</section>
+<section id="may-1" class="level2">
+<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
+<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
+<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
+</section>
+<section id="may-2" class="level2">
+<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
+<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
+</section>
+<section id="may-3" class="level2">
+<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
+<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
+<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
+</section>
+<section id="may-4" class="level2">
+<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
+<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
+<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
+</section>
+<section id="apr." class="level2">
+<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
+<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
+</section>
+<section id="apr.-1" class="level2">
+<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
+<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
+</section>
+<section id="feb." class="level2">
+<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the more convenient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
+  <pubDate>Fri, 09 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/index.html</link>
@@ -101,66 +286,6 @@
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</guid>
   <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Today I learned (TIL)</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I keep brief information here. Mainly things I learned that don’t create a post.</p>
-<hr>
-<section id="may" class="level2">
-<h2 class="anchored" data-anchor-id="may">17. May</h2>
-<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
-<p><code>add_three &lt;- \(.x) .x+3</code></p>
-</section>
-<section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
-<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
-<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
-</section>
-<section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
-<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
-</section>
-<section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
-<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
-<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
-</section>
-<section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
-<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
-<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
-</section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
-<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
-<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
-</section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
-<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
-</section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the more convenient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.jpg" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Tue, 16 May 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Wikipedia, Python, ChatGPT</title>
@@ -1659,6 +1784,7 @@ font-style: inherit;">geom_point</span>()</span></code></pre></div>
 
  ]]></description>
   <category>R</category>
+  <category>cloud</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</guid>
   <pubDate>Sun, 19 Mar 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/r-wasm.png" medium="image" type="image/png" height="62" width="144"/>
@@ -1713,26 +1839,26 @@ font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>.join(lines))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>😊😇😀😇😆😎😎🙂😆😅😅😉😂😅😆😋🙂😊😄😇
-😉🤗🙂😆😉😇😇😎🤗😊🙂😁😁😋😄😅😋😇😆😄
-🙂😆😂😉😆😆😀😋😀🤗😃😃😃😆😉🤗😋🤗😂😎
-😉😊😀😀🙂😆😉🙂😉😀😀😊😀😆😁😎😄🙂😃😊
-😊😇🤗😋😅😂😁😆😉😁🤗😇😄😎😋😋🙂😎😉🙂
-😅🤗🙂🙂😊😇🤗😆😁🙂😊😅😎😃😋😃🤗😇😂😋
-😁😎😊😅😆😇😅😉😊😅😇😅😃😄😊😅😃😄🤗😇
-😁😇😊🙂😎😂😇😋😇😋🙂😆😎😀😉🙂😇😄🤗😀
-🙂😀😃😂😂😀😀😋😅😆😀😄😋🙂😃🙂😆😃🙂😇
-😋🙂🙂🤗😇😃😃😁🙂😅🙂🤗😋😉😀🙂😅😋😎😆
-😄😎😋😇😆😉😀😀😅😆😂😁😄😂😎🙂🙂🤗😋😉
-😅😅😇🙂😇😀😋😁😂😆😋😋🙂🤗😁😊🙂😄😃😇
-😃🙂😃🙂🙂😋😋😊😋😀😇😂😅🙂😆😃😋😇😋😊
-😅😄😇😋😄🙂😁😃😅😎😉😃😆🙂😎😅🙂😎😄😇
-😅😃😄🙂🙂😄😉😂😊🤗😅😆😊😆😎😀😁😁😉😊
-😀😀🤗😂🙂😂🤗🤗😅😇😉🙂😃😉😎🙂🙂🤗😇😄
-😂😅😀😁😋🤗😀😄😆😁🤗😀😋😆🤗😎😇😅🤗😁
-😎😋😄😃😇😆😊😊😂😎😅😃😄😎😅😊😄🙂😊😂
-😂😉😄😊😉🙂🤗😁😂😃😇😉😃😊😆😃🙂🤗😎🙂
-😋😄🙂🙂😅😃😋😇😀🙂😊😋😃🙂😇🙂😃😎😂🤗</code></pre>
+<pre><code>😊😃😁😃😄😉😆😃😅🙂🙂😎😅😃😃😋😂😃😆😂
+😇🤗😁🙂😄😉😎😇😁😆😄🤗🙂😆🙂😎😆😂🤗😇
+😁😄😆🙂😅😂😋😁😂😆🙂🤗😇🙂🤗😄😊🙂🙂😋
+😊😄🙂😂😅😁🙂😆😃😅😉😅😋😇🙂😅😀🤗😁😊
+😊😂😀🙂😀😉😅😄😎🙂😁😄😊🤗🤗😂😉😊😋😇
+😁🙂😃😅😇😊😇😅😄😆🙂😅😊😁😎😁🙂😆😇😂
+😎😆😉😄😋😅😉😎😊🙂😃😁😉😉😉😆😃😅😁😄
+😃🙂😋😎😅😄🤗😎🙂😀😊😎😂🤗😅🙂😂😁😁🙂
+😃😋😆😄😅🙂😁😃😊😁😄😆🙂😎🤗😊😊🙂😋😉
+😀😊😆😄😃😉😎😄😆😋😆😎😅😅😇😉🙂😆😀😇
+😎😄😎🙂🤗😀😄🙂😎😉😎😅😃😋🙂😊🤗🙂🙂😉
+😂😂😎😊😇😃😎🤗😄😅😁🙂😁😊🙂😎😁😉😁😂
+😇😁🙂😁🙂😎😄😀😁🙂🤗😅😂😀😇😁😀😎😆😂
+😂😅😊😇🤗😆🙂😉😂😊😅😀😎😇😋🤗🙂😎😆😆
+😅😆😊😀😀🙂😋😇😆😃😆😉😅😉😊🤗😀😂😃🤗
+😅🙂😇😄🙂😇😅😀😅😀😉😂😅😀😎🙂😇😃🤗🙂
+😃😇😎🙂😇😂😀😁😉😂😎😃🙂😃😃🤗😂😂😉😃
+🤗🙂😅😎😀🤗😇😉😉🤗🤗😊😊😎😄😄🙂😉🙂🤗
+😂😄😄😂😆😃😉😎😁🙂😆😀😋😋😉🤗😎😇😋😋
+😄🙂😎😅😂😋😃😁😀😆😀😃🙂😁😎😊😀😇😇😀</code></pre>
 </div>
 </div>
 <p>Here is the full html page that uses pyscript.</p>
@@ -1753,10 +1879,10 @@ font-style: inherit;">"en"</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&gt;</span></span>
 <span id="cb3-3"></span>
-<span id="cb3-4"><span class="kw" style="color: #003B4F;
+<span id="cb3-4">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;head&gt;</span></span>
-<span id="cb3-5">    <span class="kw" style="color: #003B4F;
+<span id="cb3-5">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;meta</span> <span class="er" style="color: #AD0000;
 background-color: null;
@@ -1767,12 +1893,12 @@ background-color: null;
 font-style: inherit;">"UTF-8"</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&gt;</span></span>
-<span id="cb3-6">    <span class="kw" style="color: #003B4F;
+<span id="cb3-6">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;title&gt;</span>Happy DSS Hacking<span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;/title&gt;</span></span>
-<span id="cb3-7">    <span class="kw" style="color: #003B4F;
+<span id="cb3-7">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;link</span> <span class="er" style="color: #AD0000;
 background-color: null;
@@ -1789,7 +1915,7 @@ background-color: null;
 font-style: inherit;">"https://pyscript.net/latest/pyscript.css"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">/&gt;</span></span>
-<span id="cb3-8">    <span class="kw" style="color: #003B4F;
+<span id="cb3-8">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;script</span> <span class="er" style="color: #AD0000;
 background-color: null;
@@ -1802,33 +1928,32 @@ background-color: null;
 font-style: inherit;">"https://pyscript.net/latest/pyscript.js"</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&gt;&lt;/script&gt;</span></span>
-<span id="cb3-9"></span>
-<span id="cb3-10">    <span class="kw" style="color: #003B4F;
+<span id="cb3-9">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">&lt;head&gt;</span></span>
-<span id="cb3-11"></span>
-<span id="cb3-12">    <span class="kw" style="color: #003B4F;
+font-style: inherit;">&lt;/head&gt;</span></span>
+<span id="cb3-10"></span>
+<span id="cb3-11">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;body&gt;</span></span>
-<span id="cb3-13">        <span class="kw" style="color: #003B4F;
+<span id="cb3-12">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;py-script&gt;</span></span>
-<span id="cb3-14">            import random</span>
-<span id="cb3-15"></span>
-<span id="cb3-16">            n = 100</span>
-<span id="cb3-17">            emojis = "🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span>
-<span id="cb3-18"></span>
-<span id="cb3-19">            lines = ["".join(random.choices(emojis, k=n)) for index in range(n)]</span>
-<span id="cb3-20"></span>
-<span id="cb3-21">            print("\n".join(lines))</span>
-<span id="cb3-22">        <span class="kw" style="color: #003B4F;
+<span id="cb3-13">            import random</span>
+<span id="cb3-14"></span>
+<span id="cb3-15">            n = 100</span>
+<span id="cb3-16">            emojis = "🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span>
+<span id="cb3-17"></span>
+<span id="cb3-18">            lines = ["".join(random.choices(emojis, k=n)) for index in range(n)]</span>
+<span id="cb3-19"></span>
+<span id="cb3-20">            print("\n".join(lines))</span>
+<span id="cb3-21">        <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;/py-script&gt;</span></span>
-<span id="cb3-23">    <span class="kw" style="color: #003B4F;
+<span id="cb3-22">    <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;/body&gt;</span></span>
-<span id="cb3-24"></span>
-<span id="cb3-25"><span class="kw" style="color: #003B4F;
+<span id="cb3-23"></span>
+<span id="cb3-24"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;/html&gt;</span></span></code></pre></div>
 
@@ -1836,6 +1961,7 @@ font-style: inherit;">&lt;/html&gt;</span></span></code></pre></div>
 
  ]]></description>
   <category>Python</category>
+  <category>cloud</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/index.html</guid>
   <pubDate>Tue, 14 Mar 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/emojis.png" medium="image" type="image/png" height="141" width="144"/>
