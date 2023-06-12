@@ -14,3 +14,6 @@ nbformat
 
 # VS Code interactive shell
 ipykernel
+
+# Development
+nbdev
