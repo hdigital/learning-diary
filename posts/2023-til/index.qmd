@@ -1,5 +1,5 @@
 ---
-date: "2023-06-10"
+date: last-modified
 title: Today I learned (TIL)
 image: computer_ai.png
 format:
