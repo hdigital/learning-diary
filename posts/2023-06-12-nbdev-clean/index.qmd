@@ -1,0 +1,19 @@
+---
+date: "2023-06-12"
+image: jupyter-logo.png
+categories: [Python]
+---
+
+# Jupyter notebooks in Git
+
+Working with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.
+
+Now, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. [nbdev_clean](https://nbdev.fast.ai/tutorials/git_friendly_jupyter.html) removes cell execution related metadata from a notebook.
+
+`nbdev_clean --fname .` cleans all Juypter notebooks in a repository. I run it on this _learning diary_ Git repository to clean the two notebooks in the _snippets_ folder. I also used it in the project that initially caused me to look into _nbdev_.
+
+Finally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with `nbdev_clean`. Again, Codespaces are really nice.
+
+![](notebook-clean-no.png)
+
+![](notebook-clean-yes.png)
