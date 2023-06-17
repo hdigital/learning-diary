@@ -2,6 +2,9 @@
 #
 ## Description: Initialize project in new codespace
 
+# create local settings file
+cp .vscode/settings.json.example .vscode/settings.json
+
 # update Python package manager
 python -m pip install --upgrade pip
 
