@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-06-17-git-rebase/index.html",
       "/posts/2023-til/index.html",
       "/posts/2023-06-12-nbdev-clean/index.html",
       "/posts/2023-06-04-codespaces/index.html",
