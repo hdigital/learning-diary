@@ -1,0 +1,27 @@
+---
+date: "2023-06-24"
+image: tidyverse-glue.png
+categories: [R]
+---
+
+# string interpolation with str_glue()
+
+In R, I like string interpolation with [glue](https://glue.tidyverse.org/) and prefer it over Base-R `paste(), paste0(), sprintf()`. Regularly, I use `glue()` and forget to load the respective library at the top of the script or find `glue::glue()` rather verbose.
+
+A tidyverse [blog post](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/) made me realize that [stringr](https://stringr.tidyverse.org/) includes a `str_glue()` function that wraps `glue()`. stringr is loaded with `library(tidyverse)` so that I can include it into my regular tidyverse workflow.
+
+It is also documented on the [stringr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/strings.pdf), but I have not relized that. It serves as useful reminder to look at the [Posit Cheatsheets](https://rstudio.github.io/cheatsheets/) more regularly to review and update my workflow.
+
+```{r}
+#| code-fold: false
+#| message: false
+library(tidyverse)
+
+name <- "Jane"
+
+str_glue("Hi {name}. How are you?")
+```
+
+---
+
+![](tidyverse-glue.png)
