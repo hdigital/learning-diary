@@ -1,0 +1,35 @@
+---
+date: "2023-06-20"
+image: r-cell-conditional.png
+categories: [R, Quarto]
+---
+
+# Conditional R cells
+
+For R notebooks in Quarto not all information that can be presented in an html-document is feasible for the respective pdf-document. So sometimes, I want to include information in html but not in the pdf.
+
+Interactive data tables with [reactable](https://glin.github.io/reactable/) are an example. They allow to explore smaller data sets quickly within a notebook, but work only in html documents. A pdf simply fails to render with Quarto.
+
+So I was looking for a solution to execute R code in a notebook only for the html-document but not the pdf.
+
+Conditional chunk execution is not implemented in Quarto so far — see [ticket #3260](https://github.com/quarto-dev/quarto-cli/discussions/3260).
+
+However, for R I found an approach that is working well.
+
+```{r}
+if (knitr::is_html_output()) {
+  print("code block run")
+}
+```
+
+```{r}
+if (! knitr::is_html_output()) {
+  print("code block not run")
+}
+```
+
+---
+
+An example for a notebook with a dynamic table in a [html document](/snippets/r-cell-conditional.html) and a static table in the [pdf document](/snippets/r-cell-conditional.pdf)
+
+![](r-cell-conditional.png)

@@ -1,0 +1,31 @@
+---
+title: "Conditional R code cell execution"
+execute:
+  echo: false
+format:
+  html:
+    embed-resources: true
+  pdf: default
+---
+
+
+<https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html>
+
+
+## Explore data
+
+::: {.content-visible unless-format="html"}
+_Note_ --- Interactive data table shown in html-document.
+:::
+
+```{r explore}
+tbl <-
+  datasets::mtcars |>
+    dplyr::select(mpg, hp, cyl, gear)
+
+if (knitr::is_html_output()) {
+  reactable::reactable(tbl, searchable = TRUE, striped = TRUE)
+} else {
+  knitr::kable(tbl)
+}
+```
