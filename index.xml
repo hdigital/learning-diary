@@ -10,7 +10,114 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Fri, 16 Jun 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 23 Jun 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="string-interpolation-with-str_glue" class="level1">
+<h1>string interpolation with str_glue()</h1>
+<p>In R, I like string interpolation with <a href="https://glue.tidyverse.org/">glue</a> and prefer it over Base-R <code>paste(), paste0(), sprintf()</code>. Regularly, I use <code>glue()</code> and forget to load the respective library at the top of the script or find <code>glue::glue()</code> rather verbose.</p>
+<p>A tidyverse <a href="https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/">blog post</a> made me realize that <a href="https://stringr.tidyverse.org/">stringr</a> includes a <code>str_glue()</code> function that wraps <code>glue()</code>. stringr is loaded with <code>library(tidyverse)</code> so that I can include it into my regular tidyverse workflow.</p>
+<p>It is also documented on the <a href="https://github.com/rstudio/cheatsheets/blob/main/strings.pdf">stringr cheatsheet</a>, but I have not relized that. It serves as useful reminder to look at the <a href="https://rstudio.github.io/cheatsheets/">Posit Cheatsheets</a> more regularly to review and update my workflow.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">name <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Jane"</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_glue</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hi {name}. How are you?"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hi Jane. How are you?</code></pre>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/tidyverse-glue.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/index.html</guid>
+  <pubDate>Fri, 23 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/tidyverse-glue.png" medium="image" type="image/png" height="167" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="conditional-r-cells" class="level1">
+<h1>Conditional R cells</h1>
+<p>For R notebooks in Quarto not all information that can be presented in an html-document is feasible for the respective pdf-document. So sometimes, I want to include information in html but not in the pdf.</p>
+<p>Interactive data tables with <a href="https://glin.github.io/reactable/">reactable</a> are an example. They allow to explore smaller data sets quickly within a notebook, but work only in html documents. A pdf simply fails to render with Quarto.</p>
+<p>So I was looking for a solution to execute R code in a notebook only for the html-document but not the pdf.</p>
+<p>Conditional chunk execution is not implemented in Quarto so far — see <a href="https://github.com/quarto-dev/quarto-cli/discussions/3260">ticket #3260</a>.</p>
+<p>However, for R I found an approach that is working well.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is_html_output</span>()) {</span>
+<span id="cb1-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"code block run"</span>)</span>
+<span id="cb1-3">}</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "code block run"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is_html_output</span>()) {</span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"code block not run"</span>)</span>
+<span id="cb3-3">}</span></code></pre></div>
+</div>
+<hr>
+<p>An example for a notebook with a dynamic table in a <a href="../../snippets/r-cell-conditional.html">html document</a> and a static table in the <a href="../../snippets/r-cell-conditional.pdf">pdf document</a></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>Quarto</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/index.html</guid>
+  <pubDate>Mon, 19 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" medium="image" type="image/png" height="88" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/index.html</link>
@@ -269,7 +376,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Tue, 13 Jun 2023 15:52:43 GMT</pubDate>
+  <pubDate>Mon, 12 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -424,54 +531,67 @@ font-style: inherit;">ImportError</span>:</span>
 background-color: null;
 font-style: inherit;">!</span> pip install wikipedia</span></code></pre></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Collecting wikipedia
+  Using cached wikipedia-1.4.0-py3-none-any.whl
+Requirement already satisfied: beautifulsoup4 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from wikipedia) (4.12.2)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from wikipedia) (2.31.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.1.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.4)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2023.5.7)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from beautifulsoup4-&gt;wikipedia) (2.4.1)
+Installing collected packages: wikipedia
+Successfully installed wikipedia-1.4.0</code></pre>
+</div>
 </div>
 <p>ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> urllib</span>
-<span id="cb2-2"></span>
-<span id="cb2-3"><span class="im" style="color: #00769E;
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
-<span id="cb2-4"><span class="im" style="color: #00769E;
+<span id="cb3-4"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> wikipedia</span>
-<span id="cb2-5"></span>
-<span id="cb2-6"><span class="im" style="color: #00769E;
+<span id="cb3-5"></span>
+<span id="cb3-6"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> bs4 <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> BeautifulSoup</span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+<span id="cb3-7"></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Set the Wikipedia page title and get page</span></span>
-<span id="cb2-9">page_title <span class="op" style="color: #5E5E5E;
+<span id="cb3-9">page_title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Berlin"</span></span>
-<span id="cb2-10">page <span class="op" style="color: #5E5E5E;
+<span id="cb3-10">page <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> wikipedia.page(page_title)</span>
-<span id="cb2-11"></span>
-<span id="cb2-12"><span class="co" style="color: #5E5E5E;
+<span id="cb3-11"></span>
+<span id="cb3-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Get html content of page and parse it with BeautifulSoup</span></span>
-<span id="cb2-13">html <span class="op" style="color: #5E5E5E;
+<span id="cb3-13">html <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> page.html()</span>
-<span id="cb2-14">soup <span class="op" style="color: #5E5E5E;
+<span id="cb3-14">soup <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BeautifulSoup(html, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"html.parser"</span>)</span>
-<span id="cb2-15"></span>
-<span id="cb2-16"><span class="co" style="color: #5E5E5E;
+<span id="cb3-15"></span>
+<span id="cb3-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Find the infobox image element and get url image</span></span>
-<span id="cb2-17">image_element <span class="op" style="color: #5E5E5E;
+<span id="cb3-17">image_element <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> soup.find(<span class="st" style="color: #20794D;
 background-color: null;
@@ -482,7 +602,7 @@ background-color: null;
 font-style: inherit;">"infobox"</span>).find(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"img"</span>)</span>
-<span id="cb2-18">image_url <span class="op" style="color: #5E5E5E;
+<span id="cb3-18">image_url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -491,15 +611,15 @@ background-color: null;
 font-style: inherit;">+</span> image_element[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"src"</span>]</span>
-<span id="cb2-19"></span>
-<span id="cb2-20"><span class="co" style="color: #5E5E5E;
+<span id="cb3-19"></span>
+<span id="cb3-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Download the image</span></span>
-<span id="cb2-21">urllib.request.urlretrieve(image_url, <span class="st" style="color: #20794D;
+<span id="cb3-21">urllib.request.urlretrieve(image_url, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7f01c9543b50&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fd1ae7ecd90&gt;)</code></pre>
 </div>
 </div>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/image.jpg" class="img-fluid"></p>
@@ -507,109 +627,109 @@ font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <section id="coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
-<span id="cb4-2"><span class="im" style="color: #00769E;
+<span id="cb5-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># function to get the coordinates from the infobox of a Wikipedia article</span></span>
-<span id="cb4-5"><span class="kw" style="color: #003B4F;
+<span id="cb5-5"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> get_coordinates(title):</span>
-<span id="cb4-6">    url <span class="op" style="color: #5E5E5E;
+<span id="cb5-6">    url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"https://en.wikipedia.org/w/api.php"</span></span>
-<span id="cb4-7">    params <span class="op" style="color: #5E5E5E;
+<span id="cb5-7">    params <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
-<span id="cb4-8">        <span class="st" style="color: #20794D;
+<span id="cb5-8">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"action"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query"</span>,</span>
-<span id="cb4-9">        <span class="st" style="color: #20794D;
+<span id="cb5-9">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"prop"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span>,</span>
-<span id="cb4-10">        <span class="st" style="color: #20794D;
+<span id="cb5-10">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"titles"</span>: title,</span>
-<span id="cb4-11">        <span class="st" style="color: #20794D;
+<span id="cb5-11">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"format"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"json"</span>,</span>
-<span id="cb4-12">        <span class="st" style="color: #20794D;
+<span id="cb5-12">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"formatversion"</span>: <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb4-13">    }</span>
-<span id="cb4-14">    response <span class="op" style="color: #5E5E5E;
+<span id="cb5-13">    }</span>
+<span id="cb5-14">    response <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(url, params<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>params)</span>
-<span id="cb4-15">    data <span class="op" style="color: #5E5E5E;
+<span id="cb5-15">    data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(response.text)</span>
-<span id="cb4-16">    pages <span class="op" style="color: #5E5E5E;
+<span id="cb5-16">    pages <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query"</span>][<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"pages"</span>]</span>
-<span id="cb4-17">    coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb5-17">    coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">None</span></span>
-<span id="cb4-18">    <span class="cf" style="color: #003B4F;
+<span id="cb5-18">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> page <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">in</span> pages:</span>
-<span id="cb4-19">        <span class="cf" style="color: #003B4F;
+<span id="cb5-19">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">if</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">in</span> page:</span>
-<span id="cb4-20">            coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb5-20">            coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> page[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span>][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span>
-<span id="cb4-21">            <span class="cf" style="color: #003B4F;
+<span id="cb5-21">            <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">break</span></span>
-<span id="cb4-22">    <span class="cf" style="color: #003B4F;
+<span id="cb5-22">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> coordinates</span>
-<span id="cb4-23"></span>
-<span id="cb4-24"><span class="co" style="color: #5E5E5E;
+<span id="cb5-23"></span>
+<span id="cb5-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># example usage</span></span>
-<span id="cb4-25">title <span class="op" style="color: #5E5E5E;
+<span id="cb5-25">title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Berlin"</span></span>
-<span id="cb4-26">coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb5-26">coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_coordinates(title)</span>
-<span id="cb4-27"><span class="bu" style="color: null;
+<span id="cb5-27"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(coordinates[<span class="st" style="color: #20794D;
 background-color: null;
@@ -624,22 +744,22 @@ font-style: inherit;">"lon"</span>])</span></code></pre></div>
 <section id="map" class="level2">
 <h2 class="anchored" data-anchor-id="map">Map</h2>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> folium</span>
-<span id="cb6-2"></span>
-<span id="cb6-3">map_coord <span class="op" style="color: #5E5E5E;
+<span id="cb7-2"></span>
+<span id="cb7-3">map_coord <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [coordinates[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'lat'</span>], coordinates[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'lon'</span>]]</span>
-<span id="cb6-4"></span>
-<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># create the map</span></span>
-<span id="cb6-6"><span class="bu" style="color: null;
+<span id="cb7-6"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -650,22 +770,22 @@ background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3.5</span>)</span>
-<span id="cb6-7"></span>
-<span id="cb6-8"><span class="co" style="color: #5E5E5E;
+<span id="cb7-7"></span>
+<span id="cb7-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># add a marker at the location</span></span>
-<span id="cb6-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
+<span id="cb7-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>map_coord, popup<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>title).add_to(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span>)</span>
-<span id="cb6-10"></span>
-<span id="cb6-11"><span class="co" style="color: #5E5E5E;
+<span id="cb7-10"></span>
+<span id="cb7-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># display the map</span></span>
-<span id="cb6-12"><span class="bu" style="color: null;
+<span id="cb7-12"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -696,7 +816,7 @@ font-style: inherit;">map</span></span></code></pre></div>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_f0beac6c5e8ffa033825bfab6d2cd029 {
+                #map_c9ae644d627a9e3ab8076e4142a73a03 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -710,14 +830,14 @@ font-style: inherit;">map</span></span></code></pre></div>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_f0beac6c5e8ffa033825bfab6d2cd029&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_c9ae644d627a9e3ab8076e4142a73a03&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_f0beac6c5e8ffa033825bfab6d2cd029 = L.map(
-                &quot;map_f0beac6c5e8ffa033825bfab6d2cd029&quot;,
+            var map_c9ae644d627a9e3ab8076e4142a73a03 = L.map(
+                &quot;map_c9ae644d627a9e3ab8076e4142a73a03&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -731,28 +851,28 @@ font-style: inherit;">map</span></span></code></pre></div>
 
         
     
-            var tile_layer_314ce0f82ed87477894d84f5dce8edc8 = L.tileLayer(
+            var tile_layer_5d9e4bfd1e046d42b535f035f7d37ed5 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_f0beac6c5e8ffa033825bfab6d2cd029);
+            ).addTo(map_c9ae644d627a9e3ab8076e4142a73a03);
         
     
-            var marker_9dc6a49646c447b8d27ee2ebe9d92be0 = L.marker(
+            var marker_b3515b0b3ddcc9104c44f989d12e9b5f = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_f0beac6c5e8ffa033825bfab6d2cd029);
+            ).addTo(map_c9ae644d627a9e3ab8076e4142a73a03);
         
     
-        var popup_7decf9f7a810777d8f33323de7f95c5e = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_3752167e501abc3e3512334b390bb24a = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_468e74c1767e56882396af45f16ed78d = $(`<div id=&quot;html_468e74c1767e56882396af45f16ed78d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_7decf9f7a810777d8f33323de7f95c5e.setContent(html_468e74c1767e56882396af45f16ed78d);
+                var html_b4f018a1c5a9d7dd26475909a3d43c02 = $(`<div id=&quot;html_b4f018a1c5a9d7dd26475909a3d43c02&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_3752167e501abc3e3512334b390bb24a.setContent(html_b4f018a1c5a9d7dd26475909a3d43c02);
             
         
 
-        marker_9dc6a49646c447b8d27ee2ebe9d92be0.bindPopup(popup_7decf9f7a810777d8f33323de7f95c5e)
+        marker_b3515b0b3ddcc9104c44f989d12e9b5f.bindPopup(popup_3752167e501abc3e3512334b390bb24a)
         ;
 
         
@@ -1279,7 +1399,7 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_cc2cf2bfdae3d22cc3694dede28ad605 {
+                #map_cc3d1c255078d271cffd35461eb859bf {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1293,14 +1413,14 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_cc2cf2bfdae3d22cc3694dede28ad605&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_cc3d1c255078d271cffd35461eb859bf&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_cc2cf2bfdae3d22cc3694dede28ad605 = L.map(
-                &quot;map_cc2cf2bfdae3d22cc3694dede28ad605&quot;,
+            var map_cc3d1c255078d271cffd35461eb859bf = L.map(
+                &quot;map_cc3d1c255078d271cffd35461eb859bf&quot;,
                 {
                     center: [50.9426253, 6.9524319],
                     crs: L.CRS.EPSG3857,
@@ -1314,28 +1434,28 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
 
         
     
-            var tile_layer_1506c7408d2d1d80bd806f18ea5d1426 = L.tileLayer(
+            var tile_layer_773cd0d7b7dab13e8542655a01008ba8 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_cc2cf2bfdae3d22cc3694dede28ad605);
+            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
         
     
-            var marker_25cf88ce38de1f0c359037fe2d25bd8e = L.marker(
+            var marker_c09865041797f1a1f5f908131a31316e = L.marker(
                 [50.9426253, 6.9524319],
                 {}
-            ).addTo(map_cc2cf2bfdae3d22cc3694dede28ad605);
+            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
         
     
-        var popup_7c28dd8ab826a43cb92654832f480d82 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_d77b0730a6e8b43461db907955dacca4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_d826186ae8fc7ec2a6ebaf2327b4ab44 = $(`<div id=&quot;html_d826186ae8fc7ec2a6ebaf2327b4ab44&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
-                popup_7c28dd8ab826a43cb92654832f480d82.setContent(html_d826186ae8fc7ec2a6ebaf2327b4ab44);
+                var html_68b8d5f08ff91e258870f6ebb36379ad = $(`<div id=&quot;html_68b8d5f08ff91e258870f6ebb36379ad&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
+                popup_d77b0730a6e8b43461db907955dacca4.setContent(html_68b8d5f08ff91e258870f6ebb36379ad);
             
         
 
-        marker_25cf88ce38de1f0c359037fe2d25bd8e.bindPopup(popup_7c28dd8ab826a43cb92654832f480d82)
+        marker_c09865041797f1a1f5f908131a31316e.bindPopup(popup_d77b0730a6e8b43461db907955dacca4)
         ;
 
         
@@ -1940,26 +2060,26 @@ font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>.join(lines))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>🤗😃😎😆😂🙂😎😀😄😃😆😃🙂😀😀😀😇🙂🙂😅
-😄😉😆😎🙂😊😁😇😅😅😇😊😉😄😃😆😎😊🙂😄
-😀😄😂😁😅😂😁😉😀😂😇😇😄😂😉😉🤗😂😉🙂
-😋🙂😆😀😄😇🙂😅😄😆😇😅😋🙂🙂🤗😆😃😂🙂
-🤗😀😁😆😊😀😂😋😂🤗😅😇😁🙂😅😅😅😀🙂😋
-😋🙂😎😄🙂😁😀😂😅🙂🤗😎😊😂😊🙂😄😀🙂😁
-😊🤗😂😄😄🙂🙂😋😊🙂😀🙂🙂😀😃😅😎😃🤗😄
-😊😁😎😎😊😀😁🙂😂😀😊😋😊😊😂😁😅😋😇😁
-😅😄🙂😂😁😁🙂😀😋😉🙂😀🤗😅😀😊😎😆🙂😃
-😉😂😃🤗😋😎😀😇😋😇🙂🙂🙂😀🙂😄🙂😉😀😅
-😃🙂😅😋😅😃🙂😊😅😁😎😀😄😀😎😅😄🤗😀😎
-😀😀😂😆🙂😇🙂😁😆😇🙂😀😆😄🙂😂😅🙂😅🙂
-😎😎😃😀😋😁😅😇🙂😄😎🙂😄😉😆😀😁😇😊🙂
-😁😋😎😄😂😄😂😃😅😋😅😀😀😋🤗🙂😄🙂😁😁
-😀😀🙂😀😂😁😋🙂😃😃🙂😋🤗🤗😉😋😃😂😋😉
-🙂😄😆🤗😊😄😋😀😆🤗😋😄😉😄😆😁🙂😎😉😂
-😅😅😇😃😁😁😂😊😋😉🤗🙂😁😇😎😅😄😂😇😆
-😆😇🙂😀😅😀🙂🙂😃😄🤗😎😅🙂🙂😉😀🤗😁😁
-😂😊😉😋😁🙂🤗😇😉🤗😋🙂🙂😁😆😅😅😎🙂🤗
-😂🙂😎😊😉😆😅🙂😋😃😂😁🙂😀😅😃😉😎🤗😎</code></pre>
+<pre><code>🤗😀🤗😋😎😉😅😊😁😊😂😎🤗😄😃😇😆😋😆😎
+😋😎😀😅😄😁😂😆😎😇🤗😃😉😄😅😉😅😉😃😁
+😉😄😅😎🙂🙂😆🤗😊😆😋😃😊😂😋😃😉😄😆😎
+😀😁😇😄😎😄😇😄🙂😅🤗🙂😁😀😁🤗😇😄😋😃
+😆😂😊😋😉😇😇😎😂😎😀😀😁😃🙂😎😄😀😋😁
+😊😎😁😊😊😊😊😅😁😋🤗🙂😃😄😄😃😁🙂😁🙂
+😄😋🙂🙂😀🙂😁😄😋😋😇😆😎😅😃😄🙂🙂😉😀
+😃🙂😅🤗😂😃😀🙂😊😊🤗😊😊😁😁😅😅😂😆🙂
+😀😇😂😀😅😃😊😄😋🤗😇😇😄😎😁😋😄🙂😄😉
+😂🤗😁😉🙂😎😎😁😃😂🤗😅😇😁😀😋😊😅😊😊
+😇😆🙂😎🤗😀🤗🙂🙂😎😇😇😆😅😅🙂😂😅😁🤗
+😊😋😎😇😇😉😊😋😄😂😆😂🤗😄😉😀😉😎😅😎
+😃😄🤗😎🤗🙂😇😄😁😉😃😎😎😃😃😅😀🙂🙂😉
+😅😂😅🤗😀🤗😉😎😉😊😉😁😇😎🤗😋😄😇😄😂
+😉😂🙂😊😃😎🤗😆😃😊🙂😉😊😋😅😋😆🤗🙂😊
+😊🙂😂😊😉😇🤗😅😁🙂😊😇🙂😋😆😃🙂😊😂😀
+😆😆😆😎😋😉😃😂😁😆😁🙂😊😋🤗😋😉😃😁😁
+😀🙂😊😃😂😄🤗😁😋😃🤗🤗😊😆😁😄😇😄😎😂
+🙂😀😂😃😀😊😋🙂😄😆😁😇😃😎😋😆😊😎😆😉
+😇😅😆😆😆😇😁😎😎😎🙂😎😀😁😄😁😀🤗😁😄</code></pre>
 </div>
 </div>
 <p>Here is the full html page that uses pyscript.</p>
@@ -2248,23 +2368,23 @@ font-style: inherit;">'sex'</span>]</span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-6905cf917f124e0298341328465c4bbe.vega-embed {
+  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6905cf917f124e0298341328465c4bbe.vega-embed details,
-  #altair-viz-6905cf917f124e0298341328465c4bbe.vega-embed details summary {
+  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed details,
+  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6905cf917f124e0298341328465c4bbe"></div>
+<div id="altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6905cf917f124e0298341328465c4bbe") {
-      outputDiv = document.getElementById("altair-viz-6905cf917f124e0298341328465c4bbe");
+    if (outputDiv.id !== "altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a") {
+      outputDiv = document.getElementById("altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2689,117 +2809,6 @@ font-style: inherit;">"lightblue"</span>)</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index.html</guid>
   <pubDate>Thu, 16 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/thumbnail.png" medium="image" type="image/png" height="103" width="144"/>
-</item>
-<item>
-  <title>Things I learned: A new TIL</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-16-welcome/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>My idea is to keep a more systematic collection of <em>things I learned</em> (TIL).</p>
-<p>I was inspired by posts of <a href="https://til.simonwillison.net/">Simon Wilson</a> and <a href="https://lincolnloop.com/insights/by-author/peter-baumgartner/">Peter Baumgartner</a> that documented things they have learned.</p>
-<p>So here is an initial version and today the TIL has been <a href="https://quarto.org/">Quarto</a>.</p>
-<p>Here is an example of integrating <strong>Tidyverse-R</strong> code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>mtcars)</span>
-<span id="cb1-4"></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> hp, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> mpg)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-6">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(cyl))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb1-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_smooth</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-16-welcome/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Here is an example of integrating <strong>Python</strong> code.</p>
-<div class="cell" data-python.reticulate="false">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> statsmodels.api <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> sm</span>
-<span id="cb2-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> pd</span>
-<span id="cb2-3"></span>
-<span id="cb2-4">mtcars <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> sm.datasets.get_rdataset(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mtcars'</span>).data</span>
-<span id="cb2-5"></span>
-<span id="cb2-6">mtcars.plot(x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hp"</span>, y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mpg"</span>, kind <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"scatter"</span>)</span></code></pre></div>
-</div>
-<hr>
-<section id="some-background" class="level2">
-<h2 class="anchored" data-anchor-id="some-background">Some background</h2>
-<p>Setting up a blog in Quarto was easy and well documented. So I started quickly.</p>
-<p>Getting the right Python version running in Quarto was quite a challenge. <del>At the end, the documented recommendation to work with a virtual environment in an <code>env</code> folder worked. It took me some time to get there.</del></p>
-<p>It only worked temporarily and I will try to run Python in Quarto again at some later point.</p>
-</section>
-<section id="afterwards" class="level2">
-<h2 class="anchored" data-anchor-id="afterwards">Afterwards</h2>
-<p>It turned out that the particular challenge was having a page with R and Python.</p>
-<p>For Python pages a header option was missing. <code>jupyter: python3</code> solved the Python challenge that took quite some time.</p>
-<p>Rendering a Quarto document with <strong>R and Python</strong> was only possible with a version Docker on the computer.</p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>Python</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-16-welcome/index.html</guid>
-  <pubDate>Wed, 15 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-16-welcome/thumbnail.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 </channel>
 </rss>
