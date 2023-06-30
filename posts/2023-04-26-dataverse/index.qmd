@@ -74,8 +74,7 @@ hnd |>
     .by = party
   ) |>
   select(party, n, n:year_last) |>
-  arrange(desc(n), desc(share_mean)) |>
-  knitr::kable()
+  arrange(desc(n), desc(share_mean))
 ```
 
 ```{r}
