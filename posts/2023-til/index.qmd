@@ -9,6 +9,23 @@ format:
 
 <!--- I keep brief information here. Mainly things I learned that don't create a post. -->
 
+## 30. June
+
+Set [default printing](https://quarto.org/docs/computations/r.html#data-frames) function for data frames in Quarto notebook with html option `df-print: kable`.
+
+Useful to have html tables instead of monospace tables in notebooks.
+
+So far, I prefer `kable` (`knitr::kable()`) over `paged` (`rmarkdown::paged_table())`).
+
+```yml
+---
+title: "Document"
+format:
+   html:
+     df-print: kable
+---
+````
+
 ## 29. June
 
 Didn't know [n_distinct()](https://dplyr.tidyverse.org/reference/n_distinct.html) and used `length(unique())` for too long. A small and nice thing i learned that makes pipes more readable.
