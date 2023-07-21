@@ -9,8 +9,36 @@
 <link>https://hdigital.github.io/learning-diary/index.html</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.3.361</generator>
-<lastBuildDate>Fri, 23 Jun 2023 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.433</generator>
+<lastBuildDate>Sat, 15 Jul 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="first-pull-request-accepted" class="level1">
+<h1>First pull request accepted · 😊</h1>
+<p>My first public pull request on Github was <a href="https://github.com/hadley/r4ds/pull/1525">accepted</a>.</p>
+<p>Over the last weeks, I have been reading <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> (R4DS). The first edition really helped me to get deeply into the <a href="https://www.tidyverse.org/">tidyverse</a>. So I was interested in the content of the second edition.</p>
+<p>At some point, I realized that the book used an older parameter in <code>case_when()</code> that was recently superseded in <a href="https://www.tidyverse.org/blog/2023/02/dplyr-1-1-0-vctrs/#case_when">dplyr 1.1</a>. Since, I had switched to the new <code>.default</code> parameter already, I thought that it may be a small and valuable contribution to update the section.</p>
+<p>Making the code changes was easy. It took me a little to find out how to clone the project and submit the pull requests. The GitHub documentation was helpful and it went smoothly following it.</p>
+<p>I have used R4DS and the tidyverse so often that I am quite proud about my very minor addition to it.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/r4ds-pr.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>tidyverse</category>
+  <category>git</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/index.html</guid>
+  <pubDate>Sat, 15 Jul 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="192" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/index.html</link>
@@ -185,226 +213,6 @@ pick c993202 Add VS Code settings
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/git-logo.png" medium="image" type="image/png" height="60" width="144"/>
 </item>
 <item>
-  <title>Today I learned (TIL)</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
-<section id="june" class="level2">
-<h2 class="anchored" data-anchor-id="june">13. June</h2>
-<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
-<pre><code>&lt;!--- comment  --&gt;
-
-&lt;!---
-multi-line
-comments
---&gt;</code></pre>
-<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
-</section>
-<section id="june-1" class="level2">
-<h2 class="anchored" data-anchor-id="june-1">10. June</h2>
-<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
-<div class="sourceCode" id="cb2" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb2-2"><span class="an" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"> pdf</span></span>
-<span id="cb2-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb2-4"></span>
-<span id="cb2-5">Page 1</span>
-<span id="cb2-6"></span>
-<span id="cb2-7">{{&lt; pagebreak &gt;}}</span>
-<span id="cb2-8"></span>
-<span id="cb2-9">Page 2</span></code></pre></div>
-<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
-</section>
-<section id="june-2" class="level2">
-<h2 class="anchored" data-anchor-id="june-2">9. June</h2>
-<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use path relative to script location, if feasible</span></span>
-<span id="cb3-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb3-3">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-P</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb3-4"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span></span>
-<span id="cb3-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">! </span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb3-6">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Run script in project folder"</span></span>
-<span id="cb3-7">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">exit</span> 1</span>
-<span id="cb3-8">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span>
-<span id="cb3-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span></code></pre></div>
-</section>
-<section id="may" class="level2">
-<h2 class="anchored" data-anchor-id="may">17. May</h2>
-<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
-<p><code>add_three &lt;- \(.x) .x+3</code></p>
-</section>
-<section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
-<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
-<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
-</section>
-<section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
-<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
-</section>
-<section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
-<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
-<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
-</section>
-<section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
-<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
-<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
-</section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
-<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
-<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
-</section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
-<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
-</section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the more convenient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Mon, 12 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="jupyter-notebooks-in-git" class="level1">
-<h1>Jupyter notebooks in Git</h1>
-<p>Working with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.</p>
-<p>Now, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. <a href="https://nbdev.fast.ai/tutorials/git_friendly_jupyter.html">nbdev_clean</a> removes cell execution related metadata from a notebook.</p>
-<p><code>nbdev_clean --fname .</code> cleans all Juypter notebooks in a repository. I run it on this <em>learning diary</em> Git repository to clean the two notebooks in the <em>snippets</em> folder. I also used it in the project that initially caused me to look into <em>nbdev</em>.</p>
-<p>Finally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with <code>nbdev_clean</code>. Again, Codespaces are really nice.</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/notebook-clean-no.png" class="img-fluid"></p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/notebook-clean-yes.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/index.html</guid>
-  <pubDate>Sun, 11 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
-</item>
-<item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/index.html</link>
   <description><![CDATA[ 
@@ -430,70 +238,6 @@ font-style: inherit;">fi</span></span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/index.html</guid>
   <pubDate>Sat, 03 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/codespaces-logo.png" medium="image" type="image/png" height="145" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="github-pages" class="level1">
-<h1>GitHub Pages</h1>
-<p>I published my first two web sites with <a href="https://pages.github.com/">GithHub Pages</a>.</p>
-<ul>
-<li><a href="https://hdigital.github.io/learning-diary/">learning diary</a></li>
-<li><a href="https://hdigital.github.io/data-snippets/">data snippets</a></li>
-</ul>
-<p>Quarto has a <a href="https://quarto.org/docs/publishing/github-pages.html">tutorial</a> about publishing Quarto sites to GitHub Pages. This worked well.</p>
-<p>I was a little confused by the different options: docs folder, publish command, GitHub Actions.</p>
-<p>The <code>quarto publish</code> command worked well for the <a href="https://hdigital.github.io/learning-diary/">learning diary</a> page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.</p>
-<p>For the <a href="https://hdigital.github.io/data-snippets/">data snippets</a> page I used the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow">GitHub Actions</a> approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</guid>
-  <pubDate>Fri, 02 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="ai-images-with-dall-e" class="level1">
-<h1>AI images with DALL-E</h1>
-<p>Today, I became aware of an OpenAI service to generate images — <a href="https://labs.openai.com/">DALL-E</a>.</p>
-<p>This has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.</p>
-<p>Sometimes, images from <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.</p>
-<p>I had to pay for the service but the number of images that can be generated for 15$ seem to be resonable.</p>
-<p>I have still to twist the art styles to results that I like.</p>
-<hr>
-<p>Here are some examples.</p>
-<p>“a man working on a computer – style Pieter Bruegel the Elder”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/bruegel_ai.png" class="img-fluid"></p>
-<p>“a working class man on a computer – leipzig school art style”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" class="img-fluid"></p>
-<p>“A comic book cover of a superhero working on a computer doing data analysis”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/comic-cover_ai.png" class="img-fluid"></p>
-<p>“a man working on a computer – style 3d art”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/3d-art_ai.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>AI</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</guid>
-  <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Wikipedia, Python, ChatGPT</title>
@@ -926,553 +670,6 @@ font-style: inherit;">map</span></span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-04-27-posit-cloud/index.html</guid>
   <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-27-posit-cloud/posit-cloud.png" medium="image" type="image/png" height="209" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="dataverse-urls" class="level1">
-<h1>Dataverse URLs</h1>
-<p>I followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OGOURC">Elections Global</a> gave a good overview – see below.</p>
-<p>The technical point is that I wanted to access the original data file at the <a href="https://dataverse.harvard.edu/">Harvard Dataverse</a>.</p>
-<p>Data uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.</p>
-<p>Here is an example for the Elections Global data used in the snippet – see page screenshot below.</p>
-<p><a href="https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0">doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0</a></p>
-<p>So I tried to find the permanent link to the original data file.</p>
-<p>First, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.</p>
-<p>Second, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.</p>
-<p>For now, I will start to using the imported data version with the provided url for data files from the Dataverse.</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(conflicted)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">conflicts_prefer</span>(dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>filter)</span></code></pre></div>
-</details>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span>(<span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>) {</span>
-<span id="cb2-2">  url_csv <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"</span></span>
-<span id="cb2-3">  elec_raw <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_csv</span>(url_csv)</span>
-<span id="cb2-4">}</span>
-<span id="cb2-5"></span>
-<span id="cb2-6">url <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ"</span></span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">exists</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"elec_raw"</span>)) {</span>
-<span id="cb2-9">  elec_raw <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_tsv</span>(url)</span>
-<span id="cb2-10">}</span>
-<span id="cb2-11"></span>
-<span id="cb2-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># glimpse(elec_raw)</span></span></code></pre></div>
-</div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">hnd <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb3-2">  elec_raw <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(country <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">==</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"HND"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb3-5">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">year =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.integer</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">substr</span>(election_date, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>)),</span>
-<span id="cb3-6">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">seats_share =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>seats<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>seats_total</span>
-<span id="cb3-7">    )</span>
-<span id="cb3-8"></span>
-<span id="cb3-9">hnd <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(</span>
-<span id="cb3-11">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(),</span>
-<span id="cb3-12">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">share_mean =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mean</span>(seats_share, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>),</span>
-<span id="cb3-13">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">share_max =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">max</span>(seats_share, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>),</span>
-<span id="cb3-14">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">year_first =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">min</span>(year, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>),</span>
-<span id="cb3-15">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">year_last =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">max</span>(year, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>),</span>
-<span id="cb3-16">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> party</span>
-<span id="cb3-17">  ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-18">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(party, n, n<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>year_last) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-19">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(n), <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">desc</span>(share_mean)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-20">  knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">kable</span>()</span></code></pre></div>
-</details>
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 49%">
-<col style="width: 3%">
-<col style="width: 12%">
-<col style="width: 11%">
-<col style="width: 12%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">party</th>
-<th style="text-align: right;">n</th>
-<th style="text-align: right;">share_mean</th>
-<th style="text-align: right;">share_max</th>
-<th style="text-align: right;">year_first</th>
-<th style="text-align: right;">year_last</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">National Party of Honduras</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">60.8</td>
-<td style="text-align: right;">100.0</td>
-<td style="text-align: right;">1923</td>
-<td style="text-align: right;">2013</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Liberal Party of Honduras</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">40.3</td>
-<td style="text-align: right;">62.1</td>
-<td style="text-align: right;">1923</td>
-<td style="text-align: right;">2013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">other (other-script)</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">4.0</td>
-<td style="text-align: right;">9.4</td>
-<td style="text-align: right;">1923</td>
-<td style="text-align: right;">2013</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Liberal Constitutionalist Party of Honduras</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">71.4</td>
-<td style="text-align: right;">100.0</td>
-<td style="text-align: right;">1916</td>
-<td style="text-align: right;">1923</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">National Reformist Movement</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">13.6</td>
-<td style="text-align: right;">20.3</td>
-<td style="text-align: right;">1954</td>
-<td style="text-align: right;">1957</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Liberty and Refoundation</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">28.9</td>
-<td style="text-align: right;">28.9</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: right;">2013</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Anti-Corruption Party</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">10.2</td>
-<td style="text-align: right;">10.2</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: right;">2013</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Central American Unionist Party</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">8.7</td>
-<td style="text-align: right;">8.7</td>
-<td style="text-align: right;">1926</td>
-<td style="text-align: right;">1926</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Democratic Unification Party</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3.9</td>
-<td style="text-align: right;">3.9</td>
-<td style="text-align: right;">2005</td>
-<td style="text-align: right;">2005</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">hnd <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> party) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(n <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(year, seats_share, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">colour =</span> party)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>()</span></code></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/dataverse-url.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</guid>
-  <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/dataverse-url.png" medium="image" type="image/png" height="169" width="144"/>
-</item>
-<item>
-  <title>Geocoding in Python</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Get geographic coordinates for an address with <a href="https://nominatim.org/">Nominatim</a> from <a href="https://www.openstreetmap.org/#map=6/51.330/10.453">OpenStreetMap</a> data.</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> geopy.geocoders <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Nominatim</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a geolocator object</span></span>
-<span id="cb1-4">geolocator <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Nominatim(user_agent<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"get-the-geocode"</span>)</span>
-<span id="cb1-5"></span>
-<span id="cb1-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Define the address for geocoding</span></span>
-<span id="cb1-7">address <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Unter Sachsenhausen 6, Köln, Germany"</span></span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Retrieve the geolocation (latitude and longitude) for the given address</span></span>
-<span id="cb1-10">location <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> geolocator.geocode(address)</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>((location.latitude, location.longitude))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(50.9426253, 6.9524319)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> folium</span>
-<span id="cb3-2"></span>
-<span id="cb3-3">coordinates <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [location.latitude, location.longitude]</span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a map object</span></span>
-<span id="cb3-6">m <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> folium.Map(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>coordinates, zoom_start<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>)</span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add a marker for each coordinate</span></span>
-<span id="cb3-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>coordinates, popup<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>address).add_to(m)</span>
-<span id="cb3-10"></span>
-<span id="cb3-11">m  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
-<html>
-<head>
-    
-    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
-    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
-    
-            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
-            <style>
-                #map_cc3d1c255078d271cffd35461eb859bf {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-        
-</head>
-<body>
-    
-    
-            <div class=&quot;folium-map&quot; id=&quot;map_cc3d1c255078d271cffd35461eb859bf&quot; ></div>
-        
-</body>
-<script>
-    
-    
-            var map_cc3d1c255078d271cffd35461eb859bf = L.map(
-                &quot;map_cc3d1c255078d271cffd35461eb859bf&quot;,
-                {
-                    center: [50.9426253, 6.9524319],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 15,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_773cd0d7b7dab13e8542655a01008ba8 = L.tileLayer(
-                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
-        
-    
-            var marker_c09865041797f1a1f5f908131a31316e = L.marker(
-                [50.9426253, 6.9524319],
-                {}
-            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
-        
-    
-        var popup_d77b0730a6e8b43461db907955dacca4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-        
-            
-                var html_68b8d5f08ff91e258870f6ebb36379ad = $(`<div id=&quot;html_68b8d5f08ff91e258870f6ebb36379ad&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
-                popup_d77b0730a6e8b43461db907955dacca4.setContent(html_68b8d5f08ff91e258870f6ebb36379ad);
-            
-        
-
-        marker_c09865041797f1a1f5f908131a31316e.bindPopup(popup_d77b0730a6e8b43461db907955dacca4)
-        ;
-
-        
-    
-</script>
-</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>Python</category>
-  <category>geo</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</guid>
-  <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/map-cologne.png" medium="image" type="image/png" height="86" width="144"/>
 </item>
 <item>
   <title></title>
@@ -1933,6 +1130,1374 @@ font-style: inherit;">cat</span>(text)</span></code></pre></div>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/ChatGPT-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
+  <title>A few days of Quarto</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
+<p>Only working with Python was really challenging. For some time several attempts to find the local Python version in the <code>env</code> folder did not work. <code>quarto check</code> found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option <code>jupyter: python3</code> in the qmd-document that did the trick.</p>
+<p>Rendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting <code>#| python.reticulate: false</code> in a Python cell solved the issue.</p>
+<p>Many of my Python struggles in Quarto may have been related to the <a href="https://rstudio.github.io/reticulate/">reticulate</a> R package.</p>
+</section>
+<section id="docker" class="level2">
+<h2 class="anchored" data-anchor-id="docker">Docker</h2>
+<p>To get there I also created a <code>Dockerfile</code> to have an OS independent version of Quarto. That was another challenge until I first found a <a href="https://github.com/rocker-org/rocker">Rocker</a> configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.</p>
+<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.</p>
+<p>I’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well.</p>
+</section>
+<section id="python-in-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="python-in-quarto">Python in Quarto</h2>
+<p>Here is a <a href="https://quarto.org/docs/computations/python.html#code-blocks">Quarto Guide</a> demonstration of a line plot on a polar axis, see Figure&nbsp;1.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> np</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.arange(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.01</span>)</span>
+<span id="cb1-5">theta <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> np.pi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> r</span>
+<span id="cb1-6">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(</span>
+<span id="cb1-7">  subplot_kw <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'projection'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'polar'</span>}</span>
+<span id="cb1-8">)</span>
+<span id="cb1-9">ax.plot(theta, r)</span>
+<span id="cb1-10">ax.set_rticks([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])</span>
+<span id="cb1-11">ax.grid(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb1-12">plt.show()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-polar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>Docker</category>
+  <category>Python</category>
+  <category>Quarto</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index.html</guid>
+  <pubDate>Sat, 25 Feb 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/quarto.png" medium="image" type="image/png" height="35" width="144"/>
+</item>
+<item>
+  <title>dplyr programming</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>TODO — write post - add dplyr logo - <em>maybe</em> – create sections</p>
+<p><a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">cars <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-5">  datasets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>()</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">var_select <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cyl"</span></span></code></pre></div>
+</div>
+<section id="pronoun-.data" class="level2">
+<h2 class="anchored" data-anchor-id="pronoun-.data">Pronoun .data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">cars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count</span>(.data[[var_select]])</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="embrace-argument" class="level2">
+<h2 class="anchored" data-anchor-id="embrace-argument">Embrace argument</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">count_var <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> \(.dt, .var) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(.dt, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all_of</span>({{.var}}))</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count_var</span>(cars, var_select)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count_var</span>(cars, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(var_select, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vs"</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">vs</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="name-injection" class="level2">
+<h2 class="anchored" data-anchor-id="name-injection">Name injection</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">cars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{var_select}_count"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(),</span>
+<span id="cb5-3">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all_of</span>({{var_select}}))</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">cyl_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">count_var2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(dt, var) {</span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{var}_count"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(),</span>
+<span id="cb6-3">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all_of</span>({{var}}))</span>
+<span id="cb6-4">}</span>
+<span id="cb6-5"></span>
+<span id="cb6-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count_var2</span>(cars, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cyl"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">cyl_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">count_var3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(dt, var) {</span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{{var}}_count"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(),</span>
+<span id="cb7-3">            <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all_of</span>({{var}}))</span>
+<span id="cb7-4">}</span>
+<span id="cb7-5"></span>
+<span id="cb7-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">count_var3</span>(cars, var_select)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">var_select_count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">summarise_dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(data, var) {</span>
+<span id="cb8-2">  data <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb8-4">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>({{ var }}),</span>
+<span id="cb8-5">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sum_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>({{ var }}),</span>
+<span id="cb8-6">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>()</span>
+<span id="cb8-7">   )</span>
+<span id="cb8-8">}</span>
+<span id="cb8-9"></span>
+<span id="cb8-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise_dt</span>(cars, cyl)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_cyl</th>
+<th style="text-align: right;">sum_cyl</th>
+<th style="text-align: right;">n_cyl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6.1875</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/dplyr-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/index.html</guid>
+  <pubDate>Invalid Date</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/dplyr-logo.png" medium="image" type="image/png" height="166" width="144"/>
+</item>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
+<section id="june" class="level2">
+<h2 class="anchored" data-anchor-id="june">30. June</h2>
+<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
+<p>Useful to have html tables instead of monospace tables in notebooks.</p>
+<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Document"</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb1-4"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb1-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> kable</span></span>
+<span id="cb1-6"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span></code></pre></div>
+</section>
+<section id="june-1" class="level2">
+<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
+<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
+</section>
+<section id="june-2" class="level2">
+<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
+<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
+<pre><code>&lt;!--- comment  --&gt;
+
+&lt;!---
+multi-line
+comments
+--&gt;</code></pre>
+<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
+</section>
+<section id="june-3" class="level2">
+<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
+<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
+<div class="sourceCode" id="cb3" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb3-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> pdf</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb3-4"></span>
+<span id="cb3-5">Page 1</span>
+<span id="cb3-6"></span>
+<span id="cb3-7">{{&lt; pagebreak &gt;}}</span>
+<span id="cb3-8"></span>
+<span id="cb3-9">Page 2</span></code></pre></div>
+<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
+</section>
+<section id="june-4" class="level2">
+<h2 class="anchored" data-anchor-id="june-4">9. June</h2>
+<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use path relative to script location, if feasible</span></span>
+<span id="cb4-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb4-3">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-P</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb4-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span></span>
+<span id="cb4-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">! </span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb4-6">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Run script in project folder"</span></span>
+<span id="cb4-7">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exit</span> 1</span>
+<span id="cb4-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span>
+<span id="cb4-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span></code></pre></div>
+</section>
+<section id="may" class="level2">
+<h2 class="anchored" data-anchor-id="may">17. May</h2>
+<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
+<p><code>add_three &lt;- \(.x) .x+3</code></p>
+</section>
+<section id="may-1" class="level2">
+<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
+<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
+<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
+</section>
+<section id="may-2" class="level2">
+<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
+<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
+</section>
+<section id="may-3" class="level2">
+<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
+<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
+<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
+</section>
+<section id="may-4" class="level2">
+<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
+<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
+<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
+</section>
+<section id="apr." class="level2">
+<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
+<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
+</section>
+<section id="apr.-1" class="level2">
+<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
+<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
+</section>
+<section id="feb." class="level2">
+<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the more convenient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
+  <pubDate>Fri, 30 Jun 2023 08:27:37 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="jupyter-notebooks-in-git" class="level1">
+<h1>Jupyter notebooks in Git</h1>
+<p>Working with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.</p>
+<p>Now, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. <a href="https://nbdev.fast.ai/tutorials/git_friendly_jupyter.html">nbdev_clean</a> removes cell execution related metadata from a notebook.</p>
+<p><code>nbdev_clean --fname .</code> cleans all Juypter notebooks in a repository. I run it on this <em>learning diary</em> Git repository to clean the two notebooks in the <em>snippets</em> folder. I also used it in the project that initially caused me to look into <em>nbdev</em>.</p>
+<p>Finally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with <code>nbdev_clean</code>. Again, Codespaces are really nice.</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/notebook-clean-no.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/notebook-clean-yes.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/index.html</guid>
+  <pubDate>Sun, 11 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="github-pages" class="level1">
+<h1>GitHub Pages</h1>
+<p>I published my first two web sites with <a href="https://pages.github.com/">GithHub Pages</a>.</p>
+<ul>
+<li><a href="https://hdigital.github.io/learning-diary/">learning diary</a></li>
+<li><a href="https://hdigital.github.io/data-snippets/">data snippets</a></li>
+</ul>
+<p>Quarto has a <a href="https://quarto.org/docs/publishing/github-pages.html">tutorial</a> about publishing Quarto sites to GitHub Pages. This worked well.</p>
+<p>I was a little confused by the different options: docs folder, publish command, GitHub Actions.</p>
+<p>The <code>quarto publish</code> command worked well for the <a href="https://hdigital.github.io/learning-diary/">learning diary</a> page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.</p>
+<p>For the <a href="https://hdigital.github.io/data-snippets/">data snippets</a> page I used the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow">GitHub Actions</a> approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Quarto</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</guid>
+  <pubDate>Fri, 02 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="ai-images-with-dall-e" class="level1">
+<h1>AI images with DALL-E</h1>
+<p>Today, I became aware of an OpenAI service to generate images — <a href="https://labs.openai.com/">DALL-E</a>.</p>
+<p>This has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.</p>
+<p>Sometimes, images from <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.</p>
+<p>I had to pay for the service but the number of images that can be generated for 15$ seem to be resonable.</p>
+<p>I have still to twist the art styles to results that I like.</p>
+<hr>
+<p>Here are some examples.</p>
+<p>“a man working on a computer – style Pieter Bruegel the Elder”</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/bruegel_ai.png" class="img-fluid"></p>
+<p>“a working class man on a computer – leipzig school art style”</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" class="img-fluid"></p>
+<p>“A comic book cover of a superhero working on a computer doing data analysis”</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/comic-cover_ai.png" class="img-fluid"></p>
+<p>“a man working on a computer – style 3d art”</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/3d-art_ai.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</guid>
+  <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="dataverse-urls" class="level1">
+<h1>Dataverse URLs</h1>
+<p>I followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OGOURC">Elections Global</a> gave a good overview – see below.</p>
+<p>The technical point is that I wanted to access the original data file at the <a href="https://dataverse.harvard.edu/">Harvard Dataverse</a>.</p>
+<p>Data uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.</p>
+<p>Here is an example for the Elections Global data used in the snippet – see page screenshot below.</p>
+<p><a href="https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0">doi:10.7910/DVN/OGOURC/YK9DOZ&amp;version=2.0</a></p>
+<p>So I tried to find the permanent link to the original data file.</p>
+<p>First, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.</p>
+<p>Second, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.</p>
+<p>For now, I will start to using the imported data version with the provided url for data files from the Dataverse.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(conflicted)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">conflicts_prefer</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>filter)</span></code></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) {</span>
+<span id="cb2-2">  url_csv <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"</span></span>
+<span id="cb2-3">  elec_raw <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(url_csv)</span>
+<span id="cb2-4">}</span>
+<span id="cb2-5"></span>
+<span id="cb2-6">url <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ"</span></span>
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exists</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"elec_raw"</span>)) {</span>
+<span id="cb2-9">  elec_raw <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_tsv</span>(url)</span>
+<span id="cb2-10">}</span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># glimpse(elec_raw)</span></span></code></pre></div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">hnd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb3-2">  elec_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(country <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"HND"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb3-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.integer</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">substr</span>(election_date, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)),</span>
+<span id="cb3-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">seats_share =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>seats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>seats_total</span>
+<span id="cb3-7">    )</span>
+<span id="cb3-8"></span>
+<span id="cb3-9">hnd <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb3-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(),</span>
+<span id="cb3-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">share_mean =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(seats_share, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb3-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">share_max =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(seats_share, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb3-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year_first =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(year, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb3-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">year_last =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(year, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb3-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> party</span>
+<span id="cb3-17">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(party, n, n<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>year_last) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(n), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(share_mean))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 3%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">party</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">share_mean</th>
+<th style="text-align: right;">share_max</th>
+<th style="text-align: right;">year_first</th>
+<th style="text-align: right;">year_last</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">National Party of Honduras</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">60.8</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">1923</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liberal Party of Honduras</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">40.3</td>
+<td style="text-align: right;">62.1</td>
+<td style="text-align: right;">1923</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">other (other-script)</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">9.4</td>
+<td style="text-align: right;">1923</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liberal Constitutionalist Party of Honduras</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">71.4</td>
+<td style="text-align: right;">100.0</td>
+<td style="text-align: right;">1916</td>
+<td style="text-align: right;">1923</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">National Reformist Movement</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">13.6</td>
+<td style="text-align: right;">20.3</td>
+<td style="text-align: right;">1954</td>
+<td style="text-align: right;">1957</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Liberty and Refoundation</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">28.9</td>
+<td style="text-align: right;">28.9</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anti-Corruption Party</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">10.2</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">2013</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Central American Unionist Party</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">8.7</td>
+<td style="text-align: right;">1926</td>
+<td style="text-align: right;">1926</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Democratic Unification Party</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">2005</td>
+<td style="text-align: right;">2005</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">hnd <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.by =</span> party) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(n <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(year, seats_share, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> party)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/dataverse-url.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</guid>
+  <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/dataverse-url.png" medium="image" type="image/png" height="169" width="144"/>
+</item>
+<item>
+  <title>Geocoding in Python</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Get geographic coordinates for an address with <a href="https://nominatim.org/">Nominatim</a> from <a href="https://www.openstreetmap.org/#map=6/51.330/10.453">OpenStreetMap</a> data.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> geopy.geocoders <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Nominatim</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a geolocator object</span></span>
+<span id="cb1-4">geolocator <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Nominatim(user_agent<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"get-the-geocode"</span>)</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define the address for geocoding</span></span>
+<span id="cb1-7">address <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unter Sachsenhausen 6, Köln, Germany"</span></span>
+<span id="cb1-8"></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Retrieve the geolocation (latitude and longitude) for the given address</span></span>
+<span id="cb1-10">location <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> geolocator.geocode(address)</span>
+<span id="cb1-11"></span>
+<span id="cb1-12"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>((location.latitude, location.longitude))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(50.9426253, 6.9524319)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> folium</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">coordinates <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [location.latitude, location.longitude]</span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a map object</span></span>
+<span id="cb3-6">m <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> folium.Map(location<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>coordinates, zoom_start<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>)</span>
+<span id="cb3-7"></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Add a marker for each coordinate</span></span>
+<span id="cb3-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>coordinates, popup<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>address).add_to(m)</span>
+<span id="cb3-10"></span>
+<span id="cb3-11">m  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
+    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
+    
+            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
+            <style>
+                #map_cc3d1c255078d271cffd35461eb859bf {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class=&quot;folium-map&quot; id=&quot;map_cc3d1c255078d271cffd35461eb859bf&quot; ></div>
+        
+</body>
+<script>
+    
+    
+            var map_cc3d1c255078d271cffd35461eb859bf = L.map(
+                &quot;map_cc3d1c255078d271cffd35461eb859bf&quot;,
+                {
+                    center: [50.9426253, 6.9524319],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_773cd0d7b7dab13e8542655a01008ba8 = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
+        
+    
+            var marker_c09865041797f1a1f5f908131a31316e = L.marker(
+                [50.9426253, 6.9524319],
+                {}
+            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
+        
+    
+        var popup_d77b0730a6e8b43461db907955dacca4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+        
+            
+                var html_68b8d5f08ff91e258870f6ebb36379ad = $(`<div id=&quot;html_68b8d5f08ff91e258870f6ebb36379ad&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
+                popup_d77b0730a6e8b43461db907955dacca4.setContent(html_68b8d5f08ff91e258870f6ebb36379ad);
+            
+        
+
+        marker_c09865041797f1a1f5f908131a31316e.bindPopup(popup_d77b0730a6e8b43461db907955dacca4)
+        ;
+
+        
+    
+</script>
+</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <category>geo</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</guid>
+  <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/map-cologne.png" medium="image" type="image/png" height="86" width="144"/>
+</item>
+<item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</link>
   <description><![CDATA[ 
@@ -2186,106 +2751,6 @@ font-style: inherit;">&lt;/html&gt;</span></span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/index.html</guid>
   <pubDate>Tue, 14 Mar 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/emojis.png" medium="image" type="image/png" height="141" width="144"/>
-</item>
-<item>
-  <title>A few days of Quarto</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on <em>Things I Learned</em> worked well.</p>
-<p>Only working with Python was really challenging. For some time several attempts to find the local Python version in the <code>env</code> folder did not work. <code>quarto check</code> found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option <code>jupyter: python3</code> in the qmd-document that did the trick.</p>
-<p>Rendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting <code>#| python.reticulate: false</code> in a Python cell solved the issue.</p>
-<p>Many of my Python struggles in Quarto may have been related to the <a href="https://rstudio.github.io/reticulate/">reticulate</a> R package.</p>
-</section>
-<section id="docker" class="level2">
-<h2 class="anchored" data-anchor-id="docker">Docker</h2>
-<p>To get there I also created a <code>Dockerfile</code> to have an OS independent version of Quarto. That was another challenge until I first found a <a href="https://github.com/rocker-org/rocker">Rocker</a> configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.</p>
-<p>Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.</p>
-<p>I’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well.</p>
-</section>
-<section id="python-in-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="python-in-quarto">Python in Quarto</h2>
-<p>Here is a <a href="https://quarto.org/docs/computations/python.html#code-blocks">Quarto Guide</a> demonstration of a line plot on a polar axis, see Figure&nbsp;1.</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> np</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> plt</span>
-<span id="cb1-3"></span>
-<span id="cb1-4">r <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> np.arange(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.01</span>)</span>
-<span id="cb1-5">theta <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> np.pi <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> r</span>
-<span id="cb1-6">fig, ax <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.subplots(</span>
-<span id="cb1-7">  subplot_kw <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'projection'</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'polar'</span>}</span>
-<span id="cb1-8">)</span>
-<span id="cb1-9">ax.plot(theta, r)</span>
-<span id="cb1-10">ax.set_rticks([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.5</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>])</span>
-<span id="cb1-11">ax.grid(<span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb1-12">plt.show()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-polar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index_files/figure-html/fig-polar-output-1.png" width="450" height="439" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: A line plot on a polar axis</figcaption>
-</figure>
-</div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>Docker</category>
-  <category>Python</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/index.html</guid>
-  <pubDate>Sat, 25 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-26-quarto/quarto.png" medium="image" type="image/png" height="35" width="144"/>
 </item>
 <item>
   <title>Python visualization with Altair</title>
@@ -2602,213 +3067,6 @@ font-style: inherit;">'sex'</span>]</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/index.html</guid>
   <pubDate>Tue, 21 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/arnim-fork.png" medium="image" type="image/png" height="111" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="jupyter-notebooks-with-quarto" class="level1">
-<h1>Jupyter notebooks with Quarto</h1>
-<p><a href="https://jupyter.org/try-jupyter/lab/index.html">Jupyter</a> notebooks can be rendered with <a href="https://quarto.org/docs/tools/jupyter-lab.html">Quarto</a>.</p>
-<p>In a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a <a href="https://quarto.org/docs/tools/jupyter-lab.html#yaml-front-matter">Raw first cell</a>. Finally, I converted the original notebook into a Quarto document with <code>quarto convert</code>.</p>
-<p>I rendered all versions of the Jupyter notebook with Quarto and here are the results:</p>
-<ul>
-<li><a href="../../snippets/jupyter.html">Jupyter notebook</a></li>
-<li><a href="../../snippets/jupyter-options.html">notebook with Quarto first cell</a></li>
-<li><a href="../../snippets/jupyter-quarto.html">notebook converted to Quarto document</a></li>
-</ul>
-<p>I also learned that you have to pass an option when rendering ipynb-files – <code>quarto render notebook.ipynb --execute</code>. The assumption is that a notebook was already run and that the results shall be rendered.</p>
-<p>This all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/jupyterlab-preview.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Jupyter Lab</figcaption>
-</figure>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/index.html</guid>
-  <pubDate>Fri, 17 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/jupyterlab-preview.png" medium="image" type="image/png" height="90" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="horizontal-bar-chart" class="level1">
-<h1>Horizontal bar chart</h1>
-<p>To have horizontal bar charts ordered by frequency, I have used <code>geom_bar()</code> and <code>coord_flip</code> for a long time.</p>
-<p>I have now learned in an <a href="https://www.eoda.de/en/wissen/blog/10-tidyverse-functions-that-might-save-your-day/#fct_reorder">example</a> that this is not necessary.</p>
-<p>Here are a few examples and the code for future references.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">mtcars <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>mtcars)</span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(mtcars, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lightgreen"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>I used to do some pre-processing to prepare data for the plot.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">pl_dt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb3-2">  mtcars <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cyl =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fct_infreq</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fct_rev</span>())</span></code></pre></div>
-</div>
-<p>For the figure, I used <code>coord_flip</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"grey"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">coord_flip</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>That was not necessary, as I have learned now.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lightblue"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Here is an alternative approach with <code>geom_col()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">pl_dt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb6-2">  mtcars <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count</span>(cyl) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cyl =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fct_reorder</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">factor</span>(cyl), n))</span>
-<span id="cb6-5"></span>
-<span id="cb6-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> n, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb6-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lightblue"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>ggplot</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/index.html</guid>
-  <pubDate>Thu, 16 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-17-geom-col/thumbnail.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 </channel>
 </rss>
