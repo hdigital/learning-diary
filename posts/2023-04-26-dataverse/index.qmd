@@ -38,14 +38,14 @@ conflicts_prefer(dplyr::filter)
 #| code-fold: false
 #| message: false
 
-if(FALSE) {
+if (FALSE) {
   url_csv <- "https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"
   elec_raw <- read_csv(url_csv)
 }
 
 url <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ"
 
-if(! exists("elec_raw")) {
+if (!exists("elec_raw")) {
   elec_raw <- read_tsv(url)
 }
 
@@ -61,8 +61,8 @@ hnd <-
   filter(country == "HND") |>
   mutate(
     year = as.integer(substr(election_date, 1, 4)),
-    seats_share = 100*seats/seats_total
-    )
+    seats_share = 100 * seats / seats_total
+  )
 
 hnd |>
   summarise(

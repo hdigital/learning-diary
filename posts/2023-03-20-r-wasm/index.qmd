@@ -23,7 +23,8 @@ library(ggplot2)
 dt <- as_tibble(mtcars)
 glimpse(dt)
 
-ggplot(dt, aes(x=hp, y=mpg, color=cyl)) + geom_point()
+ggplot(dt, aes(x = hp, y = mpg, color = cyl)) +
+  geom_point()
 ```
 
 Typing the R commands in a browser shell without tab completion and no R help was challenging though.

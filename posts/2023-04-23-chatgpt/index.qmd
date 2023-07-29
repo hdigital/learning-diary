@@ -63,7 +63,7 @@ word_freq %>%
     y = "Word",
     title = "Joe Biden's American Jobs Plan speech",
     subtitle = "Most common words"
-    )
+  )
 ```
 
 ---
