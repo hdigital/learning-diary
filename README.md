@@ -29,6 +29,13 @@ cd _site
 python -m http.server 8000
 ```
 
+Format R code in R
+
+```R
+styler::style_dir('posts')
+lintr::lint_dir('posts')
+```
+
 ## Installation
 
 + [Quarto](https://quarto.org/docs/get-started/)
