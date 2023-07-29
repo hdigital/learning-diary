@@ -1,0 +1,59 @@
+---
+date: "2023-07-29"
+image: renv-logo.svg
+categories: [R]
+title: "Package versions with renv"
+toc: true
+---
+
+## Versions snapshot
+
+`renv::snapshot()` creates an `renv.lock` file that includes the versions of all R packages used in R code in the current project folder.
+
+This is something I have looked for for a long time. In Python, I like to use [pip-compile](https://pip-tools.readthedocs.io/en/latest/#requirements-from-requirements-in) to pin my dependencies to specified versions. For R, I have just not realized that `renv` can also do that without creating a full `renv` project.
+
+The full `renv` workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with [Rocker](https://rocker-project.org/).
+
+```{r}
+#| echo: false
+#| message: false
+library(dplyr)
+library(purrr)
+```
+
+## Find project packages
+
+`renv::dependencies()` can be used to find all the packages used in a project.
+
+```{r}
+#| message: false
+library(renv)
+
+dependencies() |> select(-Source)
+```
+
+Package version number can be added with some `tidyverse` magic.
+
+```{r}
+dependencies() |>
+    mutate(version = map_chr(Package, \(.x) as.character(packageVersion(.x)))) |>
+    select(Package, version) |>
+    arrange(Package) |>
+    distinct()
+```
+
+
+## Customized session info
+
+This led me to a condensed version of loading all project packages before calling `sessionInfo()`
+
+```{r}
+#| message: false
+conflicted::conflicts_prefer(callr::run)
+map_lgl(dplyr::pull(dependencies(), Package), require)
+sessionInfo()
+```
+
+---
+
+![](lock-unsplash.jpg)
