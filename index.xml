@@ -10,7 +10,292 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Sat, 15 Jul 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 28 Jul 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Package versions with renv</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="versions-snapshot" class="level2">
+<h2 class="anchored" data-anchor-id="versions-snapshot">Versions snapshot</h2>
+<p><code>renv::snapshot()</code> creates an <code>renv.lock</code> file that includes the versions of all R packages used in R code in the current project folder.</p>
+<p>This is something I have looked for for a long time. In Python, I like to use <a href="https://pip-tools.readthedocs.io/en/latest/#requirements-from-requirements-in">pip-compile</a> to pin my dependencies to specified versions. For R, I have just not realized that <code>renv</code> can also do that without creating a full <code>renv</code> project.</p>
+<p>The full <code>renv</code> workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with <a href="https://rocker-project.org/">Rocker</a>.</p>
+</section>
+<section id="find-project-packages" class="level2">
+<h2 class="anchored" data-anchor-id="find-project-packages">Find project packages</h2>
+<p><code>renv::dependencies()</code> can be used to find all the packages used in a project.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(renv)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dependencies</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Source)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finding R package dependencies ... Done!</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Package</th>
+<th style="text-align: left;">Require</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">Dev</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">purrr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">renv</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">callr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">conflicted</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">purrr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">renv</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">callr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">conflicted</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">FALSE</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Package version number can be added with some <code>tidyverse</code> magic.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dependencies</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">version =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_chr</span>(Package, \(.x) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">packageVersion</span>(.x)))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(Package, version) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(Package) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">distinct</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finding R package dependencies ... Done!</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Package</th>
+<th style="text-align: left;">version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">callr</td>
+<td style="text-align: left;">3.7.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">conflicted</td>
+<td style="text-align: left;">1.2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">dplyr</td>
+<td style="text-align: left;">1.1.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">purrr</td>
+<td style="text-align: left;">1.0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">renv</td>
+<td style="text-align: left;">1.0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;">2.23</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="customized-session-info" class="level2">
+<h2 class="anchored" data-anchor-id="customized-session-info">Customized session info</h2>
+<p>This led me to a condensed version of loading all project packages before calling <code>sessionInfo()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">conflicted<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">conflicts_prefer</span>(callr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>run)</span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_lgl</span>(dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dependencies</span>(), Package), require)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finding R package dependencies ... Done!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R version 4.3.0 (2023-04-21)
+Platform: x86_64-apple-darwin20 (64-bit)
+Running under: macOS Ventura 13.4.1
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: Europe/Berlin
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] rmarkdown_2.23   conflicted_1.2.0 callr_3.7.3      renv_1.0.0      
+[5] purrr_1.0.1      dplyr_1.1.2     
+
+loaded via a namespace (and not attached):
+ [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      
+ [5] xfun_0.39         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   
+ [9] glue_1.6.2        htmltools_0.5.5   ps_1.7.5          fansi_1.0.4      
+[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       
+[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.0    htmlwidgets_1.6.2
+[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         
+[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   
+[29] tools_4.3.0       withr_2.5.0       cachem_1.0.8     </code></pre>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/lock-unsplash.jpg" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/index.html</guid>
+  <pubDate>Fri, 28 Jul 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/renv-logo.svg" medium="image" type="image/svg+xml"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/index.html</link>
@@ -36,7 +321,7 @@
   <category>git</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/index.html</guid>
   <pubDate>Sat, 15 Jul 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="192" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="115" width="144"/>
 </item>
 <item>
   <title>Today I learned (TIL)</title>
@@ -360,7 +645,7 @@ font-style: inherit;">"code block run"</span>)</span>
 background-color: null;
 font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">!</span> knitr<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">!</span>knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -604,67 +889,54 @@ font-style: inherit;">ImportError</span>:</span>
 background-color: null;
 font-style: inherit;">!</span> pip install wikipedia</span></code></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collecting wikipedia
-  Using cached wikipedia-1.4.0-py3-none-any.whl
-Requirement already satisfied: beautifulsoup4 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from wikipedia) (4.12.2)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from wikipedia) (2.31.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.1.0)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.4)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2023.5.7)
-Requirement already satisfied: soupsieve&gt;1.2 in /Users/hd/hd/learning/learning-diary/.venv/lib/python3.10/site-packages (from beautifulsoup4-&gt;wikipedia) (2.4.1)
-Installing collected packages: wikipedia
-Successfully installed wikipedia-1.4.0</code></pre>
-</div>
 </div>
 <p>ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> urllib</span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="im" style="color: #00769E;
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
-<span id="cb3-4"><span class="im" style="color: #00769E;
+<span id="cb2-4"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> wikipedia</span>
-<span id="cb3-5"></span>
-<span id="cb3-6"><span class="im" style="color: #00769E;
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> bs4 <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> BeautifulSoup</span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;
+<span id="cb2-7"></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Set the Wikipedia page title and get page</span></span>
-<span id="cb3-9">page_title <span class="op" style="color: #5E5E5E;
+<span id="cb2-9">page_title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Berlin"</span></span>
-<span id="cb3-10">page <span class="op" style="color: #5E5E5E;
+<span id="cb2-10">page <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> wikipedia.page(page_title)</span>
-<span id="cb3-11"></span>
-<span id="cb3-12"><span class="co" style="color: #5E5E5E;
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Get html content of page and parse it with BeautifulSoup</span></span>
-<span id="cb3-13">html <span class="op" style="color: #5E5E5E;
+<span id="cb2-13">html <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> page.html()</span>
-<span id="cb3-14">soup <span class="op" style="color: #5E5E5E;
+<span id="cb2-14">soup <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BeautifulSoup(html, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"html.parser"</span>)</span>
-<span id="cb3-15"></span>
-<span id="cb3-16"><span class="co" style="color: #5E5E5E;
+<span id="cb2-15"></span>
+<span id="cb2-16"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Find the infobox image element and get url image</span></span>
-<span id="cb3-17">image_element <span class="op" style="color: #5E5E5E;
+<span id="cb2-17">image_element <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> soup.find(<span class="st" style="color: #20794D;
 background-color: null;
@@ -675,7 +947,7 @@ background-color: null;
 font-style: inherit;">"infobox"</span>).find(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"img"</span>)</span>
-<span id="cb3-18">image_url <span class="op" style="color: #5E5E5E;
+<span id="cb2-18">image_url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -684,15 +956,15 @@ background-color: null;
 font-style: inherit;">+</span> image_element[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"src"</span>]</span>
-<span id="cb3-19"></span>
-<span id="cb3-20"><span class="co" style="color: #5E5E5E;
+<span id="cb2-19"></span>
+<span id="cb2-20"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Download the image</span></span>
-<span id="cb3-21">urllib.request.urlretrieve(image_url, <span class="st" style="color: #20794D;
+<span id="cb2-21">urllib.request.urlretrieve(image_url, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fd1ae7ecd90&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fcaf7f8cb50&gt;)</code></pre>
 </div>
 </div>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/image.jpg" class="img-fluid"></p>
@@ -700,109 +972,109 @@ font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <section id="coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
-<span id="cb5-2"><span class="im" style="color: #00769E;
+<span id="cb4-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
-<span id="cb5-3"></span>
-<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># function to get the coordinates from the infobox of a Wikipedia article</span></span>
-<span id="cb5-5"><span class="kw" style="color: #003B4F;
+<span id="cb4-5"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> get_coordinates(title):</span>
-<span id="cb5-6">    url <span class="op" style="color: #5E5E5E;
+<span id="cb4-6">    url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"https://en.wikipedia.org/w/api.php"</span></span>
-<span id="cb5-7">    params <span class="op" style="color: #5E5E5E;
+<span id="cb4-7">    params <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> {</span>
-<span id="cb5-8">        <span class="st" style="color: #20794D;
+<span id="cb4-8">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"action"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query"</span>,</span>
-<span id="cb5-9">        <span class="st" style="color: #20794D;
+<span id="cb4-9">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"prop"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span>,</span>
-<span id="cb5-10">        <span class="st" style="color: #20794D;
+<span id="cb4-10">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"titles"</span>: title,</span>
-<span id="cb5-11">        <span class="st" style="color: #20794D;
+<span id="cb4-11">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"format"</span>: <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"json"</span>,</span>
-<span id="cb5-12">        <span class="st" style="color: #20794D;
+<span id="cb4-12">        <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"formatversion"</span>: <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb5-13">    }</span>
-<span id="cb5-14">    response <span class="op" style="color: #5E5E5E;
+<span id="cb4-13">    }</span>
+<span id="cb4-14">    response <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(url, params<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>params)</span>
-<span id="cb5-15">    data <span class="op" style="color: #5E5E5E;
+<span id="cb4-15">    data <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(response.text)</span>
-<span id="cb5-16">    pages <span class="op" style="color: #5E5E5E;
+<span id="cb4-16">    pages <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"query"</span>][<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"pages"</span>]</span>
-<span id="cb5-17">    coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb4-17">    coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">None</span></span>
-<span id="cb5-18">    <span class="cf" style="color: #003B4F;
+<span id="cb4-18">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> page <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">in</span> pages:</span>
-<span id="cb5-19">        <span class="cf" style="color: #003B4F;
+<span id="cb4-19">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">if</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">in</span> page:</span>
-<span id="cb5-20">            coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb4-20">            coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> page[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"coordinates"</span>][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span>
-<span id="cb5-21">            <span class="cf" style="color: #003B4F;
+<span id="cb4-21">            <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">break</span></span>
-<span id="cb5-22">    <span class="cf" style="color: #003B4F;
+<span id="cb4-22">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">return</span> coordinates</span>
-<span id="cb5-23"></span>
-<span id="cb5-24"><span class="co" style="color: #5E5E5E;
+<span id="cb4-23"></span>
+<span id="cb4-24"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># example usage</span></span>
-<span id="cb5-25">title <span class="op" style="color: #5E5E5E;
+<span id="cb4-25">title <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Berlin"</span></span>
-<span id="cb5-26">coordinates <span class="op" style="color: #5E5E5E;
+<span id="cb4-26">coordinates <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_coordinates(title)</span>
-<span id="cb5-27"><span class="bu" style="color: null;
+<span id="cb4-27"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(coordinates[<span class="st" style="color: #20794D;
 background-color: null;
@@ -817,22 +1089,22 @@ font-style: inherit;">"lon"</span>])</span></code></pre></div>
 <section id="map" class="level2">
 <h2 class="anchored" data-anchor-id="map">Map</h2>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> folium</span>
-<span id="cb7-2"></span>
-<span id="cb7-3">map_coord <span class="op" style="color: #5E5E5E;
+<span id="cb6-2"></span>
+<span id="cb6-3">map_coord <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [coordinates[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'lat'</span>], coordinates[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'lon'</span>]]</span>
-<span id="cb7-4"></span>
-<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+<span id="cb6-4"></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># create the map</span></span>
-<span id="cb7-6"><span class="bu" style="color: null;
+<span id="cb6-6"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -843,22 +1115,22 @@ background-color: null;
 font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3.5</span>)</span>
-<span id="cb7-7"></span>
-<span id="cb7-8"><span class="co" style="color: #5E5E5E;
+<span id="cb6-7"></span>
+<span id="cb6-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># add a marker at the location</span></span>
-<span id="cb7-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
+<span id="cb6-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>map_coord, popup<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>title).add_to(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span>)</span>
-<span id="cb7-10"></span>
-<span id="cb7-11"><span class="co" style="color: #5E5E5E;
+<span id="cb6-10"></span>
+<span id="cb6-11"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># display the map</span></span>
-<span id="cb7-12"><span class="bu" style="color: null;
+<span id="cb6-12"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">map</span></span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -889,7 +1161,7 @@ font-style: inherit;">map</span></span></code></pre></div>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_c9ae644d627a9e3ab8076e4142a73a03 {
+                #map_c1d217a1f70f6cbcee4820c9e36447fa {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -903,14 +1175,14 @@ font-style: inherit;">map</span></span></code></pre></div>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_c9ae644d627a9e3ab8076e4142a73a03&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_c1d217a1f70f6cbcee4820c9e36447fa&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_c9ae644d627a9e3ab8076e4142a73a03 = L.map(
-                &quot;map_c9ae644d627a9e3ab8076e4142a73a03&quot;,
+            var map_c1d217a1f70f6cbcee4820c9e36447fa = L.map(
+                &quot;map_c1d217a1f70f6cbcee4820c9e36447fa&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -924,28 +1196,28 @@ font-style: inherit;">map</span></span></code></pre></div>
 
         
     
-            var tile_layer_5d9e4bfd1e046d42b535f035f7d37ed5 = L.tileLayer(
+            var tile_layer_0a20780bf7f8742629a75585a0c691a7 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_c9ae644d627a9e3ab8076e4142a73a03);
+            ).addTo(map_c1d217a1f70f6cbcee4820c9e36447fa);
         
     
-            var marker_b3515b0b3ddcc9104c44f989d12e9b5f = L.marker(
+            var marker_547db7a7e0ff7d508323000445aa53d3 = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_c9ae644d627a9e3ab8076e4142a73a03);
+            ).addTo(map_c1d217a1f70f6cbcee4820c9e36447fa);
         
     
-        var popup_3752167e501abc3e3512334b390bb24a = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_c1dc49339182c7d2083aab6a485206b3 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_b4f018a1c5a9d7dd26475909a3d43c02 = $(`<div id=&quot;html_b4f018a1c5a9d7dd26475909a3d43c02&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_3752167e501abc3e3512334b390bb24a.setContent(html_b4f018a1c5a9d7dd26475909a3d43c02);
+                var html_bea47ea6735fe3df4fce2b36fc97b652 = $(`<div id=&quot;html_bea47ea6735fe3df4fce2b36fc97b652&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_c1dc49339182c7d2083aab6a485206b3.setContent(html_bea47ea6735fe3df4fce2b36fc97b652);
             
         
 
-        marker_b3515b0b3ddcc9104c44f989d12e9b5f.bindPopup(popup_3752167e501abc3e3512334b390bb24a)
+        marker_547db7a7e0ff7d508323000445aa53d3.bindPopup(popup_c1dc49339182c7d2083aab6a485206b3)
         ;
 
         
@@ -1037,7 +1309,7 @@ font-style: inherit;">::</span>filter)</span></code></pre></div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="cf" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">if</span>(<span class="cn" style="color: #8f5902;
+font-style: inherit;">if</span> (<span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">FALSE</span>) {</span>
 <span id="cb2-2">  url_csv <span class="ot" style="color: #003B4F;
@@ -1060,9 +1332,9 @@ font-style: inherit;">"https://dataverse.harvard.edu/api/access/datafile/:persis
 <span id="cb2-7"></span>
 <span id="cb2-8"><span class="cf" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">if</span>(<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">!</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">exists</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -1114,12 +1386,12 @@ font-style: inherit;">4</span>)),</span>
 background-color: null;
 font-style: inherit;">seats_share =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100</span><span class="sc" style="color: #5E5E5E;
+font-style: inherit;">100</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">*</span>seats<span class="sc" style="color: #5E5E5E;
+font-style: inherit;">*</span> seats <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">/</span>seats_total</span>
-<span id="cb3-7">    )</span>
+font-style: inherit;">/</span> seats_total</span>
+<span id="cb3-7">  )</span>
 <span id="cb3-8"></span>
 <span id="cb3-9">hnd <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1701,7 +1973,7 @@ background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Most common words"</span></span>
-<span id="cb1-34">    )</span></code></pre></div>
+<span id="cb1-34">  )</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
@@ -2050,13 +2322,14 @@ font-style: inherit;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">x=</span>hp, <span class="at" style="color: #657422;
+font-style: inherit;">x =</span> hp, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">y=</span>mpg, <span class="at" style="color: #657422;
+font-style: inherit;">y =</span> mpg, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">color=</span>cyl)) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">color =</span> cyl)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">+</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -2128,26 +2401,26 @@ font-style: inherit;">\n</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span>.join(lines))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>🤗😀🤗😋😎😉😅😊😁😊😂😎🤗😄😃😇😆😋😆😎
-😋😎😀😅😄😁😂😆😎😇🤗😃😉😄😅😉😅😉😃😁
-😉😄😅😎🙂🙂😆🤗😊😆😋😃😊😂😋😃😉😄😆😎
-😀😁😇😄😎😄😇😄🙂😅🤗🙂😁😀😁🤗😇😄😋😃
-😆😂😊😋😉😇😇😎😂😎😀😀😁😃🙂😎😄😀😋😁
-😊😎😁😊😊😊😊😅😁😋🤗🙂😃😄😄😃😁🙂😁🙂
-😄😋🙂🙂😀🙂😁😄😋😋😇😆😎😅😃😄🙂🙂😉😀
-😃🙂😅🤗😂😃😀🙂😊😊🤗😊😊😁😁😅😅😂😆🙂
-😀😇😂😀😅😃😊😄😋🤗😇😇😄😎😁😋😄🙂😄😉
-😂🤗😁😉🙂😎😎😁😃😂🤗😅😇😁😀😋😊😅😊😊
-😇😆🙂😎🤗😀🤗🙂🙂😎😇😇😆😅😅🙂😂😅😁🤗
-😊😋😎😇😇😉😊😋😄😂😆😂🤗😄😉😀😉😎😅😎
-😃😄🤗😎🤗🙂😇😄😁😉😃😎😎😃😃😅😀🙂🙂😉
-😅😂😅🤗😀🤗😉😎😉😊😉😁😇😎🤗😋😄😇😄😂
-😉😂🙂😊😃😎🤗😆😃😊🙂😉😊😋😅😋😆🤗🙂😊
-😊🙂😂😊😉😇🤗😅😁🙂😊😇🙂😋😆😃🙂😊😂😀
-😆😆😆😎😋😉😃😂😁😆😁🙂😊😋🤗😋😉😃😁😁
-😀🙂😊😃😂😄🤗😁😋😃🤗🤗😊😆😁😄😇😄😎😂
-🙂😀😂😃😀😊😋🙂😄😆😁😇😃😎😋😆😊😎😆😉
-😇😅😆😆😆😇😁😎😎😎🙂😎😀😁😄😁😀🤗😁😄</code></pre>
+<pre><code>🙂😉😀🤗😉😉😃😃🤗😂😃😉😂😆😁😎🙂😆😉😄
+🙂🤗😃😂🙂😊😇😊😅😄🤗😊😃😉🙂🙂😂😅🤗😎
+😄😋😇🙂😄😆🙂😃😅😄😃😋🙂😇😁😁😅😇🤗😀
+🙂😊😃😀😎😀😆😃🙂😃😉😇😀🙂😎😄😁🙂😇😇
+😃😂😉😇😃😉😎😂😅😆😁😀😅🤗😅😎🙂😊😅😎
+🙂😃😀😉😂😃😆😋😀😉😎😋😇😄🤗😋😇😋😃😊
+😊😁😃😊😅😁🙂😎😊😆😁😂🙂🤗🙂🤗😃😋😂😀
+😂😀😁😆😅😃🤗😆🤗😀😆🙂😆😎😋😆😎😇😄😆
+😉🤗😁😃😉😂🙂😊😆😁😂😁😄😀😆😇😊😅😎🤗
+🙂😆😉😆😀😅😊😄😎😆😉😋😂😉😂🤗😇🤗😆😄
+😇😊😁😁😇😋😁😂😋😉😎😇😋😉😆😅😅😎😉😂
+😀😋😂😋🤗😎😀🙂😉😂😄😆😆🤗😎😃😄😊😋😂
+😃😁😉😎😊🙂🙂😎😊😅😇😂🤗😎😉😇😂😃😊😋
+😄😄😁😄😄😇🙂😄🤗😎🤗😄😊😆😃😉😃😊😃😃
+😃🙂😇😉🙂😊😁😂😂😉🙂😎😄😇😄😁😁😀🤗🙂
+🙂😉😇🙂😀😇🙂😎😃😊😆😂😁😊😎😅😄😇😊😁
+😀😊😇😉😂🤗🙂😋😃😉😃😁🙂😂😄😆🙂😎😂😎
+😁😎😄😁😊😋😉😀😁😋😋😉😋😉😉🙂😆😇😅😆
+🙂😁😂😂🤗😊😆😊😋😆😊😊😀😉😂😅🤗🙂😋😀
+😂😊😇🙂😉😊😊😁😊🙂😇😄😁😅🤗😇😃😎😇😎</code></pre>
 </div>
 </div>
 <p>Here is the full html page that uses pyscript.</p>
@@ -2436,23 +2709,23 @@ font-style: inherit;">'sex'</span>]</span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed {
+  #altair-viz-1067bf78c0f94e628910f2c0422b5a76.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed details,
-  #altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a.vega-embed details summary {
+  #altair-viz-1067bf78c0f94e628910f2c0422b5a76.vega-embed details,
+  #altair-viz-1067bf78c0f94e628910f2c0422b5a76.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a"></div>
+<div id="altair-viz-1067bf78c0f94e628910f2c0422b5a76"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a") {
-      outputDiv = document.getElementById("altair-viz-3d2ab0ec569a4b97abcaf316e3f53f3a");
+    if (outputDiv.id !== "altair-viz-1067bf78c0f94e628910f2c0422b5a76") {
+      outputDiv = document.getElementById("altair-viz-1067bf78c0f94e628910f2c0422b5a76");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2670,42 +2943,6 @@ font-style: inherit;">'sex'</span>]</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/index.html</guid>
   <pubDate>Tue, 21 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/arnim-fork.png" medium="image" type="image/png" height="111" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="jupyter-notebooks-with-quarto" class="level1">
-<h1>Jupyter notebooks with Quarto</h1>
-<p><a href="https://jupyter.org/try-jupyter/lab/index.html">Jupyter</a> notebooks can be rendered with <a href="https://quarto.org/docs/tools/jupyter-lab.html">Quarto</a>.</p>
-<p>In a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a <a href="https://quarto.org/docs/tools/jupyter-lab.html#yaml-front-matter">Raw first cell</a>. Finally, I converted the original notebook into a Quarto document with <code>quarto convert</code>.</p>
-<p>I rendered all versions of the Jupyter notebook with Quarto and here are the results:</p>
-<ul>
-<li><a href="../../snippets/jupyter.html">Jupyter notebook</a></li>
-<li><a href="../../snippets/jupyter-options.html">notebook with Quarto first cell</a></li>
-<li><a href="../../snippets/jupyter-quarto.html">notebook converted to Quarto document</a></li>
-</ul>
-<p>I also learned that you have to pass an option when rendering ipynb-files – <code>quarto render notebook.ipynb --execute</code>. The assumption is that a notebook was already run and that the results shall be rendered.</p>
-<p>This all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/jupyterlab-preview.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Jupyter Lab</figcaption>
-</figure>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/index.html</guid>
-  <pubDate>Fri, 17 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-18-jupyter/jupyterlab-preview.png" medium="image" type="image/png" height="90" width="144"/>
 </item>
 </channel>
 </rss>
