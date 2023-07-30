@@ -1,0 +1,41 @@
+---
+date: "2023-07-30"
+image: playwright-logo.png
+categories: [Python]
+---
+
+# Screenshots with Playwright
+
+I heard about [Playwright](https://playwright.dev/python/docs/library) in [Episode #424](https://talkpython.fm/episodes/show/424/shiny-for-python) of [Talk Python To Me](https://talkpython.fm/).
+
+Here is an example of taking screenshots from the Playwright documentation which I updated for taking screenshots of this learning blog.
+
+```python
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as spw:
+    for browser_type in [spw.chromium, spw.firefox, spw.webkit]:
+        browser = browser_type.launch()
+        page = browser.new_page()
+        page.goto("https://hdigital.github.io/learning-diary/")
+        page.screenshot(path=f"screenshot-{browser_type.name}.png")
+        browser.close()
+```
+
+The code needs to be run in a Python script and does not run in Jupyter.
+
+---
+
+### Chromium screenshot · 💻
+
+![](screenshot-chromium.png)
+
+
+### Firefox screenshot · 💻
+
+![](screenshot-firefox.png)
+
+
+### Webkit screenshot · 💻
+
+![](screenshot-webkit.png)
