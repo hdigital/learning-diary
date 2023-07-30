@@ -10,7 +10,81 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 28 Jul 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 29 Jul 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="screenshots-with-playwright" class="level1">
+<h1>Screenshots with Playwright</h1>
+<p>I heard about <a href="https://playwright.dev/python/docs/library">Playwright</a> in <a href="https://talkpython.fm/episodes/show/424/shiny-for-python">Episode #424</a> of <a href="https://talkpython.fm/">Talk Python To Me</a>.</p>
+<p>Here is an example of taking screenshots from the Playwright documentation which I updated for taking screenshots of this learning blog.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> playwright.sync_api <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> sync_playwright</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> sync_playwright() <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> spw:</span>
+<span id="cb1-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> browser_type <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> [spw.chromium, spw.firefox, spw.webkit]:</span>
+<span id="cb1-5">        browser <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> browser_type.launch()</span>
+<span id="cb1-6">        page <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> browser.new_page()</span>
+<span id="cb1-7">        page.goto(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://hdigital.github.io/learning-diary/"</span>)</span>
+<span id="cb1-8">        page.screenshot(path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"screenshot-</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>browser_type<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>name<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">.png"</span>)</span>
+<span id="cb1-9">        browser.close()</span></code></pre></div>
+<p>The code needs to be run in a Python script and does not run in Jupyter.</p>
+<hr>
+<section id="chromium-screenshot" class="level3">
+<h3 class="anchored" data-anchor-id="chromium-screenshot">Chromium screenshot · 💻</h3>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-chromium.png" class="img-fluid"></p>
+</section>
+<section id="firefox-screenshot" class="level3">
+<h3 class="anchored" data-anchor-id="firefox-screenshot">Firefox screenshot · 💻</h3>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-firefox.png" class="img-fluid"></p>
+</section>
+<section id="webkit-screenshot" class="level3">
+<h3 class="anchored" data-anchor-id="webkit-screenshot">Webkit screenshot · 💻</h3>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-webkit.png" class="img-fluid"></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/index.html</guid>
+  <pubDate>Sat, 29 Jul 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/playwright-logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Package versions with renv</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/index.html</link>
@@ -252,7 +326,7 @@ font-style: inherit;">dependencies</span>(), Package), require)</span></code></p
 background-color: null;
 font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.0 (2023-04-21)
+<pre><code>R version 4.3.1 (2023-06-16)
 Platform: x86_64-apple-darwin20 (64-bit)
 Running under: macOS Ventura 13.4.1
 
@@ -278,10 +352,10 @@ loaded via a namespace (and not attached):
  [5] xfun_0.39         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   
  [9] glue_1.6.2        htmltools_0.5.5   ps_1.7.5          fansi_1.0.4      
 [13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       
-[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.0    htmlwidgets_1.6.2
+[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2
 [21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         
 [25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   
-[29] tools_4.3.0       withr_2.5.0       cachem_1.0.8     </code></pre>
+[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8     </code></pre>
 </div>
 </div>
 <hr>
@@ -2921,28 +2995,6 @@ font-style: inherit;">'sex'</span>]</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-02-26-altair/index.html</guid>
   <pubDate>Sat, 25 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-26-altair/altair-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="hello-jupyter" class="level1">
-<h1>Hello Jupyter</h1>
-<p>I used my new Quarto and Jupyter skills to <a href="https://github.com/hdigital/HalloJupyterDSS/commits/main">create web pages</a> for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS.</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/arnim-fork.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/index.html</guid>
-  <pubDate>Tue, 21 Feb 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-02-22-hello-jupyter/arnim-fork.png" medium="image" type="image/png" height="111" width="144"/>
 </item>
 </channel>
 </rss>

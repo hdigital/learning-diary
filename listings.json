@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/2023-07-30-playwright/index.html",
       "/posts/2023-07-29-renv/index.html",
       "/posts/2023-07-16 r4ds-pr/index.html",
       "/posts/2023-til/index.html",
