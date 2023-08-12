@@ -42,11 +42,21 @@ lintr::lint_dir('posts')
 + Tidyverse-R -- R and tidyverse
 + Python -- [create `env`](https://quarto.org/docs/projects/virtual-environments.html#using-venv)
 
-R packages
+### R
+
+Core R packages used in project
 
 ```r
-install.packages(c("gapminder", "knitr", "patchwork", "tidyverse"))
+install.packages(c("gapminder", "markdown", "patchwork", "tidyverse"))
 ```
+
+All R packages used in project
+
+```sh
+Rscript snippets/packages-install.R
+```
+
+### Python
 
 Python packages -- see [requirements.txt](requirements.txt)
 

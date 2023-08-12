@@ -16,12 +16,15 @@ RUN gdebi --non-interactive quarto-linux-amd64.deb
 
 ENV QUARTO_PYTHON="/usr/bin/python3"
 
-# install R packages
+# install R packages — development tools
+RUN install2.r pak renv
+
+# install R packages — data analysis
 RUN install2.r \
     gapminder \
-	markdown \
+    markdown \
     patchwork \
-	reticulate
+    reticulate
 
 # install Python packages
 COPY requirements.txt .
