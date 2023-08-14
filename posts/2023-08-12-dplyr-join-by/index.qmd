@@ -1,0 +1,77 @@
+---
+date: "2023-08-12"
+image: dplyr-logo.png
+categories: [R, tidyverse]
+---
+
+# dplyr join_by() argument
+
+[dplyr 1.1](https://www.tidyverse.org/blog/2023/03/dplyr-1-1-1/) introduced a new option for the `by` argument to the `*_join()` family of functions. You can now use `join_by()` instead of the previous `c()`.
+
+```{r}
+#| message: false
+
+library(tidyverse)
+library(gapminder)
+
+dt_1 <-
+    gapminder |>
+    left_join(country_codes, by = join_by(country == country))
+```
+
+The short version without the named parameter works as well when using it as the third parameter in a `*_join()` function (the second parameter in a pipe.)
+
+```{r}
+dt_2 <-
+    gapminder |>
+    left_join(country_codes, join_by(country == country))
+```
+
+It is an alternative to using `c()` in the argument.
+
+```{r}
+dt_3 <-
+    gapminder |>
+    left_join(country_codes, by = c("country" = "country"))
+```
+
+The three created data frames are identical.
+
+```{r}
+identical(dt_1, dt_2) & identical(dt_1, dt_3)
+```
+
+And here is a figure using the created data frame.
+
+```{r}
+#| code-fold: true
+#| message: false
+
+set.seed(2)
+
+pl_dt <-
+    dt_1 |>
+    filter(year == max(year)) |>
+    select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)
+
+ggplot(pl_dt, aes(x = gdp_per_capita, y = life_expectency)) +
+    geom_point(color = "darkgrey") +
+    scale_x_log10() +
+    geom_smooth() +
+    geom_text(
+        data = sample_n(pl_dt, 10),
+        aes(x = gdp_per_capita, y = life_expectency, label = country),
+        vjust = -0.8, size = 3.5
+    )
+```
+
+
+---
+
+This is something I missed when reading the change log of the dplyr 1.1. release and did not find out about by reading the help pages of the `*_join()` functions.
+
+It was different with the  [multiple matches revisions](https://www.tidyverse.org/blog/2023/03/dplyr-1-1-1/#revisiting-multiple-matches) in dplyr 1.1. Here, I quickly run into the new warning message, explored and used it. To handle multiple matches more explicitly is really nice and I have started to use it regularly.
+
+The recent post [Teaching the tidyverse in 2023](https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality) provided a good review of the new features in the tidyverse released over the last months. I was aware of most of the changes and have started using the new approaches.
+
+It is nice to see that the tidyverse is evolving and that the changes are documented so well.
