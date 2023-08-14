@@ -1,0 +1,92 @@
+---
+date: "2023-06-30"
+image: dplyr-logo.png
+categories: [R, tidyverse]
+title: "dplyr programming"
+toc: true
+---
+
+I wanted to use some dynamic variable names in dplyr and had to look up [dplyr programming](https://dplyr.tidyverse.org/articles/programming.html) again.
+
+This is something I have to look up regularly and where I am still not comfortable with the terminology. Here, I find the respective tidyverse documentation rather challenging. However, dplyr programming is also something that I use rarely.
+
+So here is a brief summary of my recent exploration of the topic.
+
+```{r}
+#| warning: false
+
+library(tidyverse)
+
+cars <- as_tibble(datasets::mtcars)
+var_select <- "cyl"
+```
+
+
+## Pronoun .data
+
+Use the `.data` pronoun to access a variable name in a character object in a dplyr workflow.
+```{r}
+cars |> count(.data[[var_select]])
+
+cars |> count(.data[["cyl"]])
+```
+
+## Embrace argument
+
+A variable used as a function argument can be _embraced_ with double braces to use it in a dplyr workflow.
+
+```{r}
+count_var <- function(.dt, .var) {
+    summarise(.dt, n = n(), .by = all_of({{ .var }}))
+}
+
+count_var(cars, var_select)
+count_var(cars, c(var_select, "vs"))
+```
+
+
+## Name injection
+
+Name injection can be used to assign new variable names in a dplyr workflow.
+
+`:=` is used as the assignment operator with dynamic new variable names.
+```{r}
+cars |>
+    summarise("{var_select}_count" := n(),
+        .by = all_of({{ var_select }})
+    )
+
+
+count_var2 <- function(dt, var) {
+    summarise(dt, "{var}_count" := n(),
+        .by = all_of({{ var }})
+    )
+}
+
+count_var2(cars, "cyl")
+
+
+count_var3 <- function(dt, var) {
+    summarise(dt, "{{var}}_count" := n(),
+        .by = all_of({{ var }})
+    )
+}
+
+count_var3(cars, var_select)
+
+
+summarise_dt <- function(data, var) {
+    data |>
+        summarise(
+            "mean_{{var}}" := mean({{ var }}),
+            "sum_{{var}}" := sum({{ var }}),
+            "n_{{var}}" := n()
+        )
+}
+
+summarise_dt(cars, cyl)
+```
+
+---
+
+![](dplyr-logo.png)
