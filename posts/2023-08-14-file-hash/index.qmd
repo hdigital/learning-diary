@@ -1,0 +1,46 @@
+---
+date: "2023-08-14"
+image: rlang-logo.png
+categories: [R]
+---
+
+# File hashing
+
+To increase the transparency of my work, I was interested in file hashing. It
+allows to assign a unique value to a file. Such a value is calculated with a
+defined algorithm.
+
+In R, the [rlang](https://rlang.r-lib.org/) library provides the
+[`hash_file()`](https://rlang.r-lib.org/reference/hash.html) function and uses
+the XXH128 hash algorithm to generate a 128-bit hash.
+
+This can be used to uniquely identify a data file. For reproducible research,
+you can add hash values for the datafiles used in a project to uniquely
+identify them.
+
+Here, I have created two files for data sets from the _datasets_ library and
+calculate the hash values of these files.
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+library(readr)
+
+write_csv(datasets::iris, "iris.csv")
+write_csv(datasets::mtcars, "mtcars.csv")
+```
+
+```{r}
+#| message: false
+
+library(tidyverse)
+
+tibble(files = fs::dir_ls(glob = "*.csv")) |>
+    mutate(hash = rlang::hash_file(files))
+```
+
+
+---
+
+![](rlang-logo.png)
