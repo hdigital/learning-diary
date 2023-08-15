@@ -9,8 +9,108 @@
 <link>https://hdigital.github.io/learning-diary/index.html</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.3.433</generator>
-<lastBuildDate>Fri, 11 Aug 2023 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Sun, 13 Aug 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="file-hashing" class="level1">
+<h1>File hashing</h1>
+<p>To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.</p>
+<p>In R, the <a href="https://rlang.r-lib.org/">rlang</a> library provides the <a href="https://rlang.r-lib.org/reference/hash.html"><code>hash_file()</code></a> function and uses the XXH128 hash algorithm to generate a 128-bit hash.</p>
+<p>This can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.</p>
+<p>Here, I have created two files for data sets from the <em>datasets</em> library and calculate the hash values of these files.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(readr)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_csv</span>(datasets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>iris, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"iris.csv"</span>)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_csv</span>(datasets<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>mtcars, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mtcars.csv"</span>)</span></code></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">files =</span> fs<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dir_ls</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">glob =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*.csv"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb2-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hash =</span> rlang<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">hash_file</span>(files))</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">files</th>
+<th style="text-align: left;">hash</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">iris.csv</td>
+<td style="text-align: left;">dbdc1846dff7fba30a88d5b23e15ea80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mtcars.csv</td>
+<td style="text-align: left;">1d350737ac40dc6fb6ae8f5ad616fc4e</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/rlang-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/index.html</guid>
+  <pubDate>Sun, 13 Aug 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/rlang-logo.png" medium="image" type="image/png" height="139" width="120"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/index.html</link>
@@ -3062,183 +3162,6 @@ font-style: inherit;">geom_point</span>()</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</guid>
   <pubDate>Sun, 19 Mar 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/r-wasm.png" medium="image" type="image/png" height="62" width="144"/>
-</item>
-<item>
-  <title>PyScript (WebAssembly)</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I used <a href="https://pyscript.net/">pyscript</a> for the first time and created a web page that run some Python code.</p>
-<p>So here is the script I run.</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> random</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">n <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span></span>
-<span id="cb1-4">emojis <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span></span>
-<span id="cb1-5"></span>
-<span id="cb1-6">lines <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">""</span>.join(random.choices(emojis, k<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>n)) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> index <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(n)]</span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span>.join(lines))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>🙂😉😀🤗😉😉😃😃🤗😂😃😉😂😆😁😎🙂😆😉😄
-🙂🤗😃😂🙂😊😇😊😅😄🤗😊😃😉🙂🙂😂😅🤗😎
-😄😋😇🙂😄😆🙂😃😅😄😃😋🙂😇😁😁😅😇🤗😀
-🙂😊😃😀😎😀😆😃🙂😃😉😇😀🙂😎😄😁🙂😇😇
-😃😂😉😇😃😉😎😂😅😆😁😀😅🤗😅😎🙂😊😅😎
-🙂😃😀😉😂😃😆😋😀😉😎😋😇😄🤗😋😇😋😃😊
-😊😁😃😊😅😁🙂😎😊😆😁😂🙂🤗🙂🤗😃😋😂😀
-😂😀😁😆😅😃🤗😆🤗😀😆🙂😆😎😋😆😎😇😄😆
-😉🤗😁😃😉😂🙂😊😆😁😂😁😄😀😆😇😊😅😎🤗
-🙂😆😉😆😀😅😊😄😎😆😉😋😂😉😂🤗😇🤗😆😄
-😇😊😁😁😇😋😁😂😋😉😎😇😋😉😆😅😅😎😉😂
-😀😋😂😋🤗😎😀🙂😉😂😄😆😆🤗😎😃😄😊😋😂
-😃😁😉😎😊🙂🙂😎😊😅😇😂🤗😎😉😇😂😃😊😋
-😄😄😁😄😄😇🙂😄🤗😎🤗😄😊😆😃😉😃😊😃😃
-😃🙂😇😉🙂😊😁😂😂😉🙂😎😄😇😄😁😁😀🤗🙂
-🙂😉😇🙂😀😇🙂😎😃😊😆😂😁😊😎😅😄😇😊😁
-😀😊😇😉😂🤗🙂😋😃😉😃😁🙂😂😄😆🙂😎😂😎
-😁😎😄😁😊😋😉😀😁😋😋😉😋😉😉🙂😆😇😅😆
-🙂😁😂😂🤗😊😆😊😋😆😊😊😀😉😂😅🤗🙂😋😀
-😂😊😇🙂😉😊😊😁😊🙂😇😄😁😅🤗😇😃😎😇😎</code></pre>
-</div>
-</div>
-<p>Here is the full html page that uses pyscript.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&lt;!DOCTYPE </span>html<span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;html</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">lang</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"en"</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-3"></span>
-<span id="cb3-4">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;head&gt;</span></span>
-<span id="cb3-5">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;meta</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">charset</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"UTF-8"</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb3-6">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;title&gt;</span>Happy DSS Hacking<span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;/title&gt;</span></span>
-<span id="cb3-7">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;link</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">rel</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"stylesheet"</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">href</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://pyscript.net/latest/pyscript.css"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">/&gt;</span></span>
-<span id="cb3-8">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;script</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">defer</span> <span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">src</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://pyscript.net/latest/pyscript.js"</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&gt;&lt;/script&gt;</span></span>
-<span id="cb3-9">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;/head&gt;</span></span>
-<span id="cb3-10"></span>
-<span id="cb3-11">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;body&gt;</span></span>
-<span id="cb3-12">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;py-script&gt;</span></span>
-<span id="cb3-13">            import random</span>
-<span id="cb3-14"></span>
-<span id="cb3-15">            n = 100</span>
-<span id="cb3-16">            emojis = "🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗"</span>
-<span id="cb3-17"></span>
-<span id="cb3-18">            lines = ["".join(random.choices(emojis, k=n)) for index in range(n)]</span>
-<span id="cb3-19"></span>
-<span id="cb3-20">            print("\n".join(lines))</span>
-<span id="cb3-21">        <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;/py-script&gt;</span></span>
-<span id="cb3-22">    <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;/body&gt;</span></span>
-<span id="cb3-23"></span>
-<span id="cb3-24"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;/html&gt;</span></span></code></pre></div>
-
-
-
- ]]></description>
-  <category>Python</category>
-  <category>cloud</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/index.html</guid>
-  <pubDate>Tue, 14 Mar 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-15-pyscript/emojis.png" medium="image" type="image/png" height="141" width="144"/>
 </item>
 </channel>
 </rss>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -153,13 +153,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.</p>
 <p>In R, the <a href="https://rlang.r-lib.org/">rlang</a> library provides the <a href="https://rlang.r-lib.org/reference/hash.html"><code>hash_file()</code></a> function and uses the XXH128 hash algorithm to generate a 128-bit hash.</p>
 <p>This can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.</p>
-<p>Here, I have created two data sets and calculted the hash values.</p>
+<p>Here, I have created two files for data sets from the <em>datasets</em> library and calculate the hash values of these files.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(gapminder<span class="sc">::</span>gapminder, <span class="st">"gapminder.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(datasets<span class="sc">::</span>iris, <span class="st">"iris.csv"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(datasets<span class="sc">::</span>mtcars, <span class="st">"mtcars.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -179,8 +179,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">gapminder.csv</td>
-<td style="text-align: left;">f92d34de30e4fba1ce76cf69d5342e38</td>
+<td style="text-align: left;">iris.csv</td>
+<td style="text-align: left;">dbdc1846dff7fba30a88d5b23e15ea80</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">mtcars.csv</td>
