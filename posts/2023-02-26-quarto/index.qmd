@@ -1,6 +1,6 @@
 ---
 date: "2023-02-26"
-image: quarto.png
+image: quarto-logo.png
 jupyter: python3
 categories: [Docker, Python, Quarto]
 ---
