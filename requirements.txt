@@ -1,12 +1,11 @@
-jupyter
+# Data science
+jupyterlab
 pandas
 matplotlib
 
 altair
 folium
-geopy
 statsmodels
-seaborn
 
 # Quarto
 nbclient
@@ -17,3 +16,5 @@ ipykernel
 
 # Development
 nbdev
+
+# Post specific requirements in 'snippets/requirements-posts.txt'
