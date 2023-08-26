@@ -16,7 +16,9 @@
 
 # RStudio Docker files
 /.config/rstudio/
-/.local/share/
+/.local/
+/.TinyTeX/
+.bash_history
 
 
 # -----------------------------------------------------------------------------
