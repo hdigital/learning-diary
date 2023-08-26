@@ -1,0 +1,4 @@
+# additional requirements used in some posts
+
+geopy
+seaborn
