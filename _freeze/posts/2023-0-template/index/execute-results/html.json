@@ -1,0 +1,16 @@
+{
+  "hash": "8f39e7be52d9f14eae0c31cb67f4bce4",
+  "result": {
+    "markdown": "---\ndate: \"2023-0x-xx\"\nimage: thumbnail.png\n# jupyter: python3\ncategories: [R, Python]\ndraft: true\n---\n\n\n# Title\n\npost text and snippets\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"false\"}\nlibrary(tidyverse)\n\nmtcars <- as_tibble(datasets::mtcars)\n\nggplot(mtcars, aes(x = hp, y = mpg)) +\n  geom_point(aes(color = factor(cyl))) +\n  geom_smooth()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n---\n\n![](thumbnail.png)\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

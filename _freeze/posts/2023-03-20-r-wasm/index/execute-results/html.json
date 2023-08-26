@@ -1,0 +1,16 @@
+{
+  "hash": "fb257cc31dea3c9e657cdd510e103c3b",
+  "result": {
+    "markdown": "---\ndate: \"2023-03-20\"\nimage: r-wasm.png\ncategories: [R, cloud]\n---\n\n\n# WebR (WebAssembly)\n\nI read about the [webR](https://docs.r-wasm.org/webr/latest/) release on the [Tidyverse blog](https://www.tidyverse.org/blog/2023/03/webr-0-1-0/). It allows to run R in a browser.\n\nSo I went to [webr.r-wasm.org](https://webr.r-wasm.org/latest/) and gave it a try.\n\nI tried to install the _tidyverse_ with `webr::install(\"tidyverse\")`. That did not work. For me, there is little use of R without the _tidyverse_.\n\nInstalling _dplyr_ and _ggplot2_ individually worked. So that I could run the following code.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndt <- as_tibble(mtcars)\nglimpse(dt)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\nRows: 32\nColumns: 11\n$ mpg  <dbl> 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  <dbl> 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp <dbl> 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   <dbl> 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat <dbl> 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   <dbl> 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec <dbl> 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   <dbl> 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   <dbl> 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear <dbl> 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb <dbl> 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…\n```\n:::\n\n```{.r .cell-code}\nggplot(dt, aes(x = hp, y = mpg, color = cyl)) +\n  geom_point()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\nTyping the R commands in a browser shell without tab completion and no R help was challenging though.\n\nHaving R in a browser quickly available is nice 😊.\n\n---\n\n![](r-wasm.png)\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

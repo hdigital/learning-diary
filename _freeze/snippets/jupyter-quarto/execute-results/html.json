@@ -1,0 +1,11 @@
+{
+  "hash": "8e13adc1b6f6eb3b0357e0da2f3c972a",
+  "result": {
+    "markdown": "Jupyter notebook rendering with Quarto\n\n---\n\nQuarto document converted from Jupyter notebook with `quarto convert`\n\nsee [post](/posts/2023-02-18-jupyter/)\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n```\n\n::: {.cell-output .cell-output-display}\n![](jupyter-quarto_files/figure-html/cell-2-output-1.png){width=450 height=439}\n:::\n:::\n\n\n",
+    "supporting": [
+      "jupyter-quarto_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

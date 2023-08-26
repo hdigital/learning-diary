@@ -1,0 +1,14 @@
+{
+  "hash": "a36ea1e98ec62a6c829ddb69fd24e40f",
+  "result": {
+    "markdown": "---\ndate: \"2023-08-14\"\nimage: rlang-logo.png\ncategories: [R]\n---\n\n\n# File hashing\n\nTo increase the transparency of my work, I was interested in file hashing. It\nallows to assign a unique value to a file. Such a value is calculated with a\ndefined algorithm.\n\nIn R, the [rlang](https://rlang.r-lib.org/) library provides the\n[`hash_file()`](https://rlang.r-lib.org/reference/hash.html) function and uses\nthe XXH128 hash algorithm to generate a 128-bit hash.\n\nThis can be used to uniquely identify a data file. For reproducible research,\nyou can add hash values for the datafiles used in a project to uniquely\nidentify them.\n\nHere, I have created two files for data sets from the _datasets_ library and\ncalculate the hash values of these files.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nlibrary(readr)\n\nwrite_csv(datasets::iris, \"iris.csv\")\nwrite_csv(datasets::mtcars, \"mtcars.csv\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\ntibble(files = fs::dir_ls(glob = \"*.csv\")) |>\n    mutate(hash = rlang::hash_file(files))\n```\n\n::: {.cell-output-display}\n<div class=\"kable-table\">\n\n|files      |hash                             |\n|:----------|:--------------------------------|\n|iris.csv   |dbdc1846dff7fba30a88d5b23e15ea80 |\n|mtcars.csv |1d350737ac40dc6fb6ae8f5ad616fc4e |\n\n</div>\n:::\n:::\n\n\n\n---\n\n![](rlang-logo.png)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

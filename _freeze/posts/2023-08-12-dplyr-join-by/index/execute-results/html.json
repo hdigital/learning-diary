@@ -1,0 +1,16 @@
+{
+  "hash": "4a91ae8a02be53666e7ec973d9c49291",
+  "result": {
+    "markdown": "---\ndate: \"2023-08-12\"\nimage: dplyr-logo.png\ncategories: [R, tidyverse]\n---\n\n\n# dplyr join_by() argument\n\n[dplyr 1.1](https://www.tidyverse.org/blog/2023/03/dplyr-1-1-1/) introduced a new option for the `by` argument to the `*_join()` family of functions. You can now use `join_by()` instead of the previous `c()`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(gapminder)\n\ndt_1 <-\n    gapminder |>\n    left_join(country_codes, by = join_by(country == country))\n```\n:::\n\n\nThe short version without the named parameter works as well when using it as the third parameter in a `*_join()` function (the second parameter in a pipe.)\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndt_2 <-\n    gapminder |>\n    left_join(country_codes, join_by(country == country))\n```\n:::\n\n\nIt is an alternative to using `c()` in the argument.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndt_3 <-\n    gapminder |>\n    left_join(country_codes, by = c(\"country\" = \"country\"))\n```\n:::\n\n\nThe three created data frames are identical.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nidentical(dt_1, dt_2) & identical(dt_1, dt_3)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] TRUE\n```\n:::\n:::\n\n\nAnd here is a figure using the created data frame.\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\nset.seed(2)\n\npl_dt <-\n    dt_1 |>\n    filter(year == max(year)) |>\n    select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)\n\nggplot(pl_dt, aes(x = gdp_per_capita, y = life_expectency)) +\n    geom_point(color = \"darkgrey\") +\n    scale_x_log10() +\n    geom_smooth() +\n    geom_text(\n        data = sample_n(pl_dt, 10),\n        aes(x = gdp_per_capita, y = life_expectency, label = country),\n        vjust = -0.8, size = 3.5\n    )\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n\n---\n\nThis is something I missed when reading the change log of the dplyr 1.1. release and did not find out about by reading the help pages of the `*_join()` functions.\n\nIt was different with the  [multiple matches revisions](https://www.tidyverse.org/blog/2023/03/dplyr-1-1-1/#revisiting-multiple-matches) in dplyr 1.1. Here, I quickly run into the new warning message, explored and used it. To handle multiple matches more explicitly is really nice and I have started to use it regularly.\n\nThe recent post [Teaching the tidyverse in 2023](https://www.tidyverse.org/blog/2023/08/teach-tidyverse-23/#improved-and-expanded-_join-functionality) provided a good review of the new features in the tidyverse released over the last months. I was aware of most of the changes and have started using the new approaches.\n\nIt is nice to see that the tidyverse is evolving and that the changes are documented so well.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "hash": "399d9f9bb84926f9037da9c72e76b374",
+  "result": {
+    "markdown": "---\ndate: \"2023-02-17\"\nimage: thumbnail.png\ncategories: [R, ggplot]\n---\n\n\n# Horizontal bar chart\n\nTo have horizontal bar charts ordered by frequency, I have used `geom_bar()` and `coord_flip` for a long time.\n\nI have now learned in an [example](https://www.eoda.de/en/wissen/blog/10-tidyverse-functions-that-might-save-your-day/#fct_reorder) that this is not necessary.\n\nHere are a few examples and the code for future references.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\nmtcars <- as_tibble(datasets::mtcars)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n\n\nI used to do some pre-processing to prepare data for the plot.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npl_dt <-\n  mtcars |>\n  mutate(cyl = fct_infreq(factor(cyl)) |> fct_rev())\n```\n:::\n\n\nFor the figure, I used `coord_flip`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n\nThat was not necessary, as I have learned now.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\nHere is an alternative approach with `geom_col()`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npl_dt <-\n  mtcars |>\n  count(cyl) |>\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-6-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
