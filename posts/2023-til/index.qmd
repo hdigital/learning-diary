@@ -9,6 +9,20 @@ format:
 
 <!--- I keep brief information here. Mainly things I learned that don't create a post. -->
 
+## 31. July
+
+Simple debugging with [IPython](https://ipython.readthedocs.io/en/stable/) — found at [Real Python](https://realpython.com/ipython-interactive-python-shell/) (now gated).
+
+```py
+import IPython
+
+var_1 = "hello"
+
+IPython.embed()
+
+var_2 = "world"
+```
+
 ## 30. June
 
 Set [default printing](https://quarto.org/docs/computations/r.html#data-frames) function for data frames in Quarto notebook with html option `df-print: kable`.
