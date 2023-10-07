@@ -10,7 +10,307 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 13 Aug 2023 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 07 Oct 2023 12:21:16 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
+<section id="july" class="level2">
+<h2 class="anchored" data-anchor-id="july">31. July</h2>
+<p>Simple debugging with <a href="https://ipython.readthedocs.io/en/stable/">IPython</a> — found at <a href="https://realpython.com/ipython-interactive-python-shell/">Real Python</a> (now gated).</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> IPython</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">var_1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hello"</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5">IPython.embed()</span>
+<span id="cb1-6"></span>
+<span id="cb1-7">var_2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"world"</span></span></code></pre></div>
+</section>
+<section id="june" class="level2">
+<h2 class="anchored" data-anchor-id="june">30. June</h2>
+<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
+<p>Useful to have html tables instead of monospace tables in notebooks.</p>
+<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Document"</span></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-4"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb2-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> kable</span></span>
+<span id="cb2-6"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span></code></pre></div>
+</section>
+<section id="june-1" class="level2">
+<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
+<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
+</section>
+<section id="june-2" class="level2">
+<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
+<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
+<pre><code>&lt;!--- comment  --&gt;
+
+&lt;!---
+multi-line
+comments
+--&gt;</code></pre>
+<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
+</section>
+<section id="june-3" class="level2">
+<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
+<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
+<div class="sourceCode" id="cb4" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb4-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> pdf</span></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb4-4"></span>
+<span id="cb4-5">Page 1</span>
+<span id="cb4-6"></span>
+<span id="cb4-7">{{&lt; pagebreak &gt;}}</span>
+<span id="cb4-8"></span>
+<span id="cb4-9">Page 2</span></code></pre></div>
+<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
+</section>
+<section id="june-4" class="level2">
+<h2 class="anchored" data-anchor-id="june-4">9. June</h2>
+<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use path relative to script location, if feasible</span></span>
+<span id="cb5-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb5-3">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-P</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb5-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span></span>
+<span id="cb5-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">! </span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb5-6">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Run script in project folder"</span></span>
+<span id="cb5-7">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exit</span> 1</span>
+<span id="cb5-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span>
+<span id="cb5-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span></code></pre></div>
+</section>
+<section id="may" class="level2">
+<h2 class="anchored" data-anchor-id="may">17. May</h2>
+<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
+<p><code>add_three &lt;- \(.x) .x+3</code></p>
+</section>
+<section id="may-1" class="level2">
+<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
+<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
+<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
+</section>
+<section id="may-2" class="level2">
+<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
+<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
+</section>
+<section id="may-3" class="level2">
+<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
+<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
+<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
+</section>
+<section id="may-4" class="level2">
+<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
+<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
+<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
+</section>
+<section id="apr." class="level2">
+<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
+<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
+</section>
+<section id="apr.-1" class="level2">
+<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
+<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
+</section>
+<section id="feb." class="level2">
+<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the more convenient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
+  <pubDate>Sat, 07 Oct 2023 12:21:16 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<section id="quarto-version-in-docker" class="level1">
+<h1>Quarto version in Docker</h1>
+<p>I realized that installing the latest version of <a href="https://quarto.org/">Quarto</a> in <a href="https://docs.docker.com/get-started/">Docker</a> will not lead to a reproducible environment since the latest Docker version depends on the day an image is build. So I was looking for a <code>Dockerfile</code> configuration to install a specified version of Quarto in Docker.</p>
+<p>Quarto keeps a list of <a href="https://github.com/quarto-dev/quarto-cli/releases/">releases</a> so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.</p>
+<p>For the final solution I needed several attempts but learned someting about defining arguments in a <code>Dockerfile</code>.</p>
+<p>Here is the solution I came up with.</p>
+<pre class="docker"><code>ARG QUARTO_VERSION=1.3.450
+RUN apt-get -y update &amp;&amp; apt-get install -y --no-install-recommends curl gdebi-core
+RUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb
+RUN gdebi --non-interactive quarto-${QUARTO_VERSION}-linux-amd64.deb
+RUN install2.r markdown reticulate
+# RUN quarto install tinytex</code></pre>
+<p>This is the version for the latest release I have used so far.</p>
+<pre class="docker"><code>RUN apt-get -y update &amp;&amp; apt-get install -y --no-install-recommends curl gdebi-core
+RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
+RUN gdebi --non-interactive quarto-linux-amd64.deb
+RUN install2.r markdown reticulate
+# RUN quarto install tinytex</code></pre>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/docker-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Docker</category>
+  <category>Quarto</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/index.html</guid>
+  <pubDate>Sun, 20 Aug 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/quarto-logo.png" medium="image" type="image/png" height="35" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/index.html</link>
@@ -582,15 +882,15 @@ font-style: inherit;">distinct</span>()</span></code></pre></div>
 </tr>
 <tr class="even">
 <td style="text-align: left;">purrr</td>
-<td style="text-align: left;">1.0.1</td>
+<td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">renv</td>
-<td style="text-align: left;">1.0.0</td>
+<td style="text-align: left;">1.0.2</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">rmarkdown</td>
-<td style="text-align: left;">2.23</td>
+<td style="text-align: left;">2.24</td>
 </tr>
 </tbody>
 </table>
@@ -629,30 +929,35 @@ background-color: null;
 font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.3.1 (2023-06-16)
-Platform: x86_64-apple-darwin20 (64-bit)
-Running under: macOS Ventura 13.4.1
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 22.04.3 LTS
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
-LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
 
 locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
-time zone: Europe/Berlin
-tzcode source: internal
+time zone: Etc/UTC
+tzcode source: system (glibc)
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] rmarkdown_2.23   conflicted_1.2.0 callr_3.7.3      renv_1.0.0      
-[5] purrr_1.0.1      dplyr_1.1.2     
+[1] rmarkdown_2.24   conflicted_1.2.0 callr_3.7.3      renv_1.0.2      
+[5] purrr_1.0.2      dplyr_1.1.2     
 
 loaded via a namespace (and not attached):
  [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      
- [5] xfun_0.39         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   
- [9] glue_1.6.2        htmltools_0.5.5   ps_1.7.5          fansi_1.0.4      
+ [5] xfun_0.40         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   
+ [9] glue_1.6.2        htmltools_0.5.6   ps_1.7.5          fansi_1.0.4      
 [13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       
 [17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2
 [21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         
@@ -698,247 +1003,6 @@ loaded via a namespace (and not attached):
   <guid>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/index.html</guid>
   <pubDate>Sat, 15 Jul 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="115" width="144"/>
-</item>
-<item>
-  <title>Today I learned (TIL)</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
-<section id="june" class="level2">
-<h2 class="anchored" data-anchor-id="june">30. June</h2>
-<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
-<p>Useful to have html tables instead of monospace tables in notebooks.</p>
-<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Document"</span></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb1-4"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb1-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> kable</span></span>
-<span id="cb1-6"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span></code></pre></div>
-</section>
-<section id="june-1" class="level2">
-<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
-<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
-</section>
-<section id="june-2" class="level2">
-<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
-<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
-<pre><code>&lt;!--- comment  --&gt;
-
-&lt;!---
-multi-line
-comments
---&gt;</code></pre>
-<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
-</section>
-<section id="june-3" class="level2">
-<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
-<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
-<div class="sourceCode" id="cb3" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb3-2"><span class="an" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"> pdf</span></span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb3-4"></span>
-<span id="cb3-5">Page 1</span>
-<span id="cb3-6"></span>
-<span id="cb3-7">{{&lt; pagebreak &gt;}}</span>
-<span id="cb3-8"></span>
-<span id="cb3-9">Page 2</span></code></pre></div>
-<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
-</section>
-<section id="june-4" class="level2">
-<h2 class="anchored" data-anchor-id="june-4">9. June</h2>
-<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use path relative to script location, if feasible</span></span>
-<span id="cb4-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb4-3">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-P</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb4-4"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span></span>
-<span id="cb4-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">! </span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb4-6">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Run script in project folder"</span></span>
-<span id="cb4-7">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">exit</span> 1</span>
-<span id="cb4-8">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span>
-<span id="cb4-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span></code></pre></div>
-</section>
-<section id="may" class="level2">
-<h2 class="anchored" data-anchor-id="may">17. May</h2>
-<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
-<p><code>add_three &lt;- \(.x) .x+3</code></p>
-</section>
-<section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
-<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
-<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
-</section>
-<section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
-<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
-</section>
-<section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
-<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
-<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
-</section>
-<section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
-<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
-<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
-</section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
-<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
-<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
-</section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
-<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
-</section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the more convenient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Fri, 30 Jun 2023 08:27:37 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>dplyr programming</title>
@@ -1776,7 +1840,7 @@ font-style: inherit;"># Download the image</span></span>
 background-color: null;
 font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fcaf7f8cb50&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fbbea328550&gt;)</code></pre>
 </div>
 </div>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/image.jpg" class="img-fluid"></p>
@@ -1973,7 +2037,7 @@ font-style: inherit;">map</span></span></code></pre></div>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_c1d217a1f70f6cbcee4820c9e36447fa {
+                #map_14d6ce4270e83321b96746620bc98829 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1987,14 +2051,14 @@ font-style: inherit;">map</span></span></code></pre></div>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_c1d217a1f70f6cbcee4820c9e36447fa&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_14d6ce4270e83321b96746620bc98829&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_c1d217a1f70f6cbcee4820c9e36447fa = L.map(
-                &quot;map_c1d217a1f70f6cbcee4820c9e36447fa&quot;,
+            var map_14d6ce4270e83321b96746620bc98829 = L.map(
+                &quot;map_14d6ce4270e83321b96746620bc98829&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -2008,28 +2072,28 @@ font-style: inherit;">map</span></span></code></pre></div>
 
         
     
-            var tile_layer_0a20780bf7f8742629a75585a0c691a7 = L.tileLayer(
+            var tile_layer_3a9788ae020ff984cbe85e0d7507dfc9 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_c1d217a1f70f6cbcee4820c9e36447fa);
+            ).addTo(map_14d6ce4270e83321b96746620bc98829);
         
     
-            var marker_547db7a7e0ff7d508323000445aa53d3 = L.marker(
+            var marker_93a1a2b27db856bd6db96d7b1028468f = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_c1d217a1f70f6cbcee4820c9e36447fa);
+            ).addTo(map_14d6ce4270e83321b96746620bc98829);
         
     
-        var popup_c1dc49339182c7d2083aab6a485206b3 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_1747d4267bdf3b7449f089d91cadddf3 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_bea47ea6735fe3df4fce2b36fc97b652 = $(`<div id=&quot;html_bea47ea6735fe3df4fce2b36fc97b652&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_c1dc49339182c7d2083aab6a485206b3.setContent(html_bea47ea6735fe3df4fce2b36fc97b652);
+                var html_4e416e41c133f67276bf8429c979a289 = $(`<div id=&quot;html_4e416e41c133f67276bf8429c979a289&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_1747d4267bdf3b7449f089d91cadddf3.setContent(html_4e416e41c133f67276bf8429c979a289);
             
         
 
-        marker_547db7a7e0ff7d508323000445aa53d3.bindPopup(popup_c1dc49339182c7d2083aab6a485206b3)
+        marker_93a1a2b27db856bd6db96d7b1028468f.bindPopup(popup_1747d4267bdf3b7449f089d91cadddf3)
         ;
 
         
@@ -2486,7 +2550,7 @@ font-style: inherit;">=</span> geolocator.geocode(address)</span>
 background-color: null;
 font-style: inherit;">print</span>((location.latitude, location.longitude))</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(50.9426253, 6.9524319)</code></pre>
+<pre><code>(50.9426743, 6.9523814687194125)</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="2">
@@ -2551,7 +2615,7 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_cc3d1c255078d271cffd35461eb859bf {
+                #map_63b59a866a5106074f532b77a09860d0 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -2565,16 +2629,16 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_cc3d1c255078d271cffd35461eb859bf&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_63b59a866a5106074f532b77a09860d0&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_cc3d1c255078d271cffd35461eb859bf = L.map(
-                &quot;map_cc3d1c255078d271cffd35461eb859bf&quot;,
+            var map_63b59a866a5106074f532b77a09860d0 = L.map(
+                &quot;map_63b59a866a5106074f532b77a09860d0&quot;,
                 {
-                    center: [50.9426253, 6.9524319],
+                    center: [50.9426743, 6.9523814687194125],
                     crs: L.CRS.EPSG3857,
                     zoom: 15,
                     zoomControl: true,
@@ -2586,28 +2650,28 @@ font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code>
 
         
     
-            var tile_layer_773cd0d7b7dab13e8542655a01008ba8 = L.tileLayer(
+            var tile_layer_90a839de75687492d4a5fa0540cc8c0b = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
+            ).addTo(map_63b59a866a5106074f532b77a09860d0);
         
     
-            var marker_c09865041797f1a1f5f908131a31316e = L.marker(
-                [50.9426253, 6.9524319],
+            var marker_aae9e76bc288d55aa1eedc95f1d64558 = L.marker(
+                [50.9426743, 6.9523814687194125],
                 {}
-            ).addTo(map_cc3d1c255078d271cffd35461eb859bf);
+            ).addTo(map_63b59a866a5106074f532b77a09860d0);
         
     
-        var popup_d77b0730a6e8b43461db907955dacca4 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_7a93e04e692bfb32ec1b77a9db4af1d6 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_68b8d5f08ff91e258870f6ebb36379ad = $(`<div id=&quot;html_68b8d5f08ff91e258870f6ebb36379ad&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
-                popup_d77b0730a6e8b43461db907955dacca4.setContent(html_68b8d5f08ff91e258870f6ebb36379ad);
+                var html_fa11d22b32f792ebe8e4223a685db78d = $(`<div id=&quot;html_fa11d22b32f792ebe8e4223a685db78d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
+                popup_7a93e04e692bfb32ec1b77a9db4af1d6.setContent(html_fa11d22b32f792ebe8e4223a685db78d);
             
         
 
-        marker_c09865041797f1a1f5f908131a31316e.bindPopup(popup_d77b0730a6e8b43461db907955dacca4)
+        marker_aae9e76bc288d55aa1eedc95f1d64558.bindPopup(popup_7a93e04e692bfb32ec1b77a9db4af1d6)
         ;
 
         
@@ -3083,85 +3147,6 @@ font-style: inherit;">cat</span>(text)</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/index.html</guid>
   <pubDate>Sat, 22 Apr 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-23-chatgpt/ChatGPT-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="webr-webassembly" class="level1">
-<h1>WebR (WebAssembly)</h1>
-<p>I read about the <a href="https://docs.r-wasm.org/webr/latest/">webR</a> release on the <a href="https://www.tidyverse.org/blog/2023/03/webr-0-1-0/">Tidyverse blog</a>. It allows to run R in a browser.</p>
-<p>So I went to <a href="https://webr.r-wasm.org/latest/">webr.r-wasm.org</a> and gave it a try.</p>
-<p>I tried to install the <em>tidyverse</em> with <code>webr::install("tidyverse")</code>. That did not work. For me, there is little use of R without the <em>tidyverse</em>.</p>
-<p>Installing <em>dplyr</em> and <em>ggplot2</em> individually worked. So that I could run the following code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span>
-<span id="cb1-3"></span>
-<span id="cb1-4">dt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as_tibble</span>(mtcars)</span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">glimpse</span>(dt)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 32
-Columns: 11
-$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…
-$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…
-$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…
-$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…
-$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…
-$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…
-$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…
-$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…
-$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…
-$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…
-$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> hp, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> mpg, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> cyl)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_point</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Typing the R commands in a browser shell without tab completion and no R help was challenging though.</p>
-<p>Having R in a browser quickly available is nice 😊.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/r-wasm.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>cloud</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/index.html</guid>
-  <pubDate>Sun, 19 Mar 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-03-20-r-wasm/r-wasm.png" medium="image" type="image/png" height="62" width="144"/>
 </item>
 </channel>
 </rss>

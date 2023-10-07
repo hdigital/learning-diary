@@ -25,7 +25,7 @@
     "href": "posts/2023-04-27-geocoding/index.html",
     "title": "Geocoding in Python",
     "section": "",
-    "text": "Get geographic coordinates for an address with Nominatim from OpenStreetMap data.\n\nfrom geopy.geocoders import Nominatim\n\n# Create a geolocator object\ngeolocator = Nominatim(user_agent=\"get-the-geocode\")\n\n# Define the address for geocoding\naddress = \"Unter Sachsenhausen 6, Köln, Germany\"\n\n# Retrieve the geolocation (latitude and longitude) for the given address\nlocation = geolocator.geocode(address)\n\nprint((location.latitude, location.longitude))\n\n(50.9426253, 6.9524319)\n\n\n\nimport folium\n\ncoordinates = [location.latitude, location.longitude]\n\n# Create a map object\nm = folium.Map(location=coordinates, zoom_start=15)\n\n# Add a marker for each coordinate\nfolium.Marker(location=coordinates, popup=address).add_to(m)\n\nm  # Display the map in Jupyter Notebook\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+    "text": "Get geographic coordinates for an address with Nominatim from OpenStreetMap data.\n\nfrom geopy.geocoders import Nominatim\n\n# Create a geolocator object\ngeolocator = Nominatim(user_agent=\"get-the-geocode\")\n\n# Define the address for geocoding\naddress = \"Unter Sachsenhausen 6, Köln, Germany\"\n\n# Retrieve the geolocation (latitude and longitude) for the given address\nlocation = geolocator.geocode(address)\n\nprint((location.latitude, location.longitude))\n\n(50.9426743, 6.9523814687194125)\n\n\n\nimport folium\n\ncoordinates = [location.latitude, location.longitude]\n\n# Create a map object\nm = folium.Map(location=coordinates, zoom_start=15)\n\n# Add a marker for each coordinate\nfolium.Marker(location=coordinates, popup=address).add_to(m)\n\nm  # Display the map in Jupyter Notebook\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
   },
   {
     "objectID": "posts/2023-06-12-nbdev-clean/index.html",
@@ -46,14 +46,21 @@
     "href": "posts/2023-til/index.html",
     "title": "Today I learned (TIL)",
     "section": "",
-    "text": "Set default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
+    "text": "Simple debugging with IPython — found at Real Python (now gated).\nimport IPython\n\nvar_1 = \"hello\"\n\nIPython.embed()\n\nvar_2 = \"world\""
+  },
+  {
+    "objectID": "posts/2023-til/index.html#july",
+    "href": "posts/2023-til/index.html#july",
+    "title": "Today I learned (TIL)",
+    "section": "",
+    "text": "Simple debugging with IPython — found at Real Python (now gated).\nimport IPython\n\nvar_1 = \"hello\"\n\nIPython.embed()\n\nvar_2 = \"world\""
   },
   {
     "objectID": "posts/2023-til/index.html#june",
     "href": "posts/2023-til/index.html#june",
     "title": "Today I learned (TIL)",
-    "section": "",
-    "text": "Set default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
+    "section": "30. June",
+    "text": "30. June\nSet default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
   },
   {
     "objectID": "posts/2023-til/index.html#june-1",
@@ -179,14 +186,14 @@
     "href": "posts/2023-07-29-renv/index.html#find-project-packages",
     "title": "Package versions with renv",
     "section": "Find project packages",
-    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n    mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n    select(Package, version) |&gt;\n    arrange(Package) |&gt;\n    distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.3\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.2\n\n\npurrr\n1.0.1\n\n\nrenv\n1.0.0\n\n\nrmarkdown\n2.23"
+    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n    mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n    select(Package, version) |&gt;\n    arrange(Package) |&gt;\n    distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.3\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.2\n\n\npurrr\n1.0.2\n\n\nrenv\n1.0.2\n\n\nrmarkdown\n2.24"
   },
   {
     "objectID": "posts/2023-07-29-renv/index.html#customized-session-info",
     "href": "posts/2023-07-29-renv/index.html#customized-session-info",
     "title": "Package versions with renv",
     "section": "Customized session info",
-    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-apple-darwin20 (64-bit)\nRunning under: macOS Ventura 13.4.1\n\nMatrix products: default\nBLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib \nLAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0\n\nlocale:\n[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8\n\ntime zone: Europe/Berlin\ntzcode source: internal\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.23   conflicted_1.2.0 callr_3.7.3      renv_1.0.0      \n[5] purrr_1.0.1      dplyr_1.1.2     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      \n [5] xfun_0.39         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   \n [9] glue_1.6.2        htmltools_0.5.5   ps_1.7.5          fansi_1.0.4      \n[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       \n[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2\n[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         \n[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8"
+    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.24   conflicted_1.2.0 callr_3.7.3      renv_1.0.2      \n[5] purrr_1.0.2      dplyr_1.1.2     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      \n [5] xfun_0.40         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   \n [9] glue_1.6.2        htmltools_0.5.6   ps_1.7.5          fansi_1.0.4      \n[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       \n[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2\n[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         \n[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8"
   },
   {
     "objectID": "posts/2023-02-18-jupyter/index.html",
@@ -231,53 +238,18 @@
     "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
   },
   {
-    "objectID": "posts/2023-05-01-wikipedia-data/index.html",
-    "href": "posts/2023-05-01-wikipedia-data/index.html",
-    "title": "Wikipedia, Python, ChatGPT",
+    "objectID": "posts/2023-04-27-posit-cloud/index.html",
+    "href": "posts/2023-04-27-posit-cloud/index.html",
+    "title": "Posit Cloud",
     "section": "",
-    "text": "I wanted to get the first image of a Wikipedia page and the coordinates.\nChatGPT was very helpful here as well.\nThe code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below."
+    "text": "Posit Cloud\nI use RStudio in Posit Cloud sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project that I work on from different machines.\nOver the last days, I used it a little more. One goal was to figure out how a more extensive use would work out.\nThis worked out well. I like just opening a browser and start working with R in RStudio. Especially, a Chrome browser with the tab in full screen mode works very well. It almost feels like working on a desktop application.\nWorking in Posit Cloud, I am still struggling slightly with two issues.\nFirst, not all shortcuts work the way I am used to from the RStudio desktop application. Some browser shortcuts take precedence over RStudio shortcuts. Showing the command pallete works. So I can use it to run a command from the keyboard. However, I am just used to some shortcuts that I am irritated if typing them does not lead to the expected next step working in RStudio.\nSecond, I find the file handling still a little inconvenient. Uploading a file into to project folder or moving files across project folders takes some steps and mulitple clicks. Here, the Posit Cloud interface to RStudio is just not as reactive as for example file handling in Google Drive.\nUsing RStudio with Posit Cloud regularly remains a regular part of my data science tools.\nActually, this time I used it so extensivly that I exceeded the free quota of my account. So I have to wait for a while until I can start using it again.\n\n\n\nPosit Cloud limit"
   },
   {
-    "objectID": "posts/2023-05-01-wikipedia-data/index.html#image",
-    "href": "posts/2023-05-01-wikipedia-data/index.html#image",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Image",
-    "text": "Image\n\n\nCode\ntry:\n    import wikipedia\nexcept ImportError:\n    ! pip install wikipedia\n\n\nChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.\n\nimport urllib\n\nimport requests\nimport wikipedia\n\nfrom bs4 import BeautifulSoup\n\n# Set the Wikipedia page title and get page\npage_title = \"Berlin\"\npage = wikipedia.page(page_title)\n\n# Get html content of page and parse it with BeautifulSoup\nhtml = page.html()\nsoup = BeautifulSoup(html, \"html.parser\")\n\n# Find the infobox image element and get url image\nimage_element = soup.find(\"table\", class_=\"infobox\").find(\"img\")\nimage_url = \"https:\" + image_element[\"src\"]\n\n# Download the image\nurllib.request.urlretrieve(image_url, 'image.jpg')\n\n('image.jpg', &lt;http.client.HTTPMessage at 0x7fcaf7f8cb50&gt;)"
-  },
-  {
-    "objectID": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
-    "href": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Coordinates",
-    "text": "Coordinates\n\nimport requests\nimport json\n\n# function to get the coordinates from the infobox of a Wikipedia article\ndef get_coordinates(title):\n    url = \"https://en.wikipedia.org/w/api.php\"\n    params = {\n        \"action\": \"query\",\n        \"prop\": \"coordinates\",\n        \"titles\": title,\n        \"format\": \"json\",\n        \"formatversion\": 2\n    }\n    response = requests.get(url, params=params)\n    data = json.loads(response.text)\n    pages = data[\"query\"][\"pages\"]\n    coordinates = None\n    for page in pages:\n        if \"coordinates\" in page:\n            coordinates = page[\"coordinates\"][0]\n            break\n    return coordinates\n\n# example usage\ntitle = \"Berlin\"\ncoordinates = get_coordinates(title)\nprint(coordinates[\"lat\"], coordinates[\"lon\"])\n\n52.52 13.405"
-  },
-  {
-    "objectID": "posts/2023-05-01-wikipedia-data/index.html#map",
-    "href": "posts/2023-05-01-wikipedia-data/index.html#map",
-    "title": "Wikipedia, Python, ChatGPT",
-    "section": "Map",
-    "text": "Map\n\nimport folium\n\nmap_coord = [coordinates['lat'], coordinates['lon']]\n\n# create the map\nmap = folium.Map(location=map_coord, zoom_start=3.5)\n\n# add a marker at the location\nfolium.Marker(location=map_coord, popup=title).add_to(map)\n\n# display the map\nmap\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
-  },
-  {
-    "objectID": "snippets/jupyter-options.html",
-    "href": "snippets/jupyter-options.html",
-    "title": "Jupyter Quarto",
+    "objectID": "posts/2023-06-24-str-glue/index.html",
+    "href": "posts/2023-06-24-str-glue/index.html",
+    "title": "string interpolation with str_glue()",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "objectID": "snippets/jupyter-quarto.html",
-    "href": "snippets/jupyter-quarto.html",
-    "title": "Learning",
-    "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "objectID": "snippets/jupyter.html",
-    "href": "snippets/jupyter.html",
-    "title": "Learning",
-    "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "string interpolation with str_glue()\nIn R, I like string interpolation with glue and prefer it over Base-R paste(), paste0(), sprintf(). Regularly, I use glue() and forget to load the respective library at the top of the script or find glue::glue() rather verbose.\nA tidyverse blog post made me realize that stringr includes a str_glue() function that wraps glue(). stringr is loaded with library(tidyverse) so that I can include it into my regular tidyverse workflow.\nIt is also documented on the stringr cheatsheet, but I have not relized that. It serves as useful reminder to look at the Posit Cheatsheets more regularly to review and update my workflow.\n\nlibrary(tidyverse)\n\nname &lt;- \"Jane\"\n\nstr_glue(\"Hi {name}. How are you?\")\n\nHi Jane. How are you?"
   },
   {
     "objectID": "snippets/r-cell-conditional.html",
@@ -294,18 +266,60 @@
     "text": "Explore data"
   },
   {
-    "objectID": "posts/2023-06-24-str-glue/index.html",
-    "href": "posts/2023-06-24-str-glue/index.html",
-    "title": "string interpolation with str_glue()",
+    "objectID": "snippets/jupyter.html",
+    "href": "snippets/jupyter.html",
+    "title": "Learning",
     "section": "",
-    "text": "string interpolation with str_glue()\nIn R, I like string interpolation with glue and prefer it over Base-R paste(), paste0(), sprintf(). Regularly, I use glue() and forget to load the respective library at the top of the script or find glue::glue() rather verbose.\nA tidyverse blog post made me realize that stringr includes a str_glue() function that wraps glue(). stringr is loaded with library(tidyverse) so that I can include it into my regular tidyverse workflow.\nIt is also documented on the stringr cheatsheet, but I have not relized that. It serves as useful reminder to look at the Posit Cheatsheets more regularly to review and update my workflow.\n\nlibrary(tidyverse)\n\nname &lt;- \"Jane\"\n\nstr_glue(\"Hi {name}. How are you?\")\n\nHi Jane. How are you?"
+    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
-    "objectID": "posts/2023-04-27-posit-cloud/index.html",
-    "href": "posts/2023-04-27-posit-cloud/index.html",
-    "title": "Posit Cloud",
+    "objectID": "snippets/jupyter-quarto.html",
+    "href": "snippets/jupyter-quarto.html",
+    "title": "Learning",
     "section": "",
-    "text": "Posit Cloud\nI use RStudio in Posit Cloud sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project that I work on from different machines.\nOver the last days, I used it a little more. One goal was to figure out how a more extensive use would work out.\nThis worked out well. I like just opening a browser and start working with R in RStudio. Especially, a Chrome browser with the tab in full screen mode works very well. It almost feels like working on a desktop application.\nWorking in Posit Cloud, I am still struggling slightly with two issues.\nFirst, not all shortcuts work the way I am used to from the RStudio desktop application. Some browser shortcuts take precedence over RStudio shortcuts. Showing the command pallete works. So I can use it to run a command from the keyboard. However, I am just used to some shortcuts that I am irritated if typing them does not lead to the expected next step working in RStudio.\nSecond, I find the file handling still a little inconvenient. Uploading a file into to project folder or moving files across project folders takes some steps and mulitple clicks. Here, the Posit Cloud interface to RStudio is just not as reactive as for example file handling in Google Drive.\nUsing RStudio with Posit Cloud regularly remains a regular part of my data science tools.\nActually, this time I used it so extensivly that I exceeded the free quota of my account. So I have to wait for a while until I can start using it again.\n\n\n\nPosit Cloud limit"
+    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "snippets/jupyter-options.html",
+    "href": "snippets/jupyter-options.html",
+    "title": "Jupyter Quarto",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html",
+    "href": "posts/2023-05-01-wikipedia-data/index.html",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "",
+    "text": "I wanted to get the first image of a Wikipedia page and the coordinates.\nChatGPT was very helpful here as well.\nThe code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below."
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#image",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#image",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Image",
+    "text": "Image\n\n\nCode\ntry:\n    import wikipedia\nexcept ImportError:\n    ! pip install wikipedia\n\n\nChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.\n\nimport urllib\n\nimport requests\nimport wikipedia\n\nfrom bs4 import BeautifulSoup\n\n# Set the Wikipedia page title and get page\npage_title = \"Berlin\"\npage = wikipedia.page(page_title)\n\n# Get html content of page and parse it with BeautifulSoup\nhtml = page.html()\nsoup = BeautifulSoup(html, \"html.parser\")\n\n# Find the infobox image element and get url image\nimage_element = soup.find(\"table\", class_=\"infobox\").find(\"img\")\nimage_url = \"https:\" + image_element[\"src\"]\n\n# Download the image\nurllib.request.urlretrieve(image_url, 'image.jpg')\n\n('image.jpg', &lt;http.client.HTTPMessage at 0x7fbbea328550&gt;)"
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#coordinates",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Coordinates",
+    "text": "Coordinates\n\nimport requests\nimport json\n\n# function to get the coordinates from the infobox of a Wikipedia article\ndef get_coordinates(title):\n    url = \"https://en.wikipedia.org/w/api.php\"\n    params = {\n        \"action\": \"query\",\n        \"prop\": \"coordinates\",\n        \"titles\": title,\n        \"format\": \"json\",\n        \"formatversion\": 2\n    }\n    response = requests.get(url, params=params)\n    data = json.loads(response.text)\n    pages = data[\"query\"][\"pages\"]\n    coordinates = None\n    for page in pages:\n        if \"coordinates\" in page:\n            coordinates = page[\"coordinates\"][0]\n            break\n    return coordinates\n\n# example usage\ntitle = \"Berlin\"\ncoordinates = get_coordinates(title)\nprint(coordinates[\"lat\"], coordinates[\"lon\"])\n\n52.52 13.405"
+  },
+  {
+    "objectID": "posts/2023-05-01-wikipedia-data/index.html#map",
+    "href": "posts/2023-05-01-wikipedia-data/index.html#map",
+    "title": "Wikipedia, Python, ChatGPT",
+    "section": "Map",
+    "text": "Map\n\nimport folium\n\nmap_coord = [coordinates['lat'], coordinates['lon']]\n\n# create the map\nmap = folium.Map(location=map_coord, zoom_start=3.5)\n\n# add a marker at the location\nfolium.Marker(location=map_coord, popup=title).add_to(map)\n\n# display the map\nmap\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+  },
+  {
+    "objectID": "posts/2023-08-21-quarto-docker/index.html",
+    "href": "posts/2023-08-21-quarto-docker/index.html",
+    "title": "Quarto version in Docker",
+    "section": "",
+    "text": "Quarto version in Docker\nI realized that installing the latest version of Quarto in Docker will not lead to a reproducible environment since the latest Docker version depends on the day an image is build. So I was looking for a Dockerfile configuration to install a specified version of Quarto in Docker.\nQuarto keeps a list of releases so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.\nFor the final solution I needed several attempts but learned someting about defining arguments in a Dockerfile.\nHere is the solution I came up with.\nARG QUARTO_VERSION=1.3.450\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN gdebi --non-interactive quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex\nThis is the version for the latest release I have used so far.\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb\nRUN gdebi --non-interactive quarto-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex"
   },
   {
     "objectID": "posts/2023-06-30-dplyr-programming/index.html",
@@ -375,7 +389,7 @@
     "href": "posts/2023-03-15-pyscript/index.html",
     "title": "PyScript (WebAssembly)",
     "section": "",
-    "text": "I used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n🙂😉😀🤗😉😉😃😃🤗😂😃😉😂😆😁😎🙂😆😉😄\n🙂🤗😃😂🙂😊😇😊😅😄🤗😊😃😉🙂🙂😂😅🤗😎\n😄😋😇🙂😄😆🙂😃😅😄😃😋🙂😇😁😁😅😇🤗😀\n🙂😊😃😀😎😀😆😃🙂😃😉😇😀🙂😎😄😁🙂😇😇\n😃😂😉😇😃😉😎😂😅😆😁😀😅🤗😅😎🙂😊😅😎\n🙂😃😀😉😂😃😆😋😀😉😎😋😇😄🤗😋😇😋😃😊\n😊😁😃😊😅😁🙂😎😊😆😁😂🙂🤗🙂🤗😃😋😂😀\n😂😀😁😆😅😃🤗😆🤗😀😆🙂😆😎😋😆😎😇😄😆\n😉🤗😁😃😉😂🙂😊😆😁😂😁😄😀😆😇😊😅😎🤗\n🙂😆😉😆😀😅😊😄😎😆😉😋😂😉😂🤗😇🤗😆😄\n😇😊😁😁😇😋😁😂😋😉😎😇😋😉😆😅😅😎😉😂\n😀😋😂😋🤗😎😀🙂😉😂😄😆😆🤗😎😃😄😊😋😂\n😃😁😉😎😊🙂🙂😎😊😅😇😂🤗😎😉😇😂😃😊😋\n😄😄😁😄😄😇🙂😄🤗😎🤗😄😊😆😃😉😃😊😃😃\n😃🙂😇😉🙂😊😁😂😂😉🙂😎😄😇😄😁😁😀🤗🙂\n🙂😉😇🙂😀😇🙂😎😃😊😆😂😁😊😎😅😄😇😊😁\n😀😊😇😉😂🤗🙂😋😃😉😃😁🙂😂😄😆🙂😎😂😎\n😁😎😄😁😊😋😉😀😁😋😋😉😋😉😉🙂😆😇😅😆\n🙂😁😂😂🤗😊😆😊😋😆😊😊😀😉😂😅🤗🙂😋😀\n😂😊😇🙂😉😊😊😁😊🙂😇😄😁😅🤗😇😃😎😇😎\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
+    "text": "I used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n🤗🤗😇😀😀😎😆😄😋😄😃🤗😁😅😂😇🙂😆😀🙂\n🙂😄🙂🤗😅😋😎😃😂😆😁😉😊😁😄😅😃😉🙂😇\n😀😎🙂🙂😅🙂😁😃😇😊😆😂😎😊😅😇🙂🤗😃😋\n😊😊🙂😃😂😁🙂😊😂😅😊😅😇😅😊😅😉🙂😎😇\n😆😅😀😂😋😎😅😆😅😂🤗🙂😊🙂😋😆😅😄😎😇\n😁🙂🤗😉😇😂🙂😆😋🙂😂😇😁😃😀😀😃😋😂😎\n😂🙂😁😆😀😊😁😋😋🙂🙂😃🤗🤗😊😎😅😎😂😀\n🤗😉😂🙂😂😊😂😎😇😆😀🙂🙂🙂😀🙂😆😇😇😊\n🙂🤗🙂😇😋😊😎😅😂🙂🤗😇😂🙂😄🤗😂😅😃😁\n😂😎😊😇😀🤗😉🤗🙂🙂😇😅😇😅🤗😇😊😀😊😀\n😇😋🙂🙂😊😀😄😄😂😁🙂😊😄😂😅😇😆😂😎😎\n🙂🤗🤗😊😄😆😄🙂😊😂😄😄🤗😅😁😂😋😁😁😂\n😃🤗🙂😋😃😎🙂😄🙂😎😄😎🙂😎😂😃😂🙂😂😀\n😇😋🙂🙂😋🙂😁😁😊🙂😉😆😅😂😋🙂😃🤗🙂😋\n🙂😀😃😎😄😆😆😊😊😅🤗😊😀😄😄😃🤗😂😁😇\n😋😁😀😉😉😄🙂😎😂😁🤗🙂🙂😇🤗😎😉🙂😁😋\n😇😊😊😂😃😄😇😋😊😉🙂😋😅🤗😋🙂😄😉😉😋\n😄😄😉😄😇🤗🤗😃😀😅😃😃😊😉😉😅😎😁🙂😂\n😅🙂🙂😂😊🤗🤗🤗🤗🙂😊😃😁🤗😅😂😂😀😇😄\n😎😃😇😄😊😀🤗😀😋😆😎😎😅🙂😂😎🙂😆😂😎\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
   },
   {
     "objectID": "posts/2023-02-26-altair/index.html",
@@ -424,6 +438,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "File hashing\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n  \n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr programming\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nConditional R cells\n\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Today I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n  \n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFile hashing\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr programming\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nConditional R cells\n\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
