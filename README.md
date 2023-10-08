@@ -64,6 +64,12 @@ Python packages -- see [requirements.txt](requirements.txt)
 python -m pip install -r requirements.txt
 ```
 
+Python packages used in posts
+
+```sh
+python -m pip install -r snippets/requirements-posts.txt
+```
+
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) – Copyright (c) 2023 Holger Döring
