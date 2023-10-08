@@ -77,7 +77,7 @@ Page 2
 
 In addition, I learned to ignore shortcuts in a cell with `{.markdown shortcodes="false"}`
 
-## 9. June
+## 09. June
 
 I wanted to run a [Bash]() shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.
 
@@ -99,23 +99,23 @@ Another use of the Base-R shorthand anonymous function and explaining it to a co
 
 `add_three <- \(.x) .x+3`
 
-## 6. May
+## 06. May
 
 Excluding variables in _tidyselect_ is now done with `!` as I found out by reading the [documentation](https://tidyselect.r-lib.org/reference/language.html) more carfully. I have still used `-` to exclude variables by their name. This is not documented in the tidyselect help page anymore.
 
 [readstata13](https://github.com/sjewo/readstata13) creates more R friendly data structures than [haven](https://haven.tidyverse.org/). Its default option converts labeled data into factors if appropriate.
 
-## 5. May
+## 05. May
 
 Used [Quarto](https://quarto.org/) a lot and got more comfortable with the options — esp. caching, creating pdf, figures.
 
-## 3. May
+## 03. May
 
 Convert an RMarkdown file into an R file with `knitr::purl("purl.Rmd")` -- see [details](https://bookdown.org/yihui/rmarkdown-cookbook/purl.html).
 
 ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.
 
-## 2. May
+## 02. May
 
 A [bug](https://github.com/rstudio/rstudio/issues/12452) in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the [daily build](https://dailies.rstudio.com/rstudio/mountain-hydrangea/) and had R/RStudio running again.
 
@@ -127,7 +127,7 @@ I got back into [Quarto](https://quarto.org/) and created a website for a learni
 
 Setting up the page worked well. I got a little confused by the quarto difference between _freeze_ and _cache_. I also wondered why the _cache_ was added into several folders in the main directory and not into a *\_cache* folder.
 
-## 3. Apr.
+## 03. Apr.
 
 I read about the new [pandas release](https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html). None of the changes seem to be relevant for my work with _pandas_
 
