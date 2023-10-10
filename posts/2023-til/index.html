@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-07">
+<meta name="dcterms.date" content="2023-10-08">
 
 <title>Learning - Today I learned (TIL)</title>
 <style>
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 7, 2023</p>
+        <p class="date">October 8, 2023</p>
       </div>
     </div>
     
@@ -174,14 +174,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#june-1" id="toc-june-1" class="nav-link" data-scroll-target="#june-1">29. June</a></li>
   <li><a href="#june-2" id="toc-june-2" class="nav-link" data-scroll-target="#june-2">13. June</a></li>
   <li><a href="#june-3" id="toc-june-3" class="nav-link" data-scroll-target="#june-3">10. June</a></li>
-  <li><a href="#june-4" id="toc-june-4" class="nav-link" data-scroll-target="#june-4">9. June</a></li>
+  <li><a href="#june-4" id="toc-june-4" class="nav-link" data-scroll-target="#june-4">09. June</a></li>
   <li><a href="#may" id="toc-may" class="nav-link" data-scroll-target="#may">17. May</a></li>
-  <li><a href="#may-1" id="toc-may-1" class="nav-link" data-scroll-target="#may-1">6. May</a></li>
-  <li><a href="#may-2" id="toc-may-2" class="nav-link" data-scroll-target="#may-2">5. May</a></li>
-  <li><a href="#may-3" id="toc-may-3" class="nav-link" data-scroll-target="#may-3">3. May</a></li>
-  <li><a href="#may-4" id="toc-may-4" class="nav-link" data-scroll-target="#may-4">2. May</a></li>
+  <li><a href="#may-1" id="toc-may-1" class="nav-link" data-scroll-target="#may-1">06. May</a></li>
+  <li><a href="#may-2" id="toc-may-2" class="nav-link" data-scroll-target="#may-2">05. May</a></li>
+  <li><a href="#may-3" id="toc-may-3" class="nav-link" data-scroll-target="#may-3">03. May</a></li>
+  <li><a href="#may-4" id="toc-may-4" class="nav-link" data-scroll-target="#may-4">02. May</a></li>
   <li><a href="#apr." id="toc-apr." class="nav-link" data-scroll-target="#apr.">25. Apr.</a></li>
-  <li><a href="#apr.-1" id="toc-apr.-1" class="nav-link" data-scroll-target="#apr.-1">3. Apr.</a></li>
+  <li><a href="#apr.-1" id="toc-apr.-1" class="nav-link" data-scroll-target="#apr.-1">03. Apr.</a></li>
   <li><a href="#feb." id="toc-feb." class="nav-link" data-scroll-target="#feb.">25. Feb.</a></li>
   </ul>
 </nav>
@@ -246,7 +246,7 @@ comments
 <p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
 </section>
 <section id="june-4" class="level2">
-<h2 class="anchored" data-anchor-id="june-4">9. June</h2>
+<h2 class="anchored" data-anchor-id="june-4">09. June</h2>
 <p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use path relative to script location, if feasible</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-n</span> <span class="st">"</span><span class="va">$BASH_SOURCE</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
@@ -264,21 +264,21 @@ comments
 <p><code>add_three &lt;- \(.x) .x+3</code></p>
 </section>
 <section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
+<h2 class="anchored" data-anchor-id="may-1">06. May</h2>
 <p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
 <p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
 </section>
 <section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
+<h2 class="anchored" data-anchor-id="may-2">05. May</h2>
 <p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
 </section>
 <section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
+<h2 class="anchored" data-anchor-id="may-3">03. May</h2>
 <p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
 <p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
 </section>
 <section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
+<h2 class="anchored" data-anchor-id="may-4">02. May</h2>
 <p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
 <p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
 </section>
@@ -288,7 +288,7 @@ comments
 <p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
 </section>
 <section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
+<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
 <p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
 </section>
 <section id="feb." class="level2">

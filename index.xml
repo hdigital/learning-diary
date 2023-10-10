@@ -10,7 +10,408 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sat, 07 Oct 2023 12:21:16 GMT</lastBuildDate>
+<lastBuildDate>Mon, 09 Oct 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Get DOI metadata</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="doi-api-access" class="level2">
+<h2 class="anchored" data-anchor-id="doi-api-access">DOI API access</h2>
+<p>I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.</p>
+<p>Here is an example with a request for my first peer-reviewed publication.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> requests</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">doi_url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://doi.org/10.1177/1465116507076430"</span></span>
+<span id="cb1-4"></span>
+<span id="cb1-5">headers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"accept"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>}</span>
+<span id="cb1-6">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(doi_url, headers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>headers)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">r.text</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'DÃ¶ring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207â\x80\x93228. https://doi.org/10.1177/1465116507076430\n'</code></pre>
+</div>
+</div>
+</section>
+<section id="content-types" class="level2">
+<h2 class="anchored" data-anchor-id="content-types">Content types</h2>
+<p>This is the API information I was interested in.</p>
+<p><a href="https://citation.crosscite.org/docs.html#sec-4" class="uri">https://citation.crosscite.org/docs.html#sec-4</a></p>
+<blockquote class="blockquote">
+<p>“Currently three DOI registration agencies have implemented content negotation for their DOIs: Crossref, DataCite and mEDRA. They support a number of metadata content types, some of which are common to the three RAs.”</p>
+</blockquote>
+<p>I try to avoid xml-based formats, so that the following content types are of interst to me.</p>
+<ul>
+<li>Formatted text citation // <code>text/x-bibliography</code></li>
+<li>BibTeX // <code>application/x-bibtex</code></li>
+<li>Citeproc JSON // <code>application/vnd.citationstyles.csl+json</code></li>
+<li>Schema.org in JSON-LD // <code>application/vnd.schemaorg.ld+json</code> (only DataCite)</li>
+</ul>
+<p>It is actually nice to put a request into a function. I start with a simple example.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> get_doi_bib(doi):</span>
+<span id="cb3-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Return a bibliography for a given DOI."""</span></span>
+<span id="cb3-3"></span>
+<span id="cb3-4">    url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"https://dx.doi.org/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>doi<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb3-5"></span>
+<span id="cb3-6">    headers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"accept"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>}</span>
+<span id="cb3-7">    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(url, headers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>headers)</span>
+<span id="cb3-8"></span>
+<span id="cb3-9">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> r.text</span>
+<span id="cb3-10"></span>
+<span id="cb3-11"></span>
+<span id="cb3-12">get_doi_bib(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1177/0958928715573481"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'DÃ¶ring, H., &amp; Schwander, H. (2015). Revisiting the left cabinet share: How to measure the partisan profile of governments in welfare state research. Journal of European Social Policy, 25(2), 175â\x80\x93193. https://doi.org/10.1177/0958928715573481\n'</code></pre>
+</div>
+</div>
+<p>To get the different formats I am interested in, I can rewrite the function.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> time</span>
+<span id="cb5-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> requests</span>
+<span id="cb5-3"></span>
+<span id="cb5-4">CONTENT_TYPES <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb5-5">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bibliography"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>,</span>
+<span id="cb5-6">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bibtex"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"application/x-bibtex"</span>,</span>
+<span id="cb5-7">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"json-csl"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"application/vnd.citationstyles.csl+json"</span>,</span>
+<span id="cb5-8">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"json-ld"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"application/vnd.schemaorg.ld+json"</span>,</span>
+<span id="cb5-9">}</span>
+<span id="cb5-10"></span>
+<span id="cb5-11"></span>
+<span id="cb5-12"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> get_doi_data(doi, content_type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bibliography"</span>):</span>
+<span id="cb5-13">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Return metadata for DOI."""</span></span>
+<span id="cb5-14"></span>
+<span id="cb5-15">    url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"https://dx.doi.org/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>doi<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb5-16">    headers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"accept"</span>: CONTENT_TYPES.get(content_type, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bibliography"</span>)}</span>
+<span id="cb5-17"></span>
+<span id="cb5-18">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> requests.get(url, headers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>headers)</span>
+<span id="cb5-19"></span>
+<span id="cb5-20"></span>
+<span id="cb5-21">doi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1016/j.electstud.2016.07.002"</span></span>
+<span id="cb5-22"></span>
+<span id="cb5-23"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> key <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> CONTENT_TYPES:</span>
+<span id="cb5-24">    time.sleep(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># pause to avoid requests limit</span></span>
+<span id="cb5-25">    doi_request <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_doi_data(doi, key)</span>
+<span id="cb5-26">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"DOI content type: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>key<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>doi_request<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>text<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DOI content type: bibliography
+DÃ¶ring, H. (2016). Mapping established democracies: Integrated data on parties, elections and cabinets. Electoral Studies, 44, 535â543. https://doi.org/10.1016/j.electstud.2016.07.002
+
+
+DOI content type: bibtex
+@article{D_ring_2016,
+    doi = {10.1016/j.electstud.2016.07.002},
+    url = {https://doi.org/10.1016%2Fj.electstud.2016.07.002},
+    year = 2016,
+    month = {dec},
+    publisher = {Elsevier {BV}},
+    volume = {44},
+    pages = {535--543},
+    author = {Holger Döring},
+    title = {Mapping established democracies: Integrated data on parties, elections and cabinets},
+    journal = {Electoral Studies}
+}
+
+DOI content type: json-csl
+{"indexed":{"date-parts":[[2022,4,3]],"date-time":"2022-04-03T16:10:26Z","timestamp":1649002226601},"reference-count":43,"publisher":"Elsevier BV","license":[{"start":{"date-parts":[[2016,12,1]],"date-time":"2016-12-01T00:00:00Z","timestamp":1480550400000},"content-version":"tdm","delay-in-days":0,"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"published-print":{"date-parts":[[2016,12]]},"DOI":"10.1016\/j.electstud.2016.07.002","type":"journal-article","created":{"date-parts":[[2016,7,23]],"date-time":"2016-07-23T05:27:36Z","timestamp":1469251656000},"page":"535-543","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":2,"title":"Mapping established democracies: Integrated data on parties, elections and cabinets","prefix":"10.1016","volume":"44","author":[{"given":"Holger","family":"D\u00f6ring","sequence":"first","affiliation":[]}],"member":"78","reference":[{"key":"10.1016\/j.electstud.2016.07.002_bib1","series-title":"The European Representative Democracy Data Archive, Release 3","author":"Andersson","year":"2014"},{"key":"10.1016\/j.electstud.2016.07.002_bib2","series-title":"Comparative Political Data Set 1960\u20132013","author":"Armingeon","year":"2015"},{"key":"10.1016\/j.electstud.2016.07.002_bib3","doi-asserted-by":"crossref","first-page":"143","DOI":"10.1177\/1354068812462931","article-title":"Measuring party positions in Europe: the Chapel Hill expert survey trend file, 1999\u20132010","volume":"21","author":"Bakker","year":"2015","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib4","doi-asserted-by":"crossref","first-page":"303","DOI":"10.1177\/1354068810369148","article-title":"Out with the old, in with the \u201cnew\u201d: what constitutes a new party?","volume":"17","author":"Barnea","year":"2011","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib5","series-title":"Party Policy in Modern Democracies","author":"Benoit","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib6","doi-asserted-by":"crossref","first-page":"1523","DOI":"10.1177\/0010414012463905","article-title":"A\u00a0complete data set of political regimes, 1800\u20132007","volume":"46","author":"Boix","year":"2013","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib7","doi-asserted-by":"crossref","first-page":"360","DOI":"10.1016\/j.electstud.2013.01.005","article-title":"Democratic electoral systems around the world, 1946\u20132011","volume":"32","author":"Bormann","year":"2013","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib8","series-title":"Das parlamentarische Wahlrecht: Ein Handbuch \u00fcber die Bildung der gesetzgebenden K\u00f6rperschaften in Europa \u2013 2. Band: Allgemeiner Teil","author":"Braunias","year":"1932"},{"key":"10.1016\/j.electstud.2016.07.002_bib9","series-title":"Parties and Democracy: Coalition Formation and Government Functioning in Twenty States","author":"Budge","year":"1993"},{"key":"10.1016\/j.electstud.2016.07.002_bib10","series-title":"Mapping Policy Preferences: Estimates for Parties, Electors, and Governments, 1945-1998","author":"Budge","year":"2001"},{"key":"10.1016\/j.electstud.2016.07.002_bib11","series-title":"Political Parties of Eastern Europe: a Guide to Politics in the Post-communist Era","author":"Bugajski","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib12","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1111\/j.1475-6765.1984.tb00080.x","article-title":"Left right political scales: some expert judgments","volume":"12","author":"Castles","year":"1984","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib13","doi-asserted-by":"crossref","first-page":"119","DOI":"10.1111\/j.1475-6765.2009.01888.x","article-title":"Measuring government duration and stability in Central Eastern European democracies","volume":"49","author":"Conrad","year":"2010","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib14","doi-asserted-by":"crossref","first-page":"193","DOI":"10.1111\/j.1467-9477.1994.tb00144.x","article-title":"Termination of Danish government coalitions: theoretical and empirical aspects","volume":"17","author":"Damgaard","year":"1994","journal-title":"Scand. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib15","doi-asserted-by":"crossref","first-page":"161","DOI":"10.1177\/1465116512461189","article-title":"The collective action of data collection: a data infrastructure on parties, elections and cabinets","volume":"14","author":"D\u00f6ring","year":"2013","journal-title":"Eur. Union Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib16","first-page":"17","article-title":"ParlGov: a new data infrastructure in comparative politics","volume":"23","author":"D\u00f6ring","year":"2013","journal-title":"APSA Comp. Politics Newsl."},{"key":"10.1016\/j.electstud.2016.07.002_bib17","first-page":"19","article-title":"A\u00a0user-driven and flexible procedure for data linking","volume":"2010","author":"Ejik","year":"2010","journal-title":"IASSIST Q."},{"key":"10.1016\/j.electstud.2016.07.002_bib18","doi-asserted-by":"crossref","first-page":"495","DOI":"10.1111\/j.1468-2508.2007.00546.x","article-title":"Punishment or protest? understanding European Parliament elections","volume":"69","author":"Hix","year":"2007","journal-title":"J.\u00a0Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib19","doi-asserted-by":"crossref","first-page":"965","DOI":"10.1177\/001041402236310","article-title":"Does left\/right structure party positions on European integration?","volume":"35","author":"Hooghe","year":"2002","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib20","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1177\/1354068895001001004","article-title":"Expert interpretations of party space and party locations in 42 societies","volume":"1","author":"Huber","year":"1995","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib21","doi-asserted-by":"crossref","first-page":"381","DOI":"10.1111\/1475-6765.12030","article-title":"Determinants of cabinet size","volume":"53","author":"Indridason","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib22","series-title":"Western European Political Parties: a Comprehensive Guide","year":"1989"},{"key":"10.1016\/j.electstud.2016.07.002_bib23","series-title":"Mapping Policy Preferences II: Estimates for Parties, Electors and Governments in Central and Eastern Europe, European Union and OECD 1990-2003","author":"Klingemann","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib24","series-title":"Policy and Party Competition","author":"Laver","year":"1992"},{"key":"10.1016\/j.electstud.2016.07.002_bib25","series-title":"The International Almanac of Electoral History","author":"Mackie","year":"1991"},{"key":"10.1016\/j.electstud.2016.07.002_bib26","doi-asserted-by":"crossref","first-page":"211","DOI":"10.1146\/annurev.polisci.1.1.211","article-title":"The party family and its study","volume":"1","author":"Mair","year":"1998","journal-title":"Annu. Rev. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib27","doi-asserted-by":"crossref","first-page":"654","DOI":"10.1111\/1475-6765.12054","article-title":"Defining and classifying technocrat-led and technocratic governments","volume":"53","author":"McDonnell","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib28","series-title":"Political Parties of Europe","year":"1983"},{"key":"10.1016\/j.electstud.2016.07.002_bib29","series-title":"Coalition Governments in Western Europe","year":"2000"},{"key":"10.1016\/j.electstud.2016.07.002_bib30","doi-asserted-by":"crossref","first-page":"869","DOI":"10.1111\/j.0304-4130.2004.00178.x","article-title":"Party government in Central Eastern European democracies: a data collection (1990-2003)","volume":"43","author":"M\u00fcller-Rommel","year":"2004","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib31","series-title":"Elections in Europe: a Data Handbook","year":"2010"},{"key":"10.1016\/j.electstud.2016.07.002_bib32","doi-asserted-by":"crossref","first-page":"283","DOI":"10.1111\/1475-6765.00471","article-title":"Measuring party orientations towards European integration: results from an expert survey","volume":"36","author":"Ray","year":"1999","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib33","series-title":"International Guide to Electoral Statistics; Guide International Des Statistiques \u00c9lectorales","first-page":"1","article-title":"Introduction","author":"Rokkan","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib34","series-title":"International guide to electoral statistics; Guide international des statistiques \u00e9lectorales","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib35","series-title":"Elections and Parties in New European Democracies","author":"Rose","year":"2003"},{"key":"10.1016\/j.electstud.2016.07.002_bib36","doi-asserted-by":"crossref","first-page":"270","DOI":"10.1016\/j.electstud.2013.10.001","article-title":"Updating the party government data set","volume":"34","author":"Seki","year":"2014","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib37","doi-asserted-by":"crossref","first-page":"391","DOI":"10.1111\/j.1475-6765.2005.00232.x","article-title":"How unstable? Volatility and the genuinely new parties in Eastern Europe","volume":"44","author":"Sikk","year":"2005","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib38","series-title":"Die Wahl der Parlamente und anderer Staatsorgane","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib39","doi-asserted-by":"crossref","first-page":"261","DOI":"10.1111\/1475-6765.00513","article-title":"Delegation and accountability in parliamentary democracies","volume":"37","author":"Str\u00f8m","year":"2000","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib40","series-title":"Veto Players: How Political Institutions Work","author":"Tsebelis","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib41","doi-asserted-by":"crossref","first-page":"187","DOI":"10.1017\/S0007123411000263","article-title":"Constitutionalizing party democracy: the constitutive codification of political parties in post-war Europe","volume":"42","author":"Van Biezen","year":"2012","journal-title":"Br. J. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib42","series-title":"Mapping Policy Preferences from Texts III: Statistical Solutions for Manifesto Analysts","author":"Volkens","year":"2013"},{"key":"10.1016\/j.electstud.2016.07.002_bib43","series-title":"Party Government in 48 Democracies (1945-1998): Composition, Duration, Personnel","author":"Woldendorp","year":"2000"}],"container-title":"Electoral Studies","original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,7,17]],"date-time":"2018-07-17T21:43:09Z","timestamp":1531863789000},"score":1,"resource":{"primary":{"URL":"https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0261379416301652"}},"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016,12]]},"references-count":43,"alternative-id":["S0261379416301652"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.electstud.2016.07.002","relation":{},"ISSN":["0261-3794"],"subject":["Political Science and International Relations"],"container-title-short":"Electoral Studies","published":{"date-parts":[[2016,12]]},"assertion":[{"value":"Elsevier","name":"publisher","label":"This article is maintained by"},{"value":"Mapping established democracies: Integrated data on parties, elections and cabinets","name":"articletitle","label":"Article Title"},{"value":"Electoral Studies","name":"journaltitle","label":"Journal Title"},{"value":"https:\/\/doi.org\/10.1016\/j.electstud.2016.07.002","name":"articlelink","label":"CrossRef DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content Type"},{"value":"\u00a9 2016 Elsevier Ltd. All rights reserved.","name":"copyright","label":"Copyright"}]}
+
+DOI content type: json-ld
+No acceptable resource available.
+</code></pre>
+</div>
+</div>
+</section>
+<section id="linked-data-json-ld" class="level2">
+<h2 class="anchored" data-anchor-id="linked-data-json-ld">Linked data json-ld</h2>
+<p><em>json-ld</em> is only available for content registered with <a href="https://datacite.org/">DataCite</a>.</p>
+<p>A DOI for an article does not return <em>json-ld</em> metadata.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">doi_content <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_doi_data(doi, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"json-ld"</span>)</span>
+<span id="cb7-2"></span>
+<span id="cb7-3">doi_content</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;Response [406]&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">doi_content.text</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>'No acceptable resource available.'</code></pre>
+</div>
+</div>
+<hr>
+<p>A DOI for a dataset returns <em>json-ld</em> metadata.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">doi_content <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_doi_data(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.7910/DVN/BUWAAF"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"json-ld"</span>)</span>
+<span id="cb11-2"></span>
+<span id="cb11-3">doi_content</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">doi_content.text</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>'{\n  "@context": "http://schema.org",\n  "@type": "Dataset",\n  "@id": "https://doi.org/10.7910/dvn/buwaaf",\n  "url": "https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF",\n  "name": "Party Facts – Version 2022",\n  "author": [\n    {\n      "name": "Paul Bederke",\n      "givenName": "Paul",\n      "familyName": "Bederke",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(University of Konstanz)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0001-7555-8656"\n    },\n    {\n      "name": "Holger Döring",\n      "givenName": "Holger",\n      "familyName": "Döring",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(GESIS – Leibniz Institute for the Social Sciences)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0002-6616-8805"\n    },\n    {\n      "name": "Sven Regel",\n      "givenName": "Sven",\n      "familyName": "Regel",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(WZB Berlin Social Science Center)"\n      },\n      "@type": "Person"\n    }\n  ],\n  "editor": {\n    "name": "Paul Bederke",\n    "givenName": "Paul",\n    "familyName": "Bederke",\n    "affiliation": {\n      "@type": "Organization",\n      "name": "(University of Konstanz)"\n    },\n    "contributorType": "ContactPerson",\n    "@type": "Person"\n  },\n  "description": "Party Facts links datasets on political parties",\n  "datePublished": "2022",\n  "schemaVersion": "http://datacite.org/schema/kernel-4",\n  "publisher": {\n    "@type": "Organization",\n    "name": "Harvard Dataverse"\n  },\n  "provider": {\n    "@type": "Organization",\n    "name": "datacite"\n  }\n}'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">doi_content.json()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>{'@context': 'http://schema.org',
+ '@type': 'Dataset',
+ '@id': 'https://doi.org/10.7910/dvn/buwaaf',
+ 'url': 'https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF',
+ 'name': 'Party Facts – Version 2022',
+ 'author': [{'name': 'Paul Bederke',
+   'givenName': 'Paul',
+   'familyName': 'Bederke',
+   'affiliation': {'@type': 'Organization',
+    'name': '(University of Konstanz)'},
+   '@type': 'Person',
+   '@id': 'https://orcid.org/0000-0001-7555-8656'},
+  {'name': 'Holger Döring',
+   'givenName': 'Holger',
+   'familyName': 'Döring',
+   'affiliation': {'@type': 'Organization',
+    'name': '(GESIS – Leibniz Institute for the Social Sciences)'},
+   '@type': 'Person',
+   '@id': 'https://orcid.org/0000-0002-6616-8805'},
+  {'name': 'Sven Regel',
+   'givenName': 'Sven',
+   'familyName': 'Regel',
+   'affiliation': {'@type': 'Organization',
+    'name': '(WZB Berlin Social Science Center)'},
+   '@type': 'Person'}],
+ 'editor': {'name': 'Paul Bederke',
+  'givenName': 'Paul',
+  'familyName': 'Bederke',
+  'affiliation': {'@type': 'Organization', 'name': '(University of Konstanz)'},
+  'contributorType': 'ContactPerson',
+  '@type': 'Person'},
+ 'description': 'Party Facts links datasets on political parties',
+ 'datePublished': '2022',
+ 'schemaVersion': 'http://datacite.org/schema/kernel-4',
+ 'publisher': {'@type': 'Organization', 'name': 'Harvard Dataverse'},
+ 'provider': {'@type': 'Organization', 'name': 'datacite'}}</code></pre>
+</div>
+</div>
+</section>
+<section id="redirects" class="level1">
+<h1>Redirects</h1>
+<p>Finally, I was interested if there is a redirect to a DOI registration agency.</p>
+<p><a href="https://citation.crosscite.org/docs.html#sec-2" class="uri">https://citation.crosscite.org/docs.html#sec-2</a></p>
+<blockquote class="blockquote">
+<p>“Content negotiated requests to doi.org that ask for a content type which isn’t”text/html” will be redirected to a metadata service hosted by the DOI’s registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers.”</p>
+</blockquote>
+<p>However, it seems that the content is returned by <em>doi.org</em>.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> request_history <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> doi_content.history:</span>
+<span id="cb17-2">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(request_history.status_code, request_history.url)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>302 https://dx.doi.org/10.7910/DVN/BUWAAF</code></pre>
+</div>
+</div>
+<p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">doi_url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"http://doi.org/</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>doi<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb19-2">headers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"accept"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>}</span>
+<span id="cb19-3"></span>
+<span id="cb19-4">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(doi_url, headers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>headers)</span>
+<span id="cb19-5"></span>
+<span id="cb19-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> request_history <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> r.history:</span>
+<span id="cb19-7">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(request_history.status_code, request_history.url)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>301 http://doi.org/10.1016/j.electstud.2016.07.002
+302 https://doi.org/10.1016/j.electstud.2016.07.002</code></pre>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/doi-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/index.html</guid>
+  <pubDate>Mon, 09 Oct 2023 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Today I learned (TIL)</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
@@ -121,7 +522,7 @@ font-style: inherit;">---</span></span>
 <p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
 </section>
 <section id="june-4" class="level2">
-<h2 class="anchored" data-anchor-id="june-4">9. June</h2>
+<h2 class="anchored" data-anchor-id="june-4">09. June</h2>
 <p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -229,21 +630,21 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p><code>add_three &lt;- \(.x) .x+3</code></p>
 </section>
 <section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">6. May</h2>
+<h2 class="anchored" data-anchor-id="may-1">06. May</h2>
 <p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
 <p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
 </section>
 <section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">5. May</h2>
+<h2 class="anchored" data-anchor-id="may-2">05. May</h2>
 <p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
 </section>
 <section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">3. May</h2>
+<h2 class="anchored" data-anchor-id="may-3">03. May</h2>
 <p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
 <p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
 </section>
 <section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">2. May</h2>
+<h2 class="anchored" data-anchor-id="may-4">02. May</h2>
 <p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
 <p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
 </section>
@@ -253,7 +654,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
 </section>
 <section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">3. Apr.</h2>
+<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
 <p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
 </section>
 <section id="feb." class="level2">
@@ -270,7 +671,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Sat, 07 Oct 2023 12:21:16 GMT</pubDate>
+  <pubDate>Sun, 08 Oct 2023 07:06:14 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2607,193 +3008,6 @@ font-style: inherit;">geom_line</span>()</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/index.html</guid>
   <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-26-dataverse/dataverse-url.png" medium="image" type="image/png" height="169" width="144"/>
-</item>
-<item>
-  <title>Geocoding in Python</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Get geographic coordinates for an address with <a href="https://nominatim.org/">Nominatim</a> from <a href="https://www.openstreetmap.org/#map=6/51.330/10.453">OpenStreetMap</a> data.</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> geopy.geocoders <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Nominatim</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a geolocator object</span></span>
-<span id="cb1-4">geolocator <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Nominatim(user_agent<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"get-the-geocode"</span>)</span>
-<span id="cb1-5"></span>
-<span id="cb1-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Define the address for geocoding</span></span>
-<span id="cb1-7">address <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Unter Sachsenhausen 6, Köln, Germany"</span></span>
-<span id="cb1-8"></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Retrieve the geolocation (latitude and longitude) for the given address</span></span>
-<span id="cb1-10">location <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> geolocator.geocode(address)</span>
-<span id="cb1-11"></span>
-<span id="cb1-12"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>((location.latitude, location.longitude))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(50.9426743, 6.9523814687194125)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> folium</span>
-<span id="cb3-2"></span>
-<span id="cb3-3">coordinates <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [location.latitude, location.longitude]</span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a map object</span></span>
-<span id="cb3-6">m <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> folium.Map(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>coordinates, zoom_start<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>)</span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Add a marker for each coordinate</span></span>
-<span id="cb3-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>coordinates, popup<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>address).add_to(m)</span>
-<span id="cb3-10"></span>
-<span id="cb3-11">m  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Display the map in Jupyter Notebook</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
-<html>
-<head>
-    
-    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
-    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
-    
-            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
-            <style>
-                #map_63b59a866a5106074f532b77a09860d0 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-        
-</head>
-<body>
-    
-    
-            <div class=&quot;folium-map&quot; id=&quot;map_63b59a866a5106074f532b77a09860d0&quot; ></div>
-        
-</body>
-<script>
-    
-    
-            var map_63b59a866a5106074f532b77a09860d0 = L.map(
-                &quot;map_63b59a866a5106074f532b77a09860d0&quot;,
-                {
-                    center: [50.9426743, 6.9523814687194125],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 15,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_90a839de75687492d4a5fa0540cc8c0b = L.tileLayer(
-                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_63b59a866a5106074f532b77a09860d0);
-        
-    
-            var marker_aae9e76bc288d55aa1eedc95f1d64558 = L.marker(
-                [50.9426743, 6.9523814687194125],
-                {}
-            ).addTo(map_63b59a866a5106074f532b77a09860d0);
-        
-    
-        var popup_7a93e04e692bfb32ec1b77a9db4af1d6 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-        
-            
-                var html_fa11d22b32f792ebe8e4223a685db78d = $(`<div id=&quot;html_fa11d22b32f792ebe8e4223a685db78d&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
-                popup_7a93e04e692bfb32ec1b77a9db4af1d6.setContent(html_fa11d22b32f792ebe8e4223a685db78d);
-            
-        
-
-        marker_aae9e76bc288d55aa1eedc95f1d64558.bindPopup(popup_7a93e04e692bfb32ec1b77a9db4af1d6)
-        ;
-
-        
-    
-</script>
-</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>Python</category>
-  <category>geo</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/index.html</guid>
-  <pubDate>Wed, 26 Apr 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-04-27-geocoding/map-cologne.png" medium="image" type="image/png" height="86" width="144"/>
 </item>
 </channel>
 </rss>
