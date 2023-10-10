@@ -1,0 +1,159 @@
+---
+date: "2023-10-10"
+image: doi-logo.png
+jupyter: python3
+categories: [Python]
+format:
+  html:
+    toc: true
+---
+
+# Get DOI metadata
+
+## DOI API access
+
+I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.
+
+Here is an example with a request for my first peer-reviewed publication.
+
+```{python}
+import requests
+
+doi_url = "https://doi.org/10.1177/1465116507076430"
+
+headers = {"accept": "text/x-bibliography"}
+r = requests.get(doi_url, headers=headers)
+
+r.text
+
+
+```
+
+## Content types
+
+This is the API information I was interested in.
+
+<https://citation.crosscite.org/docs.html#sec-4>
+
+> "Currently three DOI registration agencies have implemented content negotation for their DOIs: Crossref, DataCite and mEDRA. They support a number of metadata content types, some of which are common to the three RAs."
+
+I try to avoid xml-based formats, so that the following content types are of interst to me.
+
+- Formatted text citation // `text/x-bibliography`
+- BibTeX // `application/x-bibtex`
+- Citeproc JSON // `application/vnd.citationstyles.csl+json`
+- Schema.org in JSON-LD // `application/vnd.schemaorg.ld+json` (only DataCite)
+
+It is actually nice to put a request into a function. I start with a simple example.
+
+```{python}
+def get_doi_bib(doi):
+    """Return a bibliography for a given DOI."""
+
+    url = f"https://dx.doi.org/{doi}"
+
+    headers = {"accept": "text/x-bibliography"}
+    r = requests.get(url, headers=headers)
+
+    return r.text
+
+
+get_doi_bib("10.1177/0958928715573481")
+```
+
+To get the different formats I am interested in, I can rewrite the function.
+
+```{python}
+import time
+import requests
+
+CONTENT_TYPES = {
+    "bibliography": "text/x-bibliography",
+    "bibtex": "application/x-bibtex",
+    "json-csl": "application/vnd.citationstyles.csl+json",
+    "json-ld": "application/vnd.schemaorg.ld+json",
+}
+
+
+def get_doi_data(doi, content_type="bibliography"):
+    """Return metadata for DOI."""
+
+    url = f"https://dx.doi.org/{doi}"
+    headers = {"accept": CONTENT_TYPES.get(content_type, "bibliography")}
+
+    return requests.get(url, headers=headers)
+
+
+doi = "10.1016/j.electstud.2016.07.002"
+
+for key in CONTENT_TYPES:
+    time.sleep(2)  # pause to avoid requests limit
+    doi_request = get_doi_data(doi, key)
+    print(f"DOI content type: {key}\n{doi_request.text}\n")
+```
+
+## Linked data json-ld
+
+_json-ld_ is only available for content registered with [DataCite](https://datacite.org/).
+
+A DOI for an article does not return _json-ld_ metadata.
+
+```{python}
+doi_content = get_doi_data(doi, "json-ld")
+
+doi_content
+```
+
+```{python}
+
+doi_content.text
+```
+
+---
+
+A DOI for a dataset returns _json-ld_ metadata.
+
+```{python}
+doi_content = get_doi_data("10.7910/DVN/BUWAAF", "json-ld")
+
+doi_content
+```
+
+```{python}
+doi_content.text
+```
+
+```{python}
+doi_content.json()
+```
+
+# Redirects
+
+Finally, I was interested if there is a redirect to a DOI registration agency.
+
+<https://citation.crosscite.org/docs.html#sec-2>
+
+> "Content negotiated requests to doi.org that ask for a content type which isn't "text/html" will be redirected to a metadata service hosted by the DOI's registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers."
+
+However, it seems that the content is returned by _doi.org_.
+
+```{python}
+for request_history in doi_content.history:
+    print(request_history.status_code, request_history.url)
+```
+
+A request to __http__://doi.org is redirected to __https__://doi.org, but there is no further redirect to a DOI registration agency.
+
+```{python}
+doi_url = f"http://doi.org/{doi}"
+headers = {"accept": "text/x-bibliography"}
+
+r = requests.get(doi_url, headers=headers)
+
+for request_history in r.history:
+    print(request_history.status_code, request_history.url)
+```
+
+---
+
+![](doi-logo.png)
