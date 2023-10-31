@@ -1,0 +1,109 @@
+---
+date: "2023-10-31"
+image: zenodo-logo.png
+jupyter: python3
+categories: [Python, API]
+format:
+  html:
+    toc: true
+---
+
+# Zenodo API
+
+This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the [partypositions-wikitags](https://github.com/hdigital/partypositions-wikitags) project.
+
+The code of the project is archived at Zenodo with the DOI [10.5281/zenodo.7043510](https://zenodo.org/doi/10.5281/zenodo.7043510).
+
+```{python}
+#| code-fold: true
+import requests
+
+headers = {"accept": "text/x-bibliography"}
+r = requests.get("https://doi.org/10.5281/zenodo.7043510", headers=headers)
+
+r.text
+```
+
+## DOI API
+
+So here is some metadata information. Lets start with the DOI API.
+```{python}
+import requests
+
+doi = "10.5281/zenodo.7043510"
+
+headers = {"accept": "application/vnd.citationstyles.csl+json"}
+r = requests.get(f"https://doi.org/{doi}", headers=headers)
+
+r.json()
+```
+
+## Zenodo record
+
+We can also access a [record](https://developers.zenodo.org/#retrieve37) through the Zenodo API. This does not require a [Zenodo access token](https://developers.zenodo.org/#authentication).
+
+```{python}
+r = requests.get("https://zenodo.org/api/records/8275697")
+record = r.json()
+
+record.keys()
+```
+
+I was interested in the Zenodo metadata.
+
+```{python}
+record['metadata']
+```
+
+## GitHub metadata
+
+Some of the metadata is imported by Zenodo from Github and some metadata needs to be added or updated manually.
+
+You can specify some of the addtional metadata in a `.zenodo.json` file in your GitHub repository.
+
+<https://developers.zenodo.org/#github>
+
+I used the archived Zenodo record for a json dump of the metadata.
+
+```{python}
+import json
+
+print(json.dumps(record['metadata'], indent=2))
+```
+
+Then, I manually cleaned up the metadata:
+
+- kept only entries that are not imported automatically
+- used unicode characters for umlaute
+- specified license id
+
+```{python}
+metadata_json = """
+{
+  "title": "Party positions from Wikipedia tags",
+  "description": "Estimation of party positions from Wikipedia tags with Stan",
+  "creators": [
+    {
+      "name": "Döring, Holger",
+      "affiliation": "GESIS – Leibniz Institute for the Social Sciences"
+    },
+    {
+      "name": "Herrmann, Michael",
+      "affiliation": "University of Konstanz"
+    }
+  ]
+}
+"""
+```
+
+Here, I validate the json. Running the cell should not raise an error.
+
+```{python}
+metadata_json = json.loads(metadata_json)
+```
+
+Finally, I added it to the GitHub repository – [commit ac7c462](https://github.com/hdigital/partypositions-wikitags/commit/ac7c4626267f9bf12015db57138d50c119982396) 😊
+
+---
+
+![](zenodo-logo.png)
