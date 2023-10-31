@@ -145,6 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Get DOI metadata</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
+                <div class="quarto-category">API</div>
               </div>
                   </div>
   </div>
@@ -160,6 +161,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">October 31, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -222,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_doi_bib(doi):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return a bibliography for a given DOI."""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://dx.doi.org/</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://doi.org/</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">"accept"</span>: <span class="st">"text/x-bibliography"</span>}</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(url, headers<span class="op">=</span>headers)</span>
@@ -251,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_doi_data(doi, content_type<span class="op">=</span><span class="st">"bibliography"</span>):</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return metadata for DOI."""</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://dx.doi.org/</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://doi.org/</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">"accept"</span>: CONTENT_TYPES.get(content_type, <span class="st">"bibliography"</span>)}</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> requests.get(url, headers<span class="op">=</span>headers)</span>
@@ -379,7 +386,7 @@ No acceptable resource available.
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> request_history <span class="kw">in</span> doi_content.history:</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(request_history.status_code, request_history.url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>302 https://dx.doi.org/10.7910/DVN/BUWAAF</code></pre>
+<pre><code>302 https://doi.org/10.7910/DVN/BUWAAF</code></pre>
 </div>
 </div>
 <p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
