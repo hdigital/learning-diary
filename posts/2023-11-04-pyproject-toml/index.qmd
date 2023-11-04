@@ -1,0 +1,49 @@
+---
+date: "2023-11-04"
+image: python-logo.png
+jupyter: python3
+categories: [Python]
+---
+
+# pyproject.toml metadata and dependencies
+
+Python allows to specify [metadata](https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata) and [dependencies](https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies) in a `pyproject.toml`.
+
+I have started using the _metadata_ declaration recently and tried the dependency specification this week.
+
+I added an [example](pyproject.toml) to the folder of the post. It contains project metadata and examples for project and development dependencies.
+
+```{python}
+#| code-fold: true
+def print_file(file_name):
+  with open(file_name, "r") as file:
+      print(file.read())
+
+print_file("pyproject.toml")
+```
+
+There is a [toml parser](https://docs.python.org/3/library/tomllib.html) in the standard library since Python 3.11, released in October last year. It can be used to read the `pyproject.toml`.
+
+```{python}
+import tomllib
+
+with open("pyproject.toml", "rb") as toml_file:
+    toml_data = tomllib.load(toml_file)
+
+toml_data
+```
+
+I like to pin dependencies in one `requirements.txt`. Such a file can be created with [pip-tools](https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml).
+
+`python -m piptools compile --upgrade --extra dev pyproject.toml`
+
+Usually, I include the `--generate-hashes` option but leave it out here to shorten the output by not including hash keys.
+
+```{python}
+#| code-fold: true
+print_file("requirements.txt")
+```
+
+---
+
+![](python-logo.png)
