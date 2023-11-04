@@ -266,11 +266,60 @@
     "text": "GitHub metadata\nSome of the metadata is imported by Zenodo from Github and some metadata needs to be added or updated manually.\nYou can specify some of the addtional metadata in a .zenodo.json file in your GitHub repository.\nhttps://developers.zenodo.org/#github\nI used the archived Zenodo record for a json dump of the metadata.\n\nimport json\n\nprint(json.dumps(record['metadata'], indent=2))\n\n{\n  \"title\": \"Party positions from Wikipedia tags (July 2023)\",\n  \"doi\": \"10.5281/zenodo.8275697\",\n  \"publication_date\": \"2023-08-23\",\n  \"description\": \"&lt;p&gt;Estimation of party positions from Wikipedia tags with Stan (July 2023)&lt;/p&gt;\",\n  \"access_right\": \"open\",\n  \"creators\": [\n    {\n      \"name\": \"Holger D\\u00f6ring\",\n      \"affiliation\": \"GESIS \\u2013 Leibniz Institute for the Social Sciences\"\n    },\n    {\n      \"name\": \"Michael Herrmann\",\n      \"affiliation\": \"University of Konstanz\"\n    }\n  ],\n  \"related_identifiers\": [\n    {\n      \"identifier\": \"https://github.com/hdigital/partypositions-wikitags/tree/23.07\",\n      \"relation\": \"isSupplementTo\",\n      \"scheme\": \"url\"\n    }\n  ],\n  \"version\": \"23.07\",\n  \"resource_type\": {\n    \"title\": \"Software\",\n    \"type\": \"software\"\n  },\n  \"license\": {\n    \"id\": \"other-open\"\n  },\n  \"relations\": {\n    \"version\": [\n      {\n        \"index\": 1,\n        \"is_last\": true,\n        \"parent\": {\n          \"pid_type\": \"recid\",\n          \"pid_value\": \"7043510\"\n        }\n      }\n    ]\n  }\n}\n\n\nThen, I manually cleaned up the metadata:\n\nkept only entries that are not imported automatically\nused unicode characters for umlaute\nspecified license id\n\n\nmetadata_json = \"\"\"\n{\n  \"title\": \"Party positions from Wikipedia tags\",\n  \"description\": \"Estimation of party positions from Wikipedia tags with Stan\",\n  \"creators\": [\n    {\n      \"name\": \"Döring, Holger\",\n      \"affiliation\": \"GESIS – Leibniz Institute for the Social Sciences\"\n    },\n    {\n      \"name\": \"Herrmann, Michael\",\n      \"affiliation\": \"University of Konstanz\"\n    }\n  ]\n}\n\"\"\"\n\nHere, I validate the json. Running the cell should not raise an error.\n\nmetadata_json = json.loads(metadata_json)\n\nFinally, I added it to the GitHub repository – commit ac7c462 😊"
   },
   {
-    "objectID": "posts/2023-08-21-quarto-docker/index.html",
-    "href": "posts/2023-08-21-quarto-docker/index.html",
-    "title": "Quarto version in Docker",
+    "objectID": "posts/2023-11-04-pyproject-toml/index.html",
+    "href": "posts/2023-11-04-pyproject-toml/index.html",
+    "title": "pyproject.toml metadata and dependencies",
     "section": "",
-    "text": "Quarto version in Docker\nI realized that installing the latest version of Quarto in Docker will not lead to a reproducible environment since the latest Docker version depends on the day an image is build. So I was looking for a Dockerfile configuration to install a specified version of Quarto in Docker.\nQuarto keeps a list of releases so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.\nFor the final solution I needed several attempts but learned someting about defining arguments in a Dockerfile.\nHere is the solution I came up with.\nARG QUARTO_VERSION=1.3.450\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN gdebi --non-interactive quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex\nThis is the version for the latest release I have used so far.\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb\nRUN gdebi --non-interactive quarto-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex"
+    "text": "Python allows to specify metadata and dependencies in a pyproject.toml.\nI have started using the metadata declaration recently and tried the dependency specification this week.\nI added an example to the folder of the post. It contains project metadata and examples for project and development dependencies.\n\n\nCode\ndef print_file(file_name):\n  with open(file_name, \"r\") as file:\n      print(file.read())\n\nprint_file(\"pyproject.toml\")\n\n\n[project]\nname = \"hd-example\"\nversion = \"0.1\"\ndescription = \"An example for pyproject\"\nmaintainers = [{ name = \"Holger Döring\" }]\nlicense = { text = \"MIT License\" }\nrequires-python = \"&gt;=3.11\"\ndependencies = [\n  \"requests\",\n]\n\n[project.optional-dependencies]\ndev = [\n  \"pip-tools\",\n  \"ruff\",\n]\n\n[project.urls]\n homepage = \"\"\nrepository = \"https://github.com/hdigital/starter-python.git\"\n\n\n# specify build system to run pip-tools\n# (application is not a package and no build is needed)\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n\n\nThere is a toml parser in the standard library since Python 3.11, released in October last year. It can be used to read the pyproject.toml.\n\nimport tomllib\n\nwith open(\"pyproject.toml\", \"rb\") as toml_file:\n    toml_data = tomllib.load(toml_file)\n\ntoml_data\n\n{'project': {'name': 'hd-example',\n  'version': '0.1',\n  'description': 'An example for pyproject',\n  'maintainers': [{'name': 'Holger Döring'}],\n  'license': {'text': 'MIT License'},\n  'requires-python': '&gt;=3.11',\n  'dependencies': ['requests'],\n  'optional-dependencies': {'dev': ['pip-tools', 'ruff']},\n  'urls': {'homepage': '',\n   'repository': 'https://github.com/hdigital/starter-python.git'}},\n 'build-system': {'requires': ['hatchling'],\n  'build-backend': 'hatchling.build'}}\n\n\nI like to pin dependencies in one requirements.txt. Such a file can be created with pip-tools.\npython -m piptools compile --upgrade --extra dev pyproject.toml\nUsually, I include the --generate-hashes option but leave it out here to shorten the output by not including hash keys.\n\n\nCode\nprint_file(\"requirements.txt\")\n\n\n#\n# This file is autogenerated by pip-compile with Python 3.11\n# by the following command:\n#\n#    pip-compile --extra=dev pyproject.toml\n#\nbuild==1.0.3\n    # via pip-tools\ncertifi==2023.7.22\n    # via requests\ncharset-normalizer==3.3.2\n    # via requests\nclick==8.1.7\n    # via pip-tools\nidna==3.4\n    # via requests\npackaging==23.2\n    # via build\npip-tools==7.3.0\n    # via hd-example (pyproject.toml)\npyproject-hooks==1.0.0\n    # via build\nrequests==2.31.0\n    # via hd-example (pyproject.toml)\nruff==0.1.4\n    # via hd-example (pyproject.toml)\nurllib3==2.0.7\n    # via requests\nwheel==0.41.3\n    # via pip-tools\n\n# The following packages are considered to be unsafe in a requirements file:\n# pip\n# setuptools"
+  },
+  {
+    "objectID": "posts/2023-04-27-posit-cloud/index.html",
+    "href": "posts/2023-04-27-posit-cloud/index.html",
+    "title": "Posit Cloud",
+    "section": "",
+    "text": "Posit Cloud\nI use RStudio in Posit Cloud sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project that I work on from different machines.\nOver the last days, I used it a little more. One goal was to figure out how a more extensive use would work out.\nThis worked out well. I like just opening a browser and start working with R in RStudio. Especially, a Chrome browser with the tab in full screen mode works very well. It almost feels like working on a desktop application.\nWorking in Posit Cloud, I am still struggling slightly with two issues.\nFirst, not all shortcuts work the way I am used to from the RStudio desktop application. Some browser shortcuts take precedence over RStudio shortcuts. Showing the command pallete works. So I can use it to run a command from the keyboard. However, I am just used to some shortcuts that I am irritated if typing them does not lead to the expected next step working in RStudio.\nSecond, I find the file handling still a little inconvenient. Uploading a file into to project folder or moving files across project folders takes some steps and mulitple clicks. Here, the Posit Cloud interface to RStudio is just not as reactive as for example file handling in Google Drive.\nUsing RStudio with Posit Cloud regularly remains a regular part of my data science tools.\nActually, this time I used it so extensivly that I exceeded the free quota of my account. So I have to wait for a while until I can start using it again.\n\n\n\nPosit Cloud limit"
+  },
+  {
+    "objectID": "posts/2023-06-24-str-glue/index.html",
+    "href": "posts/2023-06-24-str-glue/index.html",
+    "title": "string interpolation with str_glue()",
+    "section": "",
+    "text": "string interpolation with str_glue()\nIn R, I like string interpolation with glue and prefer it over Base-R paste(), paste0(), sprintf(). Regularly, I use glue() and forget to load the respective library at the top of the script or find glue::glue() rather verbose.\nA tidyverse blog post made me realize that stringr includes a str_glue() function that wraps glue(). stringr is loaded with library(tidyverse) so that I can include it into my regular tidyverse workflow.\nIt is also documented on the stringr cheatsheet, but I have not relized that. It serves as useful reminder to look at the Posit Cheatsheets more regularly to review and update my workflow.\n\nlibrary(tidyverse)\n\nname &lt;- \"Jane\"\n\nstr_glue(\"Hi {name}. How are you?\")\n\nHi Jane. How are you?"
+  },
+  {
+    "objectID": "snippets/r-cell-conditional.html",
+    "href": "snippets/r-cell-conditional.html",
+    "title": "Conditional R code cell execution",
+    "section": "",
+    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
+  },
+  {
+    "objectID": "snippets/r-cell-conditional.html#explore-data",
+    "href": "snippets/r-cell-conditional.html#explore-data",
+    "title": "Conditional R code cell execution",
+    "section": "Explore data",
+    "text": "Explore data"
+  },
+  {
+    "objectID": "snippets/jupyter.html",
+    "href": "snippets/jupyter.html",
+    "title": "Learning",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "snippets/jupyter-quarto.html",
+    "href": "snippets/jupyter-quarto.html",
+    "title": "Learning",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "snippets/jupyter-options.html",
+    "href": "snippets/jupyter-options.html",
+    "title": "Jupyter Quarto",
+    "section": "",
+    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "posts/2023-05-01-wikipedia-data/index.html",
@@ -301,53 +350,11 @@
     "text": "Map\n\nimport folium\n\nmap_coord = [coordinates['lat'], coordinates['lon']]\n\n# create the map\nmap = folium.Map(location=map_coord, zoom_start=3.5)\n\n# add a marker at the location\nfolium.Marker(location=map_coord, popup=title).add_to(map)\n\n# display the map\nmap\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
   },
   {
-    "objectID": "snippets/jupyter-options.html",
-    "href": "snippets/jupyter-options.html",
-    "title": "Jupyter Quarto",
+    "objectID": "posts/2023-08-21-quarto-docker/index.html",
+    "href": "posts/2023-08-21-quarto-docker/index.html",
+    "title": "Quarto version in Docker",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "objectID": "snippets/jupyter-quarto.html",
-    "href": "snippets/jupyter-quarto.html",
-    "title": "Learning",
-    "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "objectID": "snippets/jupyter.html",
-    "href": "snippets/jupyter.html",
-    "title": "Learning",
-    "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
-  },
-  {
-    "objectID": "snippets/r-cell-conditional.html",
-    "href": "snippets/r-cell-conditional.html",
-    "title": "Conditional R code cell execution",
-    "section": "",
-    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
-  },
-  {
-    "objectID": "snippets/r-cell-conditional.html#explore-data",
-    "href": "snippets/r-cell-conditional.html#explore-data",
-    "title": "Conditional R code cell execution",
-    "section": "Explore data",
-    "text": "Explore data"
-  },
-  {
-    "objectID": "posts/2023-06-24-str-glue/index.html",
-    "href": "posts/2023-06-24-str-glue/index.html",
-    "title": "string interpolation with str_glue()",
-    "section": "",
-    "text": "string interpolation with str_glue()\nIn R, I like string interpolation with glue and prefer it over Base-R paste(), paste0(), sprintf(). Regularly, I use glue() and forget to load the respective library at the top of the script or find glue::glue() rather verbose.\nA tidyverse blog post made me realize that stringr includes a str_glue() function that wraps glue(). stringr is loaded with library(tidyverse) so that I can include it into my regular tidyverse workflow.\nIt is also documented on the stringr cheatsheet, but I have not relized that. It serves as useful reminder to look at the Posit Cheatsheets more regularly to review and update my workflow.\n\nlibrary(tidyverse)\n\nname &lt;- \"Jane\"\n\nstr_glue(\"Hi {name}. How are you?\")\n\nHi Jane. How are you?"
-  },
-  {
-    "objectID": "posts/2023-04-27-posit-cloud/index.html",
-    "href": "posts/2023-04-27-posit-cloud/index.html",
-    "title": "Posit Cloud",
-    "section": "",
-    "text": "Posit Cloud\nI use RStudio in Posit Cloud sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project that I work on from different machines.\nOver the last days, I used it a little more. One goal was to figure out how a more extensive use would work out.\nThis worked out well. I like just opening a browser and start working with R in RStudio. Especially, a Chrome browser with the tab in full screen mode works very well. It almost feels like working on a desktop application.\nWorking in Posit Cloud, I am still struggling slightly with two issues.\nFirst, not all shortcuts work the way I am used to from the RStudio desktop application. Some browser shortcuts take precedence over RStudio shortcuts. Showing the command pallete works. So I can use it to run a command from the keyboard. However, I am just used to some shortcuts that I am irritated if typing them does not lead to the expected next step working in RStudio.\nSecond, I find the file handling still a little inconvenient. Uploading a file into to project folder or moving files across project folders takes some steps and mulitple clicks. Here, the Posit Cloud interface to RStudio is just not as reactive as for example file handling in Google Drive.\nUsing RStudio with Posit Cloud regularly remains a regular part of my data science tools.\nActually, this time I used it so extensivly that I exceeded the free quota of my account. So I have to wait for a while until I can start using it again.\n\n\n\nPosit Cloud limit"
+    "text": "Quarto version in Docker\nI realized that installing the latest version of Quarto in Docker will not lead to a reproducible environment since the latest Docker version depends on the day an image is build. So I was looking for a Dockerfile configuration to install a specified version of Quarto in Docker.\nQuarto keeps a list of releases so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.\nFor the final solution I needed several attempts but learned someting about defining arguments in a Dockerfile.\nHere is the solution I came up with.\nARG QUARTO_VERSION=1.3.450\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN gdebi --non-interactive quarto-${QUARTO_VERSION}-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex\nThis is the version for the latest release I have used so far.\nRUN apt-get -y update && apt-get install -y --no-install-recommends curl gdebi-core\nRUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb\nRUN gdebi --non-interactive quarto-linux-amd64.deb\nRUN install2.r markdown reticulate\n# RUN quarto install tinytex"
   },
   {
     "objectID": "posts/2023-02-26-quarto/index.html",
@@ -508,6 +515,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "Today I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n  \n\n\n\n\nZenodo API\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR packages with pak\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n  \n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFile hashing\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr programming\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nConditional R cells\n\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "pyproject.toml metadata and dependencies\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n  \n\n\n\n\nZenodo API\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR packages with pak\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n  \n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFile hashing\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr programming\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nConditional R cells\n\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
