@@ -1,0 +1,79 @@
+---
+date: "2023-11-17"
+image: python-pizza-logo.png
+jupyter: python3
+categories: [Python]
+---
+
+# Python Pizza Hamburg
+
+This Friday, I attended the [Python Pizza micro conference](https://hamburg.python.pizza/) in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning and diversity. The topics of the talks were very accessible and mainly experience based.
+
+Some of the technical things I took out:
+
+* "Streamlit: Making Data Shine in Minute" (Alessandro Romano) showed me that [Streamlit](https://github.com/streamlit/streamlit) may be the tool I need to quickly create data dashboards without getting into webdev details.
+* "Introducing the ORMIR community and the book 'Learn Python with Jupyter'" (Serena Bonaretti) helped me to better understand the evolving relation between open source, open science, research and learning.
+* "Choose HTMX and avoid learning too much JavaScript" (Martin Borus) demonstrated once more that I should start to experiment with [htmx](https://github.com/bigskysoftware/htmx). I run the [repository code](https://github.com/mborus/choose_htmx) in Codespaces later and want to try [FastAPI](https://github.com/tiangolo/fastapi) and async web page element reloading.
+
+
+The friendly environment and some nice exchanges about data science, Python, and open source projects over delicious pizza were really nice.
+
+---
+
+This was a Python Pizza conference. So I asked ChatGPT to draw a Pizza in Python, something it happily did.
+
+ChatGPT message: _draw a figure of a pizza in python in a jupyter notebook_
+
+This provided code for a pizza with peperoni. I tried to get a [Vega-Altair](https://altair-viz.github.io/) version but this did not work out. So I stayed with the [Matplotlib](https://matplotlib.org/) version and asked to have some pizza slices.
+
+ChatGPT message: _add slices to the matplotlib plot_
+
+```{python}
+#| code-fold: true
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+# Create a figure and axis
+fig, ax = plt.subplots()
+
+# Draw the pizza circle
+pizza_circle = plt.Circle((0.5, 0.5), 0.4, color='brown', fill=True)
+ax.add_patch(pizza_circle)
+
+# Draw the cheese circle (a smaller circle on top of the pizza)
+cheese_circle = plt.Circle((0.5, 0.5), 0.35, color='yellow', fill=True)
+ax.add_patch(cheese_circle)
+
+# Draw pizza slices
+num_slices = 8
+theta = 360 / num_slices
+slice_colors = ['orange', 'lightgreen', 'tomato', 'wheat', 'lightcoral', 'lightblue', 'sandybrown', 'lightpink']
+
+for i in range(num_slices):
+    slice_wedge = patches.Wedge((0.5, 0.5), 0.4, i * theta, (i + 1) * theta, color=slice_colors[i], fill=True)
+    ax.add_patch(slice_wedge)
+
+# Set aspect ratio to be equal
+ax.set_aspect('equal', adjustable='box')
+
+# Set axis limits
+ax.set_xlim(0, 1)
+ax.set_ylim(0, 1)
+
+# Remove axis labels and ticks
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+
+# Set the title
+plt.title("Delicious Pizza with Slices")
+
+# Show the plot
+plt.show()
+```
+
+---
+
+![](python-pizza-photo.png)
