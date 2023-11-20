@@ -4,9 +4,6 @@ image: about.jpg  # https://commons.wikimedia.org/wiki/File:Telefunken-tr4.jpg
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/holgerd21
     - icon: github
       text: Github
       href: https://github.com/hdigital
