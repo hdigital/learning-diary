@@ -1,0 +1,94 @@
+---
+date: "2023-11-20"
+image: httr2-logo.png
+categories: [R, API]
+title: API requests with httr2
+format:
+  html:
+    toc: true
+---
+
+[httr2 1.0](https://www.tidyverse.org/blog/2023/11/httr2-1-0-0/) was recently released. I used it earlier this month in my API explorations to understand what the Python [requests](https://github.com/psf/requests) equivalent is in R. Python and _requests_ are so convenient that I had not used R yet to access an API.
+
+I became aware of [Semantic Scholar](https://www.semanticscholar.org/author/Holger-D%C3%B6ring/51362391), a database of scientific literature, with a nice [API](https://api.semanticscholar.org/api-docs/).
+
+So here is an exploration of my Semantic Scholar records (ID 51362391) in R with httr2.
+
+```{r}
+#| code-fold: true
+#| message: false
+
+library(tidyverse)
+library(httr2)
+library(jsonlite)
+```
+
+## API request
+
+[API · Fetch paper and author data](https://api.semanticscholar.org/api-docs/#tag/Author-Data/operation/get_graph_get_author)
+
+```{r}
+author_id <- 51362391
+
+url <-
+  str_glue(
+    "https://api.semanticscholar.org/graph/v1/author/{author_id}",
+    "?fields=aliases,name,papers,papers.year,papers.title,papers.citationCount,papers.authors"
+  )
+
+resp <-
+  request(url) |>
+  req_perform()
+```
+
+```{r}
+dt <-
+  resp_body_string(resp) |>
+  fromJSON()
+
+print(dt[["name"]])
+```
+
+
+## Publications
+
+```{r}
+papers <-
+  dt[["papers"]] |>
+  mutate(
+    id_short = str_sub(paperId, 1, 5),
+    title_short = str_sub(title, 1, 30),
+    authors_n = map_int(authors, \(.x) nrow(.x))
+    )
+```
+
+Number of publications at Semantic Scholar
+
+```{r}
+nrow(papers)
+```
+
+Publications
+
+```{r}
+papers |>
+  select(id_short, year, `cita.`=citationCount, `auth.`=authors_n, title_short)
+```
+
+## Authors
+
+Authors by paper
+
+```{r}
+authors <-
+  papers |>
+  select(id_short, year, authors) |>
+  unnest(authors)
+
+authors
+```
+
+
+---
+
+![](httr2-logo.png)
