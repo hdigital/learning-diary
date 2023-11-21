@@ -2,8 +2,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2023-11-xx-jupyter-lite/jupyter-lite.html",
-      "/posts/2023-til/index.html",
       "/posts/2023-11-20-r-httr/index.html",
       "/posts/2023-11-17-python-pizza/index.html",
       "/posts/2023-11-04-pyproject-toml/index.html",
@@ -13,6 +11,7 @@
       "/posts/2023-08-21-quarto-docker/index.html",
       "/posts/2023-08-14-file-hash/index.html",
       "/posts/2023-08-12-dplyr-join-by/index.html",
+      "/posts/2023-til/index.html",
       "/posts/2023-07-30-playwright/index.html",
       "/posts/2023-07-29-renv/index.html",
       "/posts/2023-07-16 r4ds-pr/index.html",
