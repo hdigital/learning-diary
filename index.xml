@@ -10,172 +10,7 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Fri, 03 Nov 2023 23:00:00 GMT</lastBuildDate>
-<item>
-  <title>pyproject.toml metadata and dependencies</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
-<p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
-<p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> print_file(file_name):</span>
-<span id="cb1-2">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">with</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">open</span>(file_name, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">file</span>:</span>
-<span id="cb1-3">      <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">file</span>.read())</span>
-<span id="cb1-4"></span>
-<span id="cb1-5">print_file(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pyproject.toml"</span>)</span></code></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[project]
-name = "hd-example"
-version = "0.1"
-description = "An example for pyproject"
-maintainers = [{ name = "Holger Döring" }]
-license = { text = "MIT License" }
-requires-python = "&gt;=3.11"
-dependencies = [
-  "requests",
-]
-
-[project.optional-dependencies]
-dev = [
-  "pip-tools",
-  "ruff",
-]
-
-[project.urls]
- homepage = ""
-repository = "https://github.com/hdigital/starter-python.git"
-
-
-# specify build system to run pip-tools
-# (application is not a package and no build is needed)
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-</code></pre>
-</div>
-</div>
-<p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> tomllib</span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">with</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pyproject.toml"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"rb"</span>) <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> toml_file:</span>
-<span id="cb3-4">    toml_data <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> tomllib.load(toml_file)</span>
-<span id="cb3-5"></span>
-<span id="cb3-6">toml_data</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>{'project': {'name': 'hd-example',
-  'version': '0.1',
-  'description': 'An example for pyproject',
-  'maintainers': [{'name': 'Holger Döring'}],
-  'license': {'text': 'MIT License'},
-  'requires-python': '&gt;=3.11',
-  'dependencies': ['requests'],
-  'optional-dependencies': {'dev': ['pip-tools', 'ruff']},
-  'urls': {'homepage': '',
-   'repository': 'https://github.com/hdigital/starter-python.git'}},
- 'build-system': {'requires': ['hatchling'],
-  'build-backend': 'hatchling.build'}}</code></pre>
-</div>
-</div>
-<p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
-<p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
-<p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"requirements.txt"</span>)</span></code></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>#
-# This file is autogenerated by pip-compile with Python 3.11
-# by the following command:
-#
-#    pip-compile --extra=dev pyproject.toml
-#
-build==1.0.3
-    # via pip-tools
-certifi==2023.7.22
-    # via requests
-charset-normalizer==3.3.2
-    # via requests
-click==8.1.7
-    # via pip-tools
-idna==3.4
-    # via requests
-packaging==23.2
-    # via build
-pip-tools==7.3.0
-    # via hd-example (pyproject.toml)
-pyproject-hooks==1.0.0
-    # via build
-requests==2.31.0
-    # via hd-example (pyproject.toml)
-ruff==0.1.4
-    # via hd-example (pyproject.toml)
-urllib3==2.0.7
-    # via requests
-wheel==0.41.3
-    # via pip-tools
-
-# The following packages are considered to be unsafe in a requirements file:
-# pip
-# setuptools
-</code></pre>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" class="img-fluid"></p>
-
-
-
- ]]></description>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/index.html</guid>
-  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
-</item>
+<lastBuildDate>Tue, 21 Nov 2023 06:22:05 GMT</lastBuildDate>
 <item>
   <title>Today I learned (TIL)</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
@@ -435,8 +270,1027 @@ font-style: inherit;">fi</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Tue, 31 Oct 2023 18:07:50 GMT</pubDate>
+  <pubDate>Tue, 21 Nov 2023 06:22:05 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>API requests with httr2</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><a href="https://www.tidyverse.org/blog/2023/11/httr2-1-0-0/">httr2 1.0</a> was recently released. I used it earlier this month in my API explorations to understand what the Python <a href="https://github.com/psf/requests">requests</a> equivalent is in R. Python and <em>requests</em> are so convenient that I had not used R yet to access an API.</p>
+<p>I became aware of <a href="https://www.semanticscholar.org/author/Holger-D%C3%B6ring/51362391">Semantic Scholar</a>, a database of scientific literature, with a nice <a href="https://api.semanticscholar.org/api-docs/">API</a>.</p>
+<p>So here is an exploration of my Semantic Scholar records (ID 51362391) in R with httr2.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(httr2)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(jsonlite)</span></code></pre></div>
+</details>
+</div>
+<section id="api-request" class="level2">
+<h2 class="anchored" data-anchor-id="api-request">API request</h2>
+<p><a href="https://api.semanticscholar.org/api-docs/#tag/Author-Data/operation/get_graph_get_author">API · Fetch paper and author data</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">author_id <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">51362391</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3">url <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_glue</span>(</span>
+<span id="cb2-5">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://api.semanticscholar.org/graph/v1/author/{author_id}"</span>,</span>
+<span id="cb2-6">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"?fields=aliases,name,papers,papers.year,papers.title,papers.citationCount,papers.authors"</span></span>
+<span id="cb2-7">  )</span>
+<span id="cb2-8"></span>
+<span id="cb2-9">resp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">request</span>(url) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb2-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">req_perform</span>()</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">resp_body_string</span>(resp) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fromJSON</span>()</span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(dt[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"name"</span>]])</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Holger Döring"</code></pre>
+</div>
+</div>
+</section>
+<section id="publications" class="level2">
+<h2 class="anchored" data-anchor-id="publications">Publications</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">papers <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb5-2">  dt[[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"papers"</span>]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb5-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_short =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_sub</span>(paperId, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb5-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title_short =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_sub</span>(title, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>),</span>
+<span id="cb5-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">authors_n =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_int</span>(authors, \(.x) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(.x))</span>
+<span id="cb5-7">    )</span></code></pre></div>
+</div>
+<p>Number of publications at Semantic Scholar</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(papers)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+</div>
+<p>Publications</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">papers <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(id_short, year, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cita.</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span>citationCount, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">auth.</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">id_short</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: right;">cita.</th>
+<th style="text-align: right;">auth.</th>
+<th style="text-align: left;">title_short</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">a9408</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Formal binary logic, tidal for</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c229b</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Beyond the light-barrier -fast</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">e3034</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Occams Razor-No Dark Matter in</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">37135</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Lorentzian SRT-Transformation</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">84d1f</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Germany: From Stable Coalition</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8bd34</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Institutional constraints on c</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1b9e9</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Party Positions from Wikipedia</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">e9e28</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Party Facts: A database of pol</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f93aa</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Gathering and Managing Data on</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">69fe5</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Mapping established democracie</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4175b</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Is Proportional Representation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">85957</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">How do European democracies co</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a9372</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Revisiting the left cabinet sh</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34e81</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Jean-Claude Juncker’s new Euro</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1273f</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Who Gets into Government? Coal</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31eff</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">The collective action of data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c01fd</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Ministerial Careers and ’The M</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c4f64</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Why are States with Pr More Re</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">e3cbe</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Collaborative Data Collection</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">f5948</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Political representation in Eu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2ebbf</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Electoral and Mechanical Cause</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ec86a</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Evaluating Scripting Languages</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">14ab0</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">The Composition of the College</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9674d</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Divided Government European St</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="authors" class="level2">
+<h2 class="anchored" data-anchor-id="authors">Authors</h2>
+<p>Authors by paper</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">authors <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb9-2">  papers <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(id_short, year, authors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unnest</span>(authors)</span>
+<span id="cb9-5"></span>
+<span id="cb9-6">authors</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">id_short</th>
+<th style="text-align: right;">year</th>
+<th style="text-align: left;">authorId</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">a9408</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c229b</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">e3034</td>
+<td style="text-align: right;">2022</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">37135</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">84d1f</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">94263396</td>
+<td style="text-align: left;">M. Debus</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">84d1f</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">84d1f</td>
+<td style="text-align: right;">2021</td>
+<td style="text-align: left;">143708020</td>
+<td style="text-align: left;">Alejandro Ecker</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8bd34</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">119358998</td>
+<td style="text-align: left;">Maria Thürk</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8bd34</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">145985059</td>
+<td style="text-align: left;">Johan Hellström</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">8bd34</td>
+<td style="text-align: right;">2020</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1b9e9</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">145315358</td>
+<td style="text-align: left;">M. Herrmann</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1b9e9</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">e9e28</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">e9e28</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">1685592</td>
+<td style="text-align: left;">Sven Regel</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f93aa</td>
+<td style="text-align: right;">2019</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">69fe5</td>
+<td style="text-align: right;">2016</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4175b</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4175b</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">2072035416</td>
+<td style="text-align: left;">P. Manow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">85957</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">144008442</td>
+<td style="text-align: left;">Jonathan Bright</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">85957</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">85957</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">145474393</td>
+<td style="text-align: left;">Conor Little</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a9372</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">a9372</td>
+<td style="text-align: right;">2015</td>
+<td style="text-align: left;">115016266</td>
+<td style="text-align: left;">Hanna Schwander</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">34e81</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">82184129</td>
+<td style="text-align: left;">A. Wonka</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">34e81</td>
+<td style="text-align: right;">2014</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1273f</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1273f</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">145985059</td>
+<td style="text-align: left;">Johan Hellström</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">31eff</td>
+<td style="text-align: right;">2013</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c01fd</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">144008442</td>
+<td style="text-align: left;">Jonathan Bright</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c01fd</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c01fd</td>
+<td style="text-align: right;">2012</td>
+<td style="text-align: left;">145474393</td>
+<td style="text-align: left;">Conor Little</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c4f64</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">2072035416</td>
+<td style="text-align: left;">P. Manow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c4f64</td>
+<td style="text-align: right;">2011</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">e3cbe</td>
+<td style="text-align: right;">2010</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f5948</td>
+<td style="text-align: right;">2009</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2ebbf</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">2072035416</td>
+<td style="text-align: left;">P. Manow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2ebbf</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ec86a</td>
+<td style="text-align: right;">2008</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">14ab0</td>
+<td style="text-align: right;">2007</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9674d</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: left;">2072035416</td>
+<td style="text-align: left;">P. Manow</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9674d</td>
+<td style="text-align: right;">2006</td>
+<td style="text-align: left;">51362391</td>
+<td style="text-align: left;">Holger Döring</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>API</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/index.html</guid>
+  <pubDate>Sun, 19 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" medium="image" type="image/png" height="166" width="144"/>
+</item>
+<item>
+  <title>Python Pizza Hamburg</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This Friday, I attended the <a href="https://hamburg.python.pizza/">Python Pizza micro conference</a> in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning and diversity. The topics of the talks were very accessible and mainly experience based.</p>
+<p>Some of the technical things I took out:</p>
+<ul>
+<li>“Streamlit: Making Data Shine in Minute” (Alessandro Romano) showed me that <a href="https://github.com/streamlit/streamlit">Streamlit</a> may be the tool I need to quickly create data dashboards without getting into webdev details.</li>
+<li>“Introducing the ORMIR community and the book ‘Learn Python with Jupyter’” (Serena Bonaretti) helped me to better understand the evolving relation between open source, open science, research and learning.</li>
+<li>“Choose HTMX and avoid learning too much JavaScript” (Martin Borus) demonstrated once more that I should start to experiment with <a href="https://github.com/bigskysoftware/htmx">htmx</a>. I run the <a href="https://github.com/mborus/choose_htmx">repository code</a> in Codespaces later and want to try <a href="https://github.com/tiangolo/fastapi">FastAPI</a> and async web page element reloading.</li>
+</ul>
+<p>The friendly environment and some nice exchanges about data science, Python, and open source projects over delicious pizza were really nice.</p>
+<hr>
+<p>This was a Python Pizza conference. So I asked ChatGPT to draw a Pizza in Python, something it happily did.</p>
+<p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
+<p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
+<p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> plt</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> matplotlib.patches <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> patches</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a figure and axis</span></span>
+<span id="cb1-5">fig, ax <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots()</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Draw the pizza circle</span></span>
+<span id="cb1-8">pizza_circle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.Circle((<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'brown'</span>, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb1-9">ax.add_patch(pizza_circle)</span>
+<span id="cb1-10"></span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Draw the cheese circle (a smaller circle on top of the pizza)</span></span>
+<span id="cb1-12">cheese_circle <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.Circle((<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.35</span>, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'yellow'</span>, fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb1-13">ax.add_patch(cheese_circle)</span>
+<span id="cb1-14"></span>
+<span id="cb1-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Draw pizza slices</span></span>
+<span id="cb1-16">num_slices <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span></span>
+<span id="cb1-17">theta <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">360</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> num_slices</span>
+<span id="cb1-18">slice_colors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'orange'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightgreen'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'tomato'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'wheat'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightcoral'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightblue'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'sandybrown'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'lightpink'</span>]</span>
+<span id="cb1-19"></span>
+<span id="cb1-20"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(num_slices):</span>
+<span id="cb1-21">    slice_wedge <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> patches.Wedge((<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.4</span>, i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> theta, (i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> theta, color<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>slice_colors[i], fill<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb1-22">    ax.add_patch(slice_wedge)</span>
+<span id="cb1-23"></span>
+<span id="cb1-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set aspect ratio to be equal</span></span>
+<span id="cb1-25">ax.set_aspect(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'equal'</span>, adjustable<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'box'</span>)</span>
+<span id="cb1-26"></span>
+<span id="cb1-27"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set axis limits</span></span>
+<span id="cb1-28">ax.set_xlim(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb1-29">ax.set_ylim(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb1-30"></span>
+<span id="cb1-31"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Remove axis labels and ticks</span></span>
+<span id="cb1-32">ax.set_xticks([])</span>
+<span id="cb1-33">ax.set_yticks([])</span>
+<span id="cb1-34">ax.set_xticklabels([])</span>
+<span id="cb1-35">ax.set_yticklabels([])</span>
+<span id="cb1-36"></span>
+<span id="cb1-37"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Set the title</span></span>
+<span id="cb1-38">plt.title(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Delicious Pizza with Slices"</span>)</span>
+<span id="cb1-39"></span>
+<span id="cb1-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Show the plot</span></span>
+<span id="cb1-41">plt.show()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/index_files/figure-html/cell-2-output-1.png" width="389" height="409"></p>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/python-pizza-photo.png" class="img-fluid"></p>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/index.html</guid>
+  <pubDate>Thu, 16 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/python-pizza-logo.png" medium="image" type="image/png" height="117" width="144"/>
+</item>
+<item>
+  <title>pyproject.toml metadata and dependencies</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
+<p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
+<p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> print_file(file_name):</span>
+<span id="cb1-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(file_name, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">file</span>:</span>
+<span id="cb1-3">      <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">file</span>.read())</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">print_file(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pyproject.toml"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[project]
+name = "hd-example"
+version = "0.1"
+description = "An example for pyproject"
+maintainers = [{ name = "Holger Döring" }]
+license = { text = "MIT License" }
+requires-python = "&gt;=3.11"
+dependencies = [
+  "requests",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pip-tools",
+  "ruff",
+]
+
+[project.urls]
+ homepage = ""
+repository = "https://github.com/hdigital/starter-python.git"
+
+
+# specify build system to run pip-tools
+# (application is not a package and no build is needed)
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+</code></pre>
+</div>
+</div>
+<p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> tomllib</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pyproject.toml"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"rb"</span>) <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> toml_file:</span>
+<span id="cb3-4">    toml_data <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tomllib.load(toml_file)</span>
+<span id="cb3-5"></span>
+<span id="cb3-6">toml_data</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>{'project': {'name': 'hd-example',
+  'version': '0.1',
+  'description': 'An example for pyproject',
+  'maintainers': [{'name': 'Holger Döring'}],
+  'license': {'text': 'MIT License'},
+  'requires-python': '&gt;=3.11',
+  'dependencies': ['requests'],
+  'optional-dependencies': {'dev': ['pip-tools', 'ruff']},
+  'urls': {'homepage': '',
+   'repository': 'https://github.com/hdigital/starter-python.git'}},
+ 'build-system': {'requires': ['hatchling'],
+  'build-backend': 'hatchling.build'}}</code></pre>
+</div>
+</div>
+<p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
+<p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
+<p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"requirements.txt"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>#
+# This file is autogenerated by pip-compile with Python 3.11
+# by the following command:
+#
+#    pip-compile --extra=dev pyproject.toml
+#
+build==1.0.3
+    # via pip-tools
+certifi==2023.7.22
+    # via requests
+charset-normalizer==3.3.2
+    # via requests
+click==8.1.7
+    # via pip-tools
+idna==3.4
+    # via requests
+packaging==23.2
+    # via build
+pip-tools==7.3.0
+    # via hd-example (pyproject.toml)
+pyproject-hooks==1.0.0
+    # via build
+requests==2.31.0
+    # via hd-example (pyproject.toml)
+ruff==0.1.4
+    # via hd-example (pyproject.toml)
+urllib3==2.0.7
+    # via requests
+wheel==0.41.3
+    # via pip-tools
+
+# The following packages are considered to be unsafe in a requirements file:
+# pip
+# setuptools
+</code></pre>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" class="img-fluid"></p>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/index.html</guid>
+  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
   <title>Zenodo API</title>
@@ -2646,425 +3500,6 @@ pick c993202 Add VS Code settings
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</guid>
   <pubDate>Fri, 02 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="ai-images-with-dall-e" class="level1">
-<h1>AI images with DALL-E</h1>
-<p>Today, I became aware of an OpenAI service to generate images — <a href="https://labs.openai.com/">DALL-E</a>.</p>
-<p>This has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.</p>
-<p>Sometimes, images from <a href="https://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a> worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.</p>
-<p>I had to pay for the service but the number of images that can be generated for 15$ seem to be resonable.</p>
-<p>I have still to twist the art styles to results that I like.</p>
-<hr>
-<p>Here are some examples.</p>
-<p>“a man working on a computer – style Pieter Bruegel the Elder”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/bruegel_ai.png" class="img-fluid"></p>
-<p>“a working class man on a computer – leipzig school art style”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" class="img-fluid"></p>
-<p>“A comic book cover of a superhero working on a computer doing data analysis”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/comic-cover_ai.png" class="img-fluid"></p>
-<p>“a man working on a computer – style 3d art”</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/3d-art_ai.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>AI</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/index.html</guid>
-  <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Wikipedia, Python, ChatGPT</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>I wanted to get the first image of a Wikipedia page and the coordinates.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/wikipedia-berlin.png" class="img-fluid figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p>ChatGPT was very helpful here as well.</p>
-<p>The code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below.</p>
-<section id="image" class="level2">
-<h2 class="anchored" data-anchor-id="image">Image</h2>
-<div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">try</span>:</span>
-<span id="cb1-2">    <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> wikipedia</span>
-<span id="cb1-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ImportError</span>:</span>
-<span id="cb1-4">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span> pip install wikipedia</span></code></pre></div>
-</details>
-</div>
-<p>ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> urllib</span>
-<span id="cb2-2"></span>
-<span id="cb2-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> requests</span>
-<span id="cb2-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> wikipedia</span>
-<span id="cb2-5"></span>
-<span id="cb2-6"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> bs4 <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> BeautifulSoup</span>
-<span id="cb2-7"></span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Set the Wikipedia page title and get page</span></span>
-<span id="cb2-9">page_title <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Berlin"</span></span>
-<span id="cb2-10">page <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> wikipedia.page(page_title)</span>
-<span id="cb2-11"></span>
-<span id="cb2-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Get html content of page and parse it with BeautifulSoup</span></span>
-<span id="cb2-13">html <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> page.html()</span>
-<span id="cb2-14">soup <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> BeautifulSoup(html, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"html.parser"</span>)</span>
-<span id="cb2-15"></span>
-<span id="cb2-16"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Find the infobox image element and get url image</span></span>
-<span id="cb2-17">image_element <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> soup.find(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"table"</span>, class_<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"infobox"</span>).find(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"img"</span>)</span>
-<span id="cb2-18">image_url <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https:"</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> image_element[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"src"</span>]</span>
-<span id="cb2-19"></span>
-<span id="cb2-20"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Download the image</span></span>
-<span id="cb2-21">urllib.request.urlretrieve(image_url, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'image.jpg'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7fbbea328550&gt;)</code></pre>
-</div>
-</div>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/image.jpg" class="img-fluid"></p>
-</section>
-<section id="coordinates" class="level2">
-<h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> requests</span>
-<span id="cb4-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> json</span>
-<span id="cb4-3"></span>
-<span id="cb4-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># function to get the coordinates from the infobox of a Wikipedia article</span></span>
-<span id="cb4-5"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">def</span> get_coordinates(title):</span>
-<span id="cb4-6">    url <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://en.wikipedia.org/w/api.php"</span></span>
-<span id="cb4-7">    params <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb4-8">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"action"</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"query"</span>,</span>
-<span id="cb4-9">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"prop"</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"coordinates"</span>,</span>
-<span id="cb4-10">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"titles"</span>: title,</span>
-<span id="cb4-11">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"format"</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"json"</span>,</span>
-<span id="cb4-12">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"formatversion"</span>: <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span></span>
-<span id="cb4-13">    }</span>
-<span id="cb4-14">    response <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> requests.get(url, params<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>params)</span>
-<span id="cb4-15">    data <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> json.loads(response.text)</span>
-<span id="cb4-16">    pages <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> data[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"query"</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"pages"</span>]</span>
-<span id="cb4-17">    coordinates <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span></span>
-<span id="cb4-18">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">for</span> page <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> pages:</span>
-<span id="cb4-19">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"coordinates"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">in</span> page:</span>
-<span id="cb4-20">            coordinates <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> page[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"coordinates"</span>][<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]</span>
-<span id="cb4-21">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">break</span></span>
-<span id="cb4-22">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">return</span> coordinates</span>
-<span id="cb4-23"></span>
-<span id="cb4-24"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># example usage</span></span>
-<span id="cb4-25">title <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Berlin"</span></span>
-<span id="cb4-26">coordinates <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> get_coordinates(title)</span>
-<span id="cb4-27"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(coordinates[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lat"</span>], coordinates[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"lon"</span>])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>52.52 13.405</code></pre>
-</div>
-</div>
-</section>
-<section id="map" class="level2">
-<h2 class="anchored" data-anchor-id="map">Map</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> folium</span>
-<span id="cb6-2"></span>
-<span id="cb6-3">map_coord <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [coordinates[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lat'</span>], coordinates[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lon'</span>]]</span>
-<span id="cb6-4"></span>
-<span id="cb6-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># create the map</span></span>
-<span id="cb6-6"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">map</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> folium.Map(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>map_coord, zoom_start<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3.5</span>)</span>
-<span id="cb6-7"></span>
-<span id="cb6-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># add a marker at the location</span></span>
-<span id="cb6-9">folium.Marker(location<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>map_coord, popup<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>title).add_to(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">map</span>)</span>
-<span id="cb6-10"></span>
-<span id="cb6-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># display the map</span></span>
-<span id="cb6-12"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">map</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
-<html>
-<head>
-    
-    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
-    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
-    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
-    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
-    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
-    
-            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
-            <style>
-                #map_14d6ce4270e83321b96746620bc98829 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-        
-</head>
-<body>
-    
-    
-            <div class=&quot;folium-map&quot; id=&quot;map_14d6ce4270e83321b96746620bc98829&quot; ></div>
-        
-</body>
-<script>
-    
-    
-            var map_14d6ce4270e83321b96746620bc98829 = L.map(
-                &quot;map_14d6ce4270e83321b96746620bc98829&quot;,
-                {
-                    center: [52.52, 13.405],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 3.5,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_3a9788ae020ff984cbe85e0d7507dfc9 = L.tileLayer(
-                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_14d6ce4270e83321b96746620bc98829);
-        
-    
-            var marker_93a1a2b27db856bd6db96d7b1028468f = L.marker(
-                [52.52, 13.405],
-                {}
-            ).addTo(map_14d6ce4270e83321b96746620bc98829);
-        
-    
-        var popup_1747d4267bdf3b7449f089d91cadddf3 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
-
-        
-            
-                var html_4e416e41c133f67276bf8429c979a289 = $(`<div id=&quot;html_4e416e41c133f67276bf8429c979a289&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_1747d4267bdf3b7449f089d91cadddf3.setContent(html_4e416e41c133f67276bf8429c979a289);
-            
-        
-
-        marker_93a1a2b27db856bd6db96d7b1028468f.bindPopup(popup_1747d4267bdf3b7449f089d91cadddf3)
-        ;
-
-        
-    
-</script>
-</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <category>AI</category>
-  <category>geo</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/index.html</guid>
-  <pubDate>Sun, 30 Apr 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-05-01-wikipedia-data/wikipedia-berlin.png" medium="image" type="image/png" height="135" width="144"/>
 </item>
 </channel>
 </rss>

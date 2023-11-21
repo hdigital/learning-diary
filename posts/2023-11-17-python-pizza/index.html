@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-11-21">
+<meta name="dcterms.date" content="2023-11-17">
 
-<title>Learning - Today I learned (TIL)</title>
+<title>Learning – index</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -142,8 +142,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Today I learned (TIL)</h1>
-                      </div>
+      <h1 class="title">Python Pizza Hamburg</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Python</div>
+              </div>
+                  </div>
   </div>
     
   
@@ -153,7 +156,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 21, 2023</p>
+        <p class="date">November 17, 2023</p>
       </div>
     </div>
     
@@ -164,144 +167,79 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#july" id="toc-july" class="nav-link active" data-scroll-target="#july">31. July</a></li>
-  <li><a href="#june" id="toc-june" class="nav-link" data-scroll-target="#june">30. June</a></li>
-  <li><a href="#june-1" id="toc-june-1" class="nav-link" data-scroll-target="#june-1">29. June</a></li>
-  <li><a href="#june-2" id="toc-june-2" class="nav-link" data-scroll-target="#june-2">13. June</a></li>
-  <li><a href="#june-3" id="toc-june-3" class="nav-link" data-scroll-target="#june-3">10. June</a></li>
-  <li><a href="#june-4" id="toc-june-4" class="nav-link" data-scroll-target="#june-4">09. June</a></li>
-  <li><a href="#may" id="toc-may" class="nav-link" data-scroll-target="#may">17. May</a></li>
-  <li><a href="#may-1" id="toc-may-1" class="nav-link" data-scroll-target="#may-1">06. May</a></li>
-  <li><a href="#may-2" id="toc-may-2" class="nav-link" data-scroll-target="#may-2">05. May</a></li>
-  <li><a href="#may-3" id="toc-may-3" class="nav-link" data-scroll-target="#may-3">03. May</a></li>
-  <li><a href="#may-4" id="toc-may-4" class="nav-link" data-scroll-target="#may-4">02. May</a></li>
-  <li><a href="#apr." id="toc-apr." class="nav-link" data-scroll-target="#apr.">25. Apr.</a></li>
-  <li><a href="#apr.-1" id="toc-apr.-1" class="nav-link" data-scroll-target="#apr.-1">03. Apr.</a></li>
-  <li><a href="#feb." id="toc-feb." class="nav-link" data-scroll-target="#feb.">25. Feb.</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
-<section id="july" class="level2">
-<h2 class="anchored" data-anchor-id="july">31. July</h2>
-<p>Simple debugging with <a href="https://ipython.readthedocs.io/en/stable/">IPython</a> — found at <a href="https://realpython.com/ipython-interactive-python-shell/">Real Python</a> (now gated).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>var_1 <span class="op">=</span> <span class="st">"hello"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>IPython.embed()</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>var_2 <span class="op">=</span> <span class="st">"world"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="june" class="level2">
-<h2 class="anchored" data-anchor-id="june">30. June</h2>
-<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
-<p>Useful to have html tables instead of monospace tables in notebooks.</p>
-<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Document"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="june-1" class="level2">
-<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
-<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
-</section>
-<section id="june-2" class="level2">
-<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
-<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
-<pre><code>&lt;!--- comment  --&gt;
-
-&lt;!---
-multi-line
-comments
---&gt;</code></pre>
-<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
-</section>
-<section id="june-3" class="level2">
-<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
-<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
-<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> pdf</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Page 1</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Page 2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
-</section>
-<section id="june-4" class="level2">
-<h2 class="anchored" data-anchor-id="june-4">09. June</h2>
-<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use path relative to script location, if feasible</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-n</span> <span class="st">"</span><span class="va">$BASH_SOURCE</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> <span class="st">"</span><span class="va">$(</span> <span class="bu">cd</span> <span class="st">"</span><span class="va">$(</span><span class="fu">dirname</span> <span class="st">"</span><span class="va">${BASH_SOURCE</span><span class="op">[</span><span class="dv">0</span><span class="op">]</span><span class="va">}</span><span class="st">"</span><span class="va">)</span><span class="st">"</span> <span class="kw">;</span> <span class="bu">pwd</span> <span class="at">-P</span> <span class="va">)</span><span class="st">"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="ot">! </span><span class="bu">[</span> <span class="ot">-e</span> <span class="st">"package-lock.json"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"Run script in project folder"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">exit</span> 1</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="may" class="level2">
-<h2 class="anchored" data-anchor-id="may">17. May</h2>
-<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
-<p><code>add_three &lt;- \(.x) .x+3</code></p>
-</section>
-<section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">06. May</h2>
-<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
-<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
-</section>
-<section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">05. May</h2>
-<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
-</section>
-<section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">03. May</h2>
-<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
-<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
-</section>
-<section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">02. May</h2>
-<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
-<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
-</section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
-<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
-<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
-</section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
-<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
-</section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the more convenient interface.</p>
+<p>This Friday, I attended the <a href="https://hamburg.python.pizza/">Python Pizza micro conference</a> in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning and diversity. The topics of the talks were very accessible and mainly experience based.</p>
+<p>Some of the technical things I took out:</p>
+<ul>
+<li>“Streamlit: Making Data Shine in Minute” (Alessandro Romano) showed me that <a href="https://github.com/streamlit/streamlit">Streamlit</a> may be the tool I need to quickly create data dashboards without getting into webdev details.</li>
+<li>“Introducing the ORMIR community and the book ‘Learn Python with Jupyter’” (Serena Bonaretti) helped me to better understand the evolving relation between open source, open science, research and learning.</li>
+<li>“Choose HTMX and avoid learning too much JavaScript” (Martin Borus) demonstrated once more that I should start to experiment with <a href="https://github.com/bigskysoftware/htmx">htmx</a>. I run the <a href="https://github.com/mborus/choose_htmx">repository code</a> in Codespaces later and want to try <a href="https://github.com/tiangolo/fastapi">FastAPI</a> and async web page element reloading.</li>
+</ul>
+<p>The friendly environment and some nice exchanges about data science, Python, and open source projects over delicious pizza were really nice.</p>
 <hr>
-<p><img src="computer_ai.png" class="img-fluid" width="300"></p>
+<p>This was a Python Pizza conference. So I asked ChatGPT to draw a Pizza in Python, something it happily did.</p>
+<p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
+<p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
+<p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> patches</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure and axis</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the pizza circle</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pizza_circle <span class="op">=</span> plt.Circle((<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="fl">0.4</span>, color<span class="op">=</span><span class="st">'brown'</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax.add_patch(pizza_circle)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the cheese circle (a smaller circle on top of the pizza)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>cheese_circle <span class="op">=</span> plt.Circle((<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="fl">0.35</span>, color<span class="op">=</span><span class="st">'yellow'</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.add_patch(cheese_circle)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw pizza slices</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>num_slices <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> <span class="dv">360</span> <span class="op">/</span> num_slices</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>slice_colors <span class="op">=</span> [<span class="st">'orange'</span>, <span class="st">'lightgreen'</span>, <span class="st">'tomato'</span>, <span class="st">'wheat'</span>, <span class="st">'lightcoral'</span>, <span class="st">'lightblue'</span>, <span class="st">'sandybrown'</span>, <span class="st">'lightpink'</span>]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_slices):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    slice_wedge <span class="op">=</span> patches.Wedge((<span class="fl">0.5</span>, <span class="fl">0.5</span>), <span class="fl">0.4</span>, i <span class="op">*</span> theta, (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> theta, color<span class="op">=</span>slice_colors[i], fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ax.add_patch(slice_wedge)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Set aspect ratio to be equal</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>, adjustable<span class="op">=</span><span class="st">'box'</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Set axis limits</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove axis labels and ticks</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([])</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels([])</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels([])</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the title</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Delicious Pizza with Slices"</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-2-output-1.png" width="389" height="409"></p>
+</div>
+</div>
+<hr>
+<p><img src="python-pizza-photo.png" class="img-fluid"></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

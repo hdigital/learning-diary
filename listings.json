@@ -2,8 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2023-11-04-pyproject-toml/index.html",
+      "/posts/2023-11-xx-jupyter-lite/jupyter-lite.html",
       "/posts/2023-til/index.html",
+      "/posts/2023-11-20-r-httr/index.html",
+      "/posts/2023-11-17-python-pizza/index.html",
+      "/posts/2023-11-04-pyproject-toml/index.html",
       "/posts/2023-10-31-zenodo-api/index.html",
       "/posts/2023-10-10-doi-requests/index.html",
       "/posts/2023-10-07-pak-packaging/index.html",
