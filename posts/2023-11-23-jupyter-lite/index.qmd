@@ -1,0 +1,72 @@
+---
+date: "2023-11-23"
+image: jupyter-lite-logo.png
+jupyter: python3
+categories: [Python]
+---
+
+# JupyterLite
+
+I listened to the the recent _Talk Python To Me_ episode [Celebrating JupyterLab 4 and Jupyter 7 Releases](https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases) and became aware of [JupyterLite](https://github.com/jupyterlite) which I had not used before.
+
+I was impressed to see that you can now [run JupyterLab in a browser](https://jupyterlite.github.io/demo/lab/index.html).
+
+Many shortcuts work and you can activate the command pallette with _Shift + Cmd/Ctrl + C_
+
+For me, the examples in the _pyodide_ folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.
+
+So now I can run Python in an interactive environment on any computer with JupyterLite. I may use _Codespaces_ or _Google Colab_ in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite.
+
+## Visualization example
+
+Here is an example form the _altair.ipynb_ notebook in the _pyodide_ folder. It runs here but also in the JupyterLite, purely browser based, version.
+
+```{python}
+import altair as alt
+import pandas as pd
+
+source = pd.DataFrame({
+    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]
+})
+
+alt.Chart(source).mark_bar().encode(
+    x='a',
+    y='b'
+)
+```
+
+## http requests
+
+I played around a little with making http requests. You can install the [requests](https://github.com/psf/requests) package but the http requests don't work. You have to use the [js](https://pyodide.org/en/stable/usage/api/js-api.html) module provided by [pyodide](https://github.com/pyodide/pyodide) instead.
+
+Here is the notebook I wrote.
+
+[network-requests.ipynb.txt](network-requests.ipynb.txt)
+
+I added a _txt_ extension because I don't want the notebook to be rendered in Quarto. Save it, remove the _txt_ extension, drag and drop it into the JupyterLite browser window and run it.
+
+## pip with micropip
+
+You can install packages with _pip_. In JupyterLite, it is based on [micropip](https://github.com/pyodide/micropip).
+
+The [recommended](https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html#installing-packages-at-runtime) way to install packages is:
+
+```sh
+%pip install -q snowballstemmer
+```
+
+So far, I have been reluctant to use pip with a [magic command](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-pip) but may use it more regularly in the future.
+
+Here is a Python version to use _micropip_.
+
+```py
+import micropip
+
+if "snowballstemmer" not in micropip.list():
+    await micropip.install("snowballstemmer")
+```
+
+---
+
+![](jupyter-lite-logo.png)

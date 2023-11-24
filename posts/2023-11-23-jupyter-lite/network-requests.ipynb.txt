@@ -1,0 +1,151 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": "# Network requests"
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": "from IPython.display import JSON"
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": "## Requests\n\n[requests](https://github.com/psf/requests) does not work in Jupyter-Lite. You can install the package but the network request does not work. [Here](https://pyodide.org/en/stable/project/roadmap.html#write-http-client-in-terms-of-web-apis) is some background.\n\nYou have to use the _js_ package — see below."
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": "%pip install -q requests"
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": "Here, I am using a _raw_ cell because I don't want to run the Python code in Jupyter."
+  },
+  {
+   "cell_type": "raw",
+   "metadata": {},
+   "source": "import requests\n\nheaders = {\"accept\": \"text/x-bibliography\"}\nr = requests.get(\"https://doi.org/10.5281/zenodo.7043510\", headers=headers)\n\nr.text"
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": "## JavaScript module"
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": "import json\nfrom js import fetch, Object\nfrom pyodide.ffi import to_js"
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "<class 'pyodide.ffi.JsException'>",
+     "evalue": "TypeError: Failed to fetch",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mJsException\u001b[0m                               Traceback (most recent call last)",
+      "Cell \u001b[0;32mIn[4], line 3\u001b[0m\n\u001b[1;32m      1\u001b[0m url \u001b[38;5;241m=\u001b[39m \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mhttps://doi.org/10.5281/zenodo.7043510\u001b[39m\u001b[38;5;124m\"\u001b[39m\n\u001b[0;32m----> 3\u001b[0m res \u001b[38;5;241m=\u001b[39m \u001b[38;5;28;01mawait\u001b[39;00m fetch(url)\n\u001b[1;32m      4\u001b[0m text \u001b[38;5;241m=\u001b[39m \u001b[38;5;28;01mawait\u001b[39;00m res\u001b[38;5;241m.\u001b[39mtext()\n\u001b[1;32m      6\u001b[0m text\n",
+      "\u001b[0;31mJsException\u001b[0m: TypeError: Failed to fetch"
+     ]
+    }
+   ],
+   "source": "url = \"https://doi.org/10.5281/zenodo.7043510\"\n\nres = await fetch(url)\ntext = await res.text()\n\ntext"
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": "pyodide FAQ -- [fetch-with-optional-arguments](https://pyodide.org/en/stable/usage/faq.html#how-can-i-use-fetch-with-optional-arguments-from-python)"
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": "'Döring, H., &amp; Herrmann, M. (2023). <i>Party positions from Wikipedia tags (July 2023)</i> (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'"
+     },
+     "execution_count": null,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": "url = \"https://doi.org/10.5281/zenodo.7043510\"\nheaders = {\"accept\": \"text/x-bibliography\"}\n\nres = await fetch(url, headers = Object.fromEntries(to_js(headers)))\ntext = await res.text()\n\ntext"
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "application/json": {
+       "DOI": "10.5281/ZENODO.7043510",
+       "URL": "https://zenodo.org/record/7043510",
+       "abstract": "Estimation of party positions from Wikipedia tags with Stan (July 2023)",
+       "author": [
+        {
+         "family": "Döring",
+         "given": "Holger"
+        },
+        {
+         "family": "Herrmann",
+         "given": "Michael"
+        }
+       ],
+       "copyright": "Open Access",
+       "id": "https://doi.org/10.5281/zenodo.7043510",
+       "issued": {
+        "date-parts": [
+         [
+          2023,
+          8,
+          23
+         ]
+        ]
+       },
+       "language": "en",
+       "publisher": "Zenodo",
+       "title": "Party positions from Wikipedia tags (July 2023)",
+       "type": "book",
+       "version": "23.07"
+      },
+      "text/plain": "<IPython.core.display.JSON object>"
+     },
+     "execution_count": null,
+     "metadata": {
+      "application/json": {
+       "expanded": false,
+       "root": "root"
+      }
+     },
+     "output_type": "execute_result"
+    }
+   ],
+   "source": "headers = {\"accept\": \"application/vnd.citationstyles.csl+json\"}\n\nres = await fetch(url, headers = Object.fromEntries(to_js(headers)))\ntext = await res.text()\n\nobj = json.loads(text)\nJSON(obj)"
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "python",
+   "language": "python",
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
