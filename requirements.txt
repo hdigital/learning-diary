@@ -16,5 +16,6 @@ ipykernel
 
 # Development
 nbdev
+ruff
 
 # Post specific requirements in 'snippets/requirements-posts.txt'
