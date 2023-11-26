@@ -10,7 +10,712 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Sun, 19 Nov 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 25 Nov 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+<section id="november" class="level2">
+<h2 class="anchored" data-anchor-id="november">26. November</h2>
+<p>Keep the date of a git commit after changing the history with <code>rebase</code></p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">git</span> rebase <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--committer-date-is-author-date</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>SHA<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span></code></pre></div>
+</section>
+<section id="november-1" class="level2">
+<h2 class="anchored" data-anchor-id="november-1">21. November</h2>
+<p>There is a <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-pip">magic method</a> in iPython to install packages with <em>pip</em>. It comes handy for a quick install in a notebook.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">%pip</span> install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-q</span> requests</span></code></pre></div>
+<p>Specifying dependencies in <code>requirements.in</code> or <code>pyproject.toml</code> and pinning them with <em>pip-tools</em> is the better solution to create reproducible environments.</p>
+</section>
+<section id="july" class="level2">
+<h2 class="anchored" data-anchor-id="july">31. July</h2>
+<p>Simple debugging with <a href="https://ipython.readthedocs.io/en/stable/">IPython</a> — found at <a href="https://realpython.com/ipython-interactive-python-shell/">Real Python</a> (now gated).</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> IPython</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">var_1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hello"</span></span>
+<span id="cb3-4"></span>
+<span id="cb3-5">IPython.embed()</span>
+<span id="cb3-6"></span>
+<span id="cb3-7">var_2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"world"</span></span></code></pre></div>
+</section>
+<section id="june" class="level2">
+<h2 class="anchored" data-anchor-id="june">30. June</h2>
+<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
+<p>Useful to have html tables instead of monospace tables in notebooks.</p>
+<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb4-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Document"</span></span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb4-4"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb4-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> kable</span></span>
+<span id="cb4-6"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">---</span></span></code></pre></div>
+</section>
+<section id="june-1" class="level2">
+<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
+<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
+</section>
+<section id="june-2" class="level2">
+<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
+<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
+<pre><code>&lt;!--- comment  --&gt;
+
+&lt;!---
+multi-line comments
+--&gt;</code></pre>
+<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
+</section>
+<section id="june-3" class="level2">
+<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
+<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
+<div class="sourceCode" id="cb6" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb6-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> pdf</span></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb6-4"></span>
+<span id="cb6-5">Page 1</span>
+<span id="cb6-6"></span>
+<span id="cb6-7">{{&lt; pagebreak &gt;}}</span>
+<span id="cb6-8"></span>
+<span id="cb6-9">Page 2</span></code></pre></div>
+<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
+</section>
+<section id="june-4" class="level2">
+<h2 class="anchored" data-anchor-id="june-4">09. June</h2>
+<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use path relative to script location, if feasible</span></span>
+<span id="cb7-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb7-3">    <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">]</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-P</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb7-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span></span>
+<span id="cb7-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">! </span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">then</span></span>
+<span id="cb7-6">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Run script in project folder"</span></span>
+<span id="cb7-7">        <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">exit</span> 1</span>
+<span id="cb7-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span>
+<span id="cb7-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">fi</span></span></code></pre></div>
+</section>
+<section id="may" class="level2">
+<h2 class="anchored" data-anchor-id="may">17. May</h2>
+<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
+<p><code>add_three &lt;- \(.x) .x+3</code></p>
+</section>
+<section id="may-1" class="level2">
+<h2 class="anchored" data-anchor-id="may-1">06. May</h2>
+<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
+<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
+</section>
+<section id="may-2" class="level2">
+<h2 class="anchored" data-anchor-id="may-2">05. May</h2>
+<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
+</section>
+<section id="may-3" class="level2">
+<h2 class="anchored" data-anchor-id="may-3">03. May</h2>
+<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
+<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
+</section>
+<section id="may-4" class="level2">
+<h2 class="anchored" data-anchor-id="may-4">02. May</h2>
+<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
+<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
+</section>
+<section id="apr." class="level2">
+<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
+<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
+</section>
+<section id="apr.-1" class="level2">
+<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
+<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
+</section>
+<section id="feb." class="level2">
+<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
+<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
+<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
+<p>At the end, VS Code seems to be the more convenient interface.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
+  <pubDate>Sat, 25 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>iPython display</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The <em>display</em> functions from <a href="https://ipython.readthedocs.io/en/stable/interactive/tutorial.html">iPython</a> is nice in an interactive Jupyter notebook. Unfortunately, it does not work equally well in Quarto or in a Jupyter notebook converted into html.</p>
+<p>The <em>JSON</em> method is particularly helpful to explore a Python dictionary but does not work in rendered notebooks.</p>
+<p>Nevertheless, it was good to get to know the functions and I add them here for the learning record.</p>
+<hr>
+<p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
+<section id="json" class="level2">
+<h2 class="anchored" data-anchor-id="json">JSON</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> JSON</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">person <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {</span>
+<span id="cb1-4">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>: {</span>
+<span id="cb1-5">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'first'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Jane'</span>,</span>
+<span id="cb1-6">        <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'last'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Doe'</span></span>
+<span id="cb1-7">    },</span>
+<span id="cb1-8">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'age'</span>: <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">43</span>,</span>
+<span id="cb1-9">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'email'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'jane.doe@example.com'</span></span>
+<span id="cb1-10">}</span>
+<span id="cb1-11"></span>
+<span id="cb1-12">JSON(person)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
+</div>
+</div>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/json-screenshot.png" class="img-fluid"></p>
+<hr>
+</section>
+<section id="single-element" class="level2">
+<h2 class="anchored" data-anchor-id="single-element">Single element</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<h2 class="anchored">HTML Title</h2>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
+<section id="markdown-title" class="level2 cell-output cell-output-display" data-execution_count="4">
+<h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
+</section>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"bar"</span>: (<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"baz"</span>, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)}], expanded<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="multiple-elements" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
+<span id="cb9-2">display(Markdown(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"__Markdown title__"</span>))</span>
+<span id="cb9-3">display(Math(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<em>HTML element</em>
+</div>
+<div class="cell-output cell-output-display">
+<p><strong>Markdown title</strong></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
+</div>
+</div>
+<p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"'first element'"</span>)</span>
+<span id="cb10-2">display(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"second element"</span>)</span>
+<span id="cb10-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"'third element'"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'first element'
+'third element'</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>'second element'</code></pre>
+</div>
+</div>
+<p>Rendering of dictionaries with <code>JSON</code> does not work in Quarto or nbconvert.</p>
+<hr>
+</section>
+<section id="quarto-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-workflow">Quarto workflow</h2>
+<p>A note how I render the Jupyter notebook of the post.</p>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">cd</span> snippets <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb13-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">ruff</span> format ipython-display.ipynb <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb13-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--execute</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--inplace</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb13-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">nbdev_clean</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--fname</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb13-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--to</span> html ipython-display.ipynb <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></code></pre></div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/ipython-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/index.html</guid>
+  <pubDate>Fri, 24 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
+</item>
+<item>
+  <title>JupyterLite</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I listened to the the recent <em>Talk Python To Me</em> episode <a href="https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases">Celebrating JupyterLab 4 and Jupyter 7 Releases</a> and became aware of <a href="https://github.com/jupyterlite">JupyterLite</a> which I had not used before.</p>
+<p>I was impressed to see that you can now <a href="https://jupyterlite.github.io/demo/lab/index.html">run JupyterLab in a browser</a>.</p>
+<p>Many shortcuts work and you can activate the command pallette with <em>Shift + Cmd/Ctrl + C</em></p>
+<p>For me, the examples in the <em>pyodide</em> folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.</p>
+<p>So now I can run Python in an interactive environment on any computer with JupyterLite. I may use <em>Codespaces</em> or <em>Google Colab</em> in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite.</p>
+<section id="visualization-example" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
+<p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> alt</span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pandas <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pd</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">source <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pd.DataFrame({</span>
+<span id="cb1-5">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'a'</span>: [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'A'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'B'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'C'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'D'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'E'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'F'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'G'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'H'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'I'</span>],</span>
+<span id="cb1-6">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'b'</span>: [<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">55</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">43</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">91</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">81</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">53</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">19</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">87</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">52</span>]</span>
+<span id="cb1-7">})</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">alt.Chart(source).mark_bar().encode(</span>
+<span id="cb1-10">    x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'a'</span>,</span>
+<span id="cb1-11">    y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'b'</span></span>
+<span id="cb1-12">)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+
+<style>
+  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed details,
+  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-c40a904a59ab437f8b09083424836217"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-c40a904a59ab437f8b09083424836217") {
+      outputDiv = document.getElementById("altair-viz-c40a904a59ab437f8b09083424836217");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c2a3e89ba9d5d1687d5e8c28d630a033"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c2a3e89ba9d5d1687d5e8c28d630a033": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</section>
+<section id="http-requests" class="level2">
+<h2 class="anchored" data-anchor-id="http-requests">http requests</h2>
+<p>I played around a little with making http requests. You can install the <a href="https://github.com/psf/requests">requests</a> package but the http requests don’t work. You have to use the <a href="https://pyodide.org/en/stable/usage/api/js-api.html">js</a> module provided by <a href="https://github.com/pyodide/pyodide">pyodide</a> instead.</p>
+<p>Here is the notebook I wrote.</p>
+<p><a href="network-requests.ipynb.txt">network-requests.ipynb.txt</a></p>
+<p>I added a <em>txt</em> extension because I don’t want the notebook to be rendered in Quarto. Save it, remove the <em>txt</em> extension, drag and drop it into the JupyterLite browser window and run it.</p>
+</section>
+<section id="pip-with-micropip" class="level2">
+<h2 class="anchored" data-anchor-id="pip-with-micropip">pip with micropip</h2>
+<p>You can install packages with <em>pip</em>. In JupyterLite, it is based on <a href="https://github.com/pyodide/micropip">micropip</a>.</p>
+<p>The <a href="https://jupyterlite.readthedocs.io/en/latest/howto/pyodide/packages.html#installing-packages-at-runtime">recommended</a> way to install packages is:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">%pip</span> install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-q</span> snowballstemmer</span></code></pre></div>
+<p>So far, I have been reluctant to use pip with a <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-pip">magic command</a> but may use it more regularly in the future.</p>
+<p>Here is a Python version to use <em>micropip</em>.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> micropip</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"snowballstemmer"</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">not</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> micropip.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>():</span>
+<span id="cb3-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">await</span> micropip.install(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/index.html</guid>
+  <pubDate>Wed, 22 Nov 2023 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>API requests with httr2</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/index.html</link>
@@ -2158,269 +2863,6 @@ font-style: inherit;">3.5</span></span>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/dplyr-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 <item>
-  <title>Today I learned (TIL)</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<!--- I keep brief information here. Mainly things I learned that don't create a post. -->
-<!--- Update date in title block. -->
-<section id="july" class="level2">
-<h2 class="anchored" data-anchor-id="july">31. July</h2>
-<p>Simple debugging with <a href="https://ipython.readthedocs.io/en/stable/">IPython</a> — found at <a href="https://realpython.com/ipython-interactive-python-shell/">Real Python</a> (now gated).</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> IPython</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">var_1 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hello"</span></span>
-<span id="cb1-4"></span>
-<span id="cb1-5">IPython.embed()</span>
-<span id="cb1-6"></span>
-<span id="cb1-7">var_2 <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"world"</span></span></code></pre></div>
-</section>
-<section id="june" class="level2">
-<h2 class="anchored" data-anchor-id="june">30. June</h2>
-<p>Set <a href="https://quarto.org/docs/computations/r.html#data-frames">default printing</a> function for data frames in Quarto notebook with html option <code>df-print: kable</code>.</p>
-<p>Useful to have html tables instead of monospace tables in notebooks.</p>
-<p>So far, I prefer <code>kable</code> (<code>knitr::kable()</code>) over <code>paged</code> (<code>rmarkdown::paged_table())</code>).</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Document"</span></span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb2-4"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span></span>
-<span id="cb2-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> kable</span></span>
-<span id="cb2-6"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">---</span></span></code></pre></div>
-</section>
-<section id="june-1" class="level2">
-<h2 class="anchored" data-anchor-id="june-1">29. June</h2>
-<p>Didn’t know <a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a> and used <code>length(unique())</code> for too long. A small and nice thing i learned that makes pipes more readable.</p>
-</section>
-<section id="june-2" class="level2">
-<h2 class="anchored" data-anchor-id="june-2">13. June</h2>
-<p>Adding a comment in Markdown by using standard html comments. It works for Markdown in <a href="https://pandoc.org/MANUAL.html">pandoc</a> used by Quarto.</p>
-<pre><code>&lt;!--- comment  --&gt;
-
-&lt;!---
-multi-line
-comments
---&gt;</code></pre>
-<p>I used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment.</p>
-</section>
-<section id="june-3" class="level2">
-<h2 class="anchored" data-anchor-id="june-3">10. June</h2>
-<p>Adding a <a href="https://quarto.org/docs/authoring/article-layout.html#page-breaks">page break</a> to a pdf in Quarto.</p>
-<div class="sourceCode" id="cb4" data-shortcodes="false" style="background: #f1f3f5;"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb4-2"><span class="an" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"> pdf</span></span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">---</span></span>
-<span id="cb4-4"></span>
-<span id="cb4-5">Page 1</span>
-<span id="cb4-6"></span>
-<span id="cb4-7">{{&lt; pagebreak &gt;}}</span>
-<span id="cb4-8"></span>
-<span id="cb4-9">Page 2</span></code></pre></div>
-<p>In addition, I learned to ignore shortcuts in a cell with <code>{.markdown shortcodes="false"}</code></p>
-</section>
-<section id="june-4" class="level2">
-<h2 class="anchored" data-anchor-id="june-4">09. June</h2>
-<p>I wanted to run a <a href="">Bash</a> shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Use path relative to script location, if feasible</span></span>
-<span id="cb5-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-n</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$BASH_SOURCE</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb5-3">    <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dirname</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">${BASH_SOURCE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">[</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">]</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-P</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">)</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
-<span id="cb5-4"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">else</span></span>
-<span id="cb5-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">! </span><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">-e</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">then</span></span>
-<span id="cb5-6">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Run script in project folder"</span></span>
-<span id="cb5-7">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">exit</span> 1</span>
-<span id="cb5-8">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span>
-<span id="cb5-9"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">fi</span></span></code></pre></div>
-</section>
-<section id="may" class="level2">
-<h2 class="anchored" data-anchor-id="may">17. May</h2>
-<p>Another use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use <code>.x</code> now for the local variable name to make the local context more explicit.</p>
-<p><code>add_three &lt;- \(.x) .x+3</code></p>
-</section>
-<section id="may-1" class="level2">
-<h2 class="anchored" data-anchor-id="may-1">06. May</h2>
-<p>Excluding variables in <em>tidyselect</em> is now done with <code>!</code> as I found out by reading the <a href="https://tidyselect.r-lib.org/reference/language.html">documentation</a> more carfully. I have still used <code>-</code> to exclude variables by their name. This is not documented in the tidyselect help page anymore.</p>
-<p><a href="https://github.com/sjewo/readstata13">readstata13</a> creates more R friendly data structures than <a href="https://haven.tidyverse.org/">haven</a>. Its default option converts labeled data into factors if appropriate.</p>
-</section>
-<section id="may-2" class="level2">
-<h2 class="anchored" data-anchor-id="may-2">05. May</h2>
-<p>Used <a href="https://quarto.org/">Quarto</a> a lot and got more comfortable with the options — esp.&nbsp;caching, creating pdf, figures.</p>
-</section>
-<section id="may-3" class="level2">
-<h2 class="anchored" data-anchor-id="may-3">03. May</h2>
-<p>Convert an RMarkdown file into an R file with <code>knitr::purl("purl.Rmd")</code> – see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/purl.html">details</a>.</p>
-<p>ChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed.</p>
-</section>
-<section id="may-4" class="level2">
-<h2 class="anchored" data-anchor-id="may-4">02. May</h2>
-<p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
-<p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
-</section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
-<p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
-<p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
-</section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
-<p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
-</section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
-<p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
-<p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
-<p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>
-<p>At the end, VS Code seems to be the more convenient interface.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" class="img-fluid" width="300"></p>
-
-
-</section>
-
- ]]></description>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-til/index.html</guid>
-  <pubDate>Sun, 30 Jul 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/index.html</link>
   <description><![CDATA[ 
@@ -3444,63 +3886,6 @@ pick c993202 Add VS Code settings
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/index.html</guid>
   <pubDate>Sun, 11 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-12-nbdev-clean/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="github-codespaces" class="level1">
-<h1>GitHub Codespaces</h1>
-<p>GitHub offered me to review the code of a pull request in <a href="https://github.com/features/codespaces">GitHub Codespaces</a>. It is an environment to run code online. I used it briefly before but not for one of my GitHub repositories. Today, I gave it a try for the pull request of a repository.</p>
-<p>For the pull request, it created an environment with VS Code as the IDE and included Python as well as Git. I used it for a small Django project of mine. Two things were required to run my code. First, I needed to install the Python packages used by the project. The project includes a requirements file with pinned versions so that installing the dependencies was easy. Second, it asked me to add some VS Code extensions which I did as well.</p>
-<p>Completing these two steps allowed me to work in an online enviroment very similiar to my local VS Code set up. It was linked to the GitHub repository so that I could sync my cloud changes with the project. I was impressed how smoothly it went and how little configuration it required.</p>
-<p>I made some minor modifications to the project to use Codespaces even more effortlessly in the future. First, I updated my <code>settings.json.example</code> so that I can quickly create a copy in a Codesspaces <code>settings.json</code> that includes my settings. Second, I specified the VS Code extensions I am regularly using in a <code>launch.json</code>. These two additions should allow me to work in new Codespaces in the future even more quickly.</p>
-<p>Overall, I really liked my first more in depth usage of Codespaces and plan to use it more in the future. I have yet to figure out how much I can use it with free quota and what monthly costs may occur by using it more regularly.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/codespace-hd.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>cloud</category>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/index.html</guid>
-  <pubDate>Sat, 03 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-04-codespaces/codespaces-logo.png" medium="image" type="image/png" height="145" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="github-pages" class="level1">
-<h1>GitHub Pages</h1>
-<p>I published my first two web sites with <a href="https://pages.github.com/">GithHub Pages</a>.</p>
-<ul>
-<li><a href="https://hdigital.github.io/learning-diary/">learning diary</a></li>
-<li><a href="https://hdigital.github.io/data-snippets/">data snippets</a></li>
-</ul>
-<p>Quarto has a <a href="https://quarto.org/docs/publishing/github-pages.html">tutorial</a> about publishing Quarto sites to GitHub Pages. This worked well.</p>
-<p>I was a little confused by the different options: docs folder, publish command, GitHub Actions.</p>
-<p>The <code>quarto publish</code> command worked well for the <a href="https://hdigital.github.io/learning-diary/">learning diary</a> page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.</p>
-<p>For the <a href="https://hdigital.github.io/data-snippets/">data snippets</a> page I used the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow">GitHub Actions</a> approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/index.html</guid>
-  <pubDate>Fri, 02 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-03-github-pages/github-pages.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>
