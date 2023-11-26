@@ -1,5 +1,5 @@
 ---
-date: "2023-07-31"
+date: "2023-11-26"
 title: Today I learned (TIL)
 image: computer_ai.png
 format:
@@ -7,6 +7,16 @@ format:
     toc: true
 ---
 
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+
+## 26. November
+
+Keep the date of a git commit after changing the history with `rebase`
+
+```sh
+git rebase -i --committer-date-is-author-date <SHA>
+```
 
 ## 21. November
 
@@ -62,8 +72,7 @@ Adding a comment in Markdown by using standard html comments. It works for Markd
 <!--- comment  -->
 
 <!---
-multi-line
-comments
+multi-line comments
 -->
 ```
 
