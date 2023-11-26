@@ -1,0 +1,100 @@
+---
+date: "2023-11-25"
+image: ipython-logo.png
+jupyter: python3
+categories: [Python]
+title: "iPython display"
+format:
+  html:
+    toc: true
+---
+
+
+The _display_ functions from [iPython](https://ipython.readthedocs.io/en/stable/interactive/tutorial.html) is nice in an interactive Jupyter notebook. Unfortunately, it does not work equally well in Quarto or in a Jupyter notebook converted into html.
+
+The _JSON_ method is particularly helpful to explore a Python dictionary but does not work in rendered notebooks.
+
+Nevertheless, it was good to get to know the functions and I add them here for the learning record.
+
+---
+
+see the [Jupyter notebook](/snippets/ipython-display-nbconvert.html) (with `nbconvert`) and [Quarto rendered](/snippets/ipython-display.html) version.
+
+## JSON
+
+```{python}
+from IPython.display import JSON
+
+person = {
+    'name': {
+        'first': 'Jane',
+        'last': 'Doe'
+    },
+    'age': 43,
+    'email': 'jane.doe@example.com'
+}
+
+JSON(person)
+```
+
+![](json-screenshot.png)
+
+---
+
+## Single element
+
+```{python}
+from IPython.display import Markdown, HTML, JSON, Math
+```
+
+```{python}
+HTML("<h2>HTML Title</h2>")
+```
+
+```{python}
+Markdown("## Markdown title")
+```
+
+```{python}
+Math("a^2 + b^2 = c^2")
+```
+
+```{python}
+JSON(["foo", {"bar": ("baz", None, 1.0, 2)}], expanded=True)
+```
+
+## Multiple elements
+
+```{python}
+display(HTML("<em>HTML element</em>"))
+display(Markdown("__Markdown title__"))
+display(Math("a^2 + b^2 = c^2"))
+```
+
+An example of a Quarto issue with `display()`. The elements are ordered differently in the code cell and the output.
+
+```{python}
+print("'first element'")
+display("second element")
+print("'third element'")
+```
+
+Rendering of dictionaries with `JSON` does not work in Quarto or nbconvert.
+
+---
+
+## Quarto workflow
+
+A note how I render the Jupyter notebook of the post.
+
+```sh
+cd snippets ;
+ruff format ipython-display.ipynb ;
+jupyter-nbconvert --execute --inplace ipython-display.ipynb ;
+nbdev_clean --fname ipython-display.ipynb ;
+jupyter-nbconvert --to html ipython-display.ipynb --output ipython-display-nbconvert.html
+```
+
+---
+
+![](ipython-logo.png)
