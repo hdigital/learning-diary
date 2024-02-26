@@ -1,0 +1,77 @@
+---
+date: "2024-02-26"
+image: python-logo.png
+jupyter: python3
+categories: [Python]
+---
+
+# Python f-strings
+
+Here are some examples of
+[f-strings](https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting)
+in Python inspired by a [post](https://note.nkmk.me/en/python-f-strings/)
+and a [cheat sheet](https://fstring.help/cheat/).
+
+```{python}
+a = 2
+b = 3
+```
+
+```{python}
+f"{a} + {b}"
+```
+
+```{python}
+f"{a=} and {b=}"
+```
+
+```{python}
+f"a + b = {a+b}"
+```
+
+Curly brackets in an f-string
+```{python}
+n = 123
+
+f'{{}}-{n}-{{{n}}}'
+```
+
+#### Number formatting
+
+```{python}
+var = 1234567890.1234
+
+f'{var:,}'
+```
+
+```{python}
+f'round: {var:.2f}'
+```
+
+```{python}
+f'comma: {var:,}'
+```
+
+```{python}
+f'comma: {var:,.2f}'
+```
+
+```{python}
+import datetime
+
+dt = datetime.datetime(2026, 2, 21, 19, 45, 30)
+
+f'{dt}'
+```
+
+```{python}
+f'{dt:%Y-%m-%d}'
+```
+
+```{python}
+f'{dt.isoformat()}'
+```
+
+---
+
+![](python-logo.png)
