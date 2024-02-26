@@ -14,18 +14,18 @@
     "text": "Conditional R cells\nFor R notebooks in Quarto not all information that can be presented in an html-document is feasible for the respective pdf-document. So sometimes, I want to include information in html but not in the pdf.\nInteractive data tables with reactable are an example. They allow to explore smaller data sets quickly within a notebook, but work only in html documents. A pdf simply fails to render with Quarto.\nSo I was looking for a solution to execute R code in a notebook only for the html-document but not the pdf.\nConditional chunk execution is not implemented in Quarto so far — see ticket #3260.\nHowever, for R I found an approach that is working well.\n\nif (knitr::is_html_output()) {\n  print(\"code block run\")\n}\n\n[1] \"code block run\"\n\n\n\nif (!knitr::is_html_output()) {\n  print(\"code block not run\")\n}\n\n\nAn example for a notebook with a dynamic table in a html document and a static table in the pdf document"
   },
   {
-    "objectID": "posts/2023-02-17-geom-col/index.html",
-    "href": "posts/2023-02-17-geom-col/index.html",
-    "title": "Horizontal bar chart",
+    "objectID": "posts/2023-06-03-github-pages/index.html",
+    "href": "posts/2023-06-03-github-pages/index.html",
+    "title": "GitHub Pages",
     "section": "",
-    "text": "Horizontal bar chart\nTo have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars &lt;- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt &lt;-\n  mtcars |&gt;\n  mutate(cyl = fct_infreq(factor(cyl)) |&gt; fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt &lt;-\n  mtcars |&gt;\n  count(cyl) |&gt;\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
+    "text": "GitHub Pages\nI published my first two web sites with GithHub Pages.\n\nlearning diary\ndata snippets\n\nQuarto has a tutorial about publishing Quarto sites to GitHub Pages. This worked well.\nI was a little confused by the different options: docs folder, publish command, GitHub Actions.\nThe quarto publish command worked well for the learning diary page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.\nFor the data snippets page I used the GitHub Actions approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push."
   },
   {
-    "objectID": "posts/2023-07-16 r4ds-pr/index.html",
-    "href": "posts/2023-07-16 r4ds-pr/index.html",
-    "title": "First pull request accepted · 😊",
+    "objectID": "posts/2023-04-27-geocoding/index.html",
+    "href": "posts/2023-04-27-geocoding/index.html",
+    "title": "Geocoding in Python",
     "section": "",
-    "text": "First pull request accepted · 😊\nMy first public pull request on Github was accepted.\nOver the last weeks, I have been reading R for Data Science (2e) (R4DS). The first edition really helped me to get deeply into the tidyverse. So I was interested in the content of the second edition.\nAt some point, I realized that the book used an older parameter in case_when() that was recently superseded in dplyr 1.1. Since, I had switched to the new .default parameter already, I thought that it may be a small and valuable contribution to update the section.\nMaking the code changes was easy. It took me a little to find out how to clone the project and submit the pull requests. The GitHub documentation was helpful and it went smoothly following it.\nI have used R4DS and the tidyverse so often that I am quite proud about my very minor addition to it."
+    "text": "Get geographic coordinates for an address with Nominatim from OpenStreetMap data.\n\nfrom geopy.geocoders import Nominatim\n\n# Create a geolocator object\ngeolocator = Nominatim(user_agent=\"get-the-geocode\")\n\n# Define the address for geocoding\naddress = \"Unter Sachsenhausen 6, Köln, Germany\"\n\n# Retrieve the geolocation (latitude and longitude) for the given address\nlocation = geolocator.geocode(address)\n\nprint((location.latitude, location.longitude))\n\n(50.9426743, 6.9523814687194125)\n\n\n\nimport folium\n\ncoordinates = [location.latitude, location.longitude]\n\n# Create a map object\nm = folium.Map(location=coordinates, zoom_start=15)\n\n# Add a marker for each coordinate\nfolium.Marker(location=coordinates, popup=address).add_to(m)\n\nm  # Display the map in Jupyter Notebook\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
   },
   {
     "objectID": "posts/2023-06-02-dalle-ai-images/index.html",
@@ -35,179 +35,74 @@
     "text": "AI images with DALL-E\nToday, I became aware of an OpenAI service to generate images — DALL-E.\nThis has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.\nSometimes, images from Wikimedia Commons worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.\nI had to pay for the service but the number of images that can be generated for 15$ seem to be resonable.\nI have still to twist the art styles to results that I like.\n\nHere are some examples.\n“a man working on a computer – style Pieter Bruegel the Elder”\n\n“a working class man on a computer – leipzig school art style”\n\n“A comic book cover of a superhero working on a computer doing data analysis”\n\n“a man working on a computer – style 3d art”"
   },
   {
-    "objectID": "posts/2023-08-12-dplyr-join-by/index.html",
-    "href": "posts/2023-08-12-dplyr-join-by/index.html",
-    "title": "dplyr join_by() argument",
+    "objectID": "posts/2023-10-07-pak-packaging/index.html",
+    "href": "posts/2023-10-07-pak-packaging/index.html",
+    "title": "R packages with pak",
     "section": "",
-    "text": "dplyr join_by() argument\ndplyr 1.1 introduced a new option for the by argument to the *_join() family of functions. You can now use join_by() instead of the previous c().\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\ndt_1 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, by = join_by(country == country))\n\nThe short version without the named parameter works as well when using it as the third parameter in a *_join() function (the second parameter in a pipe.)\n\ndt_2 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, join_by(country == country))\n\nIt is an alternative to using c() in the argument.\n\ndt_3 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, by = c(\"country\" = \"country\"))\n\nThe three created data frames are identical.\n\nidentical(dt_1, dt_2) & identical(dt_1, dt_3)\n\n[1] TRUE\n\n\nAnd here is a figure using the created data frame.\n\n\nCode\nset.seed(2)\n\npl_dt &lt;-\n    dt_1 |&gt;\n    filter(year == max(year)) |&gt;\n    select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)\n\nggplot(pl_dt, aes(x = gdp_per_capita, y = life_expectency)) +\n    geom_point(color = \"darkgrey\") +\n    scale_x_log10() +\n    geom_smooth() +\n    geom_text(\n        data = sample_n(pl_dt, 10),\n        aes(x = gdp_per_capita, y = life_expectency, label = country),\n        vjust = -0.8, size = 3.5\n    )\n\n\n\n\n\n\nThis is something I missed when reading the change log of the dplyr 1.1. release and did not find out about by reading the help pages of the *_join() functions.\nIt was different with the multiple matches revisions in dplyr 1.1. Here, I quickly run into the new warning message, explored and used it. To handle multiple matches more explicitly is really nice and I have started to use it regularly.\nThe recent post Teaching the tidyverse in 2023 provided a good review of the new features in the tidyverse released over the last months. I was aware of most of the changes and have started using the new approaches.\nIt is nice to see that the tidyverse is evolving and that the changes are documented so well."
+    "text": "I started using pak install and manage R packages.\npak can be used to install all R packages used in a project.\nThe use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with pak and renv. In a previous post, I discussed an approach with renv only.\nrenv is used to detect all packages used in a project and pac to create a (platform dependent) lockfile. This lockfile can be used to install the version pinned in the lock file later with pak without creating an renv environment.\nHere is an example — not run:\n# get packages used in project folder\ndeps &lt;- unique(renv::dependencies()[[\"Package\"]])\n\n# install project packages\npak::pkg_install(deps, ask = FALSE, upgrade = FALSE)\n# pak::lockfile_install()\n\n# create lock files\npak::lockfile_create(deps)\n# renv::snapshot(prompt = FALSE)\nrenv can be used to create a lock file as well. However, currently you have to use renv to install dependencies from an renv.lock file and need to create a new renv environment to reinstall the packages. There are plans to support installing packages from renv.lock with pak — see #343\nHere are the R packages renv finds locally.\n\nrenv::dependencies()[[\"Package\"]] |&gt;\n  unique() |&gt;\n  sort()\n\nFinding R package dependencies ... Done!\n\n\n[1] \"renv\"      \"rmarkdown\"\n\n\n\n\nPinning package versions in a lock file is an established workflow in Python with pip-tools.\nIn renv pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.\nI hope pak will provide the R packaging solution I am looking for."
   },
   {
-    "objectID": "posts/2023-til/index.html",
-    "href": "posts/2023-til/index.html",
-    "title": "Today I learned (TIL)",
+    "objectID": "posts/2023-10-07-pak-packaging/index.html#python-vs.-r-packaging-tools",
+    "href": "posts/2023-10-07-pak-packaging/index.html#python-vs.-r-packaging-tools",
+    "title": "R packages with pak",
     "section": "",
-    "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
+    "text": "Pinning package versions in a lock file is an established workflow in Python with pip-tools.\nIn renv pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.\nI hope pak will provide the R packaging solution I am looking for."
   },
   {
-    "objectID": "posts/2023-til/index.html#november",
-    "href": "posts/2023-til/index.html#november",
-    "title": "Today I learned (TIL)",
+    "objectID": "posts/2023-04-26-dataverse/index.html",
+    "href": "posts/2023-04-26-dataverse/index.html",
+    "title": "Dataverse URLs",
     "section": "",
-    "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
+    "text": "Dataverse URLs\nI followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with Elections Global gave a good overview – see below.\nThe technical point is that I wanted to access the original data file at the Harvard Dataverse.\nData uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.\nHere is an example for the Elections Global data used in the snippet – see page screenshot below.\ndoi:10.7910/DVN/OGOURC/YK9DOZ&version=2.0\nSo I tried to find the permanent link to the original data file.\nFirst, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.\nSecond, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.\nFor now, I will start to using the imported data version with the provided url for data files from the Dataverse.\n\n\nCode\nlibrary(conflicted)\nlibrary(tidyverse)\nconflicts_prefer(dplyr::filter)\n\n\n\nif (FALSE) {\n  url_csv &lt;- \"https://dataverse.harvard.edu/api/access/datafile/3754546?format=original\"\n  elec_raw &lt;- read_csv(url_csv)\n}\n\nurl &lt;- \"https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ\"\n\nif (!exists(\"elec_raw\")) {\n  elec_raw &lt;- read_tsv(url)\n}\n\n# glimpse(elec_raw)\n\n\n\nCode\nhnd &lt;-\n  elec_raw |&gt;\n  filter(country == \"HND\") |&gt;\n  mutate(\n    year = as.integer(substr(election_date, 1, 4)),\n    seats_share = 100 * seats / seats_total\n  )\n\nhnd |&gt;\n  summarise(\n    n = n(),\n    share_mean = mean(seats_share, na.rm = TRUE) |&gt; round(1),\n    share_max = max(seats_share, na.rm = TRUE) |&gt; round(1),\n    year_first = min(year, na.rm = TRUE),\n    year_last = max(year, na.rm = TRUE),\n    .by = party\n  ) |&gt;\n  select(party, n, n:year_last) |&gt;\n  arrange(desc(n), desc(share_mean))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nparty\nn\nshare_mean\nshare_max\nyear_first\nyear_last\n\n\n\n\nNational Party of Honduras\n25\n60.8\n100.0\n1923\n2013\n\n\nLiberal Party of Honduras\n20\n40.3\n62.1\n1923\n2013\n\n\nother (other-script)\n13\n4.0\n9.4\n1923\n2013\n\n\nLiberal Constitutionalist Party of Honduras\n2\n71.4\n100.0\n1916\n1923\n\n\nNational Reformist Movement\n2\n13.6\n20.3\n1954\n1957\n\n\nLiberty and Refoundation\n1\n28.9\n28.9\n2013\n2013\n\n\nAnti-Corruption Party\n1\n10.2\n10.2\n2013\n2013\n\n\nCentral American Unionist Party\n1\n8.7\n8.7\n1926\n1926\n\n\nDemocratic Unification Party\n1\n3.9\n3.9\n2005\n2005\n\n\n\n\n\n\n\n\nCode\nhnd |&gt;\n  mutate(n = n(), .by = party) |&gt;\n  filter(n &gt; 10) |&gt;\n  ggplot(aes(year, seats_share, colour = party)) +\n  geom_line()"
   },
   {
-    "objectID": "posts/2023-til/index.html#november-1",
-    "href": "posts/2023-til/index.html#november-1",
-    "title": "Today I learned (TIL)",
-    "section": "21. November",
-    "text": "21. November\nThere is a magic method in iPython to install packages with pip. It comes handy for a quick install in a notebook.\n%pip install -q requests\nSpecifying dependencies in requirements.in or pyproject.toml and pinning them with pip-tools is the better solution to create reproducible environments."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#july",
-    "href": "posts/2023-til/index.html#july",
-    "title": "Today I learned (TIL)",
-    "section": "31. July",
-    "text": "31. July\nSimple debugging with IPython — found at Real Python (now gated).\nimport IPython\n\nvar_1 = \"hello\"\n\nIPython.embed()\n\nvar_2 = \"world\""
-  },
-  {
-    "objectID": "posts/2023-til/index.html#june",
-    "href": "posts/2023-til/index.html#june",
-    "title": "Today I learned (TIL)",
-    "section": "30. June",
-    "text": "30. June\nSet default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
-  },
-  {
-    "objectID": "posts/2023-til/index.html#june-1",
-    "href": "posts/2023-til/index.html#june-1",
-    "title": "Today I learned (TIL)",
-    "section": "29. June",
-    "text": "29. June\nDidn’t know n_distinct() and used length(unique()) for too long. A small and nice thing i learned that makes pipes more readable."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#june-2",
-    "href": "posts/2023-til/index.html#june-2",
-    "title": "Today I learned (TIL)",
-    "section": "13. June",
-    "text": "13. June\nAdding a comment in Markdown by using standard html comments. It works for Markdown in pandoc used by Quarto.\n&lt;!--- comment  --&gt;\n\n&lt;!---\nmulti-line comments\n--&gt;\nI used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#june-3",
-    "href": "posts/2023-til/index.html#june-3",
-    "title": "Today I learned (TIL)",
-    "section": "10. June",
-    "text": "10. June\nAdding a page break to a pdf in Quarto.\n---\nformat: pdf\n---\n\nPage 1\n\n{{&lt; pagebreak &gt;}}\n\nPage 2\nIn addition, I learned to ignore shortcuts in a cell with {.markdown shortcodes=\"false\"}"
-  },
-  {
-    "objectID": "posts/2023-til/index.html#june-4",
-    "href": "posts/2023-til/index.html#june-4",
-    "title": "Today I learned (TIL)",
-    "section": "09. June",
-    "text": "09. June\nI wanted to run a Bash shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.\n# Use path relative to script location, if feasible\nif [ -n \"$BASH_SOURCE\" ]; then\n    cd \"$( cd \"$(dirname \"${BASH_SOURCE[0]}\")\" ; pwd -P )\"\nelse\n    if ! [ -e \"package-lock.json\" ]; then\n        echo \"Run script in project folder\"\n        exit 1\n    fi\nfi"
-  },
-  {
-    "objectID": "posts/2023-til/index.html#may",
-    "href": "posts/2023-til/index.html#may",
-    "title": "Today I learned (TIL)",
-    "section": "17. May",
-    "text": "17. May\nAnother use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use .x now for the local variable name to make the local context more explicit.\nadd_three &lt;- \\(.x) .x+3"
-  },
-  {
-    "objectID": "posts/2023-til/index.html#may-1",
-    "href": "posts/2023-til/index.html#may-1",
-    "title": "Today I learned (TIL)",
-    "section": "06. May",
-    "text": "06. May\nExcluding variables in tidyselect is now done with ! as I found out by reading the documentation more carfully. I have still used - to exclude variables by their name. This is not documented in the tidyselect help page anymore.\nreadstata13 creates more R friendly data structures than haven. Its default option converts labeled data into factors if appropriate."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#may-2",
-    "href": "posts/2023-til/index.html#may-2",
-    "title": "Today I learned (TIL)",
-    "section": "05. May",
-    "text": "05. May\nUsed Quarto a lot and got more comfortable with the options — esp. caching, creating pdf, figures."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#may-3",
-    "href": "posts/2023-til/index.html#may-3",
-    "title": "Today I learned (TIL)",
-    "section": "03. May",
-    "text": "03. May\nConvert an RMarkdown file into an R file with knitr::purl(\"purl.Rmd\") – see details.\nChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#may-4",
-    "href": "posts/2023-til/index.html#may-4",
-    "title": "Today I learned (TIL)",
-    "section": "02. May",
-    "text": "02. May\nA bug in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the daily build and had R/RStudio running again.\nOriginally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#apr.",
-    "href": "posts/2023-til/index.html#apr.",
-    "title": "Today I learned (TIL)",
-    "section": "25. Apr.",
-    "text": "25. Apr.\nI got back into Quarto and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.\nSetting up the page worked well. I got a little confused by the quarto difference between freeze and cache. I also wondered why the cache was added into several folders in the main directory and not into a _cache folder."
-  },
-  {
-    "objectID": "posts/2023-til/index.html#apr.-1",
-    "href": "posts/2023-til/index.html#apr.-1",
-    "title": "Today I learned (TIL)",
-    "section": "03. Apr.",
-    "text": "03. Apr.\nI read about the new pandas release. None of the changes seem to be relevant for my work with pandas"
-  },
-  {
-    "objectID": "posts/2023-til/index.html#feb.",
-    "href": "posts/2023-til/index.html#feb.",
-    "title": "Today I learned (TIL)",
-    "section": "25. Feb.",
-    "text": "25. Feb.\nI worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the more convenient interface."
-  },
-  {
-    "objectID": "posts/2023-02-22-hello-jupyter/index.html",
-    "href": "posts/2023-02-22-hello-jupyter/index.html",
-    "title": "Hello Jupyter",
+    "objectID": "posts/2023-02-26-altair/index.html",
+    "href": "posts/2023-02-26-altair/index.html",
+    "title": "Python visualization with Altair",
     "section": "",
-    "text": "Hello Jupyter\nI used my new Quarto and Jupyter skills to create web pages for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS."
+    "text": "I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.\nFor customized visualizations I like the ggplot2 approach with layers. Its grammar of graphics provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.\nVega-Altair, a Python library, uses a grammar to create visualization as well. So I gave it a try and it went well – see code below.\npandas and Altaire are likely to be the visualization tools that I use primarily in Python.\nHere is some information on the penguins dataset 🐧 in the visualization. I didn’t want to use mtcars 🚗 again.\n\nimport altair as alt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\ndt = sns.load_dataset(\"penguins\")\n\n(alt.Chart(dt)\n    .mark_circle()\n    .encode(\n      alt.X('flipper_length_mm', scale=alt.Scale(zero=False)),\n      alt.Y('body_mass_g', scale=alt.Scale(zero=False)),\n      color='species',\n      tooltip=['species', 'island', 'sex']\n    )\n)\n\n\n\n\n\n\n\n\ndt\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns"
   },
   {
-    "objectID": "posts/2023-11-23-jupyter-lite/index.html",
-    "href": "posts/2023-11-23-jupyter-lite/index.html",
-    "title": "JupyterLite",
+    "objectID": "posts/2023-03-20-r-wasm/index.html",
+    "href": "posts/2023-03-20-r-wasm/index.html",
+    "title": "WebR (WebAssembly)",
     "section": "",
-    "text": "I listened to the the recent Talk Python To Me episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.\nI was impressed to see that you can now run JupyterLab in a browser.\nMany shortcuts work and you can activate the command pallette with Shift + Cmd/Ctrl + C\nFor me, the examples in the pyodide folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.\nSo now I can run Python in an interactive environment on any computer with JupyterLite. I may use Codespaces or Google Colab in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite."
+    "text": "WebR (WebAssembly)\nI read about the webR release on the Tidyverse blog. It allows to run R in a browser.\nSo I went to webr.r-wasm.org and gave it a try.\nI tried to install the tidyverse with webr::install(\"tidyverse\"). That did not work. For me, there is little use of R without the tidyverse.\nInstalling dplyr and ggplot2 individually worked. So that I could run the following code.\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndt &lt;- as_tibble(mtcars)\nglimpse(dt)\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…\n\nggplot(dt, aes(x = hp, y = mpg, color = cyl)) +\n  geom_point()\n\n\n\n\n\n\n\n\nTyping the R commands in a browser shell without tab completion and no R help was challenging though.\nHaving R in a browser quickly available is nice 😊."
   },
   {
-    "objectID": "posts/2023-11-23-jupyter-lite/index.html#visualization-example",
-    "href": "posts/2023-11-23-jupyter-lite/index.html#visualization-example",
-    "title": "JupyterLite",
-    "section": "Visualization example",
-    "text": "Visualization example\nHere is an example form the altair.ipynb notebook in the pyodide folder. It runs here but also in the JupyterLite, purely browser based, version.\n\nimport altair as alt\nimport pandas as pd\n\nsource = pd.DataFrame({\n    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],\n    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]\n})\n\nalt.Chart(source).mark_bar().encode(\n    x='a',\n    y='b'\n)"
-  },
-  {
-    "objectID": "posts/2023-11-23-jupyter-lite/index.html#http-requests",
-    "href": "posts/2023-11-23-jupyter-lite/index.html#http-requests",
-    "title": "JupyterLite",
-    "section": "http requests",
-    "text": "http requests\nI played around a little with making http requests. You can install the requests package but the http requests don’t work. You have to use the js module provided by pyodide instead.\nHere is the notebook I wrote.\nnetwork-requests.ipynb.txt\nI added a txt extension because I don’t want the notebook to be rendered in Quarto. Save it, remove the txt extension, drag and drop it into the JupyterLite browser window and run it."
-  },
-  {
-    "objectID": "posts/2023-11-23-jupyter-lite/index.html#pip-with-micropip",
-    "href": "posts/2023-11-23-jupyter-lite/index.html#pip-with-micropip",
-    "title": "JupyterLite",
-    "section": "pip with micropip",
-    "text": "pip with micropip\nYou can install packages with pip. In JupyterLite, it is based on micropip.\nThe recommended way to install packages is:\n%pip install -q snowballstemmer\nSo far, I have been reluctant to use pip with a magic command but may use it more regularly in the future.\nHere is a Python version to use micropip.\nimport micropip\n\nif \"snowballstemmer\" not in micropip.list():\n    await micropip.install(\"snowballstemmer\")"
-  },
-  {
-    "objectID": "posts/2023-03-15-pyscript/index.html",
-    "href": "posts/2023-03-15-pyscript/index.html",
-    "title": "PyScript (WebAssembly)",
+    "objectID": "posts/2023-06-17-git-rebase/index.html",
+    "href": "posts/2023-06-17-git-rebase/index.html",
+    "title": "Git rebase interactive",
     "section": "",
-    "text": "I used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n🤗🤗😇😀😀😎😆😄😋😄😃🤗😁😅😂😇🙂😆😀🙂\n🙂😄🙂🤗😅😋😎😃😂😆😁😉😊😁😄😅😃😉🙂😇\n😀😎🙂🙂😅🙂😁😃😇😊😆😂😎😊😅😇🙂🤗😃😋\n😊😊🙂😃😂😁🙂😊😂😅😊😅😇😅😊😅😉🙂😎😇\n😆😅😀😂😋😎😅😆😅😂🤗🙂😊🙂😋😆😅😄😎😇\n😁🙂🤗😉😇😂🙂😆😋🙂😂😇😁😃😀😀😃😋😂😎\n😂🙂😁😆😀😊😁😋😋🙂🙂😃🤗🤗😊😎😅😎😂😀\n🤗😉😂🙂😂😊😂😎😇😆😀🙂🙂🙂😀🙂😆😇😇😊\n🙂🤗🙂😇😋😊😎😅😂🙂🤗😇😂🙂😄🤗😂😅😃😁\n😂😎😊😇😀🤗😉🤗🙂🙂😇😅😇😅🤗😇😊😀😊😀\n😇😋🙂🙂😊😀😄😄😂😁🙂😊😄😂😅😇😆😂😎😎\n🙂🤗🤗😊😄😆😄🙂😊😂😄😄🤗😅😁😂😋😁😁😂\n😃🤗🙂😋😃😎🙂😄🙂😎😄😎🙂😎😂😃😂🙂😂😀\n😇😋🙂🙂😋🙂😁😁😊🙂😉😆😅😂😋🙂😃🤗🙂😋\n🙂😀😃😎😄😆😆😊😊😅🤗😊😀😄😄😃🤗😂😁😇\n😋😁😀😉😉😄🙂😎😂😁🤗🙂🙂😇🤗😎😉🙂😁😋\n😇😊😊😂😃😄😇😋😊😉🙂😋😅🤗😋🙂😄😉😉😋\n😄😄😉😄😇🤗🤗😃😀😅😃😃😊😉😉😅😎😁🙂😂\n😅🙂🙂😂😊🤗🤗🤗🤗🙂😊😃😁🤗😅😂😂😀😇😄\n😎😃😇😄😊😀🤗😀😋😆😎😎😅🙂😂😎🙂😆😂😎\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
+    "text": "Git rebase interactive\nGit rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try to keep a nice Git history and pay attention to details in Git commits. Merge conflicts and rebasing in Git have so far been challenging to me and I run regular into conflicts.\nSo today I was pleasently surprised how well interactive rebasing in Git works. Here is the magic message:\ngit rebase -i HEAD~5\nRevising the commit history in a text editor worked really well.\n\npick c86752b Use date last modified for TIL post\npick faa548f Add post Jupyter notebooks in Git\npick 86096fa Add TIL Markdown comments\npick a682d0d Add codespace init script\npick c993202 Add VS Code settings\n\n# Rebase 22b5523..c993202 onto 22b5523 (5 commands)\n#\n# Commands:\n# p, pick &lt;commit&gt; = use commit\n# r, reword &lt;commit&gt; = use commit, but edit the commit message\n# e, edit &lt;commit&gt; = use commit, but stop for amending\n# s, squash &lt;commit&gt; = use commit, but meld into previous commit\n# f, fixup [-C | -c] &lt;commit&gt; = like \"squash\" but keep only the previous\n#                    commit's log message, unless -C is used, in which case\n#                    keep only this commit's message; -c is same as -C but\n#                    opens the editor\n# x, exec &lt;command&gt; = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop &lt;commit&gt; = remove commit\n# l, label &lt;label&gt; = label current HEAD with a name\n# t, reset &lt;label&gt; = reset HEAD to a label\n# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]\n#         create a merge commit using the original merge commit's\n#         message (or the oneline, if no original merge commit was\n#         specified); use -c &lt;commit&gt; to reword the commit message\n# u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated\n#                       to this position in the new commits. The &lt;ref&gt; is\n#                       updated at the end of the rebase\n#\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#"
   },
   {
-    "objectID": "posts/2023-04-23-chatgpt/index.html",
-    "href": "posts/2023-04-23-chatgpt/index.html",
-    "title": "R coding with ChatGPT",
+    "objectID": "posts/2023-07-29-renv/index.html",
+    "href": "posts/2023-07-29-renv/index.html",
+    "title": "Package versions with renv",
     "section": "",
-    "text": "R coding with ChatGPT\nFinally I got into ChatGPT and started using it.\nI was inspired to give ChatGPT a try after reading a post. The author describes using ChatGPT to code a  model.\nSo I had a conversation with ChatGPT about the social sciences, statistics and R.\nI have to say that I am impressed.\nChatGPT and I had an exchange about R. I asked for some examples. ChatGPT originally had a preference for Base-R code but it used more Tidyverse-R approaches after I asked for it. Or it converted the Base-R code to Tidyverse-R at my request.\nThe code examples were good and I really liked the comments it added to the code. At some point ChatGPT went back to Base-R and I could not fully convince it to use a Tidyverse-R first approach.\nSo here is a nice output from our exchange. I asked for a text analysis of a Biden speech in R.\nParts from the content of the exchange are below.\nI added the rvest::read_html parts from the ChatGPT suggestion. I did not find a way that ChatGPT added it to its initial script. ChatGPT had some Base-R and Tidyverse-R confusion at this point. I updated the title of the figure to the new speech title used as well.\nI don’t use tidytext regularly so looking up the information would have taken some time for me. Here, ChatGPT was very helpful. Thanks.\n\n\nCode\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(rvest)\n\n# Read in the HTML document\nhtml_doc &lt;- read_html(\"https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\")\n\n# Extract the text\nbiden_speech &lt;- html_text(html_doc)\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(\n    x = \"Frequency\",\n    y = \"Word\",\n    title = \"Joe Biden's American Jobs Plan speech\",\n    subtitle = \"Most common words\"\n  )\n\n\n\n\n\n\nuser can we analyse a biden speech?\nChatGPT Yes, we can use text analysis techniques to analyze a speech by Joe Biden. Here’s an example using the tidytext package:\nlibrary(tidyverse)\nlibrary(tidytext)\n\n# Load speech data\nbiden_speech &lt;- read_lines(\"https://www.rev.com/blog/transcripts/joe-biden-covid-speech-transcript-september-9\")\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(x = \"Frequency\", y = \"Word\", title = \"Most common words in Joe Biden's COVID speech\")\nIn this example, we load the transcript of a speech by Joe Biden on the topic of COVID-19, which is available as a text file from the Rev.com blog. We tokenize the speech using the unnest_tokens() function, remove stop words using the anti_join() function, and calculate word frequencies using the count() function. Finally, we visualize the most common words using ggplot2. Note that in order to run this code, you will need to have the readr package installed to read in the text file from the web.\nuser the url does not work\nChatGPT I apologize for that. Here’s an updated example using a different speech by Joe Biden that is available as a text file from the University of Pennsylvania:\nlibrary(tidyverse)\nlibrary(tidytext)\n\n# Load speech data\nbiden_speech &lt;- read_lines(\"https://www.sas.upenn.edu/~jkingsby/BidenIowaSpeech.txt\")\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(x = \"Frequency\", y = \"Word\", title = \"Most common words in Joe Biden's Iowa speech\")\nIn this example, we load a different speech by Joe Biden that is available as a text file from the University of Pennsylvania. The rest of the code is the same as in the previous example.\nuser that url is also not working. do you have a link for a biden speech\nChatGPT I apologize for the inconvenience. Here is a link to a transcript of a recent speech by Joe Biden on infrastructure:\nhttps://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\nYou can copy the text of the speech from this page and use it in the read_lines() function to load it into R for analysis using the tidytext package.\nuser how can i convert a html document to text in r?\nChatGPT You can use the rvest package in R to extract text from HTML documents. Here’s an example code snippet that shows how to do this:\nlibrary(rvest)\n\n# Read in the HTML document\nhtml_doc &lt;- read_html(\"https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\")\n\n# Extract the text\ntext &lt;- html_text(html_doc)\n\n# Print the text\ncat(text)\nIn this example, we use the read_html() function from rvest to read in the HTML document from the provided URL. We then use the html_text() function to extract the text from the HTML document. Finally, we use cat() to print the text to the console.\nNote that the rvest package is designed for web scraping, so it is important to respect the terms of use and not use it to scrape websites without permission.\nuser ok, can you add that to the r code snippet above?\nChatGPT\n(…)"
+    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+  },
+  {
+    "objectID": "posts/2023-07-29-renv/index.html#versions-snapshot",
+    "href": "posts/2023-07-29-renv/index.html#versions-snapshot",
+    "title": "Package versions with renv",
+    "section": "",
+    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+  },
+  {
+    "objectID": "posts/2023-07-29-renv/index.html#find-project-packages",
+    "href": "posts/2023-07-29-renv/index.html#find-project-packages",
+    "title": "Package versions with renv",
+    "section": "Find project packages",
+    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n    mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n    select(Package, version) |&gt;\n    arrange(Package) |&gt;\n    distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.3\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.2\n\n\npurrr\n1.0.2\n\n\nrenv\n1.0.2\n\n\nrmarkdown\n2.24"
+  },
+  {
+    "objectID": "posts/2023-07-29-renv/index.html#customized-session-info",
+    "href": "posts/2023-07-29-renv/index.html#customized-session-info",
+    "title": "Package versions with renv",
+    "section": "Customized session info",
+    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.24   conflicted_1.2.0 callr_3.7.3      renv_1.0.2      \n[5] purrr_1.0.2      dplyr_1.1.2     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      \n [5] xfun_0.40         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   \n [9] glue_1.6.2        htmltools_0.5.6   ps_1.7.5          fansi_1.0.4      \n[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       \n[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2\n[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         \n[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8"
   },
   {
     "objectID": "posts/2023-06-04-codespaces/index.html",
@@ -347,21 +242,21 @@
     "href": "snippets/ipython-display.html",
     "title": "iPython display examples",
     "section": "",
-    "text": "Some JupyterLite inspired examples (see python.ipynb) of using iPython display.\nfrom IPython.display import display, HTML, JSON, Markdown, Math"
+    "text": "Some JupyterLite inspired examples (see python.ipynb) of using iPython display.\n\nfrom IPython.display import display, HTML, JSON, Markdown, Math\n\n\n\nIndividual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\n\n\n\n\nMarkdown(\"### Markdown title\")\n\n\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;\n\n\n\n\n\nUse display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
   },
   {
     "objectID": "snippets/ipython-display.html#single-elements",
     "href": "snippets/ipython-display.html#single-elements",
     "title": "iPython display examples",
-    "section": "Single elements",
-    "text": "Single elements\nIndividual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\nHTML Title\n\n\n\nMarkdown(\"### Markdown title\")\n\nMarkdown title\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;"
+    "section": "",
+    "text": "Individual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\n\n\n\n\nMarkdown(\"### Markdown title\")\n\n\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;"
   },
   {
     "objectID": "snippets/ipython-display.html#multiple-elements",
     "href": "snippets/ipython-display.html#multiple-elements",
     "title": "iPython display examples",
-    "section": "Multiple elements",
-    "text": "Multiple elements\nUse display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
+    "section": "",
+    "text": "Use display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
   },
   {
     "objectID": "snippets/ipython-display.html#html",
@@ -529,7 +424,7 @@
     "href": "posts/2023-02-26-quarto/index.html#python-in-quarto",
     "title": "A few days of Quarto",
     "section": "Python in Quarto",
-    "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 1: A line plot on a polar axis"
+    "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
   },
   {
     "objectID": "posts/2023-10-31-zenodo-api/index.html",
@@ -574,74 +469,186 @@
     "text": "Jupyter notebooks with Quarto\nJupyter notebooks can be rendered with Quarto.\nIn a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a Raw first cell. Finally, I converted the original notebook into a Quarto document with quarto convert.\nI rendered all versions of the Jupyter notebook with Quarto and here are the results:\n\nJupyter notebook\nnotebook with Quarto first cell\nnotebook converted to Quarto document\n\nI also learned that you have to pass an option when rendering ipynb-files – quarto render notebook.ipynb --execute. The assumption is that a notebook was already run and that the results shall be rendered.\nThis all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.\n\n\n\nJupyter Lab"
   },
   {
-    "objectID": "posts/2023-07-29-renv/index.html",
-    "href": "posts/2023-07-29-renv/index.html",
-    "title": "Package versions with renv",
+    "objectID": "posts/2024-02-26-f-strings/index.html",
+    "href": "posts/2024-02-26-f-strings/index.html",
+    "title": "Python f-strings",
     "section": "",
-    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+    "text": "Here are some examples of f-strings in Python inspired by a post and a cheat sheet.\n\na = 2\nb = 3\n\n\nf\"{a} + {b}\"\n\n'2 + 3'\n\n\n\nf\"{a=} and {b=}\"\n\n'a=2 and b=3'\n\n\n\nf\"a + b = {a+b}\"\n\n'a + b = 5'\n\n\nCurly brackets in an f-string\n\nn = 123\n\nf'{{}}-{n}-{{{n}}}'\n\n'{}-123-{123}'\n\n\n\nNumber formatting\n\nvar = 1234567890.1234\n\nf'{var:,}'\n\n'1,234,567,890.1234'\n\n\n\nf'round: {var:.2f}'\n\n'round: 1234567890.12'\n\n\n\nf'comma: {var:,}'\n\n'comma: 1,234,567,890.1234'\n\n\n\nf'comma: {var:,.2f}'\n\n'comma: 1,234,567,890.12'\n\n\n\nimport datetime\n\ndt = datetime.datetime(2026, 2, 21, 19, 45, 30)\n\nf'{dt}'\n\n'2026-02-21 19:45:30'\n\n\n\nf'{dt:%Y-%m-%d}'\n\n'2026-02-21'\n\n\n\nf'{dt.isoformat()}'\n\n'2026-02-21T19:45:30'"
   },
   {
-    "objectID": "posts/2023-07-29-renv/index.html#versions-snapshot",
-    "href": "posts/2023-07-29-renv/index.html#versions-snapshot",
-    "title": "Package versions with renv",
+    "objectID": "posts/2023-04-23-chatgpt/index.html",
+    "href": "posts/2023-04-23-chatgpt/index.html",
+    "title": "R coding with ChatGPT",
     "section": "",
-    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+    "text": "R coding with ChatGPT\nFinally I got into ChatGPT and started using it.\nI was inspired to give ChatGPT a try after reading a post. The author describes using ChatGPT to code a  model.\nSo I had a conversation with ChatGPT about the social sciences, statistics and R.\nI have to say that I am impressed.\nChatGPT and I had an exchange about R. I asked for some examples. ChatGPT originally had a preference for Base-R code but it used more Tidyverse-R approaches after I asked for it. Or it converted the Base-R code to Tidyverse-R at my request.\nThe code examples were good and I really liked the comments it added to the code. At some point ChatGPT went back to Base-R and I could not fully convince it to use a Tidyverse-R first approach.\nSo here is a nice output from our exchange. I asked for a text analysis of a Biden speech in R.\nParts from the content of the exchange are below.\nI added the rvest::read_html parts from the ChatGPT suggestion. I did not find a way that ChatGPT added it to its initial script. ChatGPT had some Base-R and Tidyverse-R confusion at this point. I updated the title of the figure to the new speech title used as well.\nI don’t use tidytext regularly so looking up the information would have taken some time for me. Here, ChatGPT was very helpful. Thanks.\n\n\nCode\nlibrary(tidyverse)\nlibrary(tidytext)\nlibrary(rvest)\n\n# Read in the HTML document\nhtml_doc &lt;- read_html(\"https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\")\n\n# Extract the text\nbiden_speech &lt;- html_text(html_doc)\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(\n    x = \"Frequency\",\n    y = \"Word\",\n    title = \"Joe Biden's American Jobs Plan speech\",\n    subtitle = \"Most common words\"\n  )\n\n\n\n\n\n\n\n\n\n\nuser can we analyse a biden speech?\nChatGPT Yes, we can use text analysis techniques to analyze a speech by Joe Biden. Here’s an example using the tidytext package:\nlibrary(tidyverse)\nlibrary(tidytext)\n\n# Load speech data\nbiden_speech &lt;- read_lines(\"https://www.rev.com/blog/transcripts/joe-biden-covid-speech-transcript-september-9\")\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(x = \"Frequency\", y = \"Word\", title = \"Most common words in Joe Biden's COVID speech\")\nIn this example, we load the transcript of a speech by Joe Biden on the topic of COVID-19, which is available as a text file from the Rev.com blog. We tokenize the speech using the unnest_tokens() function, remove stop words using the anti_join() function, and calculate word frequencies using the count() function. Finally, we visualize the most common words using ggplot2. Note that in order to run this code, you will need to have the readr package installed to read in the text file from the web.\nuser the url does not work\nChatGPT I apologize for that. Here’s an updated example using a different speech by Joe Biden that is available as a text file from the University of Pennsylvania:\nlibrary(tidyverse)\nlibrary(tidytext)\n\n# Load speech data\nbiden_speech &lt;- read_lines(\"https://www.sas.upenn.edu/~jkingsby/BidenIowaSpeech.txt\")\n\n# Tokenize speech\nbiden_words &lt;- biden_speech %&gt;%\n  enframe(name = NULL, value = \"text\") %&gt;%\n  unnest_tokens(word, text)\n\n# Remove stop words\nbiden_words &lt;- biden_words %&gt;%\n  anti_join(stop_words)\n\n# Calculate word frequencies\nword_freq &lt;- biden_words %&gt;%\n  count(word, sort = TRUE)\n\n# Visualize word frequencies\nword_freq %&gt;%\n  top_n(20) %&gt;%\n  ggplot(aes(x = n, y = reorder(word, n))) +\n  geom_col() +\n  labs(x = \"Frequency\", y = \"Word\", title = \"Most common words in Joe Biden's Iowa speech\")\nIn this example, we load a different speech by Joe Biden that is available as a text file from the University of Pennsylvania. The rest of the code is the same as in the previous example.\nuser that url is also not working. do you have a link for a biden speech\nChatGPT I apologize for the inconvenience. Here is a link to a transcript of a recent speech by Joe Biden on infrastructure:\nhttps://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\nYou can copy the text of the speech from this page and use it in the read_lines() function to load it into R for analysis using the tidytext package.\nuser how can i convert a html document to text in r?\nChatGPT You can use the rvest package in R to extract text from HTML documents. Here’s an example code snippet that shows how to do this:\nlibrary(rvest)\n\n# Read in the HTML document\nhtml_doc &lt;- read_html(\"https://www.whitehouse.gov/briefing-room/speeches-remarks/2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/\")\n\n# Extract the text\ntext &lt;- html_text(html_doc)\n\n# Print the text\ncat(text)\nIn this example, we use the read_html() function from rvest to read in the HTML document from the provided URL. We then use the html_text() function to extract the text from the HTML document. Finally, we use cat() to print the text to the console.\nNote that the rvest package is designed for web scraping, so it is important to respect the terms of use and not use it to scrape websites without permission.\nuser ok, can you add that to the r code snippet above?\nChatGPT\n(…)"
   },
   {
-    "objectID": "posts/2023-07-29-renv/index.html#find-project-packages",
-    "href": "posts/2023-07-29-renv/index.html#find-project-packages",
-    "title": "Package versions with renv",
-    "section": "Find project packages",
-    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n    mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n    select(Package, version) |&gt;\n    arrange(Package) |&gt;\n    distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.3\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.2\n\n\npurrr\n1.0.2\n\n\nrenv\n1.0.2\n\n\nrmarkdown\n2.24"
-  },
-  {
-    "objectID": "posts/2023-07-29-renv/index.html#customized-session-info",
-    "href": "posts/2023-07-29-renv/index.html#customized-session-info",
-    "title": "Package versions with renv",
-    "section": "Customized session info",
-    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.3.1 (2023-06-16)\nPlatform: x86_64-pc-linux-gnu (64-bit)\nRunning under: Ubuntu 22.04.3 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.24   conflicted_1.2.0 callr_3.7.3      renv_1.0.2      \n[5] purrr_1.0.2      dplyr_1.1.2     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      \n [5] xfun_0.40         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   \n [9] glue_1.6.2        htmltools_0.5.6   ps_1.7.5          fansi_1.0.4      \n[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       \n[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2\n[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         \n[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8"
-  },
-  {
-    "objectID": "posts/2023-06-17-git-rebase/index.html",
-    "href": "posts/2023-06-17-git-rebase/index.html",
-    "title": "Git rebase interactive",
+    "objectID": "posts/2023-03-15-pyscript/index.html",
+    "href": "posts/2023-03-15-pyscript/index.html",
+    "title": "PyScript (WebAssembly)",
     "section": "",
-    "text": "Git rebase interactive\nGit rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try to keep a nice Git history and pay attention to details in Git commits. Merge conflicts and rebasing in Git have so far been challenging to me and I run regular into conflicts.\nSo today I was pleasently surprised how well interactive rebasing in Git works. Here is the magic message:\ngit rebase -i HEAD~5\nRevising the commit history in a text editor worked really well.\n\npick c86752b Use date last modified for TIL post\npick faa548f Add post Jupyter notebooks in Git\npick 86096fa Add TIL Markdown comments\npick a682d0d Add codespace init script\npick c993202 Add VS Code settings\n\n# Rebase 22b5523..c993202 onto 22b5523 (5 commands)\n#\n# Commands:\n# p, pick &lt;commit&gt; = use commit\n# r, reword &lt;commit&gt; = use commit, but edit the commit message\n# e, edit &lt;commit&gt; = use commit, but stop for amending\n# s, squash &lt;commit&gt; = use commit, but meld into previous commit\n# f, fixup [-C | -c] &lt;commit&gt; = like \"squash\" but keep only the previous\n#                    commit's log message, unless -C is used, in which case\n#                    keep only this commit's message; -c is same as -C but\n#                    opens the editor\n# x, exec &lt;command&gt; = run command (the rest of the line) using shell\n# b, break = stop here (continue rebase later with 'git rebase --continue')\n# d, drop &lt;commit&gt; = remove commit\n# l, label &lt;label&gt; = label current HEAD with a name\n# t, reset &lt;label&gt; = reset HEAD to a label\n# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]\n#         create a merge commit using the original merge commit's\n#         message (or the oneline, if no original merge commit was\n#         specified); use -c &lt;commit&gt; to reword the commit message\n# u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated\n#                       to this position in the new commits. The &lt;ref&gt; is\n#                       updated at the end of the rebase\n#\n# These lines can be re-ordered; they are executed from top to bottom.\n#\n# If you remove a line here THAT COMMIT WILL BE LOST.\n#\n# However, if you remove everything, the rebase will be aborted.\n#"
+    "text": "I used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n🤗🤗😇😀😀😎😆😄😋😄😃🤗😁😅😂😇🙂😆😀🙂\n🙂😄🙂🤗😅😋😎😃😂😆😁😉😊😁😄😅😃😉🙂😇\n😀😎🙂🙂😅🙂😁😃😇😊😆😂😎😊😅😇🙂🤗😃😋\n😊😊🙂😃😂😁🙂😊😂😅😊😅😇😅😊😅😉🙂😎😇\n😆😅😀😂😋😎😅😆😅😂🤗🙂😊🙂😋😆😅😄😎😇\n😁🙂🤗😉😇😂🙂😆😋🙂😂😇😁😃😀😀😃😋😂😎\n😂🙂😁😆😀😊😁😋😋🙂🙂😃🤗🤗😊😎😅😎😂😀\n🤗😉😂🙂😂😊😂😎😇😆😀🙂🙂🙂😀🙂😆😇😇😊\n🙂🤗🙂😇😋😊😎😅😂🙂🤗😇😂🙂😄🤗😂😅😃😁\n😂😎😊😇😀🤗😉🤗🙂🙂😇😅😇😅🤗😇😊😀😊😀\n😇😋🙂🙂😊😀😄😄😂😁🙂😊😄😂😅😇😆😂😎😎\n🙂🤗🤗😊😄😆😄🙂😊😂😄😄🤗😅😁😂😋😁😁😂\n😃🤗🙂😋😃😎🙂😄🙂😎😄😎🙂😎😂😃😂🙂😂😀\n😇😋🙂🙂😋🙂😁😁😊🙂😉😆😅😂😋🙂😃🤗🙂😋\n🙂😀😃😎😄😆😆😊😊😅🤗😊😀😄😄😃🤗😂😁😇\n😋😁😀😉😉😄🙂😎😂😁🤗🙂🙂😇🤗😎😉🙂😁😋\n😇😊😊😂😃😄😇😋😊😉🙂😋😅🤗😋🙂😄😉😉😋\n😄😄😉😄😇🤗🤗😃😀😅😃😃😊😉😉😅😎😁🙂😂\n😅🙂🙂😂😊🤗🤗🤗🤗🙂😊😃😁🤗😅😂😂😀😇😄\n😎😃😇😄😊😀🤗😀😋😆😎😎😅🙂😂😎🙂😆😂😎\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
   },
   {
-    "objectID": "posts/2023-03-20-r-wasm/index.html",
-    "href": "posts/2023-03-20-r-wasm/index.html",
-    "title": "WebR (WebAssembly)",
+    "objectID": "posts/2023-11-23-jupyter-lite/index.html",
+    "href": "posts/2023-11-23-jupyter-lite/index.html",
+    "title": "JupyterLite",
     "section": "",
-    "text": "WebR (WebAssembly)\nI read about the webR release on the Tidyverse blog. It allows to run R in a browser.\nSo I went to webr.r-wasm.org and gave it a try.\nI tried to install the tidyverse with webr::install(\"tidyverse\"). That did not work. For me, there is little use of R without the tidyverse.\nInstalling dplyr and ggplot2 individually worked. So that I could run the following code.\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndt &lt;- as_tibble(mtcars)\nglimpse(dt)\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…\n\nggplot(dt, aes(x = hp, y = mpg, color = cyl)) +\n  geom_point()\n\n\n\n\nTyping the R commands in a browser shell without tab completion and no R help was challenging though.\nHaving R in a browser quickly available is nice 😊."
+    "text": "I listened to the the recent Talk Python To Me episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.\nI was impressed to see that you can now run JupyterLab in a browser.\nMany shortcuts work and you can activate the command pallette with Shift + Cmd/Ctrl + C\nFor me, the examples in the pyodide folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.\nSo now I can run Python in an interactive environment on any computer with JupyterLite. I may use Codespaces or Google Colab in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite."
   },
   {
-    "objectID": "posts/2023-02-26-altair/index.html",
-    "href": "posts/2023-02-26-altair/index.html",
-    "title": "Python visualization with Altair",
-    "section": "",
-    "text": "I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.\nFor customized visualizations I like the ggplot2 approach with layers. Its grammar of graphics provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.\nVega-Altair, a Python library, uses a grammar to create visualization as well. So I gave it a try and it went well – see code below.\npandas and Altaire are likely to be the visualization tools that I use primarily in Python.\nHere is some information on the penguins dataset 🐧 in the visualization. I didn’t want to use mtcars 🚗 again.\n\nimport altair as alt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\ndt = sns.load_dataset(\"penguins\")\n\n(alt.Chart(dt)\n    .mark_circle()\n    .encode(\n      alt.X('flipper_length_mm', scale=alt.Scale(zero=False)),\n      alt.Y('body_mass_g', scale=alt.Scale(zero=False)),\n      color='species',\n      tooltip=['species', 'island', 'sex']\n    )\n)\n\n\n\n\n\n\n\n\ndt\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns"
+    "objectID": "posts/2023-11-23-jupyter-lite/index.html#visualization-example",
+    "href": "posts/2023-11-23-jupyter-lite/index.html#visualization-example",
+    "title": "JupyterLite",
+    "section": "Visualization example",
+    "text": "Visualization example\nHere is an example form the altair.ipynb notebook in the pyodide folder. It runs here but also in the JupyterLite, purely browser based, version.\n\nimport altair as alt\nimport pandas as pd\n\nsource = pd.DataFrame({\n    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],\n    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]\n})\n\nalt.Chart(source).mark_bar().encode(\n    x='a',\n    y='b'\n)"
   },
   {
-    "objectID": "posts/2023-04-26-dataverse/index.html",
-    "href": "posts/2023-04-26-dataverse/index.html",
-    "title": "Dataverse URLs",
-    "section": "",
-    "text": "Dataverse URLs\nI followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with Elections Global gave a good overview – see below.\nThe technical point is that I wanted to access the original data file at the Harvard Dataverse.\nData uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.\nHere is an example for the Elections Global data used in the snippet – see page screenshot below.\ndoi:10.7910/DVN/OGOURC/YK9DOZ&version=2.0\nSo I tried to find the permanent link to the original data file.\nFirst, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.\nSecond, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.\nFor now, I will start to using the imported data version with the provided url for data files from the Dataverse.\n\n\nCode\nlibrary(conflicted)\nlibrary(tidyverse)\nconflicts_prefer(dplyr::filter)\n\n\n\nif (FALSE) {\n  url_csv &lt;- \"https://dataverse.harvard.edu/api/access/datafile/3754546?format=original\"\n  elec_raw &lt;- read_csv(url_csv)\n}\n\nurl &lt;- \"https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ\"\n\nif (!exists(\"elec_raw\")) {\n  elec_raw &lt;- read_tsv(url)\n}\n\n# glimpse(elec_raw)\n\n\n\nCode\nhnd &lt;-\n  elec_raw |&gt;\n  filter(country == \"HND\") |&gt;\n  mutate(\n    year = as.integer(substr(election_date, 1, 4)),\n    seats_share = 100 * seats / seats_total\n  )\n\nhnd |&gt;\n  summarise(\n    n = n(),\n    share_mean = mean(seats_share, na.rm = TRUE) |&gt; round(1),\n    share_max = max(seats_share, na.rm = TRUE) |&gt; round(1),\n    year_first = min(year, na.rm = TRUE),\n    year_last = max(year, na.rm = TRUE),\n    .by = party\n  ) |&gt;\n  select(party, n, n:year_last) |&gt;\n  arrange(desc(n), desc(share_mean))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nparty\nn\nshare_mean\nshare_max\nyear_first\nyear_last\n\n\n\n\nNational Party of Honduras\n25\n60.8\n100.0\n1923\n2013\n\n\nLiberal Party of Honduras\n20\n40.3\n62.1\n1923\n2013\n\n\nother (other-script)\n13\n4.0\n9.4\n1923\n2013\n\n\nLiberal Constitutionalist Party of Honduras\n2\n71.4\n100.0\n1916\n1923\n\n\nNational Reformist Movement\n2\n13.6\n20.3\n1954\n1957\n\n\nLiberty and Refoundation\n1\n28.9\n28.9\n2013\n2013\n\n\nAnti-Corruption Party\n1\n10.2\n10.2\n2013\n2013\n\n\nCentral American Unionist Party\n1\n8.7\n8.7\n1926\n1926\n\n\nDemocratic Unification Party\n1\n3.9\n3.9\n2005\n2005\n\n\n\n\n\n\n\n\nCode\nhnd |&gt;\n  mutate(n = n(), .by = party) |&gt;\n  filter(n &gt; 10) |&gt;\n  ggplot(aes(year, seats_share, colour = party)) +\n  geom_line()"
+    "objectID": "posts/2023-11-23-jupyter-lite/index.html#http-requests",
+    "href": "posts/2023-11-23-jupyter-lite/index.html#http-requests",
+    "title": "JupyterLite",
+    "section": "http requests",
+    "text": "http requests\nI played around a little with making http requests. You can install the requests package but the http requests don’t work. You have to use the js module provided by pyodide instead.\nHere is the notebook I wrote.\nnetwork-requests.ipynb.txt\nI added a txt extension because I don’t want the notebook to be rendered in Quarto. Save it, remove the txt extension, drag and drop it into the JupyterLite browser window and run it."
   },
   {
-    "objectID": "posts/2023-10-07-pak-packaging/index.html",
-    "href": "posts/2023-10-07-pak-packaging/index.html",
-    "title": "R packages with pak",
-    "section": "",
-    "text": "I started using pak install and manage R packages.\npak can be used to install all R packages used in a project.\nThe use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with pak and renv. In a previous post, I discussed an approach with renv only.\nrenv is used to detect all packages used in a project and pac to create a (platform dependent) lockfile. This lockfile can be used to install the version pinned in the lock file later with pak without creating an renv environment.\nHere is an example — not run:\n# get packages used in project folder\ndeps &lt;- unique(renv::dependencies()[[\"Package\"]])\n\n# install project packages\npak::pkg_install(deps, ask = FALSE, upgrade = FALSE)\n# pak::lockfile_install()\n\n# create lock files\npak::lockfile_create(deps)\n# renv::snapshot(prompt = FALSE)\nrenv can be used to create a lock file as well. However, currently you have to use renv to install dependencies from an renv.lock file and need to create a new renv environment to reinstall the packages. There are plans to support installing packages from renv.lock with pak — see #343\nHere are the R packages renv finds locally.\n\nrenv::dependencies()[[\"Package\"]] |&gt;\n  unique() |&gt;\n  sort()\n\nFinding R package dependencies ... Done!\n\n\n[1] \"renv\"      \"rmarkdown\"\n\n\n\n\nPinning package versions in a lock file is an established workflow in Python with pip-tools.\nIn renv pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.\nI hope pak will provide the R packaging solution I am looking for."
+    "objectID": "posts/2023-11-23-jupyter-lite/index.html#pip-with-micropip",
+    "href": "posts/2023-11-23-jupyter-lite/index.html#pip-with-micropip",
+    "title": "JupyterLite",
+    "section": "pip with micropip",
+    "text": "pip with micropip\nYou can install packages with pip. In JupyterLite, it is based on micropip.\nThe recommended way to install packages is:\n%pip install -q snowballstemmer\nSo far, I have been reluctant to use pip with a magic command but may use it more regularly in the future.\nHere is a Python version to use micropip.\nimport micropip\n\nif \"snowballstemmer\" not in micropip.list():\n    await micropip.install(\"snowballstemmer\")"
   },
   {
-    "objectID": "posts/2023-10-07-pak-packaging/index.html#python-vs.-r-packaging-tools",
-    "href": "posts/2023-10-07-pak-packaging/index.html#python-vs.-r-packaging-tools",
-    "title": "R packages with pak",
+    "objectID": "posts/2023-02-22-hello-jupyter/index.html",
+    "href": "posts/2023-02-22-hello-jupyter/index.html",
+    "title": "Hello Jupyter",
     "section": "",
-    "text": "Pinning package versions in a lock file is an established workflow in Python with pip-tools.\nIn renv pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.\nI hope pak will provide the R packaging solution I am looking for."
+    "text": "Hello Jupyter\nI used my new Quarto and Jupyter skills to create web pages for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS."
+  },
+  {
+    "objectID": "posts/2023-til/index.html",
+    "href": "posts/2023-til/index.html",
+    "title": "Today I learned (TIL)",
+    "section": "",
+    "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#november",
+    "href": "posts/2023-til/index.html#november",
+    "title": "Today I learned (TIL)",
+    "section": "",
+    "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#november-1",
+    "href": "posts/2023-til/index.html#november-1",
+    "title": "Today I learned (TIL)",
+    "section": "21. November",
+    "text": "21. November\nThere is a magic method in iPython to install packages with pip. It comes handy for a quick install in a notebook.\n%pip install -q requests\nSpecifying dependencies in requirements.in or pyproject.toml and pinning them with pip-tools is the better solution to create reproducible environments."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#july",
+    "href": "posts/2023-til/index.html#july",
+    "title": "Today I learned (TIL)",
+    "section": "31. July",
+    "text": "31. July\nSimple debugging with IPython — found at Real Python (now gated).\nimport IPython\n\nvar_1 = \"hello\"\n\nIPython.embed()\n\nvar_2 = \"world\""
+  },
+  {
+    "objectID": "posts/2023-til/index.html#june",
+    "href": "posts/2023-til/index.html#june",
+    "title": "Today I learned (TIL)",
+    "section": "30. June",
+    "text": "30. June\nSet default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#june-1",
+    "href": "posts/2023-til/index.html#june-1",
+    "title": "Today I learned (TIL)",
+    "section": "29. June",
+    "text": "29. June\nDidn’t know n_distinct() and used length(unique()) for too long. A small and nice thing i learned that makes pipes more readable."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#june-2",
+    "href": "posts/2023-til/index.html#june-2",
+    "title": "Today I learned (TIL)",
+    "section": "13. June",
+    "text": "13. June\nAdding a comment in Markdown by using standard html comments. It works for Markdown in pandoc used by Quarto.\n&lt;!--- comment  --&gt;\n\n&lt;!---\nmulti-line comments\n--&gt;\nI used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#june-3",
+    "href": "posts/2023-til/index.html#june-3",
+    "title": "Today I learned (TIL)",
+    "section": "10. June",
+    "text": "10. June\nAdding a page break to a pdf in Quarto.\n---\nformat: pdf\n---\n\nPage 1\n\n{{&lt; pagebreak &gt;}}\n\nPage 2\nIn addition, I learned to ignore shortcuts in a cell with {.markdown shortcodes=\"false\"}"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#june-4",
+    "href": "posts/2023-til/index.html#june-4",
+    "title": "Today I learned (TIL)",
+    "section": "09. June",
+    "text": "09. June\nI wanted to run a Bash shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.\n# Use path relative to script location, if feasible\nif [ -n \"$BASH_SOURCE\" ]; then\n    cd \"$( cd \"$(dirname \"${BASH_SOURCE[0]}\")\" ; pwd -P )\"\nelse\n    if ! [ -e \"package-lock.json\" ]; then\n        echo \"Run script in project folder\"\n        exit 1\n    fi\nfi"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#may",
+    "href": "posts/2023-til/index.html#may",
+    "title": "Today I learned (TIL)",
+    "section": "17. May",
+    "text": "17. May\nAnother use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use .x now for the local variable name to make the local context more explicit.\nadd_three &lt;- \\(.x) .x+3"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#may-1",
+    "href": "posts/2023-til/index.html#may-1",
+    "title": "Today I learned (TIL)",
+    "section": "06. May",
+    "text": "06. May\nExcluding variables in tidyselect is now done with ! as I found out by reading the documentation more carfully. I have still used - to exclude variables by their name. This is not documented in the tidyselect help page anymore.\nreadstata13 creates more R friendly data structures than haven. Its default option converts labeled data into factors if appropriate."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#may-2",
+    "href": "posts/2023-til/index.html#may-2",
+    "title": "Today I learned (TIL)",
+    "section": "05. May",
+    "text": "05. May\nUsed Quarto a lot and got more comfortable with the options — esp. caching, creating pdf, figures."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#may-3",
+    "href": "posts/2023-til/index.html#may-3",
+    "title": "Today I learned (TIL)",
+    "section": "03. May",
+    "text": "03. May\nConvert an RMarkdown file into an R file with knitr::purl(\"purl.Rmd\") – see details.\nChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#may-4",
+    "href": "posts/2023-til/index.html#may-4",
+    "title": "Today I learned (TIL)",
+    "section": "02. May",
+    "text": "02. May\nA bug in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the daily build and had R/RStudio running again.\nOriginally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#apr.",
+    "href": "posts/2023-til/index.html#apr.",
+    "title": "Today I learned (TIL)",
+    "section": "25. Apr.",
+    "text": "25. Apr.\nI got back into Quarto and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.\nSetting up the page worked well. I got a little confused by the quarto difference between freeze and cache. I also wondered why the cache was added into several folders in the main directory and not into a _cache folder."
+  },
+  {
+    "objectID": "posts/2023-til/index.html#apr.-1",
+    "href": "posts/2023-til/index.html#apr.-1",
+    "title": "Today I learned (TIL)",
+    "section": "03. Apr.",
+    "text": "03. Apr.\nI read about the new pandas release. None of the changes seem to be relevant for my work with pandas"
+  },
+  {
+    "objectID": "posts/2023-til/index.html#feb.",
+    "href": "posts/2023-til/index.html#feb.",
+    "title": "Today I learned (TIL)",
+    "section": "25. Feb.",
+    "text": "25. Feb.\nI worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the more convenient interface."
+  },
+  {
+    "objectID": "posts/2023-08-12-dplyr-join-by/index.html",
+    "href": "posts/2023-08-12-dplyr-join-by/index.html",
+    "title": "dplyr join_by() argument",
+    "section": "",
+    "text": "dplyr join_by() argument\ndplyr 1.1 introduced a new option for the by argument to the *_join() family of functions. You can now use join_by() instead of the previous c().\n\nlibrary(tidyverse)\nlibrary(gapminder)\n\ndt_1 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, by = join_by(country == country))\n\nThe short version without the named parameter works as well when using it as the third parameter in a *_join() function (the second parameter in a pipe.)\n\ndt_2 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, join_by(country == country))\n\nIt is an alternative to using c() in the argument.\n\ndt_3 &lt;-\n    gapminder |&gt;\n    left_join(country_codes, by = c(\"country\" = \"country\"))\n\nThe three created data frames are identical.\n\nidentical(dt_1, dt_2) & identical(dt_1, dt_3)\n\n[1] TRUE\n\n\nAnd here is a figure using the created data frame.\n\n\nCode\nset.seed(2)\n\npl_dt &lt;-\n    dt_1 |&gt;\n    filter(year == max(year)) |&gt;\n    select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)\n\nggplot(pl_dt, aes(x = gdp_per_capita, y = life_expectency)) +\n    geom_point(color = \"darkgrey\") +\n    scale_x_log10() +\n    geom_smooth() +\n    geom_text(\n        data = sample_n(pl_dt, 10),\n        aes(x = gdp_per_capita, y = life_expectency, label = country),\n        vjust = -0.8, size = 3.5\n    )\n\n\n\n\n\n\n\n\n\n\nThis is something I missed when reading the change log of the dplyr 1.1. release and did not find out about by reading the help pages of the *_join() functions.\nIt was different with the multiple matches revisions in dplyr 1.1. Here, I quickly run into the new warning message, explored and used it. To handle multiple matches more explicitly is really nice and I have started to use it regularly.\nThe recent post Teaching the tidyverse in 2023 provided a good review of the new features in the tidyverse released over the last months. I was aware of most of the changes and have started using the new approaches.\nIt is nice to see that the tidyverse is evolving and that the changes are documented so well."
   },
   {
     "objectID": "posts/2023-07-30-playwright/index.html",
@@ -658,18 +665,18 @@
     "text": "Jupyter notebooks in Git\nWorking with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.\nNow, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. nbdev_clean removes cell execution related metadata from a notebook.\nnbdev_clean --fname . cleans all Juypter notebooks in a repository. I run it on this learning diary Git repository to clean the two notebooks in the snippets folder. I also used it in the project that initially caused me to look into nbdev.\nFinally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with nbdev_clean. Again, Codespaces are really nice."
   },
   {
-    "objectID": "posts/2023-04-27-geocoding/index.html",
-    "href": "posts/2023-04-27-geocoding/index.html",
-    "title": "Geocoding in Python",
+    "objectID": "posts/2023-07-16 r4ds-pr/index.html",
+    "href": "posts/2023-07-16 r4ds-pr/index.html",
+    "title": "First pull request accepted · 😊",
     "section": "",
-    "text": "Get geographic coordinates for an address with Nominatim from OpenStreetMap data.\n\nfrom geopy.geocoders import Nominatim\n\n# Create a geolocator object\ngeolocator = Nominatim(user_agent=\"get-the-geocode\")\n\n# Define the address for geocoding\naddress = \"Unter Sachsenhausen 6, Köln, Germany\"\n\n# Retrieve the geolocation (latitude and longitude) for the given address\nlocation = geolocator.geocode(address)\n\nprint((location.latitude, location.longitude))\n\n(50.9426743, 6.9523814687194125)\n\n\n\nimport folium\n\ncoordinates = [location.latitude, location.longitude]\n\n# Create a map object\nm = folium.Map(location=coordinates, zoom_start=15)\n\n# Add a marker for each coordinate\nfolium.Marker(location=coordinates, popup=address).add_to(m)\n\nm  # Display the map in Jupyter Notebook\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
+    "text": "First pull request accepted · 😊\nMy first public pull request on Github was accepted.\nOver the last weeks, I have been reading R for Data Science (2e) (R4DS). The first edition really helped me to get deeply into the tidyverse. So I was interested in the content of the second edition.\nAt some point, I realized that the book used an older parameter in case_when() that was recently superseded in dplyr 1.1. Since, I had switched to the new .default parameter already, I thought that it may be a small and valuable contribution to update the section.\nMaking the code changes was easy. It took me a little to find out how to clone the project and submit the pull requests. The GitHub documentation was helpful and it went smoothly following it.\nI have used R4DS and the tidyverse so often that I am quite proud about my very minor addition to it."
   },
   {
-    "objectID": "posts/2023-06-03-github-pages/index.html",
-    "href": "posts/2023-06-03-github-pages/index.html",
-    "title": "GitHub Pages",
+    "objectID": "posts/2023-02-17-geom-col/index.html",
+    "href": "posts/2023-02-17-geom-col/index.html",
+    "title": "Horizontal bar chart",
     "section": "",
-    "text": "GitHub Pages\nI published my first two web sites with GithHub Pages.\n\nlearning diary\ndata snippets\n\nQuarto has a tutorial about publishing Quarto sites to GitHub Pages. This worked well.\nI was a little confused by the different options: docs folder, publish command, GitHub Actions.\nThe quarto publish command worked well for the learning diary page. I like that you can publish a page with a command instead of deploying the page with every GitHub push.\nFor the data snippets page I used the GitHub Actions approach. In the project, I have a static page in a subfolder with a Quarto based single index page. So neither the Quarto nor the default GitHub Pages workflow to publish the page seemed to fit well. In the GitHub Actions approach I chose, the page is deployed with every GitHub push."
+    "text": "Horizontal bar chart\nTo have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars &lt;- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt &lt;-\n  mtcars |&gt;\n  mutate(cyl = fct_infreq(factor(cyl)) |&gt; fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt &lt;-\n  mtcars |&gt;\n  count(cyl) |&gt;\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
   },
   {
     "objectID": "posts/2023-10-10-doi-requests/index.html",
@@ -704,6 +711,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "Today I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\niPython display\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyterLite\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nZenodo API\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR packages with pak\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n  \n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFile hashing\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n  \n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n  \n\n\n\n\ndplyr programming\n\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n  \n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n  \n\n\n\n\nConditional R cells\n\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGitHub Pages\n\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n  \n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPosit Cloud\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nDataverse URLs\n\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n  \n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n  \n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHello Jupyter\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n  \n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n  \n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n  \n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Python f-strings\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]

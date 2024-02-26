@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-08-14">
+<meta name="dcterms.date" content="2024-02-26">
 
 <title>Learning</title>
 <style>
@@ -149,9 +149,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      
+      <h1 class="title">Python f-strings</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
+                <div class="quarto-category">Python</div>
               </div>
                   </div>
   </div>
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 14, 2023</p>
+        <p class="date">February 26, 2024</p>
       </div>
     </div>
     
@@ -182,51 +182,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="file-hashing" class="level1">
-<h1>File hashing</h1>
-<p>To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.</p>
-<p>In R, the <a href="https://rlang.r-lib.org/">rlang</a> library provides the <a href="https://rlang.r-lib.org/reference/hash.html"><code>hash_file()</code></a> function and uses the XXH128 hash algorithm to generate a 128-bit hash.</p>
-<p>This can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.</p>
-<p>Here, I have created two files for data sets from the <em>datasets</em> library and calculate the hash values of these files.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(datasets<span class="sc">::</span>iris, <span class="st">"iris.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(datasets<span class="sc">::</span>mtcars, <span class="st">"mtcars.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
+<div id="052c76d2" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">files =</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="at">glob =</span> <span class="st">"*.csv"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">hash =</span> rlang<span class="sc">::</span><span class="fu">hash_file</span>(files))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">files</th>
-<th style="text-align: left;">hash</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">iris.csv</td>
-<td style="text-align: left;">dbdc1846dff7fba30a88d5b23e15ea80</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">mtcars.csv</td>
-<td style="text-align: left;">1d350737ac40dc6fb6ae8f5ad616fc4e</td>
-</tr>
-</tbody>
-</table>
+<div id="3f381161" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"</span><span class="sc">{</span>a<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'2 + 3'</code></pre>
 </div>
+</div>
+<div id="fd495da3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"</span><span class="sc">{</span>a<span class="op">=</span><span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>b<span class="op">=</span><span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>'a=2 and b=3'</code></pre>
+</div>
+</div>
+<div id="f6b7581e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f"a + b = </span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">}</span><span class="ss">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'a + b = 5'</code></pre>
+</div>
+</div>
+<p>Curly brackets in an f-string</p>
+<div id="5505e4d1" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">123</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="ch">{{}}</span><span class="ss">-</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">-</span><span class="ch">{{</span><span class="sc">{</span>n<span class="sc">}</span><span class="ch">}}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>'{}-123-{123}'</code></pre>
+</div>
+</div>
+<section id="number-formatting" class="level4">
+<h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
+<div id="0df20324" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> <span class="fl">1234567890.1234</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>var<span class="sc">:,}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'1,234,567,890.1234'</code></pre>
+</div>
+</div>
+<div id="9590b109" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'round: </span><span class="sc">{</span>var<span class="sc">:.2f}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>'round: 1234567890.12'</code></pre>
+</div>
+</div>
+<div id="e28c7e29" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'comma: </span><span class="sc">{</span>var<span class="sc">:,}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>'comma: 1,234,567,890.1234'</code></pre>
+</div>
+</div>
+<div id="3ed3314e" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'comma: </span><span class="sc">{</span>var<span class="sc">:,.2f}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>'comma: 1,234,567,890.12'</code></pre>
+</div>
+</div>
+<div id="02487771" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> datetime.datetime(<span class="dv">2026</span>, <span class="dv">2</span>, <span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">45</span>, <span class="dv">30</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'2026-02-21 19:45:30'</code></pre>
+</div>
+</div>
+<div id="105d1195" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">:</span><span class="op">%</span>Y<span class="op">-%</span>m<span class="op">-%</span>d<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>'2026-02-21'</code></pre>
+</div>
+</div>
+<div id="f2ed52e0" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ss">f'</span><span class="sc">{</span>dt<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>'2026-02-21T19:45:30'</code></pre>
 </div>
 </div>
 <hr>
-<p><img src="rlang-logo.png" class="img-fluid"></p>
+<p><img src="python-logo.png" class="img-fluid"></p>
 
 
 </section>

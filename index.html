@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -56,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,15 +102,42 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="alternate" type="application/rss+xml" title="Learning" href="index.xml"></head>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="Learning" href="index.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Learning</span>
     </a>
@@ -115,25 +149,25 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/hdigital/learning-diary/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/hdigital/learning-diary/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -143,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(36)</span></div><div class="category" data-category="AI">AI <span class="quarto-category-count">(3)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Docker">Docker <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(17)</span></div><div class="category" data-category="Quarto">Quarto <span class="quarto-category-count">(7)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(15)</span></div><div class="category" data-category="cloud">cloud <span class="quarto-category-count">(4)</span></div><div class="category" data-category="geo">geo <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ggplot">ggplot <span class="quarto-category-count">(2)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(37)</span></div><div class="category" data-category="AI">AI <span class="quarto-category-count">(3)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Docker">Docker <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(18)</span></div><div class="category" data-category="Quarto">Quarto <span class="quarto-category-count">(7)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(15)</span></div><div class="category" data-category="cloud">cloud <span class="quarto-category-count">(4)</span></div><div class="category" data-category="geo">geo <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ggplot">ggplot <span class="quarto-category-count">(2)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(2)</span></div><div class="category" data-category="tidyverse">tidyverse <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -153,110 +187,137 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1700953200000" data-listing-file-modified-sort="1701028150242" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="0" data-categories="Python" data-listing-date-sort="1708902000000" data-listing-file-modified-sort="1708980765370" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="46">
 <div class="thumbnail">
-<p><a href="./posts/2023-til/index.html"> <img src="./posts/2023-til/computer_ai.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2024-02-26-f-strings/index.html" class="no-external"></a></p><a href="./posts/2024-02-26-f-strings/index.html" class="no-external">
+<p><img src="./posts/2024-02-26-f-strings/python-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2024-02-26-f-strings/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-til/index.html">
 <h3 class="no-anchor listing-title">
-Today I learned (TIL)
+<a href="./posts/2024-02-26-f-strings/index.html" class="no-external">Python f-strings</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2024-02-26-f-strings/index.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
 </div>
 <div class="listing-description">
-Keep the date of a git commit after changing the history with <code>rebase</code>
+<a href="./posts/2024-02-26-f-strings/index.html" class="no-external">Here are some examples of f-strings in Python inspired by a post and a cheat sheet.</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/2024-02-26-f-strings/index.html" class="no-external">
+<div class="listing-date">
+Feb 26, 2024
 </div>
 </a>
 </div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1700953200000" data-listing-file-modified-sort="1701030189060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="766">
+<div class="thumbnail">
+<p><a href="./posts/2023-til/index.html" class="no-external"></a></p><a href="./posts/2023-til/index.html" class="no-external">
+<p><img src="./posts/2023-til/computer_ai.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-til/index.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/2023-til/index.html" class="no-external">Today I learned (TIL)</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/2023-til/index.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/2023-til/index.html" class="no-external">Keep the date of a git commit after changing the history with <code>rebase</code></a>
+</div>
+</div>
 <div class="metadata">
-<a href="./posts/2023-til/index.html">
+<a href="./posts/2023-til/index.html" class="no-external">
 <div class="listing-date">
 Nov 26, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Python" data-listing-date-sort="1700866800000" data-listing-file-modified-sort="1700945908976" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="2" data-categories="Python" data-listing-date-sort="1700866800000" data-listing-file-modified-sort="1701030189043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="206">
 <div class="thumbnail">
-<p><a href="./posts/2023-11-25-ipython-display/index.html"> <img src="./posts/2023-11-25-ipython-display/ipython-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-11-25-ipython-display/index.html" class="no-external"></a></p><a href="./posts/2023-11-25-ipython-display/index.html" class="no-external">
+<p><img src="./posts/2023-11-25-ipython-display/ipython-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-11-25-ipython-display/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-11-25-ipython-display/index.html">
 <h3 class="no-anchor listing-title">
-iPython display
+<a href="./posts/2023-11-25-ipython-display/index.html" class="no-external">iPython display</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-11-25-ipython-display/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-11-25-ipython-display/index.html">
 <div class="listing-description">
-The <em>display</em> functions from iPython is…
+<a href="./posts/2023-11-25-ipython-display/index.html" class="no-external">The <em>display</em> functions from iPython is nice in an interactive Jupyter notebook. Unfortunately, it does not work equally well in Quarto or in a Jupyter notebook converted into…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-11-25-ipython-display/index.html">
+<a href="./posts/2023-11-25-ipython-display/index.html" class="no-external">
 <div class="listing-date">
 Nov 25, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Python" data-listing-date-sort="1700694000000" data-listing-file-modified-sort="1700826221225" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="3" data-categories="Python" data-listing-date-sort="1700694000000" data-listing-file-modified-sort="1701030168139" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="328">
 <div class="thumbnail">
-<p><a href="./posts/2023-11-23-jupyter-lite/index.html"> <img src="./posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external"></a></p><a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external">
+<p><img src="./posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-11-23-jupyter-lite/index.html">
 <h3 class="no-anchor listing-title">
-JupyterLite
+<a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external">JupyterLite</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-11-23-jupyter-lite/index.html">
 <div class="listing-description">
-I listened to the the recent <em>Talk Python To Me</em> episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.
+<a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external">I listened to the the recent <em>Talk Python To Me</em> episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-11-23-jupyter-lite/index.html">
+<a href="./posts/2023-11-23-jupyter-lite/index.html" class="no-external">
 <div class="listing-date">
 Nov 23, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="R,API" data-listing-date-sort="1700434800000" data-listing-file-modified-sort="1700547725311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="4" data-categories="R,API" data-listing-date-sort="1700434800000" data-listing-file-modified-sort="1700547725311" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="169">
 <div class="thumbnail">
-<p><a href="./posts/2023-11-20-r-httr/index.html"> <img src="./posts/2023-11-20-r-httr/httr2-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-11-20-r-httr/index.html" class="no-external"></a></p><a href="./posts/2023-11-20-r-httr/index.html" class="no-external">
+<p><img src="./posts/2023-11-20-r-httr/httr2-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-11-20-r-httr/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-11-20-r-httr/index.html">
 <h3 class="no-anchor listing-title">
-API requests with httr2
+<a href="./posts/2023-11-20-r-httr/index.html" class="no-external">API requests with httr2</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-11-20-r-httr/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -265,97 +326,91 @@ R
 API
 </div>
 </div>
-<a href="./posts/2023-11-20-r-httr/index.html">
 <div class="listing-description">
-httr2 1.0 was recently released. I used it earlier this month in my API explorations to understand what the Python requests equivalent is in R. Python and <em>requests</em> are so convenient that I had not used R yet to…
+<a href="./posts/2023-11-20-r-httr/index.html" class="no-external">httr2 1.0 was recently released. I used it earlier this month in my API explorations to understand what the Python requests equivalent is in R. Python and <em>requests</em> are so…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-11-20-r-httr/index.html">
+<a href="./posts/2023-11-20-r-httr/index.html" class="no-external">
 <div class="listing-date">
 Nov 20, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="Python" data-listing-date-sort="1700175600000" data-listing-file-modified-sort="1700547725304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="5" data-categories="Python" data-listing-date-sort="1700175600000" data-listing-file-modified-sort="1700547725304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="352">
 <div class="thumbnail">
-<p><a href="./posts/2023-11-17-python-pizza/index.html"> <img src="./posts/2023-11-17-python-pizza/python-pizza-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-11-17-python-pizza/index.html" class="no-external"></a></p><a href="./posts/2023-11-17-python-pizza/index.html" class="no-external">
+<p><img src="./posts/2023-11-17-python-pizza/python-pizza-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-11-17-python-pizza/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-11-17-python-pizza/index.html">
 <h3 class="no-anchor listing-title">
-Python Pizza Hamburg
+<a href="./posts/2023-11-17-python-pizza/index.html" class="no-external">Python Pizza Hamburg</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-11-17-python-pizza/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-11-17-python-pizza/index.html">
 <div class="listing-description">
-This Friday, I attended the Python Pizza micro conference in Hamburg. It was a very nice, welcoming and informative event. I liked the broad…
+<a href="./posts/2023-11-17-python-pizza/index.html" class="no-external">This Friday, I attended the Python Pizza micro conference in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-11-17-python-pizza/index.html">
+<a href="./posts/2023-11-17-python-pizza/index.html" class="no-external">
 <div class="listing-date">
 Nov 17, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Python" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1700547725302" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="6" data-categories="Python" data-listing-date-sort="1699052400000" data-listing-file-modified-sort="1700547725302" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="137">
 <div class="thumbnail">
-<p><a href="./posts/2023-11-04-pyproject-toml/index.html"> <img src="./posts/2023-11-04-pyproject-toml/python-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external"></a></p><a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external">
+<p><img src="./posts/2023-11-04-pyproject-toml/python-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-11-04-pyproject-toml/index.html">
 <h3 class="no-anchor listing-title">
-pyproject.toml metadata and dependencies
+<a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external">pyproject.toml metadata and dependencies</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-11-04-pyproject-toml/index.html">
 <div class="listing-description">
-Python allows to specify metadata and dependencies in a <code>pyproject.toml</code>.
+<a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external">Python allows to specify metadata and dependencies in a <code>pyproject.toml</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-11-04-pyproject-toml/index.html">
+<a href="./posts/2023-11-04-pyproject-toml/index.html" class="no-external">
 <div class="listing-date">
 Nov 4, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Python,API" data-listing-date-sort="1698706800000" data-listing-file-modified-sort="1700547725301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="7" data-categories="Python,API" data-listing-date-sort="1698706800000" data-listing-file-modified-sort="1700547725301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="270">
 <div class="thumbnail">
-<p><a href="./posts/2023-10-31-zenodo-api/index.html"> <img src="./posts/2023-10-31-zenodo-api/zenodo-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external"></a></p><a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external">
+<p><img src="./posts/2023-10-31-zenodo-api/zenodo-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-10-31-zenodo-api/index.html">
 <h3 class="no-anchor listing-title">
-Zenodo API
+<a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external">Zenodo API</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -364,33 +419,31 @@ Python
 API
 </div>
 </div>
-<a href="./posts/2023-10-31-zenodo-api/index.html">
 <div class="listing-description">
-This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the partypositions-wikitags project.
+<a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external">This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the partypositions-wikitags project.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-10-31-zenodo-api/index.html">
+<a href="./posts/2023-10-31-zenodo-api/index.html" class="no-external">
 <div class="listing-date">
 Oct 31, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Python,API" data-listing-date-sort="1696888800000" data-listing-file-modified-sort="1700547725301" data-listing-date-modified-sort="1700547725000" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="8" data-categories="Python,API" data-listing-date-sort="1696888800000" data-listing-file-modified-sort="1700547725301" data-listing-date-modified-sort="1700547725000" data-listing-reading-time-sort="3" data-listing-word-count-sort="422">
 <div class="thumbnail">
-<p><a href="./posts/2023-10-10-doi-requests/index.html"> <img src="./posts/2023-10-10-doi-requests/doi-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-10-10-doi-requests/index.html" class="no-external"></a></p><a href="./posts/2023-10-10-doi-requests/index.html" class="no-external">
+<p><img src="./posts/2023-10-10-doi-requests/doi-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-10-10-doi-requests/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-10-10-doi-requests/index.html">
 <h3 class="no-anchor listing-title">
-Get DOI metadata
+<a href="./posts/2023-10-10-doi-requests/index.html" class="no-external">Get DOI metadata</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-10-10-doi-requests/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -399,65 +452,61 @@ Python
 API
 </div>
 </div>
-<a href="./posts/2023-10-10-doi-requests/index.html">
 <div class="listing-description">
-I was…
+<a href="./posts/2023-10-10-doi-requests/index.html" class="no-external">I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-10-10-doi-requests/index.html">
+<a href="./posts/2023-10-10-doi-requests/index.html" class="no-external">
 <div class="listing-date">
 Oct 10, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="R" data-listing-date-sort="1696629600000" data-listing-file-modified-sort="1700547725299" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="9" data-categories="R" data-listing-date-sort="1696629600000" data-listing-file-modified-sort="1700547725299" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="289">
 <div class="thumbnail">
-<p><a href="./posts/2023-10-07-pak-packaging/index.html"> <img src="./posts/2023-10-07-pak-packaging/package-unsplash.jpg" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external"></a></p><a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external">
+<p><img src="./posts/2023-10-07-pak-packaging/package-unsplash.jpg" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-10-07-pak-packaging/index.html">
 <h3 class="no-anchor listing-title">
-R packages with pak
+<a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external">R packages with pak</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
 </div>
-<a href="./posts/2023-10-07-pak-packaging/index.html">
 <div class="listing-description">
-I started using pak install and manage R packages.
+<a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external">I started using pak install and manage R packages.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-10-07-pak-packaging/index.html">
+<a href="./posts/2023-10-07-pak-packaging/index.html" class="no-external">
 <div class="listing-date">
 Oct 7, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Docker,Quarto" data-listing-date-sort="1692568800000" data-listing-file-modified-sort="1693044523441" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="10" data-categories="Docker,Quarto" data-listing-date-sort="1692568800000" data-listing-file-modified-sort="1693044523441" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="186">
 <div class="thumbnail">
-<p><a href="./posts/2023-08-21-quarto-docker/index.html"> <img src="./posts/2023-08-21-quarto-docker/quarto-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external"></a></p><a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external">
+<p><img src="./posts/2023-08-21-quarto-docker/quarto-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-08-21-quarto-docker/index.html">
 <h3 class="no-anchor listing-title">
-Quarto version in Docker
+<a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external">Quarto version in Docker</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Docker'); return false;">
 Docker
@@ -466,65 +515,61 @@ Docker
 Quarto
 </div>
 </div>
-<a href="./posts/2023-08-21-quarto-docker/index.html">
 <div class="listing-description">
-I realized that installing the latest version of Quarto in Docker will not lead to a…<code></code>
+<a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external">I realized that installing the latest version of Quarto in Docker will not lead to a reproducible environment since the latest Docker version depends on the day an image is…<code></code></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-08-21-quarto-docker/index.html">
+<a href="./posts/2023-08-21-quarto-docker/index.html" class="no-external">
 <div class="listing-date">
 Aug 21, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="R" data-listing-date-sort="1691964000000" data-listing-file-modified-sort="1693044523440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="11" data-categories="R" data-listing-date-sort="1691964000000" data-listing-file-modified-sort="1693044523440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
 <div class="thumbnail">
-<p><a href="./posts/2023-08-14-file-hash/index.html"> <img src="./posts/2023-08-14-file-hash/rlang-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-08-14-file-hash/index.html" class="no-external"></a></p><a href="./posts/2023-08-14-file-hash/index.html" class="no-external">
+<p><img src="./posts/2023-08-14-file-hash/rlang-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-08-14-file-hash/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-08-14-file-hash/index.html">
 <h3 class="no-anchor listing-title">
-File hashing
+<a href="./posts/2023-08-14-file-hash/index.html" class="no-external">File hashing</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-08-14-file-hash/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
 </div>
-<a href="./posts/2023-08-14-file-hash/index.html">
 <div class="listing-description">
-To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.
+<a href="./posts/2023-08-14-file-hash/index.html" class="no-external">To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-08-14-file-hash/index.html">
+<a href="./posts/2023-08-14-file-hash/index.html" class="no-external">
 <div class="listing-date">
 Aug 14, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="R,tidyverse" data-listing-date-sort="1691791200000" data-listing-file-modified-sort="1693044523439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="12" data-categories="R,tidyverse" data-listing-date-sort="1691791200000" data-listing-file-modified-sort="1693044523439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="351">
 <div class="thumbnail">
-<p><a href="./posts/2023-08-12-dplyr-join-by/index.html"> <img src="./posts/2023-08-12-dplyr-join-by/dplyr-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external"></a></p><a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external">
+<p><img src="./posts/2023-08-12-dplyr-join-by/dplyr-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-08-12-dplyr-join-by/index.html">
 <h3 class="no-anchor listing-title">
-dplyr join_by() argument
+<a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external">dplyr join_by() argument</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -533,97 +578,91 @@ R
 tidyverse
 </div>
 </div>
-<a href="./posts/2023-08-12-dplyr-join-by/index.html">
 <div class="listing-description">
-dplyr 1.1 introduced a new option for the <code>by</code> argument to the <code>*_join()</code> family of functions. You can now use <code>join_by()</code> instead of the previous <code>c()</code>.
+<a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external">dplyr 1.1 introduced a new option for the <code>by</code> argument to the <code>*_join()</code> family of functions. You can now use <code>join_by()</code> instead of the previous <code>c()</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-08-12-dplyr-join-by/index.html">
+<a href="./posts/2023-08-12-dplyr-join-by/index.html" class="no-external">
 <div class="listing-date">
 Aug 12, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="Python" data-listing-date-sort="1690668000000" data-listing-file-modified-sort="1693044523345" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="13" data-categories="Python" data-listing-date-sort="1690668000000" data-listing-file-modified-sort="1693044523345" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118">
 <div class="thumbnail">
-<p><a href="./posts/2023-07-30-playwright/index.html"> <img src="./posts/2023-07-30-playwright/playwright-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-07-30-playwright/index.html" class="no-external"></a></p><a href="./posts/2023-07-30-playwright/index.html" class="no-external">
+<p><img src="./posts/2023-07-30-playwright/playwright-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-07-30-playwright/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-07-30-playwright/index.html">
 <h3 class="no-anchor listing-title">
-Screenshots with Playwright
+<a href="./posts/2023-07-30-playwright/index.html" class="no-external">Screenshots with Playwright</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-07-30-playwright/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-07-30-playwright/index.html">
 <div class="listing-description">
-I heard about Playwright in Episode #424 of Talk Python To Me.
+<a href="./posts/2023-07-30-playwright/index.html" class="no-external">I heard about Playwright in Episode #424 of Talk Python To Me.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-07-30-playwright/index.html">
+<a href="./posts/2023-07-30-playwright/index.html" class="no-external">
 <div class="listing-date">
 Jul 30, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="R" data-listing-date-sort="1690581600000" data-listing-file-modified-sort="1693044523341" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="14" data-categories="R" data-listing-date-sort="1690581600000" data-listing-file-modified-sort="1693044523341" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="162">
 <div class="thumbnail">
-<p><a href="./posts/2023-07-29-renv/index.html"> <img src="./posts/2023-07-29-renv/renv-logo.svg" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-07-29-renv/index.html" class="no-external"></a></p><a href="./posts/2023-07-29-renv/index.html" class="no-external">
+<p><img src="./posts/2023-07-29-renv/renv-logo.svg" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-07-29-renv/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-07-29-renv/index.html">
 <h3 class="no-anchor listing-title">
-Package versions with renv
+<a href="./posts/2023-07-29-renv/index.html" class="no-external">Package versions with renv</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-07-29-renv/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
 </div>
-<a href="./posts/2023-07-29-renv/index.html">
 <div class="listing-description">
-<code>renv::snapshot()</code> creates an <code>renv.lock</code> file that includes the versions of all R packages used in R code in the current project folder.
+<a href="./posts/2023-07-29-renv/index.html" class="no-external"><code>renv::snapshot()</code> creates an <code>renv.lock</code> file that includes the versions of all R packages used in R code in the current project folder.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-07-29-renv/index.html">
+<a href="./posts/2023-07-29-renv/index.html" class="no-external">
 <div class="listing-date">
 Jul 29, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="R,git" data-listing-date-sort="1689458400000" data-listing-file-modified-sort="1693044523308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="15" data-categories="R,git" data-listing-date-sort="1689458400000" data-listing-file-modified-sort="1693044523308" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="144">
 <div class="thumbnail">
-<p><a href="./posts/2023-07-16 r4ds-pr/index.html"> <img src="./posts/2023-07-16 r4ds-pr/git-pr.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external"></a></p><a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external">
+<p><img src="./posts/2023-07-16 r4ds-pr/git-pr.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-07-16 r4ds-pr/index.html">
 <h3 class="no-anchor listing-title">
-First pull request accepted · 😊
+<a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external">First pull request accepted · 😊</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -632,33 +671,31 @@ R
 git
 </div>
 </div>
-<a href="./posts/2023-07-16 r4ds-pr/index.html">
 <div class="listing-description">
-My first public pull request on Github was accepted.
+<a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external">My first public pull request on Github was accepted.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-07-16 r4ds-pr/index.html">
+<a href="./posts/2023-07-16 r4ds-pr/index.html" class="no-external">
 <div class="listing-date">
 Jul 16, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="R,tidyverse" data-listing-date-sort="1688076000000" data-listing-file-modified-sort="1693044523306" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="16" data-categories="R,tidyverse" data-listing-date-sort="1688076000000" data-listing-file-modified-sort="1693044523306" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="310">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-30-dplyr-programming/index.html"> <img src="./posts/2023-06-30-dplyr-programming/dplyr-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external"></a></p><a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external">
+<p><img src="./posts/2023-06-30-dplyr-programming/dplyr-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-30-dplyr-programming/index.html">
 <h3 class="no-anchor listing-title">
-dplyr programming
+<a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external">dplyr programming</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -667,65 +704,61 @@ R
 tidyverse
 </div>
 </div>
-<a href="./posts/2023-06-30-dplyr-programming/index.html">
 <div class="listing-description">
-I wanted to use some dynamic variable names in dplyr and had to look up dplyr programming again.
+<a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external">I wanted to use some dynamic variable names in dplyr and had to look up dplyr programming again.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-30-dplyr-programming/index.html">
+<a href="./posts/2023-06-30-dplyr-programming/index.html" class="no-external">
 <div class="listing-date">
 Jun 30, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="R" data-listing-date-sort="1687557600000" data-listing-file-modified-sort="1693044523301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="17" data-categories="R" data-listing-date-sort="1687557600000" data-listing-file-modified-sort="1693044523301" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="111">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-24-str-glue/index.html"> <img src="./posts/2023-06-24-str-glue/tidyverse-glue.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-24-str-glue/index.html" class="no-external"></a></p><a href="./posts/2023-06-24-str-glue/index.html" class="no-external">
+<p><img src="./posts/2023-06-24-str-glue/tidyverse-glue.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-24-str-glue/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-24-str-glue/index.html">
 <h3 class="no-anchor listing-title">
-string interpolation with str_glue()
+<a href="./posts/2023-06-24-str-glue/index.html" class="no-external">string interpolation with str_glue()</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-24-str-glue/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
 </div>
-<a href="./posts/2023-06-24-str-glue/index.html">
 <div class="listing-description">
-In R, I like string interpolation with glue and prefer it over Base-R <code>paste(), paste0(), sprintf()</code>. Regularly, I use <code>glue()</code> and forget to load…<code></code>
+<a href="./posts/2023-06-24-str-glue/index.html" class="no-external">In R, I like string interpolation with glue and prefer it over Base-R <code>paste(), paste0(), sprintf()</code>. Regularly, I use <code>glue()</code> and forget to load the respective library at the…<code></code></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-24-str-glue/index.html">
+<a href="./posts/2023-06-24-str-glue/index.html" class="no-external">
 <div class="listing-date">
 Jun 24, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="R,Quarto" data-listing-date-sort="1687212000000" data-listing-file-modified-sort="1693044523281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="18" data-categories="R,Quarto" data-listing-date-sort="1687212000000" data-listing-file-modified-sort="1693044523281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="144">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-20-r-cell-conditional/index.html"> <img src="./posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external"></a></p><a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external">
+<p><img src="./posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-20-r-cell-conditional/index.html">
 <h3 class="no-anchor listing-title">
-Conditional R cells
+<a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external">Conditional R cells</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -734,97 +767,91 @@ R
 Quarto
 </div>
 </div>
-<a href="./posts/2023-06-20-r-cell-conditional/index.html">
 <div class="listing-description">
-For R notebooks in Quarto…
+<a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external">For R notebooks in Quarto not all information that can be presented in an html-document is feasible for the respective pdf-document. So sometimes, I want to include…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-20-r-cell-conditional/index.html">
+<a href="./posts/2023-06-20-r-cell-conditional/index.html" class="no-external">
 <div class="listing-date">
 Jun 20, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="git" data-listing-date-sort="1686952800000" data-listing-file-modified-sort="1693044523280" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="19" data-categories="git" data-listing-date-sort="1686952800000" data-listing-file-modified-sort="1693044523280" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-17-git-rebase/index.html"> <img src="./posts/2023-06-17-git-rebase/git-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-17-git-rebase/index.html" class="no-external"></a></p><a href="./posts/2023-06-17-git-rebase/index.html" class="no-external">
+<p><img src="./posts/2023-06-17-git-rebase/git-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-17-git-rebase/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-17-git-rebase/index.html">
 <h3 class="no-anchor listing-title">
-Git rebase interactive
+<a href="./posts/2023-06-17-git-rebase/index.html" class="no-external">Git rebase interactive</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-17-git-rebase/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
 git
 </div>
 </div>
-<a href="./posts/2023-06-17-git-rebase/index.html">
 <div class="listing-description">
-Git rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try…
+<a href="./posts/2023-06-17-git-rebase/index.html" class="no-external">Git rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try to keep a nice Git history and pay attention to…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-17-git-rebase/index.html">
+<a href="./posts/2023-06-17-git-rebase/index.html" class="no-external">
 <div class="listing-date">
 Jun 17, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="Python" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1693044523278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="20" data-categories="Python" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1693044523278" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="165">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-12-nbdev-clean/index.html"> <img src="./posts/2023-06-12-nbdev-clean/jupyter-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external"></a></p><a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external">
+<p><img src="./posts/2023-06-12-nbdev-clean/jupyter-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-12-nbdev-clean/index.html">
 <h3 class="no-anchor listing-title">
-Jupyter notebooks in Git
+<a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external">Jupyter notebooks in Git</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
 </div>
 </div>
-<a href="./posts/2023-06-12-nbdev-clean/index.html">
 <div class="listing-description">
-Working with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include…
+<a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external">Working with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-12-nbdev-clean/index.html">
+<a href="./posts/2023-06-12-nbdev-clean/index.html" class="no-external">
 <div class="listing-date">
 Jun 12, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="cloud,Python" data-listing-date-sort="1685829600000" data-listing-file-modified-sort="1693044523277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="21" data-categories="cloud,Python" data-listing-date-sort="1685829600000" data-listing-file-modified-sort="1693044523277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="294">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-04-codespaces/index.html"> <img src="./posts/2023-06-04-codespaces/codespaces-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-04-codespaces/index.html" class="no-external"></a></p><a href="./posts/2023-06-04-codespaces/index.html" class="no-external">
+<p><img src="./posts/2023-06-04-codespaces/codespaces-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-04-codespaces/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-04-codespaces/index.html">
 <h3 class="no-anchor listing-title">
-GitHub Codespaces
+<a href="./posts/2023-06-04-codespaces/index.html" class="no-external">GitHub Codespaces</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-04-codespaces/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('cloud'); return false;">
 cloud
@@ -833,97 +860,91 @@ cloud
 Python
 </div>
 </div>
-<a href="./posts/2023-06-04-codespaces/index.html">
 <div class="listing-description">
-GitHub offered me to review the code of a pull request in GitHub Codespaces. It is an environment to run code online. I used it briefly before…
+<a href="./posts/2023-06-04-codespaces/index.html" class="no-external">GitHub offered me to review the code of a pull request in GitHub Codespaces. It is an environment to run code online. I used it briefly before but not for one of my GitHub…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-04-codespaces/index.html">
+<a href="./posts/2023-06-04-codespaces/index.html" class="no-external">
 <div class="listing-date">
 Jun 4, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="Quarto" data-listing-date-sort="1685743200000" data-listing-file-modified-sort="1693044523277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="22" data-categories="Quarto" data-listing-date-sort="1685743200000" data-listing-file-modified-sort="1693044523277" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="132">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-03-github-pages/index.html"> <img src="./posts/2023-06-03-github-pages/github-pages.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-03-github-pages/index.html" class="no-external"></a></p><a href="./posts/2023-06-03-github-pages/index.html" class="no-external">
+<p><img src="./posts/2023-06-03-github-pages/github-pages.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-03-github-pages/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-03-github-pages/index.html">
 <h3 class="no-anchor listing-title">
-GitHub Pages
+<a href="./posts/2023-06-03-github-pages/index.html" class="no-external">GitHub Pages</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-03-github-pages/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Quarto'); return false;">
 Quarto
 </div>
 </div>
-<a href="./posts/2023-06-03-github-pages/index.html">
 <div class="listing-description">
-I published my first two web sites with GithHub Pages.
+<a href="./posts/2023-06-03-github-pages/index.html" class="no-external">I published my first two web sites with GithHub Pages.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-03-github-pages/index.html">
+<a href="./posts/2023-06-03-github-pages/index.html" class="no-external">
 <div class="listing-date">
 Jun 3, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="AI" data-listing-date-sort="1685656800000" data-listing-file-modified-sort="1685737835860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="23" data-categories="AI" data-listing-date-sort="1685656800000" data-listing-file-modified-sort="1685737835860" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="146">
 <div class="thumbnail">
-<p><a href="./posts/2023-06-02-dalle-ai-images/index.html"> <img src="./posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external"></a></p><a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external">
+<p><img src="./posts/2023-06-02-dalle-ai-images/leipzig-school_ai.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-06-02-dalle-ai-images/index.html">
 <h3 class="no-anchor listing-title">
-AI images with DALL-E
+<a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external">AI images with DALL-E</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('AI'); return false;">
 AI
 </div>
 </div>
-<a href="./posts/2023-06-02-dalle-ai-images/index.html">
 <div class="listing-description">
-Today, I became aware of an OpenAI service to generate images — DALL-E.
+<a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external">Today, I became aware of an OpenAI service to generate images — DALL-E.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-06-02-dalle-ai-images/index.html">
+<a href="./posts/2023-06-02-dalle-ai-images/index.html" class="no-external">
 <div class="listing-date">
 Jun 2, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="Python,AI,geo" data-listing-date-sort="1682892000000" data-listing-file-modified-sort="1693044523276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="24" data-categories="Python,AI,geo" data-listing-date-sort="1682892000000" data-listing-file-modified-sort="1693044523276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="309">
 <div class="thumbnail">
-<p><a href="./posts/2023-05-01-wikipedia-data/index.html"> <img src="./posts/2023-05-01-wikipedia-data/wikipedia-berlin.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external"></a></p><a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external">
+<p><img src="./posts/2023-05-01-wikipedia-data/wikipedia-berlin.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-05-01-wikipedia-data/index.html">
 <h3 class="no-anchor listing-title">
-Wikipedia, Python, ChatGPT
+<a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external">Wikipedia, Python, ChatGPT</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -935,33 +956,31 @@ AI
 geo
 </div>
 </div>
-<a href="./posts/2023-05-01-wikipedia-data/index.html">
 <div class="listing-description">
-I wanted to get the first image of a Wikipedia page and the coordinates.
+<a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external">I wanted to get the first image of a Wikipedia page and the coordinates.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-05-01-wikipedia-data/index.html">
+<a href="./posts/2023-05-01-wikipedia-data/index.html" class="no-external">
 <div class="listing-date">
 May 1, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="R,cloud" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1685732188963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="25" data-categories="R,cloud" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1685732188963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="273">
 <div class="thumbnail">
-<p><a href="./posts/2023-04-27-posit-cloud/index.html"> <img src="./posts/2023-04-27-posit-cloud/posit-cloud.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external"></a></p><a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external">
+<p><img data-src="./posts/2023-04-27-posit-cloud/posit-cloud.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-04-27-posit-cloud/index.html">
 <h3 class="no-anchor listing-title">
-Posit Cloud
+<a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external">Posit Cloud</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -970,65 +989,61 @@ R
 cloud
 </div>
 </div>
-<a href="./posts/2023-04-27-posit-cloud/index.html">
 <div class="listing-description">
-I use RStudio in Posit Cloud sometimes. It is a convenient…
+<a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external">I use RStudio in Posit Cloud sometimes. It is a convenient solution on a Chromebook or on a computer where R/RStudio is not installed. I also like to use it for mini-project…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-04-27-posit-cloud/index.html">
+<a href="./posts/2023-04-27-posit-cloud/index.html" class="no-external">
 <div class="listing-date">
 Apr 27, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="25" data-categories="R" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1693044523274" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="26" data-categories="R" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1693044523274" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="421">
 <div class="thumbnail">
-<p><a href="./posts/2023-04-26-dataverse/index.html"> <img data-src="./posts/2023-04-26-dataverse/dataverse-url.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-04-26-dataverse/index.html" class="no-external"></a></p><a href="./posts/2023-04-26-dataverse/index.html" class="no-external">
+<p><img data-src="./posts/2023-04-26-dataverse/dataverse-url.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-04-26-dataverse/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-04-26-dataverse/index.html">
 <h3 class="no-anchor listing-title">
-Dataverse URLs
+<a href="./posts/2023-04-26-dataverse/index.html" class="no-external">Dataverse URLs</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-04-26-dataverse/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
 </div>
-<a href="./posts/2023-04-26-dataverse/index.html">
 <div class="listing-description">
-I followed a talk on electoral…
+<a href="./posts/2023-04-26-dataverse/index.html" class="no-external">I followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election…</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-04-26-dataverse/index.html">
+<a href="./posts/2023-04-26-dataverse/index.html" class="no-external">
 <div class="listing-date">
 Apr 27, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="26" data-categories="Python,geo" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1686307953423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="27" data-categories="Python,geo" data-listing-date-sort="1682546400000" data-listing-file-modified-sort="1686307953423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="70">
 <div class="thumbnail">
-<p><a href="./posts/2023-04-27-geocoding/index.html"> <img data-src="./posts/2023-04-27-geocoding/map-cologne.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-04-27-geocoding/index.html" class="no-external"></a></p><a href="./posts/2023-04-27-geocoding/index.html" class="no-external">
+<p><img data-src="./posts/2023-04-27-geocoding/map-cologne.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-04-27-geocoding/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-04-27-geocoding/index.html">
 <h3 class="no-anchor listing-title">
-Geocoding in Python
+<a href="./posts/2023-04-27-geocoding/index.html" class="no-external">Geocoding in Python</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-04-27-geocoding/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -1037,33 +1052,31 @@ Python
 geo
 </div>
 </div>
-<a href="./posts/2023-04-27-geocoding/index.html">
 <div class="listing-description">
-Get geographic coordinates for an address with Nominatim from OpenStreetMap data.
+<a href="./posts/2023-04-27-geocoding/index.html" class="no-external">Get geographic coordinates for an address with Nominatim from OpenStreetMap data.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-04-27-geocoding/index.html">
+<a href="./posts/2023-04-27-geocoding/index.html" class="no-external">
 <div class="listing-date">
 Apr 27, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="27" data-categories="R,AI" data-listing-date-sort="1682200800000" data-listing-file-modified-sort="1693044523273" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="28" data-categories="R,AI" data-listing-date-sort="1682200800000" data-listing-file-modified-sort="1693044523273" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
 <div class="thumbnail">
-<p><a href="./posts/2023-04-23-chatgpt/index.html"> <img data-src="./posts/2023-04-23-chatgpt/ChatGPT-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-04-23-chatgpt/index.html" class="no-external"></a></p><a href="./posts/2023-04-23-chatgpt/index.html" class="no-external">
+<p><img data-src="./posts/2023-04-23-chatgpt/ChatGPT-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-04-23-chatgpt/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-04-23-chatgpt/index.html">
 <h3 class="no-anchor listing-title">
-R coding with ChatGPT
+<a href="./posts/2023-04-23-chatgpt/index.html" class="no-external">R coding with ChatGPT</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-04-23-chatgpt/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -1072,33 +1085,31 @@ R
 AI
 </div>
 </div>
-<a href="./posts/2023-04-23-chatgpt/index.html">
 <div class="listing-description">
-Finally I got into ChatGPT and started using it.
+<a href="./posts/2023-04-23-chatgpt/index.html" class="no-external">Finally I got into ChatGPT and started using it.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-04-23-chatgpt/index.html">
+<a href="./posts/2023-04-23-chatgpt/index.html" class="no-external">
 <div class="listing-date">
 Apr 23, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="28" data-categories="R,cloud" data-listing-date-sort="1679266800000" data-listing-file-modified-sort="1693044523272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="29" data-categories="R,cloud" data-listing-date-sort="1679266800000" data-listing-file-modified-sort="1693044523272" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="103">
 <div class="thumbnail">
-<p><a href="./posts/2023-03-20-r-wasm/index.html"> <img data-src="./posts/2023-03-20-r-wasm/r-wasm.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-03-20-r-wasm/index.html" class="no-external"></a></p><a href="./posts/2023-03-20-r-wasm/index.html" class="no-external">
+<p><img data-src="./posts/2023-03-20-r-wasm/r-wasm.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-03-20-r-wasm/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-03-20-r-wasm/index.html">
 <h3 class="no-anchor listing-title">
-WebR (WebAssembly)
+<a href="./posts/2023-03-20-r-wasm/index.html" class="no-external">WebR (WebAssembly)</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-03-20-r-wasm/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -1107,33 +1118,31 @@ R
 cloud
 </div>
 </div>
-<a href="./posts/2023-03-20-r-wasm/index.html">
 <div class="listing-description">
-I read about the webR release on the Tidyverse blog. It allows to run R in a browser.
+<a href="./posts/2023-03-20-r-wasm/index.html" class="no-external">I read about the webR release on the Tidyverse blog. It allows to run R in a browser.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-03-20-r-wasm/index.html">
+<a href="./posts/2023-03-20-r-wasm/index.html" class="no-external">
 <div class="listing-date">
 Mar 20, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="29" data-categories="Python,cloud" data-listing-date-sort="1678834800000" data-listing-file-modified-sort="1693044523271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="30" data-categories="Python,cloud" data-listing-date-sort="1678834800000" data-listing-file-modified-sort="1693044523271" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="65">
 <div class="thumbnail">
-<p><a href="./posts/2023-03-15-pyscript/index.html"> <img data-src="./posts/2023-03-15-pyscript/emojis.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-03-15-pyscript/index.html" class="no-external"></a></p><a href="./posts/2023-03-15-pyscript/index.html" class="no-external">
+<p><img data-src="./posts/2023-03-15-pyscript/emojis.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-03-15-pyscript/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-03-15-pyscript/index.html">
 <h3 class="no-anchor listing-title">
-PyScript (WebAssembly)
+<a href="./posts/2023-03-15-pyscript/index.html" class="no-external">PyScript (WebAssembly)</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-03-15-pyscript/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -1142,33 +1151,31 @@ Python
 cloud
 </div>
 </div>
-<a href="./posts/2023-03-15-pyscript/index.html">
 <div class="listing-description">
-I used pyscript for the first time and created a web page that run some Python code.
+<a href="./posts/2023-03-15-pyscript/index.html" class="no-external">I used pyscript for the first time and created a web page that run some Python code.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-03-15-pyscript/index.html">
+<a href="./posts/2023-03-15-pyscript/index.html" class="no-external">
 <div class="listing-date">
 Mar 15, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="30" data-categories="Docker,Python,Quarto" data-listing-date-sort="1677366000000" data-listing-file-modified-sort="1693044523270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="31" data-categories="Docker,Python,Quarto" data-listing-date-sort="1677366000000" data-listing-file-modified-sort="1693044523270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="330">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-26-quarto/index.html"> <img data-src="./posts/2023-02-26-quarto/quarto-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-26-quarto/index.html" class="no-external"></a></p><a href="./posts/2023-02-26-quarto/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-26-quarto/quarto-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-26-quarto/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-26-quarto/index.html">
 <h3 class="no-anchor listing-title">
-A few days of Quarto
+<a href="./posts/2023-02-26-quarto/index.html" class="no-external">A few days of Quarto</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-26-quarto/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Docker'); return false;">
 Docker
@@ -1180,33 +1187,31 @@ Python
 Quarto
 </div>
 </div>
-<a href="./posts/2023-02-26-quarto/index.html">
 <div class="listing-description">
-So I have had my first experience with creating dynamic documents in Quarto. It has…<em></em>
+<a href="./posts/2023-02-26-quarto/index.html" class="no-external">So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like…<em></em></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-26-quarto/index.html">
+<a href="./posts/2023-02-26-quarto/index.html" class="no-external">
 <div class="listing-date">
 Feb 26, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="31" data-categories="Python,ggplot" data-listing-date-sort="1677366000000" data-listing-file-modified-sort="1693044523269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="32" data-categories="Python,ggplot" data-listing-date-sort="1677366000000" data-listing-file-modified-sort="1693044523269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="175">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-26-altair/index.html"> <img data-src="./posts/2023-02-26-altair/altair-logo.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-26-altair/index.html" class="no-external"></a></p><a href="./posts/2023-02-26-altair/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-26-altair/altair-logo.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-26-altair/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-26-altair/index.html">
 <h3 class="no-anchor listing-title">
-Python visualization with Altair
+<a href="./posts/2023-02-26-altair/index.html" class="no-external">Python visualization with Altair</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-26-altair/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -1215,33 +1220,31 @@ Python
 ggplot
 </div>
 </div>
-<a href="./posts/2023-02-26-altair/index.html">
 <div class="listing-description">
-I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.
+<a href="./posts/2023-02-26-altair/index.html" class="no-external">I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-26-altair/index.html">
+<a href="./posts/2023-02-26-altair/index.html" class="no-external">
 <div class="listing-date">
 Feb 26, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="32" data-categories="Python,Quarto" data-listing-date-sort="1677020400000" data-listing-file-modified-sort="1685732188903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="33" data-categories="Python,Quarto" data-listing-date-sort="1677020400000" data-listing-file-modified-sort="1685732188903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="25">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-22-hello-jupyter/index.html"> <img data-src="./posts/2023-02-22-hello-jupyter/arnim-fork.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external"></a></p><a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-22-hello-jupyter/arnim-fork.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-22-hello-jupyter/index.html">
 <h3 class="no-anchor listing-title">
-Hello Jupyter
+<a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external">Hello Jupyter</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -1250,33 +1253,31 @@ Python
 Quarto
 </div>
 </div>
-<a href="./posts/2023-02-22-hello-jupyter/index.html">
 <div class="listing-description">
-I used my new Quarto and Jupyter skills to create web pages for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS.
+<a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external">I used my new Quarto and Jupyter skills to create web pages for an introduction to notebooks that Arnim Bleier gave recently at GESIS DSS.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-22-hello-jupyter/index.html">
+<a href="./posts/2023-02-22-hello-jupyter/index.html" class="no-external">
 <div class="listing-date">
 Feb 22, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="33" data-categories="Python,Quarto" data-listing-date-sort="1676674800000" data-listing-file-modified-sort="1693044523268" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="34" data-categories="Python,Quarto" data-listing-date-sort="1676674800000" data-listing-file-modified-sort="1693044523268" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-18-jupyter/index.html"> <img data-src="./posts/2023-02-18-jupyter/jupyterlab-preview.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-18-jupyter/index.html" class="no-external"></a></p><a href="./posts/2023-02-18-jupyter/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-18-jupyter/jupyterlab-preview.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-18-jupyter/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-18-jupyter/index.html">
 <h3 class="no-anchor listing-title">
-Jupyter notebooks with Quarto
+<a href="./posts/2023-02-18-jupyter/index.html" class="no-external">Jupyter notebooks with Quarto</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-18-jupyter/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
 Python
@@ -1285,33 +1286,31 @@ Python
 Quarto
 </div>
 </div>
-<a href="./posts/2023-02-18-jupyter/index.html">
 <div class="listing-description">
-Jupyter notebooks can be rendered with Quarto.
+<a href="./posts/2023-02-18-jupyter/index.html" class="no-external">Jupyter notebooks can be rendered with Quarto.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-18-jupyter/index.html">
+<a href="./posts/2023-02-18-jupyter/index.html" class="no-external">
 <div class="listing-date">
 Feb 18, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="34" data-categories="R,ggplot" data-listing-date-sort="1676588400000" data-listing-file-modified-sort="1685732188873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="35" data-categories="R,ggplot" data-listing-date-sort="1676588400000" data-listing-file-modified-sort="1685732188873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="130">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-17-geom-col/index.html"> <img data-src="./posts/2023-02-17-geom-col/thumbnail.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-17-geom-col/index.html" class="no-external"></a></p><a href="./posts/2023-02-17-geom-col/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-17-geom-col/thumbnail.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-17-geom-col/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-17-geom-col/index.html">
 <h3 class="no-anchor listing-title">
-Horizontal bar chart
+<a href="./posts/2023-02-17-geom-col/index.html" class="no-external">Horizontal bar chart</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-17-geom-col/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -1320,33 +1319,31 @@ R
 ggplot
 </div>
 </div>
-<a href="./posts/2023-02-17-geom-col/index.html">
 <div class="listing-description">
-To have horizontal bar charts ordered by frequency, I have used <code>geom_bar()</code> and <code>coord_flip</code> for a long time.
+<a href="./posts/2023-02-17-geom-col/index.html" class="no-external">To have horizontal bar charts ordered by frequency, I have used <code>geom_bar()</code> and <code>coord_flip</code> for a long time.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-17-geom-col/index.html">
+<a href="./posts/2023-02-17-geom-col/index.html" class="no-external">
 <div class="listing-date">
 Feb 17, 2023
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="35" data-categories="R,Python,Quarto" data-listing-date-sort="1676502000000" data-listing-file-modified-sort="1693044523267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-right" data-index="36" data-categories="R,Python,Quarto" data-listing-date-sort="1676502000000" data-listing-file-modified-sort="1693044523267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="211">
 <div class="thumbnail">
-<p><a href="./posts/2023-02-16-welcome/index.html"> <img data-src="./posts/2023-02-16-welcome/thumbnail.png" class="thumbnail-image"> </a></p>
+<p><a href="./posts/2023-02-16-welcome/index.html" class="no-external"></a></p><a href="./posts/2023-02-16-welcome/index.html" class="no-external">
+<p><img data-src="./posts/2023-02-16-welcome/thumbnail.png" class="thumbnail-image"></p>
+</a><p><a href="./posts/2023-02-16-welcome/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./posts/2023-02-16-welcome/index.html">
 <h3 class="no-anchor listing-title">
-Things I learned: A new TIL
+<a href="./posts/2023-02-16-welcome/index.html" class="no-external">Things I learned: A new TIL</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./posts/2023-02-16-welcome/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -1358,14 +1355,12 @@ Python
 Quarto
 </div>
 </div>
-<a href="./posts/2023-02-16-welcome/index.html">
 <div class="listing-description">
-My idea is to keep a more systematic collection of <em>things I learned</em> (TIL).
+<a href="./posts/2023-02-16-welcome/index.html" class="no-external">My idea is to keep a more systematic collection of <em>things I learned</em> (TIL).</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./posts/2023-02-16-welcome/index.html">
+<a href="./posts/2023-02-16-welcome/index.html" class="no-external">
 <div class="listing-date">
 Feb 16, 2023
 </div>
@@ -1459,10 +1454,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1472,8 +1466,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1486,6 +1489,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1529,6 +1651,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1554,6 +1677,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1614,6 +1763,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
