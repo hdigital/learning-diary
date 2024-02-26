@@ -1,0 +1,18 @@
+---
+date: "2024-02-21"
+title: Today I learned (TIL)
+image: computer_ai.png
+draft: true
+format:
+  html:
+    toc: true
+---
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+
+## 21. February
+
+---
+
+![](computer_ai.png){ width=300 }
