@@ -15,8 +15,9 @@ pip-update:
 
 # render and publish page
 publish:
-  quarto render
-  quarto publish
+  quarto publish gh-pages --no-prompt
+  git push origin gh-pages
+  git push origin main
 
 # push Git and force updates
 push-force:
