@@ -1,0 +1,22 @@
+# Data science
+jupyterlab
+pandas
+matplotlib
+
+altair
+folium
+statsmodels
+
+# Quarto
+nbclient
+nbformat
+
+# VS Code interactive shell
+ipykernel
+
+# Development
+nbdev
+ruff
+uv
+
+# Post specific requirements in 'snippets/requirements-posts.txt'
