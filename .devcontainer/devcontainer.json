@@ -1,0 +1,32 @@
+{
+  // https://github.com/devcontainers/images/tree/main/src/python
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  // https://containers.dev/features
+  "features": {
+    "ghcr.io/guiyomh/features/just:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {}
+  },
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "pipx install uv",
+  "postCreateCommand": "just codespace-init",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "davidanson.vscode-markdownlint",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "github.codespaces",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-vscode.makefile-tools",
+        "quarto.quarto",
+        "streetsidesoftware.code-spell-checker",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  }
+}
