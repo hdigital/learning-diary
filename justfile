@@ -8,14 +8,14 @@ alias pf := push-force
 
 # initialize Codespace
 codespace-init: venv
-  cp .vscode/settings.json.dev .vscode/settings.json
+  # cp .vscode/settings.json.dev .vscode/settings.json
+  . .venv/bin/activate; pre-commit install --allow-missing-config
+  . .venv/bin/activate; nbdev_install_hooks
 
 # update Python packages
 pip-update:
   uv pip compile --generate-hashes -U -o requirements.txt requirements.in
   uv pip sync requirements.txt
-  python -m pip list --outdated
-  which python
 
 # render and publish page
 publish:
@@ -39,5 +39,4 @@ pull-force branch:
 venv:
   uv venv
   uv pip sync requirements.txt
-  which python
-  python --version
+
