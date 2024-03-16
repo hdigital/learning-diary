@@ -10,8 +10,6 @@ alias pf := push-force
 pip-update:
   uv pip compile --generate-hashes -U -o requirements.txt requirements.in
   uv pip sync requirements.txt
-  python -m pip list --outdated
-  which python
 
 # render and publish page
 publish:
@@ -35,5 +33,3 @@ pull-force branch:
 venv:
   uv venv
   uv pip sync requirements.txt
-  which python
-  python --version
