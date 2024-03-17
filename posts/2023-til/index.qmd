@@ -1,6 +1,6 @@
 ---
 date: "2023-11-26"
-title: Today I learned (TIL)
+title: Today I learned (TIL) · 2023
 image: computer_ai.png
 format:
   html:
