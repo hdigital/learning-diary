@@ -15,6 +15,7 @@ nbformat
 ipykernel
 
 # Development
+pre-commit
 nbdev
 ruff
 uv

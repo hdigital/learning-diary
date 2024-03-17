@@ -6,6 +6,12 @@ alias pf := push-force
 
 ## Recipes 'just' — https://just.systems/man/en/chapter_20.html
 
+# initialize Codespace
+codespace-init: venv
+  # cp .vscode/settings.json.dev .vscode/settings.json
+  . .venv/bin/activate; pre-commit install --allow-missing-config
+  . .venv/bin/activate; nbdev_install_hooks
+
 # update Python packages
 pip-update:
   uv pip compile --generate-hashes -U -o requirements.txt requirements.in
