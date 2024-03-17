@@ -39,4 +39,3 @@ pull-force branch:
 venv:
   uv venv
   uv pip sync requirements.txt
-
