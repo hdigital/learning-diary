@@ -9,8 +9,37 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.4.549</generator>
-<lastBuildDate>Sun, 25 Feb 2024 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.551</generator>
+<lastBuildDate>Sat, 16 Mar 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-til/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+<section id="march" class="level2">
+<h2 class="anchored" data-anchor-id="march">17. March</h2>
+<p>By now, I have figured out how to configure R in Codespaces.</p>
+</section>
+<section id="march-1" class="level2">
+<h2 class="anchored" data-anchor-id="march-1">10. March</h2>
+<p>Recently, I started using the <a href="https://github.com/casey/just">just</a> command runner and have now used it regularly in several of my Python projects.</p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-til/</guid>
+  <pubDate>Sat, 16 Mar 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Python f-strings</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/</link>
@@ -277,7 +306,7 @@ font-style: inherit;">'</span></span></code></pre></div>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
-  <title>Today I learned (TIL)</title>
+  <title>Today I learned (TIL) · 2023</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-til/</link>
   <description><![CDATA[ 
 
@@ -1856,7 +1885,7 @@ font-style: inherit;"># Show the plot</span></span>
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div class="cell" data-execution_count="1">
+<div id="1aab4b9e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -1915,10 +1944,14 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div class="cell" data-execution_count="2">
+<div id="01e55531" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> tomllib</span>
+font-style: inherit;">import</span> tomli <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> tomllib  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Python &lt;= 3.10</span></span>
 <span id="cb3-2"></span>
 <span id="cb3-3"><span class="cf" style="color: #003B4F;
 background-color: null;
@@ -1936,7 +1969,7 @@ background-color: null;
 font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <span id="cb3-5"></span>
 <span id="cb3-6">toml_data</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>{'project': {'name': 'hd-example',
   'version': '0.1',
   'description': 'An example for pyproject',
@@ -1954,7 +1987,7 @@ font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div class="cell" data-execution_count="3">
+<div id="0bfcde9d" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
@@ -4094,74 +4127,6 @@ font-style: inherit;">"code block not run"</span>)</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/</guid>
   <pubDate>Mon, 19 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" medium="image" type="image/png" height="88" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="git-rebase-interactive" class="level1">
-<h1>Git rebase interactive</h1>
-<p>Git rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try to keep a nice Git history and pay attention to details in Git commits. Merge conflicts and rebasing in Git have so far been challenging to me and I run regular into conflicts.</p>
-<p>So today I was pleasently surprised how well interactive rebasing in Git works. Here is the magic message:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">git</span> rebase <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> HEAD~5</span></code></pre></div>
-<p>Revising the commit history in a text editor worked really well.</p>
-<hr>
-<pre><code>pick c86752b Use date last modified for TIL post
-pick faa548f Add post Jupyter notebooks in Git
-pick 86096fa Add TIL Markdown comments
-pick a682d0d Add codespace init script
-pick c993202 Add VS Code settings
-
-# Rebase 22b5523..c993202 onto 22b5523 (5 commands)
-#
-# Commands:
-# p, pick &lt;commit&gt; = use commit
-# r, reword &lt;commit&gt; = use commit, but edit the commit message
-# e, edit &lt;commit&gt; = use commit, but stop for amending
-# s, squash &lt;commit&gt; = use commit, but meld into previous commit
-# f, fixup [-C | -c] &lt;commit&gt; = like "squash" but keep only the previous
-#                    commit's log message, unless -C is used, in which case
-#                    keep only this commit's message; -c is same as -C but
-#                    opens the editor
-# x, exec &lt;command&gt; = run command (the rest of the line) using shell
-# b, break = stop here (continue rebase later with 'git rebase --continue')
-# d, drop &lt;commit&gt; = remove commit
-# l, label &lt;label&gt; = label current HEAD with a name
-# t, reset &lt;label&gt; = reset HEAD to a label
-# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
-#         create a merge commit using the original merge commit's
-#         message (or the oneline, if no original merge commit was
-#         specified); use -c &lt;commit&gt; to reword the commit message
-# u, update-ref &lt;ref&gt; = track a placeholder for the &lt;ref&gt; to be updated
-#                       to this position in the new commits. The &lt;ref&gt; is
-#                       updated at the end of the rebase
-#
-# These lines can be re-ordered; they are executed from top to bottom.
-#
-# If you remove a line here THAT COMMIT WILL BE LOST.
-#
-# However, if you remove everything, the rebase will be aborted.
-#</code></pre>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/git-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>git</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/</guid>
-  <pubDate>Fri, 16 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-17-git-rebase/git-logo.png" medium="image" type="image/png" height="60" width="144"/>
 </item>
 </channel>
 </rss>

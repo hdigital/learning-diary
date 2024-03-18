@@ -28,6 +28,27 @@
     "text": "Get geographic coordinates for an address with Nominatim from OpenStreetMap data.\n\nfrom geopy.geocoders import Nominatim\n\n# Create a geolocator object\ngeolocator = Nominatim(user_agent=\"get-the-geocode\")\n\n# Define the address for geocoding\naddress = \"Unter Sachsenhausen 6, Köln, Germany\"\n\n# Retrieve the geolocation (latitude and longitude) for the given address\nlocation = geolocator.geocode(address)\n\nprint((location.latitude, location.longitude))\n\n(50.9426743, 6.9523814687194125)\n\n\n\nimport folium\n\ncoordinates = [location.latitude, location.longitude]\n\n# Create a map object\nm = folium.Map(location=coordinates, zoom_start=15)\n\n# Add a marker for each coordinate\nfolium.Marker(location=coordinates, popup=address).add_to(m)\n\nm  # Display the map in Jupyter Notebook\n\nMake this Notebook Trusted to load map: File -&gt; Trust Notebook"
   },
   {
+    "objectID": "posts/2024-til/index.html",
+    "href": "posts/2024-til/index.html",
+    "title": "Today I learned (TIL)",
+    "section": "",
+    "text": "By now, I have figured out how to configure R in Codespaces."
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march",
+    "href": "posts/2024-til/index.html#march",
+    "title": "Today I learned (TIL)",
+    "section": "",
+    "text": "By now, I have figured out how to configure R in Codespaces."
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march-1",
+    "href": "posts/2024-til/index.html#march-1",
+    "title": "Today I learned (TIL)",
+    "section": "10. March",
+    "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."
+  },
+  {
     "objectID": "posts/2023-06-02-dalle-ai-images/index.html",
     "href": "posts/2023-06-02-dalle-ai-images/index.html",
     "title": "AI images with DALL-E",
@@ -60,7 +81,7 @@
     "href": "posts/2023-02-26-altair/index.html",
     "title": "Python visualization with Altair",
     "section": "",
-    "text": "I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.\nFor customized visualizations I like the ggplot2 approach with layers. Its grammar of graphics provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.\nVega-Altair, a Python library, uses a grammar to create visualization as well. So I gave it a try and it went well – see code below.\npandas and Altaire are likely to be the visualization tools that I use primarily in Python.\nHere is some information on the penguins dataset 🐧 in the visualization. I didn’t want to use mtcars 🚗 again.\n\nimport altair as alt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\ndt = sns.load_dataset(\"penguins\")\n\n(alt.Chart(dt)\n    .mark_circle()\n    .encode(\n      alt.X('flipper_length_mm', scale=alt.Scale(zero=False)),\n      alt.Y('body_mass_g', scale=alt.Scale(zero=False)),\n      color='species',\n      tooltip=['species', 'island', 'sex']\n    )\n)\n\n\n\n\n\n\n\n\ndt\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns"
+    "text": "I have been interested in finding a visualization library for Python that is similiar to ggplot2 in R. I like the quick plots in pandas but Matplotlib has never worked for me.\nFor customized visualizations I like the ggplot2 approach with layers. Its grammar of graphics provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.\nVega-Altair, a Python library, uses a grammar to create visualization as well. So I gave it a try and it went well – see code below.\npandas and Altaire are likely to be the visualization tools that I use primarily in Python.\nHere is some information on the penguins dataset 🐧 in the visualization. I didn’t want to use mtcars 🚗 again.\n\nimport altair as alt\nimport numpy as np\nimport pandas as pd\nimport seaborn as sns\n\ndt = sns.load_dataset(\"penguins\")\n\n(alt.Chart(dt)\n    .mark_circle()\n    .encode(\n      alt.X('flipper_length_mm', scale=alt.Scale(zero=False)),\n      alt.Y('body_mass_g', scale=alt.Scale(zero=False)),\n      color='species',\n      tooltip=['species', 'island', 'sex']\n    )\n)\n\n\n\n\n\n\n\n\ndt\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns"
   },
   {
     "objectID": "posts/2023-03-20-r-wasm/index.html",
@@ -193,7 +214,7 @@
     "href": "posts/2023-11-04-pyproject-toml/index.html",
     "title": "pyproject.toml metadata and dependencies",
     "section": "",
-    "text": "Python allows to specify metadata and dependencies in a pyproject.toml.\nI have started using the metadata declaration recently and tried the dependency specification this week.\nI added an example to the folder of the post. It contains project metadata and examples for project and development dependencies.\n\n\nCode\ndef print_file(file_name):\n  with open(file_name, \"r\") as file:\n      print(file.read())\n\nprint_file(\"pyproject.toml\")\n\n\n[project]\nname = \"hd-example\"\nversion = \"0.1\"\ndescription = \"An example for pyproject\"\nmaintainers = [{ name = \"Holger Döring\" }]\nlicense = { text = \"MIT License\" }\nrequires-python = \"&gt;=3.11\"\ndependencies = [\n  \"requests\",\n]\n\n[project.optional-dependencies]\ndev = [\n  \"pip-tools\",\n  \"ruff\",\n]\n\n[project.urls]\n homepage = \"\"\nrepository = \"https://github.com/hdigital/starter-python.git\"\n\n\n# specify build system to run pip-tools\n# (application is not a package and no build is needed)\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n\n\nThere is a toml parser in the standard library since Python 3.11, released in October last year. It can be used to read the pyproject.toml.\n\nimport tomllib\n\nwith open(\"pyproject.toml\", \"rb\") as toml_file:\n    toml_data = tomllib.load(toml_file)\n\ntoml_data\n\n{'project': {'name': 'hd-example',\n  'version': '0.1',\n  'description': 'An example for pyproject',\n  'maintainers': [{'name': 'Holger Döring'}],\n  'license': {'text': 'MIT License'},\n  'requires-python': '&gt;=3.11',\n  'dependencies': ['requests'],\n  'optional-dependencies': {'dev': ['pip-tools', 'ruff']},\n  'urls': {'homepage': '',\n   'repository': 'https://github.com/hdigital/starter-python.git'}},\n 'build-system': {'requires': ['hatchling'],\n  'build-backend': 'hatchling.build'}}\n\n\nI like to pin dependencies in one requirements.txt. Such a file can be created with pip-tools.\npython -m piptools compile --upgrade --extra dev pyproject.toml\nUsually, I include the --generate-hashes option but leave it out here to shorten the output by not including hash keys.\n\n\nCode\nprint_file(\"requirements.txt\")\n\n\n#\n# This file is autogenerated by pip-compile with Python 3.11\n# by the following command:\n#\n#    pip-compile --extra=dev pyproject.toml\n#\nbuild==1.0.3\n    # via pip-tools\ncertifi==2023.7.22\n    # via requests\ncharset-normalizer==3.3.2\n    # via requests\nclick==8.1.7\n    # via pip-tools\nidna==3.4\n    # via requests\npackaging==23.2\n    # via build\npip-tools==7.3.0\n    # via hd-example (pyproject.toml)\npyproject-hooks==1.0.0\n    # via build\nrequests==2.31.0\n    # via hd-example (pyproject.toml)\nruff==0.1.4\n    # via hd-example (pyproject.toml)\nurllib3==2.0.7\n    # via requests\nwheel==0.41.3\n    # via pip-tools\n\n# The following packages are considered to be unsafe in a requirements file:\n# pip\n# setuptools"
+    "text": "Python allows to specify metadata and dependencies in a pyproject.toml.\nI have started using the metadata declaration recently and tried the dependency specification this week.\nI added an example to the folder of the post. It contains project metadata and examples for project and development dependencies.\n\n\nCode\ndef print_file(file_name):\n  with open(file_name, \"r\") as file:\n      print(file.read())\n\nprint_file(\"pyproject.toml\")\n\n\n[project]\nname = \"hd-example\"\nversion = \"0.1\"\ndescription = \"An example for pyproject\"\nmaintainers = [{ name = \"Holger Döring\" }]\nlicense = { text = \"MIT License\" }\nrequires-python = \"&gt;=3.11\"\ndependencies = [\n  \"requests\",\n]\n\n[project.optional-dependencies]\ndev = [\n  \"pip-tools\",\n  \"ruff\",\n]\n\n[project.urls]\n homepage = \"\"\nrepository = \"https://github.com/hdigital/starter-python.git\"\n\n\n# specify build system to run pip-tools\n# (application is not a package and no build is needed)\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n\n\nThere is a toml parser in the standard library since Python 3.11, released in October last year. It can be used to read the pyproject.toml.\n\nimport tomli as tomllib  # Python &lt;= 3.10\n\nwith open(\"pyproject.toml\", \"rb\") as toml_file:\n    toml_data = tomllib.load(toml_file)\n\ntoml_data\n\n{'project': {'name': 'hd-example',\n  'version': '0.1',\n  'description': 'An example for pyproject',\n  'maintainers': [{'name': 'Holger Döring'}],\n  'license': {'text': 'MIT License'},\n  'requires-python': '&gt;=3.11',\n  'dependencies': ['requests'],\n  'optional-dependencies': {'dev': ['pip-tools', 'ruff']},\n  'urls': {'homepage': '',\n   'repository': 'https://github.com/hdigital/starter-python.git'}},\n 'build-system': {'requires': ['hatchling'],\n  'build-backend': 'hatchling.build'}}\n\n\nI like to pin dependencies in one requirements.txt. Such a file can be created with pip-tools.\npython -m piptools compile --upgrade --extra dev pyproject.toml\nUsually, I include the --generate-hashes option but leave it out here to shorten the output by not including hash keys.\n\n\nCode\nprint_file(\"requirements.txt\")\n\n\n#\n# This file is autogenerated by pip-compile with Python 3.11\n# by the following command:\n#\n#    pip-compile --extra=dev pyproject.toml\n#\nbuild==1.0.3\n    # via pip-tools\ncertifi==2023.7.22\n    # via requests\ncharset-normalizer==3.3.2\n    # via requests\nclick==8.1.7\n    # via pip-tools\nidna==3.4\n    # via requests\npackaging==23.2\n    # via build\npip-tools==7.3.0\n    # via hd-example (pyproject.toml)\npyproject-hooks==1.0.0\n    # via build\nrequests==2.31.0\n    # via hd-example (pyproject.toml)\nruff==0.1.4\n    # via hd-example (pyproject.toml)\nurllib3==2.0.7\n    # via requests\nwheel==0.41.3\n    # via pip-tools\n\n# The following packages are considered to be unsafe in a requirements file:\n# pip\n# setuptools"
   },
   {
     "objectID": "posts/2023-04-27-posit-cloud/index.html",
@@ -242,21 +263,21 @@
     "href": "snippets/ipython-display.html",
     "title": "iPython display examples",
     "section": "",
-    "text": "Some JupyterLite inspired examples (see python.ipynb) of using iPython display.\n\nfrom IPython.display import display, HTML, JSON, Markdown, Math\n\n\n\nIndividual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\n\n\n\n\nMarkdown(\"### Markdown title\")\n\n\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;\n\n\n\n\n\nUse display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
+    "text": "Some JupyterLite inspired examples (see python.ipynb) of using iPython display.\nfrom IPython.display import display, HTML, JSON, Markdown, Math"
   },
   {
     "objectID": "snippets/ipython-display.html#single-elements",
     "href": "snippets/ipython-display.html#single-elements",
     "title": "iPython display examples",
-    "section": "",
-    "text": "Individual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\n\n\n\n\nMarkdown(\"### Markdown title\")\n\n\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;"
+    "section": "Single elements",
+    "text": "Single elements\nIndividual elements can be rendered without display()\n\nHTML(\"&lt;h3&gt;HTML Title&lt;/h3&gt;\")\n\nHTML Title\n\n\n\nMarkdown(\"### Markdown title\")\n\nMarkdown title\n\n\n\nMath(\"a^2 + b^2 = c^2\")\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nJSON([\"foo\", {\"bar\": (\"baz\", None, 1.0, 2)}], expanded=True)\n\n&lt;IPython.core.display.JSON object&gt;"
   },
   {
     "objectID": "snippets/ipython-display.html#multiple-elements",
     "href": "snippets/ipython-display.html#multiple-elements",
     "title": "iPython display examples",
-    "section": "",
-    "text": "Use display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
+    "section": "Multiple elements",
+    "text": "Multiple elements\nUse display to show multipe elements from a single cell.\n\ndisplay(HTML(\"&lt;em&gt;HTML element&lt;/em&gt;\"))\ndisplay(Markdown(\"__Markdown title__\"))\ndisplay(Math(\"a^2 + b^2 = c^2\"))\n\nHTML element\n\n\nMarkdown title\n\n\n\\(\\displaystyle a^2 + b^2 = c^2\\)\n\n\n\nprint(\"'first element'\")\ndisplay(\"second element\")\nprint(\"'third element'\")\n\n'first element'\n'third element'\n\n\n'second element'\n\n\n\nThis does not work without display()\n\nHTML(\"first HTML element &lt;em&gt;not shown&lt;/em&gt;\")\nMarkdown(\"only last Markdown element _shown_\")\n\nonly last Markdown element shown"
   },
   {
     "objectID": "snippets/ipython-display.html#html",
@@ -277,7 +298,7 @@
     "href": "snippets/ipython-display.html#pandas-dataframe",
     "title": "iPython display examples",
     "section": "Pandas DataFrame",
-    "text": "Pandas DataFrame\n\nimport pandas as pd\nimport numpy as np\nfrom string import ascii_uppercase as letters\nfrom IPython.display import display\n\ndf = pd.DataFrame(\n    np.random.randint(0, 100, size=(100, len(letters))), columns=list(letters)\n)\ndf\n\n\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\nH\nI\nJ\n...\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ\n\n\n\n\n0\n52\n27\n29\n4\n82\n95\n38\n45\n4\n90\n...\n77\n69\n3\n37\n57\n66\n73\n92\n77\n56\n\n\n1\n79\n5\n88\n64\n48\n21\n54\n62\n4\n26\n...\n4\n33\n77\n73\n4\n39\n87\n36\n93\n97\n\n\n2\n66\n27\n67\n34\n70\n81\n44\n9\n81\n65\n...\n54\n87\n82\n94\n11\n11\n89\n42\n98\n6\n\n\n3\n24\n33\n89\n10\n81\n15\n73\n39\n97\n67\n...\n53\n93\n11\n73\n65\n50\n82\n67\n80\n95\n\n\n4\n68\n30\n16\n48\n58\n72\n89\n36\n5\n50\n...\n75\n92\n64\n3\n46\n33\n84\n47\n60\n11\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n95\n79\n69\n28\n24\n56\n66\n5\n62\n11\n91\n...\n74\n39\n93\n28\n29\n39\n96\n27\n99\n82\n\n\n96\n36\n93\n41\n48\n60\n29\n82\n10\n11\n27\n...\n84\n67\n58\n93\n32\n77\n57\n98\n92\n77\n\n\n97\n59\n22\n78\n0\n88\n59\n33\n98\n29\n73\n...\n43\n18\n78\n37\n77\n34\n74\n12\n18\n15\n\n\n98\n70\n9\n96\n31\n16\n15\n41\n65\n69\n40\n...\n63\n39\n27\n78\n6\n36\n85\n47\n66\n81\n\n\n99\n32\n87\n3\n93\n39\n84\n17\n26\n12\n61\n...\n19\n11\n69\n85\n34\n32\n21\n68\n75\n56\n\n\n\n\n100 rows × 26 columns"
+    "text": "Pandas DataFrame\n\nimport pandas as pd\nimport numpy as np\nfrom string import ascii_uppercase as letters\nfrom IPython.display import display\n\ndf = pd.DataFrame(\n    np.random.randint(0, 100, size=(100, len(letters))), columns=list(letters)\n)\ndf\n\n\n\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\nH\nI\nJ\n...\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ\n\n\n\n\n0\n52\n27\n29\n4\n82\n95\n38\n45\n4\n90\n...\n77\n69\n3\n37\n57\n66\n73\n92\n77\n56\n\n\n1\n79\n5\n88\n64\n48\n21\n54\n62\n4\n26\n...\n4\n33\n77\n73\n4\n39\n87\n36\n93\n97\n\n\n2\n66\n27\n67\n34\n70\n81\n44\n9\n81\n65\n...\n54\n87\n82\n94\n11\n11\n89\n42\n98\n6\n\n\n3\n24\n33\n89\n10\n81\n15\n73\n39\n97\n67\n...\n53\n93\n11\n73\n65\n50\n82\n67\n80\n95\n\n\n4\n68\n30\n16\n48\n58\n72\n89\n36\n5\n50\n...\n75\n92\n64\n3\n46\n33\n84\n47\n60\n11\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n95\n79\n69\n28\n24\n56\n66\n5\n62\n11\n91\n...\n74\n39\n93\n28\n29\n39\n96\n27\n99\n82\n\n\n96\n36\n93\n41\n48\n60\n29\n82\n10\n11\n27\n...\n84\n67\n58\n93\n32\n77\n57\n98\n92\n77\n\n\n97\n59\n22\n78\n0\n88\n59\n33\n98\n29\n73\n...\n43\n18\n78\n37\n77\n34\n74\n12\n18\n15\n\n\n98\n70\n9\n96\n31\n16\n15\n41\n65\n69\n40\n...\n63\n39\n27\n78\n6\n36\n85\n47\n66\n81\n\n\n99\n32\n87\n3\n93\n39\n84\n17\n26\n12\n61\n...\n19\n11\n69\n85\n34\n32\n21\n68\n75\n56\n\n\n\n\n100 rows × 26 columns"
   },
   {
     "objectID": "snippets/ipython-display.html#math",
@@ -527,119 +548,119 @@
   {
     "objectID": "posts/2023-til/index.html",
     "href": "posts/2023-til/index.html",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "",
     "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
   },
   {
     "objectID": "posts/2023-til/index.html#november",
     "href": "posts/2023-til/index.html#november",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "",
     "text": "Keep the date of a git commit after changing the history with rebase\ngit rebase -i --committer-date-is-author-date &lt;SHA&gt;"
   },
   {
     "objectID": "posts/2023-til/index.html#november-1",
     "href": "posts/2023-til/index.html#november-1",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "21. November",
     "text": "21. November\nThere is a magic method in iPython to install packages with pip. It comes handy for a quick install in a notebook.\n%pip install -q requests\nSpecifying dependencies in requirements.in or pyproject.toml and pinning them with pip-tools is the better solution to create reproducible environments."
   },
   {
     "objectID": "posts/2023-til/index.html#july",
     "href": "posts/2023-til/index.html#july",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "31. July",
     "text": "31. July\nSimple debugging with IPython — found at Real Python (now gated).\nimport IPython\n\nvar_1 = \"hello\"\n\nIPython.embed()\n\nvar_2 = \"world\""
   },
   {
     "objectID": "posts/2023-til/index.html#june",
     "href": "posts/2023-til/index.html#june",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "30. June",
     "text": "30. June\nSet default printing function for data frames in Quarto notebook with html option df-print: kable.\nUseful to have html tables instead of monospace tables in notebooks.\nSo far, I prefer kable (knitr::kable()) over paged (rmarkdown::paged_table())).\n---\ntitle: \"Document\"\nformat:\n   html:\n     df-print: kable\n---"
   },
   {
     "objectID": "posts/2023-til/index.html#june-1",
     "href": "posts/2023-til/index.html#june-1",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "29. June",
     "text": "29. June\nDidn’t know n_distinct() and used length(unique()) for too long. A small and nice thing i learned that makes pipes more readable."
   },
   {
     "objectID": "posts/2023-til/index.html#june-2",
     "href": "posts/2023-til/index.html#june-2",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "13. June",
     "text": "13. June\nAdding a comment in Markdown by using standard html comments. It works for Markdown in pandoc used by Quarto.\n&lt;!--- comment  --&gt;\n\n&lt;!---\nmulti-line comments\n--&gt;\nI used it now with the current TIL page to have a short intro about a new TIL on the landing page. The previous one sentence summary of the page is now a comment."
   },
   {
     "objectID": "posts/2023-til/index.html#june-3",
     "href": "posts/2023-til/index.html#june-3",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "10. June",
     "text": "10. June\nAdding a page break to a pdf in Quarto.\n---\nformat: pdf\n---\n\nPage 1\n\n{{&lt; pagebreak &gt;}}\n\nPage 2\nIn addition, I learned to ignore shortcuts in a cell with {.markdown shortcodes=\"false\"}"
   },
   {
     "objectID": "posts/2023-til/index.html#june-4",
     "href": "posts/2023-til/index.html#june-4",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "09. June",
     "text": "09. June\nI wanted to run a Bash shell script from any folder. The initial solution worked on my local computer but not on GitHub Codespaces. Here is the solution I came up with. The script runs from any location or stops and gives a message that it should be run from the script folder.\n# Use path relative to script location, if feasible\nif [ -n \"$BASH_SOURCE\" ]; then\n    cd \"$( cd \"$(dirname \"${BASH_SOURCE[0]}\")\" ; pwd -P )\"\nelse\n    if ! [ -e \"package-lock.json\" ]; then\n        echo \"Run script in project folder\"\n        exit 1\n    fi\nfi"
   },
   {
     "objectID": "posts/2023-til/index.html#may",
     "href": "posts/2023-til/index.html#may",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "17. May",
     "text": "17. May\nAnother use of the Base-R shorthand anonymous function and explaining it to a colleague. I like to use .x now for the local variable name to make the local context more explicit.\nadd_three &lt;- \\(.x) .x+3"
   },
   {
     "objectID": "posts/2023-til/index.html#may-1",
     "href": "posts/2023-til/index.html#may-1",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "06. May",
     "text": "06. May\nExcluding variables in tidyselect is now done with ! as I found out by reading the documentation more carfully. I have still used - to exclude variables by their name. This is not documented in the tidyselect help page anymore.\nreadstata13 creates more R friendly data structures than haven. Its default option converts labeled data into factors if appropriate."
   },
   {
     "objectID": "posts/2023-til/index.html#may-2",
     "href": "posts/2023-til/index.html#may-2",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "05. May",
     "text": "05. May\nUsed Quarto a lot and got more comfortable with the options — esp. caching, creating pdf, figures."
   },
   {
     "objectID": "posts/2023-til/index.html#may-3",
     "href": "posts/2023-til/index.html#may-3",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "03. May",
     "text": "03. May\nConvert an RMarkdown file into an R file with knitr::purl(\"purl.Rmd\") – see details.\nChatGPT did not provide the solution. I remembered doing this years ago. An internet search quickly led to the information needed."
   },
   {
     "objectID": "posts/2023-til/index.html#may-4",
     "href": "posts/2023-til/index.html#may-4",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "02. May",
     "text": "02. May\nA bug in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the daily build and had R/RStudio running again.\nOriginally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between."
   },
   {
     "objectID": "posts/2023-til/index.html#apr.",
     "href": "posts/2023-til/index.html#apr.",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "25. Apr.",
     "text": "25. Apr.\nI got back into Quarto and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.\nSetting up the page worked well. I got a little confused by the quarto difference between freeze and cache. I also wondered why the cache was added into several folders in the main directory and not into a _cache folder."
   },
   {
     "objectID": "posts/2023-til/index.html#apr.-1",
     "href": "posts/2023-til/index.html#apr.-1",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "03. Apr.",
     "text": "03. Apr.\nI read about the new pandas release. None of the changes seem to be relevant for my work with pandas"
   },
   {
     "objectID": "posts/2023-til/index.html#feb.",
     "href": "posts/2023-til/index.html#feb.",
-    "title": "Today I learned (TIL)",
+    "title": "Today I learned (TIL) · 2023",
     "section": "25. Feb.",
     "text": "25. Feb.\nI worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the more convenient interface."
   },
@@ -711,6 +732,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "Python f-strings\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Today I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nMar 17, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPython f-strings\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2023\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
