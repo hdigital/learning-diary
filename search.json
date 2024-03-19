@@ -32,18 +32,25 @@
     "href": "posts/2024-til/index.html",
     "title": "Today I learned (TIL)",
     "section": "",
-    "text": "By now, I have figured out how to configure R in Codespaces."
+    "text": "Creating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
   },
   {
     "objectID": "posts/2024-til/index.html#march",
     "href": "posts/2024-til/index.html#march",
     "title": "Today I learned (TIL)",
     "section": "",
-    "text": "By now, I have figured out how to configure R in Codespaces."
+    "text": "Creating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
   },
   {
     "objectID": "posts/2024-til/index.html#march-1",
     "href": "posts/2024-til/index.html#march-1",
+    "title": "Today I learned (TIL)",
+    "section": "17. March",
+    "text": "17. March\nBy now, I have figured out how to configure R in Codespaces."
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march-2",
+    "href": "posts/2024-til/index.html#march-2",
     "title": "Today I learned (TIL)",
     "section": "10. March",
     "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."

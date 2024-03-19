@@ -24,10 +24,16 @@
 <!--- Update date in header for new entries. -->
 <section id="march" class="level2">
 <h2 class="anchored" data-anchor-id="march">17. March</h2>
-<p>By now, I have figured out how to configure R in Codespaces.</p>
+<p>Creating the <a href="../2024-02-26-f-strings">last post</a> I realized that it is more convenient to work in VS Code with a Jupyter notebook (<em>ipynb</em>) than in a Quarto document (<em>qmd</em>). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.</p>
+<p>The documents can be converted into the other format with</p>
+<p><code>quarto convert</code></p>
 </section>
 <section id="march-1" class="level2">
-<h2 class="anchored" data-anchor-id="march-1">10. March</h2>
+<h2 class="anchored" data-anchor-id="march-1">17. March</h2>
+<p>By now, I have figured out how to configure R in Codespaces.</p>
+</section>
+<section id="march-2" class="level2">
+<h2 class="anchored" data-anchor-id="march-2">10. March</h2>
 <p>Recently, I started using the <a href="https://github.com/casey/just">just</a> command runner and have now used it regularly in several of my Python projects.</p>
 <hr>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" class="img-fluid" width="300"></p>
