@@ -8,7 +8,7 @@ alias pf := push-force
 
 # initialize Codespace
 codespace-init: venv
-  # cp .vscode/settings.json.dev .vscode/settings.json
+  cp .vscode/settings.json.dev .vscode/settings.json
   . .venv/bin/activate; pre-commit install --allow-missing-config
   . .venv/bin/activate; nbdev_install_hooks
 

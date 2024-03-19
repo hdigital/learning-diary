@@ -1,0 +1,40 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "**/.vscode/settings.json.dev": "jsonc",
+    "**/justfile": "makefile",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.showWelcomeOnInstall": false,
+  "gitlens.showWhatsNewAfterUpgrades": false,
+  "ruff.enable": true,
+  "cSpell.enableFiletypes": [
+    "makefile",
+    "quarto",
+    "shellscript"
+  ],
+  "cSpell.words": [
+    "charliermarsh",
+    "codespace",
+    "codespaces",
+    "davidanson",
+    "debugpy",
+    "devcontainer",
+    "donjayamanne",
+    "eamodio",
+    "githistory",
+    "guiyomh",
+    "ipynb",
+    "nbdev",
+    "tamasfe",
+    "toolsai",
+    "venv"
+  ]
+}

@@ -5,7 +5,7 @@ tmp__*
 /.ipython/
 /.luarc.json
 /.quarto/
-/.vscode/
+/.vscode/settings.json
 
 # MacOS
 .DS_Store
