@@ -1,78 +1,72 @@
+# Local scripts and data files (ignore with prefix)
+source__*
 tmp__*
+z-tmp__*
 
-/_site/
-/.cache/
-/.ipython/
-/.luarc.json
+# Local settings files
+.vscode/settings.json
+
+# Quarto files
+_freeze/
+_site/
+.quarto/
 /.quarto/
-/.vscode/settings.json
+.luarc.json
+/.luarc.json
 
-# MacOS
+# Rocker files
+.cache/
+.config/
+.local/
+.TinyTeX/
+.sh_history
+
+# OS files
 .DS_Store
 
-# Python virtual environment folders
-/env/
-/venv/
-/.venv/
 
-# RStudio Docker files
-/.config/rstudio/
-/.local/
-/.TinyTeX/
-.bash_history
+## Python ---------------------------------------------------------------------
+## see also https://github.com/github/gitignore/blob/main/Python.gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Environments
+.venv
+
+# IPython interactive shell
+profile_default/
+ipython_config.py
+
+# Ruff code quality
+.ruff_cache
 
 
-# -----------------------------------------------------------------------------
-# https://github.com/github/gitignore/blob/main/R.gitignore
+## R --------------------------------------------------------------------------
+## see also https://github.com/github/gitignore/blob/main/R.gitignore
 
 # History files
 .Rhistory
 .Rapp.history
 
-# Session Data files
+# Session data files
 .RData
 .RDataTmp
 
-# User-specific files
-.Ruserdata
-
-# Example code in package build process
-*-Ex.R
-
-# Output files from R CMD build
-/*.tar.gz
-
-# Output files from R CMD check
-/*.Rcheck/
-
 # RStudio files
 .Rproj.user/
-
-# produced whignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
 
 # knitr and R markdown default cache directories
 *_cache/
 /cache/
 
-# Temporary files created by R markdown
+# Temporary files created by R Markdown
 *.utf8.md
 *.knit.md
 
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
 
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
-
-# -----------------------------------------------------------------------------
+## ----------------------------------------------------------------------------
