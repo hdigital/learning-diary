@@ -12,6 +12,14 @@ format:
 
 ## 17. March
 
+Creating the [last post](../2024-02-26-f-strings) I realized that it is more convenient to work in VS Code with a Jupyter notebook (_ipynb_) than in a Quarto document (_qmd_). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.
+
+The documents can be converted into the other format with
+
+`quarto convert`
+
+## 17. March
+
 By now, I have figured out how to configure R in Codespaces.
 
 ## 10. March
