@@ -27,6 +27,10 @@ pip-update:
   uv pip compile -U --all-extras --generate-hashes -o requirements.txt pyproject.toml
   uv pip sync requirements.txt
 
+# create new post
+post:
+  cd snippets && python create-post.py
+
 # render and publish page
 publish:
   quarto publish gh-pages --no-prompt
