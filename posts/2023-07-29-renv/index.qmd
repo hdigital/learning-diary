@@ -36,10 +36,10 @@ Package version number can be added with some `tidyverse` magic.
 
 ```{r}
 dependencies() |>
-    mutate(version = map_chr(Package, \(.x) as.character(packageVersion(.x)))) |>
-    select(Package, version) |>
-    arrange(Package) |>
-    distinct()
+  mutate(version = map_chr(Package, \(.x) as.character(packageVersion(.x)))) |>
+  select(Package, version) |>
+  arrange(Package) |>
+  distinct()
 ```
 
 

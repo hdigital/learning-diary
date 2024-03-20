@@ -37,7 +37,7 @@ A variable used as a function argument can be _embraced_ with double braces to u
 
 ```{r}
 count_var <- function(.dt, .var) {
-    summarise(.dt, n = n(), .by = all_of({{ .var }}))
+  summarise(.dt, n = n(), .by = all_of({{ .var }}))
 }
 
 count_var(cars, var_select)
@@ -52,36 +52,36 @@ Name injection can be used to assign new variable names in a dplyr workflow.
 `:=` is used as the assignment operator with dynamic new variable names.
 ```{r}
 cars |>
-    summarise("{var_select}_count" := n(),
-        .by = all_of({{ var_select }})
-    )
+  summarise("{var_select}_count" := n(),
+    .by = all_of({{ var_select }})
+  )
 
 
 count_var2 <- function(dt, var) {
-    summarise(dt, "{var}_count" := n(),
-        .by = all_of({{ var }})
-    )
+  summarise(dt, "{var}_count" := n(),
+    .by = all_of({{ var }})
+  )
 }
 
 count_var2(cars, "cyl")
 
 
 count_var3 <- function(dt, var) {
-    summarise(dt, "{{var}}_count" := n(),
-        .by = all_of({{ var }})
-    )
+  summarise(dt, "{{var}}_count" := n(),
+    .by = all_of({{ var }})
+  )
 }
 
 count_var3(cars, var_select)
 
 
 summarise_dt <- function(data, var) {
-    data |>
-        summarise(
-            "mean_{{var}}" := mean({{ var }}),
-            "sum_{{var}}" := sum({{ var }}),
-            "n_{{var}}" := n()
-        )
+  data |>
+    summarise(
+      "mean_{{var}}" := mean({{ var }}),
+      "sum_{{var}}" := sum({{ var }}),
+      "n_{{var}}" := n()
+    )
 }
 
 summarise_dt(cars, cyl)

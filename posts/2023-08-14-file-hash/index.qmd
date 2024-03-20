@@ -37,7 +37,7 @@ write_csv(datasets::mtcars, "mtcars.csv")
 library(tidyverse)
 
 tibble(files = fs::dir_ls(glob = "*.csv")) |>
-    mutate(hash = rlang::hash_file(files))
+  mutate(hash = rlang::hash_file(files))
 ```
 
 

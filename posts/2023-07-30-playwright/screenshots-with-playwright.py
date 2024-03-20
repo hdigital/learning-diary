@@ -1,3 +1,5 @@
+"""This module takes screenshots of a webpage using Playwright."""
+
 from playwright.sync_api import sync_playwright
 
 with sync_playwright() as spw:

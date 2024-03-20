@@ -15,24 +15,24 @@ library(tidyverse)
 library(gapminder)
 
 dt_1 <-
-    gapminder |>
-    left_join(country_codes, by = join_by(country == country))
+  gapminder |>
+  left_join(country_codes, by = join_by(country == country))
 ```
 
 The short version without the named parameter works as well when using it as the third parameter in a `*_join()` function (the second parameter in a pipe.)
 
 ```{r}
 dt_2 <-
-    gapminder |>
-    left_join(country_codes, join_by(country == country))
+  gapminder |>
+  left_join(country_codes, join_by(country == country))
 ```
 
 It is an alternative to using `c()` in the argument.
 
 ```{r}
 dt_3 <-
-    gapminder |>
-    left_join(country_codes, by = c("country" = "country"))
+  gapminder |>
+  left_join(country_codes, by = c("country" = "country"))
 ```
 
 The three created data frames are identical.
@@ -50,19 +50,19 @@ And here is a figure using the created data frame.
 set.seed(2)
 
 pl_dt <-
-    dt_1 |>
-    filter(year == max(year)) |>
-    select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)
+  dt_1 |>
+  filter(year == max(year)) |>
+  select(country = iso_alpha, gdp_per_capita = gdpPercap, life_expectency = lifeExp)
 
 ggplot(pl_dt, aes(x = gdp_per_capita, y = life_expectency)) +
-    geom_point(color = "darkgrey") +
-    scale_x_log10() +
-    geom_smooth() +
-    geom_text(
-        data = sample_n(pl_dt, 10),
-        aes(x = gdp_per_capita, y = life_expectency, label = country),
-        vjust = -0.8, size = 3.5
-    )
+  geom_point(color = "darkgrey") +
+  scale_x_log10() +
+  geom_smooth() +
+  geom_text(
+    data = sample_n(pl_dt, 10),
+    aes(x = gdp_per_capita, y = life_expectency, label = country),
+    vjust = -0.8, size = 3.5
+  )
 ```
 
 

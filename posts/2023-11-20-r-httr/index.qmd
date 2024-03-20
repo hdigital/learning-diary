@@ -59,7 +59,7 @@ papers <-
     id_short = str_sub(paperId, 1, 5),
     title_short = str_sub(title, 1, 30),
     authors_n = map_int(authors, \(.x) nrow(.x))
-    )
+  )
 ```
 
 Number of publications at Semantic Scholar
@@ -72,7 +72,7 @@ Publications
 
 ```{r}
 papers |>
-  select(id_short, year, `cita.`=citationCount, `auth.`=authors_n, title_short)
+  select(id_short, year, `cita.` = citationCount, `auth.` = authors_n, title_short)
 ```
 
 ## Authors
