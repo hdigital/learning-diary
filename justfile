@@ -7,14 +7,24 @@ alias pf := push-force
 ## Recipes 'just' — https://just.systems/man/en/chapter_20.html
 
 # initialize Codespace
-codespace-init: venv
+init-codespace: venv init-local
   cp .vscode/settings.json.dev .vscode/settings.json
+
+# initialize local environment
+init-local: venv
   . .venv/bin/activate; pre-commit install --allow-missing-config
   . .venv/bin/activate; nbdev_install_hooks
 
+# lint and format code
+lint:
+  Rscript -e "styler::style_dir(exclude_dirs = c('.venv')); lintr::lint_dir()"
+  ruff format .
+  ruff check --fix .
+  pre-commit run --all-files
+
 # update Python packages
 pip-update:
-  uv pip compile --generate-hashes -U -o requirements.txt requirements.in
+  uv pip compile -U --all-extras --generate-hashes -o requirements.txt pyproject.toml
   uv pip sync requirements.txt
 
 # render and publish page

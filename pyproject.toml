@@ -1,0 +1,69 @@
+[project]
+name = "learning-diary"
+version = "0"
+description = "A diary of things I learned (TIL)"
+maintainers = [{ name = "Holger Döring" }]
+license = { text = "MIT License" }
+requires-python = ">=3.10"
+
+## ----------------------------------------------------------------------------
+## Pip packages (see requirements.txt created with pip compile)
+
+dependencies = [
+  # Data science
+  "jupyterlab",
+  "pandas",
+  "matplotlib",
+  "altair",
+  "folium",
+  "statsmodels",
+]
+
+[project.optional-dependencies]
+dev = [
+  "uv", # venv/pip alternative
+  # Code quality
+  "ruff",
+  "pre-commit",
+  "nbdev",
+  # VS Code interactive shell
+  "ipykernel",
+]
+
+
+## ============================================================================
+## PACKAGES SETTINGS
+
+## ----------------------------------------------------------------------------
+## Web pages project
+
+[project.urls]
+homepage = "https://hdigital.github.io/learning-diary/"
+repository = "https://github.com/hdigital/starter-python.git"
+
+## ----------------------------------------------------------------------------
+## Ruff settings
+
+[tool.ruff]
+# https://docs.astral.sh/ruff/settings/#exclude
+# extend-exclude = []
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/linter/#rule-selection
+select = [
+  "E",   # pycodestyle
+  "F",   # pyflakes
+  "I",   # isort
+  "UP",  # pyupgrade
+  "D",   # pydocstyle
+  "B",   # flake8-bugbear
+  "SIM", # flake8-simplify
+]
+
+[tool.ruff.lint.extend-per-file-ignores]
+# https://docs.astral.sh/ruff/settings/#lint_extend-per-file-ignores
+"__init__.py" = ["D104"] # Ignore 'Missing docstring': D104 package
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

@@ -3,3 +3,4 @@
 geopy
 seaborn
 tomli
+wikipedia
