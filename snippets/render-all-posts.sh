@@ -1,5 +1,5 @@
 # install post packages
-Rscript snippets/packages-install.R
+Rscript -e "pak::lockfile_install(update = FALSE)"
 uv pip install -r snippets/requirements-posts.txt
 
 # remove freeze folder for full rebuild
