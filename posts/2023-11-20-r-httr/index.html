@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_short =</span> <span class="fu">str_sub</span>(paperId, <span class="dv">1</span>, <span class="dv">5</span>),</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title_short =</span> <span class="fu">str_sub</span>(title, <span class="dv">1</span>, <span class="dv">30</span>),</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">authors_n =</span> <span class="fu">map_int</span>(authors, \(.x) <span class="fu">nrow</span>(.x))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Number of publications at Semantic Scholar</p>
 <div class="cell">
@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Publications</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>papers <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_short, year, <span class="st">`</span><span class="at">cita.</span><span class="st">`</span><span class="ot">=</span>citationCount, <span class="st">`</span><span class="at">auth.</span><span class="st">`</span><span class="ot">=</span>authors_n, title_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(id_short, year, <span class="st">`</span><span class="at">cita.</span><span class="st">`</span> <span class="ot">=</span> citationCount, <span class="st">`</span><span class="at">auth.</span><span class="st">`</span> <span class="ot">=</span> authors_n, title_short)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -304,21 +304,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: left;">8bd34</td>
 <td style="text-align: right;">2020</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Institutional constraints on c</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">1b9e9</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Positions from Wikipedia</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">e9e28</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">41</td>
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Facts: A database of pol</td>
 </tr>
@@ -332,14 +332,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: left;">69fe5</td>
 <td style="text-align: right;">2016</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Mapping established democracie</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">4175b</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">24</td>
+<td style="text-align: right;">25</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Is Proportional Representation</td>
 </tr>
@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: left;">a9372</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">28</td>
+<td style="text-align: right;">30</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Revisiting the left cabinet sh</td>
 </tr>
@@ -374,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td style="text-align: left;">31eff</td>
 <td style="text-align: right;">2013</td>
-<td style="text-align: right;">31</td>
+<td style="text-align: right;">30</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The collective action of data</td>
 </tr>
@@ -409,21 +409,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td style="text-align: left;">2ebbf</td>
 <td style="text-align: right;">2008</td>
-<td style="text-align: right;">35</td>
+<td style="text-align: right;">37</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Electoral and Mechanical Cause</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ec86a</td>
 <td style="text-align: right;">2008</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Evaluating Scripting Languages</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">14ab0</td>
 <td style="text-align: right;">2007</td>
-<td style="text-align: right;">68</td>
+<td style="text-align: right;">70</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The Composition of the College</td>
 </tr>

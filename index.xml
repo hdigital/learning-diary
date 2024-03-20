@@ -56,7 +56,7 @@
 
 
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="052c76d2" class="cell" data-execution_count="1">
+<div id="4c71ecac" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -68,7 +68,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div>
 </div>
-<div id="3f381161" class="cell" data-execution_count="2">
+<div id="03cc643d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -88,7 +88,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="fd495da3" class="cell" data-execution_count="3">
+<div id="3f42481f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -112,7 +112,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="f6b7581e" class="cell" data-execution_count="4">
+<div id="c6f00785" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -129,7 +129,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="5505e4d1" class="cell" data-execution_count="5">
+<div id="f9be7b48" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -165,7 +165,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="0df20324" class="cell" data-execution_count="6">
+<div id="b2dfaa71" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -185,7 +185,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="9590b109" class="cell" data-execution_count="7">
+<div id="cc902acd" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -199,7 +199,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="e28c7e29" class="cell" data-execution_count="8">
+<div id="08310934" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -213,7 +213,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="3ed3314e" class="cell" data-execution_count="9">
+<div id="8cf6da16" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -227,7 +227,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="02487771" class="cell" data-execution_count="10">
+<div id="d2038924" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -261,7 +261,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="105d1195" class="cell" data-execution_count="11">
+<div id="9fbc1fff" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -283,7 +283,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="f2ed52e0" class="cell" data-execution_count="12">
+<div id="c30c8a18" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -615,7 +615,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div class="cell" data-execution_count="1">
+<div id="b900a391" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
@@ -661,14 +661,14 @@ font-style: inherit;">'jane.doe@example.com'</span></span>
 </section>
 <section id="single-element" class="level2">
 <h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div class="cell" data-execution_count="2">
+<div id="86fe8f7c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="3305e7f5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
@@ -676,23 +676,23 @@ font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></p
 <h2 class="anchored">HTML Title</h2>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="4175f155" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
-<section id="markdown-title" class="level2 cell-output cell-output-display" data-execution_count="4">
+<section id="markdown-title" class="level2 cell-output cell-output-display cell-output-markdown" data-execution_count="4">
 <h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
 </section>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="b95ff0db" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="b411bfe8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
@@ -717,7 +717,7 @@ font-style: inherit;">True</span>)</span></code></pre></div>
 </section>
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div class="cell" data-execution_count="7">
+<div id="a6fe823e" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
@@ -730,15 +730,15 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <em>HTML element</em>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><strong>Markdown title</strong></p>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
 <p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div class="cell" data-execution_count="8">
+<div id="4fa27cc3" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
@@ -828,7 +828,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div class="cell" data-execution_count="1">
+<div id="4f47c0d9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
@@ -902,28 +902,28 @@ font-style: inherit;">'b'</span></span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed {
+  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed details,
-  #altair-viz-c40a904a59ab437f8b09083424836217.vega-embed details summary {
+  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed details,
+  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-c40a904a59ab437f8b09083424836217"></div>
+<div id="altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c40a904a59ab437f8b09083424836217") {
-      outputDiv = document.getElementById("altair-viz-c40a904a59ab437f8b09083424836217");
+    if (outputDiv.id !== "altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e") {
+      outputDiv = document.getElementById("altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.15.1?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -959,12 +959,12 @@ font-style: inherit;">'b'</span></span>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.15.1"))
+        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c2a3e89ba9d5d1687d5e8c28d630a033"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c2a3e89ba9d5d1687d5e8c28d630a033": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c2a3e89ba9d5d1687d5e8c28d630a033"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-c2a3e89ba9d5d1687d5e8c28d630a033": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -1143,7 +1143,7 @@ background-color: null;
 font-style: inherit;">map_int</span>(authors, \(.x) <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">nrow</span>(.x))</span>
-<span id="cb5-7">    )</span></code></pre></div>
+<span id="cb5-7">  )</span></code></pre></div>
 </div>
 <p>Number of publications at Semantic Scholar</p>
 <div class="cell">
@@ -1167,17 +1167,17 @@ font-style: inherit;">`</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cita.</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span><span class="ot" style="color: #003B4F;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span>citationCount, <span class="st" style="color: #20794D;
+font-style: inherit;">=</span> citationCount, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">auth.</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">`</span><span class="ot" style="color: #003B4F;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
 background-color: null;
-font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
+font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -1229,21 +1229,21 @@ font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
 <tr class="even">
 <td style="text-align: left;">8bd34</td>
 <td style="text-align: right;">2020</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">8</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Institutional constraints on c</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">1b9e9</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Positions from Wikipedia</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">e9e28</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">41</td>
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Facts: A database of pol</td>
 </tr>
@@ -1257,14 +1257,14 @@ font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
 <tr class="even">
 <td style="text-align: left;">69fe5</td>
 <td style="text-align: right;">2016</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Mapping established democracie</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">4175b</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">24</td>
+<td style="text-align: right;">25</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Is Proportional Representation</td>
 </tr>
@@ -1278,7 +1278,7 @@ font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">a9372</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">28</td>
+<td style="text-align: right;">30</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Revisiting the left cabinet sh</td>
 </tr>
@@ -1299,7 +1299,7 @@ font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
 <tr class="even">
 <td style="text-align: left;">31eff</td>
 <td style="text-align: right;">2013</td>
-<td style="text-align: right;">31</td>
+<td style="text-align: right;">30</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The collective action of data</td>
 </tr>
@@ -1334,21 +1334,21 @@ font-style: inherit;">=</span>authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">2ebbf</td>
 <td style="text-align: right;">2008</td>
-<td style="text-align: right;">35</td>
+<td style="text-align: right;">37</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Electoral and Mechanical Cause</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ec86a</td>
 <td style="text-align: right;">2008</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Evaluating Scripting Languages</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">14ab0</td>
 <td style="text-align: right;">2007</td>
-<td style="text-align: right;">68</td>
+<td style="text-align: right;">70</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The Composition of the College</td>
 </tr>
@@ -1683,7 +1683,7 @@ font-style: inherit;">unnest</span>(authors)</span>
 <p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
 <p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
 <p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
-<div class="cell" data-execution_count="1">
+<div id="aa6ffd9b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -1891,7 +1891,7 @@ font-style: inherit;"># Show the plot</span></span>
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div id="1aab4b9e" class="cell" data-execution_count="1">
+<div id="0f87a73d" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -1950,7 +1950,7 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div id="01e55531" class="cell" data-execution_count="2">
+<div id="1d670734" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> tomli <span class="im" style="color: #00769E;
@@ -1993,7 +1993,7 @@ font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div id="0bfcde9d" class="cell" data-execution_count="3">
+<div id="a89206e3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
@@ -2060,7 +2060,7 @@ wheel==0.41.3
 
 <p>This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the <a href="https://github.com/hdigital/partypositions-wikitags">partypositions-wikitags</a> project.</p>
 <p>The code of the project is archived at Zenodo with the DOI <a href="https://zenodo.org/doi/10.5281/zenodo.7043510">10.5281/zenodo.7043510</a>.</p>
-<div class="cell" data-execution_count="1">
+<div id="e0945316" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -2084,14 +2084,14 @@ font-style: inherit;">=</span>headers)</span>
 <span id="cb1-5"></span>
 <span id="cb1-6">r.text</span></code></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
 </div>
 </div>
 <section id="doi-api" class="level2">
 <h2 class="anchored" data-anchor-id="doi-api">DOI API</h2>
 <p>So here is some metadata information. Lets start with the DOI API.</p>
-<div class="cell" data-execution_count="2">
+<div id="2c67dd37" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -2124,7 +2124,7 @@ background-color: null;
 font-style: inherit;">=</span>headers)</span>
 <span id="cb3-7"></span>
 <span id="cb3-8">r.json()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>{'type': 'book',
  'id': 'https://doi.org/10.5281/zenodo.7043510',
  'language': 'en',
@@ -2144,7 +2144,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="zenodo-record" class="level2">
 <h2 class="anchored" data-anchor-id="zenodo-record">Zenodo record</h2>
 <p>We can also access a <a href="https://developers.zenodo.org/#retrieve37">record</a> through the Zenodo API. This does not require a <a href="https://developers.zenodo.org/#authentication">Zenodo access token</a>.</p>
-<div class="cell" data-execution_count="3">
+<div id="2b7c7e11" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(<span class="st" style="color: #20794D;
@@ -2155,16 +2155,16 @@ background-color: null;
 font-style: inherit;">=</span> r.json()</span>
 <span id="cb5-3"></span>
 <span id="cb5-4">record.keys()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>dict_keys(['created', 'modified', 'id', 'conceptrecid', 'doi', 'conceptdoi', 'doi_url', 'metadata', 'title', 'links', 'updated', 'recid', 'revision', 'files', 'owners', 'status', 'stats', 'state', 'submitted'])</code></pre>
 </div>
 </div>
 <p>I was interested in the Zenodo metadata.</p>
-<div class="cell" data-execution_count="4">
+<div id="a5faf64d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">record[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'metadata'</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'title': 'Party positions from Wikipedia tags (July 2023)',
  'doi': '10.5281/zenodo.8275697',
  'publication_date': '2023-08-23',
@@ -2191,7 +2191,7 @@ font-style: inherit;">'metadata'</span>]</span></code></pre></div>
 <p>You can specify some of the addtional metadata in a <code>.zenodo.json</code> file in your GitHub repository.</p>
 <p><a href="https://developers.zenodo.org/#github" class="uri">https://developers.zenodo.org/#github</a></p>
 <p>I used the archived Zenodo record for a json dump of the metadata.</p>
-<div class="cell" data-execution_count="5">
+<div id="0d6c9efb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
@@ -2258,7 +2258,7 @@ font-style: inherit;">2</span>))</span></code></pre></div>
 <li>used unicode characters for umlaute</li>
 <li>specified license id</li>
 </ul>
-<div class="cell" data-execution_count="6">
+<div id="47b67074" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2311,7 +2311,7 @@ background-color: null;
 font-style: inherit;">"""</span></span></code></pre></div>
 </div>
 <p>Here, I validate the json. Running the cell should not raise an error.</p>
-<div class="cell" data-execution_count="7">
+<div id="71c666cc" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></div>
@@ -2343,7 +2343,7 @@ font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></di
 <h2 class="anchored" data-anchor-id="doi-api-access">DOI API access</h2>
 <p>I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.</p>
 <p>Here is an example with a request for my first peer-reviewed publication.</p>
-<div class="cell" data-execution_count="1">
+<div id="41679e35" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -2388,7 +2388,7 @@ font-style: inherit;">=</span>headers)</span>
 <li>Schema.org in JSON-LD // <code>application/vnd.schemaorg.ld+json</code> (only DataCite)</li>
 </ul>
 <p>It is actually nice to put a request into a function. I start with a simple example.</p>
-<div class="cell" data-execution_count="2">
+<div id="89534c7d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">def</span> get_doi_bib(doi):</span>
@@ -2434,7 +2434,7 @@ font-style: inherit;">"10.1177/0958928715573481"</span>)</span></code></pre></di
 </div>
 </div>
 <p>To get the different formats I am interested in, I can rewrite the function.</p>
-<div class="cell" data-execution_count="3">
+<div id="5801ba62" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> time</span>
@@ -2551,21 +2551,11 @@ DÃ¶ring, H. (2016). Mapping established democracies: Integrated data on partie
 
 
 DOI content type: bibtex
-@article{D_ring_2016,
-    doi = {10.1016/j.electstud.2016.07.002},
-    url = {https://doi.org/10.1016%2Fj.electstud.2016.07.002},
-    year = 2016,
-    month = {dec},
-    publisher = {Elsevier {BV}},
-    volume = {44},
-    pages = {535--543},
-    author = {Holger Döring},
-    title = {Mapping established democracies: Integrated data on parties, elections and cabinets},
-    journal = {Electoral Studies}
-}
+ @article{D_ring_2016, title={Mapping established democracies: Integrated data on parties, elections and cabinets}, volume={44}, ISSN={0261-3794}, url={http://dx.doi.org/10.1016/j.electstud.2016.07.002}, DOI={10.1016/j.electstud.2016.07.002}, journal={Electoral Studies}, publisher={Elsevier BV}, author={Döring, Holger}, year={2016}, month=dec, pages={535–543} }
+
 
 DOI content type: json-csl
-{"indexed":{"date-parts":[[2022,4,3]],"date-time":"2022-04-03T16:10:26Z","timestamp":1649002226601},"reference-count":43,"publisher":"Elsevier BV","license":[{"start":{"date-parts":[[2016,12,1]],"date-time":"2016-12-01T00:00:00Z","timestamp":1480550400000},"content-version":"tdm","delay-in-days":0,"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"published-print":{"date-parts":[[2016,12]]},"DOI":"10.1016\/j.electstud.2016.07.002","type":"journal-article","created":{"date-parts":[[2016,7,23]],"date-time":"2016-07-23T05:27:36Z","timestamp":1469251656000},"page":"535-543","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":2,"title":"Mapping established democracies: Integrated data on parties, elections and cabinets","prefix":"10.1016","volume":"44","author":[{"given":"Holger","family":"D\u00f6ring","sequence":"first","affiliation":[]}],"member":"78","reference":[{"key":"10.1016\/j.electstud.2016.07.002_bib1","series-title":"The European Representative Democracy Data Archive, Release 3","author":"Andersson","year":"2014"},{"key":"10.1016\/j.electstud.2016.07.002_bib2","series-title":"Comparative Political Data Set 1960\u20132013","author":"Armingeon","year":"2015"},{"key":"10.1016\/j.electstud.2016.07.002_bib3","doi-asserted-by":"crossref","first-page":"143","DOI":"10.1177\/1354068812462931","article-title":"Measuring party positions in Europe: the Chapel Hill expert survey trend file, 1999\u20132010","volume":"21","author":"Bakker","year":"2015","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib4","doi-asserted-by":"crossref","first-page":"303","DOI":"10.1177\/1354068810369148","article-title":"Out with the old, in with the \u201cnew\u201d: what constitutes a new party?","volume":"17","author":"Barnea","year":"2011","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib5","series-title":"Party Policy in Modern Democracies","author":"Benoit","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib6","doi-asserted-by":"crossref","first-page":"1523","DOI":"10.1177\/0010414012463905","article-title":"A\u00a0complete data set of political regimes, 1800\u20132007","volume":"46","author":"Boix","year":"2013","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib7","doi-asserted-by":"crossref","first-page":"360","DOI":"10.1016\/j.electstud.2013.01.005","article-title":"Democratic electoral systems around the world, 1946\u20132011","volume":"32","author":"Bormann","year":"2013","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib8","series-title":"Das parlamentarische Wahlrecht: Ein Handbuch \u00fcber die Bildung der gesetzgebenden K\u00f6rperschaften in Europa \u2013 2. Band: Allgemeiner Teil","author":"Braunias","year":"1932"},{"key":"10.1016\/j.electstud.2016.07.002_bib9","series-title":"Parties and Democracy: Coalition Formation and Government Functioning in Twenty States","author":"Budge","year":"1993"},{"key":"10.1016\/j.electstud.2016.07.002_bib10","series-title":"Mapping Policy Preferences: Estimates for Parties, Electors, and Governments, 1945-1998","author":"Budge","year":"2001"},{"key":"10.1016\/j.electstud.2016.07.002_bib11","series-title":"Political Parties of Eastern Europe: a Guide to Politics in the Post-communist Era","author":"Bugajski","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib12","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1111\/j.1475-6765.1984.tb00080.x","article-title":"Left right political scales: some expert judgments","volume":"12","author":"Castles","year":"1984","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib13","doi-asserted-by":"crossref","first-page":"119","DOI":"10.1111\/j.1475-6765.2009.01888.x","article-title":"Measuring government duration and stability in Central Eastern European democracies","volume":"49","author":"Conrad","year":"2010","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib14","doi-asserted-by":"crossref","first-page":"193","DOI":"10.1111\/j.1467-9477.1994.tb00144.x","article-title":"Termination of Danish government coalitions: theoretical and empirical aspects","volume":"17","author":"Damgaard","year":"1994","journal-title":"Scand. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib15","doi-asserted-by":"crossref","first-page":"161","DOI":"10.1177\/1465116512461189","article-title":"The collective action of data collection: a data infrastructure on parties, elections and cabinets","volume":"14","author":"D\u00f6ring","year":"2013","journal-title":"Eur. Union Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib16","first-page":"17","article-title":"ParlGov: a new data infrastructure in comparative politics","volume":"23","author":"D\u00f6ring","year":"2013","journal-title":"APSA Comp. Politics Newsl."},{"key":"10.1016\/j.electstud.2016.07.002_bib17","first-page":"19","article-title":"A\u00a0user-driven and flexible procedure for data linking","volume":"2010","author":"Ejik","year":"2010","journal-title":"IASSIST Q."},{"key":"10.1016\/j.electstud.2016.07.002_bib18","doi-asserted-by":"crossref","first-page":"495","DOI":"10.1111\/j.1468-2508.2007.00546.x","article-title":"Punishment or protest? understanding European Parliament elections","volume":"69","author":"Hix","year":"2007","journal-title":"J.\u00a0Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib19","doi-asserted-by":"crossref","first-page":"965","DOI":"10.1177\/001041402236310","article-title":"Does left\/right structure party positions on European integration?","volume":"35","author":"Hooghe","year":"2002","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib20","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1177\/1354068895001001004","article-title":"Expert interpretations of party space and party locations in 42 societies","volume":"1","author":"Huber","year":"1995","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib21","doi-asserted-by":"crossref","first-page":"381","DOI":"10.1111\/1475-6765.12030","article-title":"Determinants of cabinet size","volume":"53","author":"Indridason","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib22","series-title":"Western European Political Parties: a Comprehensive Guide","year":"1989"},{"key":"10.1016\/j.electstud.2016.07.002_bib23","series-title":"Mapping Policy Preferences II: Estimates for Parties, Electors and Governments in Central and Eastern Europe, European Union and OECD 1990-2003","author":"Klingemann","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib24","series-title":"Policy and Party Competition","author":"Laver","year":"1992"},{"key":"10.1016\/j.electstud.2016.07.002_bib25","series-title":"The International Almanac of Electoral History","author":"Mackie","year":"1991"},{"key":"10.1016\/j.electstud.2016.07.002_bib26","doi-asserted-by":"crossref","first-page":"211","DOI":"10.1146\/annurev.polisci.1.1.211","article-title":"The party family and its study","volume":"1","author":"Mair","year":"1998","journal-title":"Annu. Rev. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib27","doi-asserted-by":"crossref","first-page":"654","DOI":"10.1111\/1475-6765.12054","article-title":"Defining and classifying technocrat-led and technocratic governments","volume":"53","author":"McDonnell","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib28","series-title":"Political Parties of Europe","year":"1983"},{"key":"10.1016\/j.electstud.2016.07.002_bib29","series-title":"Coalition Governments in Western Europe","year":"2000"},{"key":"10.1016\/j.electstud.2016.07.002_bib30","doi-asserted-by":"crossref","first-page":"869","DOI":"10.1111\/j.0304-4130.2004.00178.x","article-title":"Party government in Central Eastern European democracies: a data collection (1990-2003)","volume":"43","author":"M\u00fcller-Rommel","year":"2004","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib31","series-title":"Elections in Europe: a Data Handbook","year":"2010"},{"key":"10.1016\/j.electstud.2016.07.002_bib32","doi-asserted-by":"crossref","first-page":"283","DOI":"10.1111\/1475-6765.00471","article-title":"Measuring party orientations towards European integration: results from an expert survey","volume":"36","author":"Ray","year":"1999","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib33","series-title":"International Guide to Electoral Statistics; Guide International Des Statistiques \u00c9lectorales","first-page":"1","article-title":"Introduction","author":"Rokkan","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib34","series-title":"International guide to electoral statistics; Guide international des statistiques \u00e9lectorales","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib35","series-title":"Elections and Parties in New European Democracies","author":"Rose","year":"2003"},{"key":"10.1016\/j.electstud.2016.07.002_bib36","doi-asserted-by":"crossref","first-page":"270","DOI":"10.1016\/j.electstud.2013.10.001","article-title":"Updating the party government data set","volume":"34","author":"Seki","year":"2014","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib37","doi-asserted-by":"crossref","first-page":"391","DOI":"10.1111\/j.1475-6765.2005.00232.x","article-title":"How unstable? Volatility and the genuinely new parties in Eastern Europe","volume":"44","author":"Sikk","year":"2005","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib38","series-title":"Die Wahl der Parlamente und anderer Staatsorgane","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib39","doi-asserted-by":"crossref","first-page":"261","DOI":"10.1111\/1475-6765.00513","article-title":"Delegation and accountability in parliamentary democracies","volume":"37","author":"Str\u00f8m","year":"2000","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib40","series-title":"Veto Players: How Political Institutions Work","author":"Tsebelis","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib41","doi-asserted-by":"crossref","first-page":"187","DOI":"10.1017\/S0007123411000263","article-title":"Constitutionalizing party democracy: the constitutive codification of political parties in post-war Europe","volume":"42","author":"Van Biezen","year":"2012","journal-title":"Br. J. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib42","series-title":"Mapping Policy Preferences from Texts III: Statistical Solutions for Manifesto Analysts","author":"Volkens","year":"2013"},{"key":"10.1016\/j.electstud.2016.07.002_bib43","series-title":"Party Government in 48 Democracies (1945-1998): Composition, Duration, Personnel","author":"Woldendorp","year":"2000"}],"container-title":"Electoral Studies","original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,7,17]],"date-time":"2018-07-17T21:43:09Z","timestamp":1531863789000},"score":1,"resource":{"primary":{"URL":"https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0261379416301652"}},"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016,12]]},"references-count":43,"alternative-id":["S0261379416301652"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.electstud.2016.07.002","relation":{},"ISSN":["0261-3794"],"subject":["Political Science and International Relations"],"container-title-short":"Electoral Studies","published":{"date-parts":[[2016,12]]},"assertion":[{"value":"Elsevier","name":"publisher","label":"This article is maintained by"},{"value":"Mapping established democracies: Integrated data on parties, elections and cabinets","name":"articletitle","label":"Article Title"},{"value":"Electoral Studies","name":"journaltitle","label":"Journal Title"},{"value":"https:\/\/doi.org\/10.1016\/j.electstud.2016.07.002","name":"articlelink","label":"CrossRef DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content Type"},{"value":"\u00a9 2016 Elsevier Ltd. All rights reserved.","name":"copyright","label":"Copyright"}]}
+{"indexed":{"date-parts":[[2024,2,28]],"date-time":"2024-02-28T13:20:37Z","timestamp":1709126437045},"reference-count":43,"publisher":"Elsevier BV","license":[{"start":{"date-parts":[[2016,12,1]],"date-time":"2016-12-01T00:00:00Z","timestamp":1480550400000},"content-version":"tdm","delay-in-days":0,"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"published-print":{"date-parts":[[2016,12]]},"DOI":"10.1016\/j.electstud.2016.07.002","type":"journal-article","created":{"date-parts":[[2016,7,23]],"date-time":"2016-07-23T05:27:36Z","timestamp":1469251656000},"page":"535-543","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":3,"title":"Mapping established democracies: Integrated data on parties, elections and cabinets","prefix":"10.1016","volume":"44","author":[{"given":"Holger","family":"D\u00f6ring","sequence":"first","affiliation":[]}],"member":"78","reference":[{"key":"10.1016\/j.electstud.2016.07.002_bib1","series-title":"The European Representative Democracy Data Archive, Release 3","author":"Andersson","year":"2014"},{"key":"10.1016\/j.electstud.2016.07.002_bib2","series-title":"Comparative Political Data Set 1960\u20132013","author":"Armingeon","year":"2015"},{"key":"10.1016\/j.electstud.2016.07.002_bib3","doi-asserted-by":"crossref","first-page":"143","DOI":"10.1177\/1354068812462931","article-title":"Measuring party positions in Europe: the Chapel Hill expert survey trend file, 1999\u20132010","volume":"21","author":"Bakker","year":"2015","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib4","doi-asserted-by":"crossref","first-page":"303","DOI":"10.1177\/1354068810369148","article-title":"Out with the old, in with the \u201cnew\u201d: what constitutes a new party?","volume":"17","author":"Barnea","year":"2011","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib5","series-title":"Party Policy in Modern Democracies","author":"Benoit","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib6","doi-asserted-by":"crossref","first-page":"1523","DOI":"10.1177\/0010414012463905","article-title":"A\u00a0complete data set of political regimes, 1800\u20132007","volume":"46","author":"Boix","year":"2013","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib7","doi-asserted-by":"crossref","first-page":"360","DOI":"10.1016\/j.electstud.2013.01.005","article-title":"Democratic electoral systems around the world, 1946\u20132011","volume":"32","author":"Bormann","year":"2013","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib8","series-title":"Das parlamentarische Wahlrecht: Ein Handbuch \u00fcber die Bildung der gesetzgebenden K\u00f6rperschaften in Europa \u2013 2. Band: Allgemeiner Teil","author":"Braunias","year":"1932"},{"key":"10.1016\/j.electstud.2016.07.002_bib9","series-title":"Parties and Democracy: Coalition Formation and Government Functioning in Twenty States","author":"Budge","year":"1993"},{"key":"10.1016\/j.electstud.2016.07.002_bib10","series-title":"Mapping Policy Preferences: Estimates for Parties, Electors, and Governments, 1945-1998","author":"Budge","year":"2001"},{"key":"10.1016\/j.electstud.2016.07.002_bib11","series-title":"Political Parties of Eastern Europe: a Guide to Politics in the Post-communist Era","author":"Bugajski","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib12","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1111\/j.1475-6765.1984.tb00080.x","article-title":"Left right political scales: some expert judgments","volume":"12","author":"Castles","year":"1984","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib13","doi-asserted-by":"crossref","first-page":"119","DOI":"10.1111\/j.1475-6765.2009.01888.x","article-title":"Measuring government duration and stability in Central Eastern European democracies","volume":"49","author":"Conrad","year":"2010","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib14","doi-asserted-by":"crossref","first-page":"193","DOI":"10.1111\/j.1467-9477.1994.tb00144.x","article-title":"Termination of Danish government coalitions: theoretical and empirical aspects","volume":"17","author":"Damgaard","year":"1994","journal-title":"Scand. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib15","doi-asserted-by":"crossref","first-page":"161","DOI":"10.1177\/1465116512461189","article-title":"The collective action of data collection: a data infrastructure on parties, elections and cabinets","volume":"14","author":"D\u00f6ring","year":"2013","journal-title":"Eur. Union Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib16","first-page":"17","article-title":"ParlGov: a new data infrastructure in comparative politics","volume":"23","author":"D\u00f6ring","year":"2013","journal-title":"APSA Comp. Politics Newsl."},{"key":"10.1016\/j.electstud.2016.07.002_bib17","first-page":"19","article-title":"A\u00a0user-driven and flexible procedure for data linking","volume":"2010","author":"Ejik","year":"2010","journal-title":"IASSIST Q."},{"key":"10.1016\/j.electstud.2016.07.002_bib18","doi-asserted-by":"crossref","first-page":"495","DOI":"10.1111\/j.1468-2508.2007.00546.x","article-title":"Punishment or protest? understanding European Parliament elections","volume":"69","author":"Hix","year":"2007","journal-title":"J.\u00a0Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib19","doi-asserted-by":"crossref","first-page":"965","DOI":"10.1177\/001041402236310","article-title":"Does left\/right structure party positions on European integration?","volume":"35","author":"Hooghe","year":"2002","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib20","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1177\/1354068895001001004","article-title":"Expert interpretations of party space and party locations in 42 societies","volume":"1","author":"Huber","year":"1995","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib21","doi-asserted-by":"crossref","first-page":"381","DOI":"10.1111\/1475-6765.12030","article-title":"Determinants of cabinet size","volume":"53","author":"Indridason","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib22","series-title":"Western European Political Parties: a Comprehensive Guide","year":"1989"},{"key":"10.1016\/j.electstud.2016.07.002_bib23","series-title":"Mapping Policy Preferences II: Estimates for Parties, Electors and Governments in Central and Eastern Europe, European Union and OECD 1990-2003","author":"Klingemann","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib24","series-title":"Policy and Party Competition","author":"Laver","year":"1992"},{"key":"10.1016\/j.electstud.2016.07.002_bib25","series-title":"The International Almanac of Electoral History","author":"Mackie","year":"1991"},{"key":"10.1016\/j.electstud.2016.07.002_bib26","doi-asserted-by":"crossref","first-page":"211","DOI":"10.1146\/annurev.polisci.1.1.211","article-title":"The party family and its study","volume":"1","author":"Mair","year":"1998","journal-title":"Annu. Rev. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib27","doi-asserted-by":"crossref","first-page":"654","DOI":"10.1111\/1475-6765.12054","article-title":"Defining and classifying technocrat-led and technocratic governments","volume":"53","author":"McDonnell","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib28","series-title":"Political Parties of Europe","year":"1983"},{"key":"10.1016\/j.electstud.2016.07.002_bib29","series-title":"Coalition Governments in Western Europe","year":"2000"},{"key":"10.1016\/j.electstud.2016.07.002_bib30","doi-asserted-by":"crossref","first-page":"869","DOI":"10.1111\/j.0304-4130.2004.00178.x","article-title":"Party government in Central Eastern European democracies: a data collection (1990-2003)","volume":"43","author":"M\u00fcller-Rommel","year":"2004","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib31","series-title":"Elections in Europe: a Data Handbook","year":"2010"},{"key":"10.1016\/j.electstud.2016.07.002_bib32","doi-asserted-by":"crossref","first-page":"283","DOI":"10.1111\/1475-6765.00471","article-title":"Measuring party orientations towards European integration: results from an expert survey","volume":"36","author":"Ray","year":"1999","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib33","series-title":"International Guide to Electoral Statistics; Guide International Des Statistiques \u00c9lectorales","first-page":"1","article-title":"Introduction","author":"Rokkan","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib34","series-title":"International guide to electoral statistics; Guide international des statistiques \u00e9lectorales","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib35","series-title":"Elections and Parties in New European Democracies","author":"Rose","year":"2003"},{"key":"10.1016\/j.electstud.2016.07.002_bib36","doi-asserted-by":"crossref","first-page":"270","DOI":"10.1016\/j.electstud.2013.10.001","article-title":"Updating the party government data set","volume":"34","author":"Seki","year":"2014","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib37","doi-asserted-by":"crossref","first-page":"391","DOI":"10.1111\/j.1475-6765.2005.00232.x","article-title":"How unstable? Volatility and the genuinely new parties in Eastern Europe","volume":"44","author":"Sikk","year":"2005","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib38","series-title":"Die Wahl der Parlamente und anderer Staatsorgane","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib39","doi-asserted-by":"crossref","first-page":"261","DOI":"10.1111\/1475-6765.00513","article-title":"Delegation and accountability in parliamentary democracies","volume":"37","author":"Str\u00f8m","year":"2000","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib40","series-title":"Veto Players: How Political Institutions Work","author":"Tsebelis","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib41","doi-asserted-by":"crossref","first-page":"187","DOI":"10.1017\/S0007123411000263","article-title":"Constitutionalizing party democracy: the constitutive codification of political parties in post-war Europe","volume":"42","author":"Van Biezen","year":"2012","journal-title":"Br. J. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib42","series-title":"Mapping Policy Preferences from Texts III: Statistical Solutions for Manifesto Analysts","author":"Volkens","year":"2013"},{"key":"10.1016\/j.electstud.2016.07.002_bib43","series-title":"Party Government in 48 Democracies (1945-1998): Composition, Duration, Personnel","author":"Woldendorp","year":"2000"}],"container-title":"Electoral Studies","original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,7,17]],"date-time":"2018-07-17T21:43:09Z","timestamp":1531863789000},"score":1,"resource":{"primary":{"URL":"https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0261379416301652"}},"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016,12]]},"references-count":43,"alternative-id":["S0261379416301652"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.electstud.2016.07.002","relation":{},"ISSN":["0261-3794"],"subject":["Political Science and International Relations"],"container-title-short":"Electoral Studies","published":{"date-parts":[[2016,12]]},"assertion":[{"value":"Elsevier","name":"publisher","label":"This article is maintained by"},{"value":"Mapping established democracies: Integrated data on parties, elections and cabinets","name":"articletitle","label":"Article Title"},{"value":"Electoral Studies","name":"journaltitle","label":"Journal Title"},{"value":"https:\/\/doi.org\/10.1016\/j.electstud.2016.07.002","name":"articlelink","label":"CrossRef DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content Type"},{"value":"\u00a9 2016 Elsevier Ltd. All rights reserved.","name":"copyright","label":"Copyright"}]}
 
 DOI content type: json-ld
 No acceptable resource available.
@@ -2577,7 +2567,7 @@ No acceptable resource available.
 <h2 class="anchored" data-anchor-id="linked-data-json-ld">Linked data json-ld</h2>
 <p><em>json-ld</em> is only available for content registered with <a href="https://datacite.org/">DataCite</a>.</p>
 <p>A DOI for an article does not return <em>json-ld</em> metadata.</p>
-<div class="cell" data-execution_count="4">
+<div id="656e9520" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(doi, <span class="st" style="color: #20794D;
@@ -2589,7 +2579,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [406]&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="72f1d704" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'No acceptable resource available.'</code></pre>
@@ -2597,7 +2587,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 </div>
 <hr>
 <p>A DOI for a dataset returns <em>json-ld</em> metadata.</p>
-<div class="cell" data-execution_count="6">
+<div id="80061c1c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(<span class="st" style="color: #20794D;
@@ -2611,13 +2601,13 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="068cbfa9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'{\n  "@context": "http://schema.org",\n  "@type": "Dataset",\n  "@id": "https://doi.org/10.7910/dvn/buwaaf",\n  "url": "https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF",\n  "name": "Party Facts – Version 2022",\n  "author": [\n    {\n      "name": "Paul Bederke",\n      "givenName": "Paul",\n      "familyName": "Bederke",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(University of Konstanz)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0001-7555-8656"\n    },\n    {\n      "name": "Holger Döring",\n      "givenName": "Holger",\n      "familyName": "Döring",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(GESIS – Leibniz Institute for the Social Sciences)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0002-6616-8805"\n    },\n    {\n      "name": "Sven Regel",\n      "givenName": "Sven",\n      "familyName": "Regel",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(WZB Berlin Social Science Center)"\n      },\n      "@type": "Person"\n    }\n  ],\n  "editor": {\n    "name": "Paul Bederke",\n    "givenName": "Paul",\n    "familyName": "Bederke",\n    "affiliation": {\n      "@type": "Organization",\n      "name": "(University of Konstanz)"\n    },\n    "contributorType": "ContactPerson",\n    "@type": "Person"\n  },\n  "description": "Party Facts links datasets on political parties",\n  "datePublished": "2022",\n  "schemaVersion": "http://datacite.org/schema/kernel-4",\n  "publisher": {\n    "@type": "Organization",\n    "name": "Harvard Dataverse"\n  },\n  "provider": {\n    "@type": "Organization",\n    "name": "datacite"\n  }\n}'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="d365343c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">doi_content.json()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{'@context': 'http://schema.org',
@@ -2667,7 +2657,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <p>“Content negotiated requests to doi.org that ask for a content type which isn’t”text/html” will be redirected to a metadata service hosted by the DOI’s registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers.”</p>
 </blockquote>
 <p>However, it seems that the content is returned by <em>doi.org</em>.</p>
-<div class="cell" data-execution_count="9">
+<div id="95c9715b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">for</span> request_history <span class="kw" style="color: #003B4F;
@@ -2681,7 +2671,7 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
 </div>
 </div>
 <p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
-<div class="cell" data-execution_count="10">
+<div id="08b5b9a8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">doi_url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
@@ -2938,7 +2928,7 @@ background-color: null;
 font-style: inherit;">"*.csv"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb2-4">    <span class="fu" style="color: #4758AB;
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3005,10 +2995,10 @@ font-style: inherit;">library</span>(gapminder)</span>
 <span id="cb1-4">dt_1 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
-<span id="cb1-5">    gapminder <span class="sc" style="color: #5E5E5E;
+<span id="cb1-5">  gapminder <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb1-6">    <span class="fu" style="color: #4758AB;
+<span id="cb1-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(country_codes, <span class="at" style="color: #657422;
 background-color: null;
@@ -3023,10 +3013,10 @@ font-style: inherit;">==</span> country))</span></code></pre></div>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">dt_2 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
-<span id="cb2-2">    gapminder <span class="sc" style="color: #5E5E5E;
+<span id="cb2-2">  gapminder <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb2-3">    <span class="fu" style="color: #4758AB;
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(country_codes, <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3039,10 +3029,10 @@ font-style: inherit;">==</span> country))</span></code></pre></div>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">dt_3 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
-<span id="cb3-2">    gapminder <span class="sc" style="color: #5E5E5E;
+<span id="cb3-2">  gapminder <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">    <span class="fu" style="color: #4758AB;
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">left_join</span>(country_codes, <span class="at" style="color: #657422;
 background-color: null;
@@ -3082,10 +3072,10 @@ font-style: inherit;">2</span>)</span>
 <span id="cb6-3">pl_dt <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span></span>
-<span id="cb6-4">    dt_1 <span class="sc" style="color: #5E5E5E;
+<span id="cb6-4">  dt_1 <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-5">    <span class="fu" style="color: #4758AB;
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">filter</span>(year <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -3094,7 +3084,7 @@ background-color: null;
 font-style: inherit;">max</span>(year)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-6">    <span class="fu" style="color: #4758AB;
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3115,7 +3105,7 @@ background-color: null;
 font-style: inherit;">y =</span> life_expectency)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-9">    <span class="fu" style="color: #4758AB;
+<span id="cb6-9">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3124,27 +3114,27 @@ background-color: null;
 font-style: inherit;">"darkgrey"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-10">    <span class="fu" style="color: #4758AB;
+<span id="cb6-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">scale_x_log10</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-11">    <span class="fu" style="color: #4758AB;
+<span id="cb6-11">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_smooth</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb6-12">    <span class="fu" style="color: #4758AB;
+<span id="cb6-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_text</span>(</span>
-<span id="cb6-13">        <span class="at" style="color: #657422;
+<span id="cb6-13">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sample_n</span>(pl_dt, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>),</span>
-<span id="cb6-14">        <span class="fu" style="color: #4758AB;
+<span id="cb6-14">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3153,7 +3143,7 @@ background-color: null;
 font-style: inherit;">y =</span> life_expectency, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">label =</span> country),</span>
-<span id="cb6-15">        <span class="at" style="color: #657422;
+<span id="cb6-15">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">vjust =</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -3164,7 +3154,7 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3.5</span></span>
-<span id="cb6-16">    )</span></code></pre></div>
+<span id="cb6-16">  )</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -3409,7 +3399,7 @@ background-color: null;
 font-style: inherit;">dependencies</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb3-2">    <span class="fu" style="color: #4758AB;
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -3422,17 +3412,17 @@ background-color: null;
 font-style: inherit;">packageVersion</span>(.x)))) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">    <span class="fu" style="color: #4758AB;
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(Package, version) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb3-4">    <span class="fu" style="color: #4758AB;
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(Package) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb3-5">    <span class="fu" style="color: #4758AB;
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">distinct</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -3450,7 +3440,7 @@ font-style: inherit;">distinct</span>()</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">callr</td>
-<td style="text-align: left;">3.7.3</td>
+<td style="text-align: left;">3.7.5</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">conflicted</td>
@@ -3458,7 +3448,7 @@ font-style: inherit;">distinct</span>()</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">dplyr</td>
-<td style="text-align: left;">1.1.2</td>
+<td style="text-align: left;">1.1.4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">purrr</td>
@@ -3466,11 +3456,11 @@ font-style: inherit;">distinct</span>()</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">renv</td>
-<td style="text-align: left;">1.0.2</td>
+<td style="text-align: left;">1.0.5</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">rmarkdown</td>
-<td style="text-align: left;">2.24</td>
+<td style="text-align: left;">2.26</td>
 </tr>
 </tbody>
 </table>
@@ -3508,9 +3498,9 @@ font-style: inherit;">dependencies</span>(), Package), require)</span></code></p
 background-color: null;
 font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.1 (2023-06-16)
+<pre><code>R version 4.3.3 (2024-02-29)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.3 LTS
+Running under: Ubuntu 22.04.4 LTS
 
 Matrix products: default
 BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
@@ -3531,18 +3521,18 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] rmarkdown_2.24   conflicted_1.2.0 callr_3.7.3      renv_1.0.2      
-[5] purrr_1.0.2      dplyr_1.1.2     
+[1] rmarkdown_2.26   conflicted_1.2.0 callr_3.7.5      renv_1.0.5      
+[5] purrr_1.0.2      dplyr_1.1.4     
 
 loaded via a namespace (and not attached):
- [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      
- [5] xfun_0.40         processx_3.8.2    generics_0.1.3    jsonlite_1.8.7   
- [9] glue_1.6.2        htmltools_0.5.6   ps_1.7.5          fansi_1.0.4      
-[13] evaluate_0.21     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.7       
-[17] lifecycle_1.0.3   memoise_2.0.1     compiler_4.3.1    htmlwidgets_1.6.2
-[21] pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33     R6_2.5.1         
-[25] tidyselect_1.2.0  utf8_1.2.3        pillar_1.9.0      magrittr_2.0.3   
-[29] tools_4.3.1       withr_2.5.0       cachem_1.0.8     </code></pre>
+ [1] vctrs_0.6.5       cli_3.6.2         knitr_1.45        rlang_1.1.3      
+ [5] xfun_0.42         processx_3.8.4    generics_0.1.3    jsonlite_1.8.8   
+ [9] glue_1.7.0        htmltools_0.5.7   ps_1.7.6          fansi_1.0.6      
+[13] evaluate_0.23     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.8       
+[17] lifecycle_1.0.4   memoise_2.0.1     compiler_4.3.3    htmlwidgets_1.6.4
+[21] pkgconfig_2.0.3   digest_0.6.35     R6_2.5.1          tidyselect_1.2.1 
+[25] utf8_1.2.4        pillar_1.9.0      magrittr_2.0.3    tools_4.3.3      
+[29] withr_3.0.0       cachem_1.0.8     </code></pre>
 </div>
 </div>
 <hr>
@@ -3695,7 +3685,7 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span>(.dt, .var) {</span>
-<span id="cb4-2">    <span class="fu" style="color: #4758AB;
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(.dt, <span class="at" style="color: #657422;
 background-color: null;
@@ -3794,7 +3784,7 @@ font-style: inherit;">"vs"</span>))</span></code></pre></div>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">cars <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb6-2">    <span class="fu" style="color: #4758AB;
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -3805,12 +3795,12 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n</span>(),</span>
-<span id="cb6-3">        <span class="at" style="color: #657422;
+<span id="cb6-3">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">all_of</span>({{ var_select }})</span>
-<span id="cb6-4">    )</span></code></pre></div>
+<span id="cb6-4">  )</span></code></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="table table-sm table-striped small">
@@ -3842,7 +3832,7 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span>(dt, var) {</span>
-<span id="cb7-2">    <span class="fu" style="color: #4758AB;
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
 background-color: null;
@@ -3853,12 +3843,12 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n</span>(),</span>
-<span id="cb7-3">        <span class="at" style="color: #657422;
+<span id="cb7-3">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">all_of</span>({{ var }})</span>
-<span id="cb7-4">    )</span>
+<span id="cb7-4">  )</span>
 <span id="cb7-5">}</span>
 <span id="cb7-6"></span>
 <span id="cb7-7"><span class="fu" style="color: #4758AB;
@@ -3897,7 +3887,7 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span>(dt, var) {</span>
-<span id="cb8-2">    <span class="fu" style="color: #4758AB;
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
 background-color: null;
@@ -3908,12 +3898,12 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n</span>(),</span>
-<span id="cb8-3">        <span class="at" style="color: #657422;
+<span id="cb8-3">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">all_of</span>({{ var }})</span>
-<span id="cb8-4">    )</span>
+<span id="cb8-4">  )</span>
 <span id="cb8-5">}</span>
 <span id="cb8-6"></span>
 <span id="cb8-7"><span class="fu" style="color: #4758AB;
@@ -3950,13 +3940,13 @@ background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span>(data, var) {</span>
-<span id="cb9-2">    data <span class="sc" style="color: #5E5E5E;
+<span id="cb9-2">  data <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">        <span class="fu" style="color: #4758AB;
+<span id="cb9-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(</span>
-<span id="cb9-4">            <span class="st" style="color: #20794D;
+<span id="cb9-4">      <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"mean_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -3965,7 +3955,7 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mean</span>({{ var }}),</span>
-<span id="cb9-5">            <span class="st" style="color: #20794D;
+<span id="cb9-5">      <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"sum_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -3974,7 +3964,7 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">sum</span>({{ var }}),</span>
-<span id="cb9-6">            <span class="st" style="color: #20794D;
+<span id="cb9-6">      <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"n_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -3983,7 +3973,7 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">n</span>()</span>
-<span id="cb9-7">        )</span>
+<span id="cb9-7">    )</span>
 <span id="cb9-8">}</span>
 <span id="cb9-9"></span>
 <span id="cb9-10"><span class="fu" style="color: #4758AB;

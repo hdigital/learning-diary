@@ -204,33 +204,33 @@ window.Quarto = {
 
 
 <p>Some JupyterLite inspired examples (see <a href="https://github.com/jupyterlite/jupyterlite/blob/main/examples/python.ipynb"><code>python.ipynb</code></a>) of using <a href="https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#IPython.display.display">iPython display</a>.</p>
-<div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML, JSON, Markdown, Math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-2" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, JSON, Markdown, Math, display</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="single-elements" class="level2">
 <h2 class="anchored" data-anchor-id="single-elements">Single elements</h2>
 <p>Individual elements can be rendered without <code>display()</code></p>
-<div id="cell-4" class="cell">
+<div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">"&lt;h3&gt;HTML Title&lt;/h3&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <h3 class="anchored">HTML Title</h3>
 </div>
 </div>
-<div id="cell-5" class="cell">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Markdown(<span class="st">"### Markdown title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="markdown-title" class="level3 cell-output cell-output-display cell-output-markdown">
+<section id="markdown-title" class="level3 cell-output cell-output-display cell-output-markdown" data-execution_count="3">
 <h3 class="anchored" data-anchor-id="markdown-title">Markdown title</h3>
 </section>
 </div>
-<div id="cell-6" class="cell">
+<div id="cell-6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Math(<span class="st">"a^2 + b^2 = c^2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
 <p><span class="math inline">\(\displaystyle a^2 + b^2 = c^2\)</span></p>
 </div>
 </div>
-<div id="cell-7" class="cell">
+<div id="cell-7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>JSON([<span class="st">"foo"</span>, {<span class="st">"bar"</span>: (<span class="st">"baz"</span>, <span class="va">None</span>, <span class="fl">1.0</span>, <span class="dv">2</span>)}], expanded<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
 </div>
 </div>
@@ -238,7 +238,7 @@ window.Quarto = {
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
 <p>Use display to show multipe elements from a single cell.</p>
-<div id="cell-9" class="cell">
+<div id="cell-9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>display(HTML(<span class="st">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="st">"__Markdown title__"</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>display(Math(<span class="st">"a^2 + b^2 = c^2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -252,7 +252,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle a^2 + b^2 = c^2\)</span></p>
 </div>
 </div>
-<div id="cell-10" class="cell">
+<div id="cell-10" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'first element'"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>display(<span class="st">"second element"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'third element'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -266,10 +266,10 @@ window.Quarto = {
 </div>
 <hr>
 <p>This does not work without <code>display()</code></p>
-<div id="cell-12" class="cell">
+<div id="cell-12" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">"first HTML element &lt;em&gt;not shown&lt;/em&gt;"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Markdown(<span class="st">"only last Markdown element _shown_"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="8">
 <p>only last Markdown element <em>shown</em></p>
 </div>
 </div>
@@ -278,12 +278,12 @@ window.Quarto = {
 <h1>JupyterLite examples</h1>
 <p>The <a href="https://github.com/jupyterlite/jupyterlite/blob/main/examples/python.ipynb">JupyterLite example <em>python.ipynb</em></a> made me aware of iPython display.</p>
 <p>Here are some of these examples. They are modified to get a nice table of content in Jupyter.</p>
-<div id="cell-14" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, HTML, JSON, Latex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML, JSON, Latex, Markdown</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="html" class="level2">
 <h2 class="anchored" data-anchor-id="html">HTML</h2>
-<div id="cell-16" class="cell">
+<div id="cell-16" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before display"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">"&lt;h3&gt;HTML Title&lt;/h3&gt;"</span></span>
@@ -298,22 +298,24 @@ After display</code></pre>
 <h3 class="anchored">HTML Title</h3>
 </div>
 </div>
-<div id="cell-17" class="cell">
+<div id="cell-17" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>HTML(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;div style="background: aliceblue; width: 200px; height: 100px; border-radius: 10px;"&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/div&gt;"""</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/div&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>  <span class="co"># noqa: E501</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 
         <div style="background: aliceblue; width: 200px; height: 100px; border-radius: 10px;">
         </div>
+    
 </div>
 </div>
 </section>
 <section id="markdown" class="level2">
 <h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
-<div id="cell-19" class="cell">
+<div id="cell-19" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="st">### Title</span></span>
@@ -323,7 +325,7 @@ After display</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="st">~~Strikethrough~~</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="title" class="level3 cell-output cell-output-display cell-output-markdown">
+<section id="title" class="level3 cell-output cell-output-display cell-output-markdown" data-execution_count="12">
 <h3 class="anchored" data-anchor-id="title">Title</h3>
 <p><strong>in bold</strong></p>
 <p><del>Strikethrough</del></p>
@@ -332,17 +334,18 @@ After display</code></pre>
 </section>
 <section id="pandas-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="pandas-dataframe">Pandas DataFrame</h2>
-<div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> string <span class="im">import</span> ascii_uppercase <span class="im">as</span> letters</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="bu">len</span>(letters))), columns<span class="op">=</span><span class="bu">list</span>(letters)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="cell-21" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> string <span class="im">import</span> ascii_uppercase <span class="im">as</span> letters</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    np.random.randint(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span>(<span class="dv">100</span>, <span class="bu">len</span>(letters))), columns<span class="op">=</span><span class="bu">list</span>(letters)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <div>
 
@@ -377,123 +380,123 @@ After display</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>52</td>
+<td>43</td>
 <td>27</td>
-<td>29</td>
-<td>4</td>
-<td>82</td>
-<td>95</td>
-<td>38</td>
-<td>45</td>
-<td>4</td>
+<td>22</td>
+<td>30</td>
+<td>11</td>
+<td>64</td>
+<td>63</td>
+<td>50</td>
 <td>90</td>
+<td>53</td>
 <td>...</td>
-<td>77</td>
-<td>69</td>
-<td>3</td>
-<td>37</td>
-<td>57</td>
-<td>66</td>
-<td>73</td>
-<td>92</td>
-<td>77</td>
-<td>56</td>
+<td>2</td>
+<td>38</td>
+<td>30</td>
+<td>53</td>
+<td>50</td>
+<td>93</td>
+<td>43</td>
+<td>44</td>
+<td>20</td>
+<td>28</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>79</td>
-<td>5</td>
-<td>88</td>
-<td>64</td>
-<td>48</td>
 <td>21</td>
-<td>54</td>
-<td>62</td>
-<td>4</td>
-<td>26</td>
-<td>...</td>
-<td>4</td>
-<td>33</td>
-<td>77</td>
 <td>73</td>
-<td>4</td>
-<td>39</td>
-<td>87</td>
-<td>36</td>
+<td>33</td>
+<td>14</td>
+<td>84</td>
+<td>79</td>
+<td>21</td>
+<td>77</td>
+<td>37</td>
+<td>...</td>
 <td>93</td>
-<td>97</td>
+<td>61</td>
+<td>32</td>
+<td>23</td>
+<td>38</td>
+<td>17</td>
+<td>10</td>
+<td>2</td>
+<td>89</td>
+<td>23</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>66</td>
-<td>27</td>
-<td>67</td>
-<td>34</td>
-<td>70</td>
-<td>81</td>
-<td>44</td>
-<td>9</td>
-<td>81</td>
-<td>65</td>
-<td>...</td>
-<td>54</td>
-<td>87</td>
-<td>82</td>
-<td>94</td>
-<td>11</td>
-<td>11</td>
+<td>60</td>
 <td>89</td>
-<td>42</td>
-<td>98</td>
+<td>4</td>
+<td>35</td>
+<td>13</td>
+<td>53</td>
+<td>64</td>
+<td>12</td>
+<td>13</td>
+<td>66</td>
+<td>...</td>
+<td>25</td>
 <td>6</td>
+<td>53</td>
+<td>6</td>
+<td>60</td>
+<td>19</td>
+<td>98</td>
+<td>65</td>
+<td>73</td>
+<td>89</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>24</td>
-<td>33</td>
-<td>89</td>
-<td>10</td>
-<td>81</td>
-<td>15</td>
-<td>73</td>
-<td>39</td>
-<td>97</td>
-<td>67</td>
-<td>...</td>
-<td>53</td>
-<td>93</td>
-<td>11</td>
-<td>73</td>
+<td>41</td>
+<td>64</td>
+<td>96</td>
+<td>28</td>
+<td>25</td>
+<td>8</td>
+<td>26</td>
 <td>65</td>
-<td>50</td>
-<td>82</td>
-<td>67</td>
-<td>80</td>
+<td>32</td>
+<td>30</td>
+<td>...</td>
+<td>4</td>
+<td>27</td>
+<td>53</td>
+<td>53</td>
+<td>11</td>
 <td>95</td>
+<td>10</td>
+<td>97</td>
+<td>88</td>
+<td>19</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>68</td>
-<td>30</td>
-<td>16</td>
-<td>48</td>
-<td>58</td>
+<td>15</td>
+<td>93</td>
 <td>72</td>
-<td>89</td>
-<td>36</td>
-<td>5</td>
-<td>50</td>
+<td>37</td>
+<td>17</td>
+<td>94</td>
+<td>16</td>
+<td>22</td>
+<td>34</td>
+<td>77</td>
 <td>...</td>
-<td>75</td>
-<td>92</td>
-<td>64</td>
-<td>3</td>
-<td>46</td>
-<td>33</td>
-<td>84</td>
+<td>22</td>
+<td>45</td>
+<td>22</td>
+<td>0</td>
+<td>35</td>
 <td>47</td>
-<td>60</td>
-<td>11</td>
+<td>15</td>
+<td>26</td>
+<td>53</td>
+<td>38</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -521,123 +524,123 @@ After display</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">95</td>
-<td>79</td>
-<td>69</td>
-<td>28</td>
-<td>24</td>
-<td>56</td>
-<td>66</td>
-<td>5</td>
-<td>62</td>
-<td>11</td>
-<td>91</td>
-<td>...</td>
-<td>74</td>
-<td>39</td>
-<td>93</td>
-<td>28</td>
-<td>29</td>
-<td>39</td>
 <td>96</td>
-<td>27</td>
-<td>99</td>
+<td>84</td>
+<td>86</td>
+<td>54</td>
+<td>51</td>
+<td>75</td>
+<td>39</td>
+<td>31</td>
+<td>78</td>
+<td>66</td>
+<td>...</td>
+<td>92</td>
+<td>97</td>
+<td>72</td>
+<td>58</td>
 <td>82</td>
+<td>51</td>
+<td>22</td>
+<td>51</td>
+<td>55</td>
+<td>13</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">96</td>
-<td>36</td>
-<td>93</td>
-<td>41</td>
-<td>48</td>
-<td>60</td>
-<td>29</td>
-<td>82</td>
-<td>10</td>
-<td>11</td>
-<td>27</td>
+<td>56</td>
+<td>54</td>
+<td>86</td>
+<td>21</td>
+<td>86</td>
+<td>16</td>
+<td>65</td>
+<td>56</td>
+<td>96</td>
+<td>62</td>
 <td>...</td>
-<td>84</td>
-<td>67</td>
+<td>19</td>
+<td>8</td>
+<td>29</td>
 <td>58</td>
-<td>93</td>
-<td>32</td>
-<td>77</td>
-<td>57</td>
-<td>98</td>
-<td>92</td>
-<td>77</td>
+<td>11</td>
+<td>28</td>
+<td>58</td>
+<td>55</td>
+<td>81</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">97</td>
-<td>59</td>
-<td>22</td>
-<td>78</td>
-<td>0</td>
-<td>88</td>
-<td>59</td>
-<td>33</td>
-<td>98</td>
-<td>29</td>
+<td>62</td>
+<td>7</td>
+<td>94</td>
+<td>1</td>
+<td>1</td>
 <td>73</td>
+<td>83</td>
+<td>82</td>
+<td>42</td>
+<td>63</td>
 <td>...</td>
-<td>43</td>
-<td>18</td>
-<td>78</td>
-<td>37</td>
-<td>77</td>
-<td>34</td>
-<td>74</td>
-<td>12</td>
-<td>18</td>
+<td>54</td>
+<td>59</td>
+<td>14</td>
+<td>92</td>
+<td>42</td>
+<td>54</td>
+<td>71</td>
+<td>33</td>
 <td>15</td>
+<td>7</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">98</td>
-<td>70</td>
-<td>9</td>
-<td>96</td>
-<td>31</td>
-<td>16</td>
-<td>15</td>
-<td>41</td>
-<td>65</td>
-<td>69</td>
-<td>40</td>
+<td>86</td>
+<td>88</td>
+<td>62</td>
+<td>58</td>
+<td>60</td>
+<td>83</td>
+<td>79</td>
+<td>26</td>
+<td>32</td>
+<td>68</td>
 <td>...</td>
-<td>63</td>
-<td>39</td>
-<td>27</td>
-<td>78</td>
-<td>6</td>
-<td>36</td>
-<td>85</td>
-<td>47</td>
-<td>66</td>
-<td>81</td>
+<td>44</td>
+<td>49</td>
+<td>8</td>
+<td>8</td>
+<td>80</td>
+<td>26</td>
+<td>34</td>
+<td>59</td>
+<td>86</td>
+<td>14</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">99</td>
-<td>32</td>
-<td>87</td>
-<td>3</td>
-<td>93</td>
-<td>39</td>
-<td>84</td>
-<td>17</td>
-<td>26</td>
-<td>12</td>
-<td>61</td>
+<td>91</td>
+<td>65</td>
+<td>43</td>
+<td>30</td>
+<td>51</td>
+<td>40</td>
+<td>97</td>
+<td>81</td>
+<td>35</td>
+<td>76</td>
 <td>...</td>
-<td>19</td>
-<td>11</td>
-<td>69</td>
-<td>85</td>
-<td>34</td>
-<td>32</td>
-<td>21</td>
-<td>68</td>
-<td>75</td>
-<td>56</td>
+<td>37</td>
+<td>2</td>
+<td>15</td>
+<td>24</td>
+<td>76</td>
+<td>99</td>
+<td>42</td>
+<td>84</td>
+<td>87</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
@@ -650,41 +653,38 @@ After display</code></pre>
 </section>
 <section id="math" class="level2">
 <h2 class="anchored" data-anchor-id="math">Math</h2>
-<div id="cell-23" class="cell">
+<div id="cell-23" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Math</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>Math(<span class="vs">r"F(k) = \int_{-\infty}^{\infty} f(x) e^{2\pi i k} dx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="14">
 <p><span class="math inline">\(\displaystyle F(k) = \int_{-\infty}^{\infty} f(x) e^{2\pi i k} dx\)</span></p>
 </div>
 </div>
 </section>
 <section id="latex" class="level2">
 <h2 class="anchored" data-anchor-id="latex">Latex</h2>
-<div id="cell-25" class="cell">
+<div id="cell-25" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Latex(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r"""\begin</span><span class="sc">{eqnarray}</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="vs">\nabla \times \vec{\mathbf</span><span class="sc">{B}</span><span class="vs">} -\, \frac1c\, \frac{\partial\vec{\mathbf</span><span class="sc">{E}}}</span><span class="vs">{\partial t} &amp; = \frac{4\pi}</span><span class="sc">{c}</span><span class="vs">\vec{\mathbf</span><span class="sc">{j}</span><span class="vs">} \\</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="vs">\nabla \cdot \vec{\mathbf</span><span class="sc">{E}</span><span class="vs">} &amp; = 4 \pi \rho \\</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="vs">\nabla \times \vec{\mathbf</span><span class="sc">{E}</span><span class="vs">}\, +\, \frac1c\, \frac{\partial\vec{\mathbf</span><span class="sc">{B}}}</span><span class="vs">{\partial t} &amp; = \vec{\mathbf</span><span class="sc">{0}</span><span class="vs">} \\</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="vs">\nabla \cdot \vec{\mathbf</span><span class="sc">{B}</span><span class="vs">} &amp; = 0</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="vs">\end</span><span class="sc">{eqnarray}</span><span class="vs">"""</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><span class="math display">\[\begin{eqnarray}
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \\
-\nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \\
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \\
-\nabla \cdot \vec{\mathbf{B}} &amp; = 0
-\end{eqnarray}\]</span></p>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r"""</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="vs">      \begin</span><span class="sc">{eqnarray}</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="vs">        \nabla \times \vec{\mathbf</span><span class="sc">{B}</span><span class="vs">} -\, \frac1c\, \frac{\partial\vec{\mathbf</span><span class="sc">{E}}}</span><span class="vs">{\partial t} &amp; = \frac{4\pi}</span><span class="sc">{c}</span><span class="vs">\vec{\mathbf</span><span class="sc">{j}</span><span class="vs">} \\</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="vs">        \nabla \cdot \vec{\mathbf</span><span class="sc">{E}</span><span class="vs">} &amp; = 4 \pi \rho \\</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="vs">        \nabla \times \vec{\mathbf</span><span class="sc">{E}</span><span class="vs">}\, +\, \frac1c\, \frac{\partial\vec{\mathbf</span><span class="sc">{B}}}</span><span class="vs">{\partial t} &amp; = \vec{\mathbf</span><span class="sc">{0}</span><span class="vs">} \\</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="vs">        \nabla \cdot \vec{\mathbf</span><span class="sc">{B}</span><span class="vs">} &amp; = 0</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="vs">      \end</span><span class="sc">{eqnarray}</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="vs">      """</span>  <span class="co"># noqa: E501</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>&lt;IPython.core.display.Latex object&gt;</code></pre>
 </div>
 </div>
 </section>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="cell-27" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>JSON([<span class="st">"foo"</span>, {<span class="st">"bar"</span>: (<span class="st">"baz"</span>, <span class="va">None</span>, <span class="fl">1.0</span>, <span class="dv">2</span>)}], metadata<span class="op">=</span>{}, expanded<span class="op">=</span><span class="va">True</span>, root<span class="op">=</span><span class="st">"test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="cell-27" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>JSON([<span class="st">"foo"</span>, {<span class="st">"bar"</span>: (<span class="st">"baz"</span>, <span class="va">None</span>, <span class="fl">1.0</span>, <span class="dv">2</span>)}], metadata<span class="op">=</span>{}, expanded<span class="op">=</span><span class="va">True</span>, root<span class="op">=</span><span class="st">"test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
 </div>
 </div>
@@ -692,24 +692,25 @@ After display</code></pre>
 <section id="network-requests-and-json" class="level2">
 <h2 class="anchored" data-anchor-id="network-requests-and-json">Network requests and JSON</h2>
 <p>Here, I use <em>requests</em> instead of the JupyterLite version with <em>js</em>.</p>
-<div id="cell-29" class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install <span class="op">-</span>q requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Note: you may need to restart the kernel to use updated packages.</code></pre>
+<pre><code>/Users/hd/hd/learning/learning-diary/.venv/bin/python: No module named pip
+Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">"https://httpbin.org/get"</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>r.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>'{\n  "args": {}, \n  "headers": {\n    "Accept": "*/*", \n    "Accept-Encoding": "gzip, deflate", \n    "Host": "httpbin.org", \n    "User-Agent": "python-requests/2.31.0", \n    "X-Amzn-Trace-Id": "Root=1-65626017-34b8b75d061503f21747f6c4"\n  }, \n  "origin": "79.241.77.212", \n  "url": "https://httpbin.org/get"\n}\n'</code></pre>
+<div id="cell-30" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">"https://httpbin.org/get"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>r.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>'{\n  "args": {}, \n  "headers": {\n    "Accept": "*/*", \n    "Accept-Encoding": "gzip, deflate", \n    "Host": "httpbin.org", \n    "User-Agent": "python-requests/2.31.0", \n    "X-Amzn-Trace-Id": "Root=1-65fab6bc-1087d67f265788bf1f4c3a6d"\n  }, \n  "origin": "79.212.250.177", \n  "url": "https://httpbin.org/get"\n}\n'</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>JSON(r.json())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="cell-31" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>JSON(r.json())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
 </div>
 </div>
