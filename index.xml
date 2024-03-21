@@ -10,7 +10,68 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.4.551</generator>
-<lastBuildDate>Sat, 16 Mar 2024 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 20 Mar 2024 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Requests in JupyterLite</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-03-21-post/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
+<p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
+<p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
+<div id="42941fe9" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># import micropip</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># await micropip.install("requests")</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> urllib3</span>
+<span id="cb1-5">urllib3.disable_warnings()</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> requests</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">headers <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"accept"</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>}</span>
+<span id="cb1-10">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> requests.get(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://doi.org/10.5281/zenodo.7043510"</span>, headers<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>headers)</span>
+<span id="cb1-11"></span>
+<span id="cb1-12">r.text</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
+</div>
+</div>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-post/jupyterlite-urllib3.png" class="img-fluid"></p>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-post/jupyter-lite-logo.png" class="img-fluid"></p>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-03-21-post/</guid>
+  <pubDate>Wed, 20 Mar 2024 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-21-post/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Today I learned (TIL)</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-til/</link>
@@ -4058,71 +4119,6 @@ font-style: inherit;">"Hi {name}. How are you?"</span>)</span></code></pre></div
   <guid>https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/</guid>
   <pubDate>Fri, 23 Jun 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-24-str-glue/tidyverse-glue.png" medium="image" type="image/png" height="167" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="conditional-r-cells" class="level1">
-<h1>Conditional R cells</h1>
-<p>For R notebooks in Quarto not all information that can be presented in an html-document is feasible for the respective pdf-document. So sometimes, I want to include information in html but not in the pdf.</p>
-<p>Interactive data tables with <a href="https://glin.github.io/reactable/">reactable</a> are an example. They allow to explore smaller data sets quickly within a notebook, but work only in html documents. A pdf simply fails to render with Quarto.</p>
-<p>So I was looking for a solution to execute R code in a notebook only for the html-document but not the pdf.</p>
-<p>Conditional chunk execution is not implemented in Quarto so far — see <a href="https://github.com/quarto-dev/quarto-cli/discussions/3260">ticket #3260</a>.</p>
-<p>However, for R I found an approach that is working well.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> (knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is_html_output</span>()) {</span>
-<span id="cb1-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"code block run"</span>)</span>
-<span id="cb1-3">}</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "code block run"</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">if</span> (<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span>knitr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">is_html_output</span>()) {</span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"code block not run"</span>)</span>
-<span id="cb3-3">}</span></code></pre></div>
-</div>
-<hr>
-<p>An example for a notebook with a dynamic table in a <a href="../../snippets/r-cell-conditional.html">html document</a> and a static table in the <a href="../../snippets/r-cell-conditional.pdf">pdf document</a></p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/</guid>
-  <pubDate>Mon, 19 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-20-r-cell-conditional/r-cell-conditional.png" medium="image" type="image/png" height="88" width="144"/>
 </item>
 </channel>
 </rss>
