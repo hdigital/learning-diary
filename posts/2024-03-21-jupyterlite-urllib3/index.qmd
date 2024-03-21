@@ -1,0 +1,44 @@
+---
+date: "2024-03-21"
+image: jupyter-lite-logo.png
+jupyter: python3
+categories: [Python]
+---
+
+# Requests in JupyterLite
+
+In a recent [post](../2023-11-23-jupyter-lite), I tried to use
+[requests](https://requests.readthedocs.io/en/latest/user/quickstart/) in
+[JupyterLite](https://jupyterlite.github.io/demo/lab/index.html).
+It did not work at the time.
+
+Today, I have found out that
+[urllib3](https://github.com/urllib3/urllib3) recently
+[announced](https://urllib3.readthedocs.io/en/stable/changelog.html#id2)
+support for
+[Pyodide](https://pyodide.org/en/stable/),
+the Python distribution used by JupyterLite.
+
+Now, you can use `requests` or `urllib3` in JupyterLite and this code does also
+work in the browser environment (install packages with `micropip`).
+
+```{python}
+# import micropip
+# await micropip.install("requests")
+
+import urllib3
+urllib3.disable_warnings()
+
+import requests
+
+headers = {"accept": "text/x-bibliography"}
+r = requests.get("https://doi.org/10.5281/zenodo.7043510", headers=headers)
+
+r.text
+```
+
+![](jupyterlite-urllib3.png)
+
+---
+
+![](jupyter-lite-logo.png)
