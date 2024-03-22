@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-03-22">
+<meta name="dcterms.date" content="2024-03-21">
 
-<title>Learning - R in Docker and Codespaces</title>
+<title>Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -71,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -115,10 +149,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">R in Docker and Codespaces</h1>
+      <h1 class="title">Requests in JupyterLite</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">cloud</div>
+                <div class="quarto-category">Python</div>
               </div>
                   </div>
   </div>
@@ -130,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 22, 2024</p>
+        <p class="date">March 21, 2024</p>
       </div>
     </div>
     
@@ -141,16 +174,7 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#docker" id="toc-docker" class="nav-link active" data-scroll-target="#docker">Docker</a></li>
-  <li><a href="#codespaces" id="toc-codespaces" class="nav-link" data-scroll-target="#codespaces">Codespaces</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -158,32 +182,31 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>For my work, I use <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> regularly to create fully reproducible environments.</p>
-<section id="docker" class="level2">
-<h2 class="anchored" data-anchor-id="docker">Docker</h2>
-<p>Finding a configuration for <a href="https://www.r-project.org/">R</a> with <a href="https://rocker-project.org/">Rocker</a> has taken some effort over time and led to several changes.</p>
-<p>Recently, working with <a href="https://pak.r-lib.org/">pak</a> has worked well for me to install all R packages when the container is build.</p>
-<p>Here is a minimal example for such a workflow.</p>
-<pre class="docker"><code>FROM rocker/tidyverse
+<p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
+<p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
+<p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
+<div id="005719c0" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import micropip</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># await micropip.install("requests")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib3</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>urllib3.disable_warnings()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">"accept"</span>: <span class="st">"text/x-bibliography"</span>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">"https://doi.org/10.5281/zenodo.7043510"</span>, headers<span class="op">=</span>headers)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>r.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
+</div>
+</div>
+<p><img src="jupyterlite-urllib3.png" class="img-fluid"></p>
+<hr>
+<p><img src="jupyter-lite-logo.png" class="img-fluid"></p>
 
-WORKDIR /home/rstudio
 
-COPY pkg.lock .
-RUN R -e 'pak::lockfile_install()'</code></pre>
-<p>The full example is available in my <a href="https://github.com/hdigital/starter-r/blob/main/Dockerfile">R template</a>. There, I use an <a href="https://github.com/hdigital/starter-r/blob/main/utils/packages-update.R">R script</a> to create a <code>pkg.lock</code> with the pinned versions of R packages used in a project.</p>
-</section>
-<section id="codespaces" class="level2">
-<h2 class="anchored" data-anchor-id="codespaces">Codespaces</h2>
-<p>Working with Python, I use <a href="../2023-06-04-codespaces/">Codespaces</a> quite regularly now. Figuring out a configuration with R took me some time. By now, I have a configuration that I feel comfortable with.</p>
-<p>I started with the example from <a href="https://github.com/revodavid/devcontainers-rstudio">github.com/revodavid/devcontainers-rstudio</a> that demonstrates running RStudio in Codespaces.</p>
-<p>Over time, I moved to a codespace configuration that uses more of the settings in <a href="https://github.com/hdigital/starter-r/blob/main/.devcontainer/devcontainer.json"><code>devcontainer.json</code></a> and a minimal <a href="https://github.com/hdigital/starter-r/blob/main/.devcontainer/Dockerfile"><code>Dockerfile</code></a>.</p>
-<p>The codespace includes R, Python and Quarto. It takes quite some to build though.</p>
-<p>Overall, it is a nice way to briefly explore an R project in a browser without installing any software locally. I keep codespaces only for a short time and delete them quickly. That is why I use <a href="2023-04-27-posit-cloud/">Posit Cloud</a> as a persistent online R environment.</p>
-<p>Most of my R development is still in a local RStudio environment though. For reproducibility, I add a Docker configuration and make sure that the final version of a project can be replicated in that environment and has pinned versions of all dependencies.</p>
-<p><img src="r-codespace.png" class="img-fluid"></p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
