@@ -1,0 +1,48 @@
+---
+date: "2024-03-22"
+image: rocker-logo.png
+title: R in Docker and Codespaces
+categories: [R, cloud]
+format:
+  html:
+    toc: true
+---
+
+For my work, I use [Docker](https://en.wikipedia.org/wiki/Docker_(software))
+regularly to create fully reproducible environments.
+
+## Docker
+
+Finding a configuration for [R](https://www.r-project.org/) with [Rocker](https://rocker-project.org/) has taken some effort over time and led to several changes.
+
+Recently, working with [pak](https://pak.r-lib.org/) has worked well for me to install all R packages when the container is build.
+
+Here is a minimal example for such a workflow.
+
+```Docker
+FROM rocker/tidyverse
+
+WORKDIR /home/rstudio
+
+COPY pkg.lock .
+RUN R -e 'pak::lockfile_install()'
+```
+
+The full example is available in my [R template](https://github.com/hdigital/starter-r/blob/main/Dockerfile). There, I use an [R script](https://github.com/hdigital/starter-r/blob/main/utils/packages-update.R) to create a `pkg.lock` with the pinned versions of R packages used in a project.
+
+## Codespaces
+
+Working with Python, I use [Codespaces](../2023-06-04-codespaces/) quite regularly now. Figuring out a configuration with R took me some time. By now, I have a configuration that I feel comfortable with.
+
+I started with the example from [github.com/revodavid/devcontainers-rstudio
+](https://github.com/revodavid/devcontainers-rstudio) that demonstrates running RStudio in Codespaces.
+
+Over time, I moved to a codespace configuration that uses more of the settings in [`devcontainer.json`](https://github.com/hdigital/starter-r/blob/main/.devcontainer/devcontainer.json) and a minimal [`Dockerfile`](https://github.com/hdigital/starter-r/blob/main/.devcontainer/Dockerfile).
+
+The codespace includes R, Python and Quarto. It takes quite some to build though.
+
+Overall, it is a nice way to briefly explore an R project in a browser without installing any software locally. I keep codespaces only for a short time and delete them quickly. That is why I use [Posit Cloud](2023-04-27-posit-cloud/) as a persistent online R environment.
+
+Most of my R development is still in a local RStudio environment though. For reproducibility, I add a Docker configuration and make sure that the final version of a project can be replicated in that environment and has pinned versions of all dependencies.
+
+![](r-codespace.png)
