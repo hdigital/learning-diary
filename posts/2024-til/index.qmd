@@ -1,5 +1,5 @@
 ---
-date: "2024-03-17"
+date: "2024-04-01"
 title: Today I learned (TIL)
 image: computer_ai.png
 format:
@@ -10,6 +10,10 @@ format:
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
 
+## 1. April
+
+For Python, I've configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration `export PIP_REQUIRE_VIRTUALENV="true"` is set in my .zshrc file. The configuration was inspired by the post [On pip isolation](https://micro.webology.dev/2024/03/04/pip-isolation.html).
+
 ## 17. March
 
 Creating the [last post](../2024-02-26-f-strings) I realized that it is more convenient to work in VS Code with a Jupyter notebook (_ipynb_) than in a Quarto document (_qmd_). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.
@@ -18,9 +22,6 @@ The documents can be converted into the other format with
 
 `quarto convert`
 
-## 17. March
-
-By now, I have figured out how to configure R in Codespaces.
 
 ## 10. March
 
