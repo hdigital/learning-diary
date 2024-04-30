@@ -58,7 +58,7 @@ Rscript snippets/packages-install.R
 
 ### Python
 
-Python packages -- see [requirements.txt](requirements.txt)
+Python packages — see [requirements.txt](requirements.txt)
 
 ```sh
 python -m pip install -r requirements.txt
@@ -70,6 +70,16 @@ Python packages used in posts
 python -m pip install -r snippets/requirements-posts.txt
 ```
 
+#### Docker
+
+Use Docker to run RStudio in a browser with all dependencies.
+
+<http://localhost:8787/>
+
+```sh
+docker compose up
+```
+
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/) – Copyright (c) 2023 Holger Döring
+[MIT](https://choosealicense.com/licenses/mit/) – Copyright (c) 2024 Holger Döring
