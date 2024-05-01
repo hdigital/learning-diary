@@ -10,7 +10,72 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Sun, 31 Mar 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 29 Apr 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>pip install in cell</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Sometimes, I want to install <em>pip</em> packages in a Jupyter notebook without specifying the packages and pinning them in a <code>requirements.txt</code>.</p>
+<p>This is mainly for short notebooks that I want to share and that should run without any modifications.</p>
+<p>I have now found a solution with two IPython magic commands.</p>
+<p><code>%%capture</code> suppresses cell output so that no information about the pip install or the already installed packages is added to the notebook.</p>
+<p><code>%pip install</code> installs the specified packages.</p>
+<div id="cell-2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%%</span>capture</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span>pip install goose3</span></code></pre></div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> goose3 <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> Goose</span>
+<span id="cb2-2"></span>
+<span id="cb2-3">url <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://www.bbc.com/news/world-europe-68929873"</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5">g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Goose()</span>
+<span id="cb2-6">article <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> g.extract(url<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>url)</span>
+<span id="cb2-7"></span>
+<span id="cb2-8">article.meta_description</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'Nicaragua accused Germany of breaching the UN genocide convention by sending military hardware to Israel.'</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/jupyter-logo.png" class="img-fluid figure-img"></p>
+<figcaption>Jupyter</figcaption>
+</figure>
+</div>
+
+
+
+ ]]></description>
+  <category>Python</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/</guid>
+  <pubDate>Mon, 29 Apr 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
+</item>
 <item>
   <title>Today I learned (TIL)</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-til/</link>
@@ -3679,443 +3744,6 @@ loaded via a namespace (and not attached):
   <guid>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/</guid>
   <pubDate>Sat, 15 Jul 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="115" width="144"/>
-</item>
-<item>
-  <title>dplyr programming</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I wanted to use some dynamic variable names in dplyr and had to look up <a href="https://dplyr.tidyverse.org/articles/programming.html">dplyr programming</a> again.</p>
-<p>This is something I have to look up regularly and where I am still not comfortable with the terminology. Here, I find the respective tidyverse documentation rather challenging. However, dplyr programming is also something that I use rarely.</p>
-<p>So here is a brief summary of my recent exploration of the topic.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">cars <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as_tibble</span>(datasets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>mtcars)</span>
-<span id="cb1-4">var_select <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cyl"</span></span></code></pre></div>
-</div>
-<section id="pronoun-.data" class="level2">
-<h2 class="anchored" data-anchor-id="pronoun-.data">Pronoun .data</h2>
-<p>Use the <code>.data</code> pronoun to access a variable name in a character object in a dplyr workflow.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">cars <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count</span>(.data[[var_select]])</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">cars <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count</span>(.data[[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cyl"</span>]])</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="embrace-argument" class="level2">
-<h2 class="anchored" data-anchor-id="embrace-argument">Embrace argument</h2>
-<p>A variable used as a function argument can be <em>embraced</em> with double braces to use it in a dplyr workflow.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">count_var <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(.dt, .var) {</span>
-<span id="cb4-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(.dt, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">all_of</span>({{ .var }}))</span>
-<span id="cb4-3">}</span>
-<span id="cb4-4"></span>
-<span id="cb4-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count_var</span>(cars, var_select)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count_var</span>(cars, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(var_select, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"vs"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">vs</th>
-<th style="text-align: right;">n</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="name-injection" class="level2">
-<h2 class="anchored" data-anchor-id="name-injection">Name injection</h2>
-<p>Name injection can be used to assign new variable names in a dplyr workflow.</p>
-<p><code>:=</code> is used as the assignment operator with dynamic new variable names.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">cars <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"{var_select}_count"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(),</span>
-<span id="cb6-3">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">all_of</span>({{ var_select }})</span>
-<span id="cb6-4">  )</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">cyl_count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">count_var2 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(dt, var) {</span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"{var}_count"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(),</span>
-<span id="cb7-3">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">all_of</span>({{ var }})</span>
-<span id="cb7-4">  )</span>
-<span id="cb7-5">}</span>
-<span id="cb7-6"></span>
-<span id="cb7-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count_var2</span>(cars, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cyl"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">cyl_count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">count_var3 <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(dt, var) {</span>
-<span id="cb8-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(dt, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"{{var}}_count"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>(),</span>
-<span id="cb8-3">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">.by =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">all_of</span>({{ var }})</span>
-<span id="cb8-4">  )</span>
-<span id="cb8-5">}</span>
-<span id="cb8-6"></span>
-<span id="cb8-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">count_var3</span>(cars, var_select)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">cyl</th>
-<th style="text-align: right;">var_select_count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">14</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">summarise_dt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">function</span>(data, var) {</span>
-<span id="cb9-2">  data <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise</span>(</span>
-<span id="cb9-4">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mean_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mean</span>({{ var }}),</span>
-<span id="cb9-5">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"sum_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sum</span>({{ var }}),</span>
-<span id="cb9-6">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"n_{{var}}"</span> <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="er" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">n</span>()</span>
-<span id="cb9-7">    )</span>
-<span id="cb9-8">}</span>
-<span id="cb9-9"></span>
-<span id="cb9-10"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">summarise_dt</span>(cars, cyl)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">mean_cyl</th>
-<th style="text-align: right;">sum_cyl</th>
-<th style="text-align: right;">n_cyl</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">6.1875</td>
-<td style="text-align: right;">198</td>
-<td style="text-align: right;">32</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/dplyr-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>tidyverse</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/</guid>
-  <pubDate>Thu, 29 Jun 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-06-30-dplyr-programming/dplyr-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 </channel>
 </rss>
