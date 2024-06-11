@@ -1,5 +1,5 @@
 ---
-date: "2024-04-01"
+date: "2024-06-11"
 title: Today I learned (TIL)
 image: computer_ai.png
 format:
@@ -9,6 +9,15 @@ format:
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+
+## 11. June
+
+Use [git force push safely](https://adamj.eu/tech/2023/10/31/git-force-push-safely/) (2023) with
+
+```sh
+git push --force-with-lease --force-if-includes
+```
+
 
 ## 1. April
 
