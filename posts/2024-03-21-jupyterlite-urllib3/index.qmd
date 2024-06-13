@@ -29,7 +29,7 @@ work in the browser environment (install packages with `micropip`).
 import urllib3
 urllib3.disable_warnings()
 
-import requests
+import requests  # noqa: E402
 
 headers = {"accept": "text/x-bibliography"}
 r = requests.get("https://doi.org/10.5281/zenodo.7043510", headers=headers)
