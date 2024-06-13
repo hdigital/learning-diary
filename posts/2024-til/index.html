@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-04-01">
+<meta name="dcterms.date" content="2024-06-11">
 
 <title>Learning - Today I learned (TIL)</title>
 <style>
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -126,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 1, 2024</p>
+        <p class="date">June 11, 2024</p>
       </div>
     </div>
     
@@ -142,7 +176,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#april" id="toc-april" class="nav-link active" data-scroll-target="#april">1. April</a></li>
+  <li><a href="#june" id="toc-june" class="nav-link active" data-scroll-target="#june">11. June</a></li>
+  <li><a href="#april" id="toc-april" class="nav-link" data-scroll-target="#april">1. April</a></li>
   <li><a href="#march" id="toc-march" class="nav-link" data-scroll-target="#march">17. March</a></li>
   <li><a href="#march-1" id="toc-march-1" class="nav-link" data-scroll-target="#march-1">10. March</a></li>
   </ul>
@@ -157,6 +192,11 @@ ul.task-list li input[type="checkbox"] {
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+<section id="june" class="level2">
+<h2 class="anchored" data-anchor-id="june">11. June</h2>
+<p>Use <a href="https://adamj.eu/tech/2023/10/31/git-force-push-safely/">git force push safely</a> (2023) with</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--force-with-lease</span> <span class="at">--force-if-includes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="april" class="level2">
 <h2 class="anchored" data-anchor-id="april">1. April</h2>
 <p>For Python, I’ve configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration <code>export PIP_REQUIRE_VIRTUALENV="true"</code> is set in my .zshrc file. The configuration was inspired by the post <a href="https://micro.webology.dev/2024/03/04/pip-isolation.html">On pip isolation</a>.</p>
