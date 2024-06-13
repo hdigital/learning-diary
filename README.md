@@ -70,7 +70,9 @@ Python packages used in posts
 python -m pip install -r snippets/requirements-posts.txt
 ```
 
-#### Docker
+_Note_ — Python version of [Rocker](https://github.com/rocker-org/rocker-versioned2) image used and specified in `.python-version`.
+
+### Docker
 
 Use Docker to run RStudio in a browser with all dependencies.
 
