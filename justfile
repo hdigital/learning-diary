@@ -29,7 +29,7 @@ pip-update:
 
 # create new post
 post:
-  cd snippets && python create-post.py
+  python snippets/create-post.py
 
 # render and publish page
 publish:

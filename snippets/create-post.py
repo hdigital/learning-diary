@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """This module creates a post draft from a template folder."""
 
 import os
@@ -5,17 +6,19 @@ import shutil
 from datetime import datetime
 
 # Check if the script is run in the current folder
-if os.getcwd() != os.path.dirname(os.path.abspath(__file__)):
-    raise Exception("The script is not run in the current folder.")
+if os.getcwd() != os.path.dirname(os.path.dirname(os.path.abspath(__file__))):
+    raise Exception("The script is not run in project folder.")
+
 
 ## Create folder with current date from template
 
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-source_folder = "../posts/2024-z-template/"
-destination_folder = f"../posts/{current_date}-post/"
+source_folder = "posts/2024-z-template/"
+destination_folder = f"posts/{current_date}-post/"
 
 shutil.copytree(source_folder, destination_folder)
+
 
 ## Update date in header
 
