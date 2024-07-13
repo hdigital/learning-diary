@@ -1,0 +1,42 @@
+---
+date: "2024-07-13"
+image: doi-logo.png
+# jupyter: python3
+categories: [R, API]
+---
+
+# DOI reference with httr2
+
+Get citation references from DOI API with httr2.
+
+```{r}
+#| code-fold: false
+#| message: false
+
+library(tidyverse)
+library(httr2)
+
+get_doi_reference <- function(doi) {
+  request(paste0("https://doi.org/", doi)) |>
+    req_headers("Accept" = "text/x-bibliography") |>
+    req_perform() |>
+    resp_body_string()
+}
+
+references <-
+  tibble(
+    doi = c(
+      "10.1177/1465116507076430",
+      "10.1080/01402382.2013.783347",
+      "10.1177/0958928715573481",
+      "10.1017/pan.2021.28"
+    )
+  ) |>
+  mutate(reference = map_chr(doi, get_doi_reference))
+
+references
+```
+
+---
+
+![](doi-logo.png)
