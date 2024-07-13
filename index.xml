@@ -9,8 +9,141 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.4.555</generator>
-<lastBuildDate>Mon, 10 Jun 2024 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.5.54</generator>
+<lastBuildDate>Fri, 12 Jul 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-07-13-post/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="doi-reference-with-httr2" class="level1">
+<h1>DOI reference with httr2</h1>
+<p>Get citation references from DOI API with httr2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(httr2)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">get_doi_reference <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(doi) {</span>
+<span id="cb1-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">request</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://doi.org/"</span>, doi)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">req_headers</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Accept"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"text/x-bibliography"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">req_perform</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">resp_body_string</span>()</span>
+<span id="cb1-9">}</span>
+<span id="cb1-10"></span>
+<span id="cb1-11">references <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb1-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">doi =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb1-14">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1177/1465116507076430"</span>,</span>
+<span id="cb1-15">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1080/01402382.2013.783347"</span>,</span>
+<span id="cb1-16">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"10.1017/pan.2021.28"</span></span>
+<span id="cb1-17">    )</span>
+<span id="cb1-18">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">reference =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_chr</span>(doi, get_doi_reference))</span>
+<span id="cb1-20"></span>
+<span id="cb1-21">references</span></code></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">doi</th>
+<th style="text-align: left;">reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">10.1177/1465116507076430</td>
+<td style="text-align: left;">Döring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207–228. https://doi.org/10.1177/1465116507076430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.1080/01402382.2013.783347</td>
+<td style="text-align: left;">Döring, H., &amp; Hellström, J. (2013). Who Gets into Government? Coalition Formation in European Democracies. West European Politics, 36(4), 683–703. https://doi.org/10.1080/01402382.2013.783347</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.1017/pan.2021.28</td>
+<td style="text-align: left;">Herrmann, M., &amp; Döring, H. (2021). Party Positions from Wikipedia Classifications of Party Ideology. Political Analysis, 31(1), 22–41. https://doi.org/10.1017/pan.2021.28</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-13-post/doi-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>API</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-07-13-post/</guid>
+  <pubDate>Fri, 12 Jul 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-13-post/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Today I learned (TIL)</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-til/</link>
@@ -177,7 +310,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="f849660b" class="cell" data-execution_count="1">
+<div id="26465ece" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -562,6 +695,7 @@ font-style: inherit;">---</span></span>
 background-color: null;
 font-style: inherit;">title</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;"> </span><span class="st" style="color: #20794D;
@@ -571,6 +705,7 @@ font-style: inherit;">"Document"</span></span>
 background-color: null;
 font-style: inherit;">format</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span></span>
 <span id="cb4-4"><span class="at" style="color: #657422;
 background-color: null;
@@ -578,6 +713,7 @@ font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">html</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span></span>
 <span id="cb4-5"><span class="at" style="color: #657422;
 background-color: null;
@@ -585,6 +721,7 @@ font-style: inherit;">     </span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">df-print</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;"> kable</span></span>
@@ -636,6 +773,7 @@ background-color: null;
 font-style: inherit;"># Use path relative to script location, if feasible</span></span>
 <span id="cb7-2"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">[</span> <span class="ot" style="color: #003B4F;
@@ -650,8 +788,10 @@ font-style: inherit;">"</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">then</span></span>
 <span id="cb7-3">    <span class="bu" style="color: null;
 background-color: null;
@@ -687,6 +827,7 @@ font-style: inherit;">)</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">pwd</span> <span class="at" style="color: #657422;
@@ -698,9 +839,11 @@ background-color: null;
 font-style: inherit;">"</span></span>
 <span id="cb7-4"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">else</span></span>
 <span id="cb7-5">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">! </span><span class="bu" style="color: null;
@@ -713,8 +856,10 @@ font-style: inherit;">"package-lock.json"</span> <span class="bu" style="color: 
 background-color: null;
 font-style: inherit;">]</span><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">then</span></span>
 <span id="cb7-6">        <span class="bu" style="color: null;
 background-color: null;
@@ -726,9 +871,11 @@ background-color: null;
 font-style: inherit;">exit</span> 1</span>
 <span id="cb7-8">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">fi</span></span>
 <span id="cb7-9"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">fi</span></span></code></pre></div>
 </section>
 <section id="may" class="level2">
@@ -952,11 +1099,13 @@ font-style: inherit;">"'third element'"</span>)</span></code></pre></div>
 background-color: null;
 font-style: inherit;">cd</span> snippets <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span></span>
 <span id="cb13-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">ruff</span> format ipython-display.ipynb <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span></span>
 <span id="cb13-3"><span class="ex" style="color: null;
 background-color: null;
@@ -966,6 +1115,7 @@ font-style: inherit;">--execute</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--inplace</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span></span>
 <span id="cb13-4"><span class="ex" style="color: null;
 background-color: null;
@@ -973,6 +1123,7 @@ font-style: inherit;">nbdev_clean</span> <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--fname</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">;</span></span>
 <span id="cb13-5"><span class="ex" style="color: null;
 background-color: null;
@@ -1175,17 +1326,21 @@ font-style: inherit;">import</span> micropip</span>
 <span id="cb3-2"></span>
 <span id="cb3-3"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"snowballstemmer"</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">not</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> micropip.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>():</span>
 <span id="cb3-4">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">await</span> micropip.install(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
@@ -1967,8 +2122,10 @@ font-style: inherit;">'lightpink'</span>]</span>
 <span id="cb1-19"></span>
 <span id="cb1-20"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">range</span>(num_slices):</span>
@@ -2078,9 +2235,11 @@ font-style: inherit;"># Show the plot</span></span>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">def</span> print_file(file_name):</span>
 <span id="cb1-2">  <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">with</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">open</span>(file_name, <span class="st" style="color: #20794D;
@@ -2143,6 +2302,7 @@ font-style: inherit;"># Python &lt;= 3.10</span></span>
 <span id="cb3-2"></span>
 <span id="cb3-3"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">with</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
@@ -2573,6 +2733,7 @@ font-style: inherit;">=</span>headers)</span>
 <div id="89534c7d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">def</span> get_doi_bib(doi):</span>
 <span id="cb3-2">    <span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -2605,6 +2766,7 @@ font-style: inherit;">=</span>headers)</span>
 <span id="cb3-8"></span>
 <span id="cb3-9">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">return</span> r.text</span>
 <span id="cb3-10"></span>
 <span id="cb3-11"></span>
@@ -2652,6 +2814,7 @@ font-style: inherit;">"application/vnd.schemaorg.ld+json"</span>,</span>
 <span id="cb5-11"></span>
 <span id="cb5-12"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">def</span> get_doi_data(doi, content_type<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
@@ -2682,6 +2845,7 @@ font-style: inherit;">"bibliography"</span>)}</span>
 <span id="cb5-17"></span>
 <span id="cb5-18">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">return</span> requests.get(url, headers<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>headers)</span>
@@ -2695,8 +2859,10 @@ font-style: inherit;">"10.1016/j.electstud.2016.07.002"</span></span>
 <span id="cb5-22"></span>
 <span id="cb5-23"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">for</span> key <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> CONTENT_TYPES:</span>
 <span id="cb5-24">    time.sleep(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2842,8 +3008,10 @@ font-style: inherit;">"json-ld"</span>)</span>
 <div id="95c9715b" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">for</span> request_history <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> doi_content.history:</span>
 <span id="cb17-2">    <span class="bu" style="color: null;
 background-color: null;
@@ -2881,8 +3049,10 @@ font-style: inherit;">=</span>headers)</span>
 <span id="cb19-5"></span>
 <span id="cb19-6"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">for</span> request_history <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> r.history:</span>
 <span id="cb19-7">    <span class="bu" style="color: null;
 background-color: null;
@@ -3383,13 +3553,16 @@ font-style: inherit;">import</span> sync_playwright</span>
 <span id="cb1-2"></span>
 <span id="cb1-3"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">with</span> sync_playwright() <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">as</span> spw:</span>
 <span id="cb1-4">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">for</span> browser_type <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">in</span> [spw.chromium, spw.firefox, spw.webkit]:</span>
 <span id="cb1-5">        browser <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3728,35 +3901,6 @@ loaded via a namespace (and not attached):
   <guid>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/</guid>
   <pubDate>Fri, 28 Jul 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/renv-logo.svg" medium="image" type="image/svg+xml"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="first-pull-request-accepted" class="level1">
-<h1>First pull request accepted · 😊</h1>
-<p>My first public pull request on Github was <a href="https://github.com/hadley/r4ds/pull/1525">accepted</a>.</p>
-<p>Over the last weeks, I have been reading <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> (R4DS). The first edition really helped me to get deeply into the <a href="https://www.tidyverse.org/">tidyverse</a>. So I was interested in the content of the second edition.</p>
-<p>At some point, I realized that the book used an older parameter in <code>case_when()</code> that was recently superseded in <a href="https://www.tidyverse.org/blog/2023/02/dplyr-1-1-0-vctrs/#case_when">dplyr 1.1</a>. Since, I had switched to the new <code>.default</code> parameter already, I thought that it may be a small and valuable contribution to update the section.</p>
-<p>Making the code changes was easy. It took me a little to find out how to clone the project and submit the pull requests. The GitHub documentation was helpful and it went smoothly following it.</p>
-<p>I have used R4DS and the tidyverse so often that I am quite proud about my very minor addition to it.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/r4ds-pr.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>git</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/</guid>
-  <pubDate>Sat, 15 Jul 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-16 r4ds-pr/git-pr.png" medium="image" type="image/png" height="115" width="144"/>
 </item>
 </channel>
 </rss>

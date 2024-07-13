@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-03-22">
+<meta name="dcterms.date" content="2024-07-13">
 
-<title>R in Docker and Codespaces – Learning</title>
+<title>index – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -71,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -115,10 +149,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">R in Docker and Codespaces</h1>
+      
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">cloud</div>
+                <div class="quarto-category">API</div>
               </div>
                   </div>
   </div>
@@ -130,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 22, 2024</p>
+        <p class="date">July 13, 2024</p>
       </div>
     </div>
     
@@ -141,16 +175,7 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#docker" id="toc-docker" class="nav-link active" data-scroll-target="#docker">Docker</a></li>
-  <li><a href="#codespaces" id="toc-codespaces" class="nav-link" data-scroll-target="#codespaces">Codespaces</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -158,29 +183,64 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>For my work, I use <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a> regularly to create fully reproducible environments.</p>
-<section id="docker" class="level2">
-<h2 class="anchored" data-anchor-id="docker">Docker</h2>
-<p>Finding a configuration for <a href="https://www.r-project.org/">R</a> with <a href="https://rocker-project.org/">Rocker</a> has taken some effort over time and led to several changes.</p>
-<p>Recently, working with <a href="https://pak.r-lib.org/">pak</a> has worked well for me to install all R packages when the container is build.</p>
-<p>Here is a minimal example for such a workflow.</p>
-<pre class="docker"><code>FROM rocker/tidyverse
-
-WORKDIR /home/rstudio
-
-COPY pkg.lock .
-RUN R -e 'pak::lockfile_install()'</code></pre>
-<p>The full example is available in my <a href="https://github.com/hdigital/starter-r/blob/main/Dockerfile">R template</a>. There, I use an <a href="https://github.com/hdigital/starter-r/blob/main/utils/packages-update.R">R script</a> to create a <code>pkg.lock</code> with the pinned versions of R packages used in a project.</p>
-</section>
-<section id="codespaces" class="level2">
-<h2 class="anchored" data-anchor-id="codespaces">Codespaces</h2>
-<p>Working with Python, I use <a href="../2023-06-04-codespaces/">Codespaces</a> quite regularly now. Figuring out a configuration with R took me some time. By now, I have a configuration that I feel comfortable with.</p>
-<p>I started with the example from <a href="https://github.com/revodavid/devcontainers-rstudio">github.com/revodavid/devcontainers-rstudio</a> that demonstrates running RStudio in Codespaces.</p>
-<p>Over time, I moved to a codespace configuration that uses more of the settings in <a href="https://github.com/hdigital/starter-r/blob/main/.devcontainer/devcontainer.json"><code>devcontainer.json</code></a> and a minimal <a href="https://github.com/hdigital/starter-r/blob/main/.devcontainer/Dockerfile"><code>Dockerfile</code></a>.</p>
-<p>The codespace includes R, Python and Quarto. It takes quite some to build though.</p>
-<p>Overall, it is a nice way to briefly explore an R project in a browser without installing any software locally. I keep codespaces only for a short time and delete them quickly. That is why I use <a href="2023-04-27-posit-cloud/">Posit Cloud</a> as a persistent online R environment.</p>
-<p>Most of my R development is still in a local RStudio environment though. For reproducibility, I add a Docker configuration and make sure that the final version of a project can be replicated in that environment and has pinned versions of all dependencies.</p>
-<p><img src="r-codespace.png" class="img-fluid"></p>
+<section id="doi-reference-with-httr2" class="level1">
+<h1>DOI reference with httr2</h1>
+<p>Get citation references from DOI API with httr2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>get_doi_reference <span class="ot">&lt;-</span> <span class="cf">function</span>(doi) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">request</span>(<span class="fu">paste0</span>(<span class="st">"https://doi.org/"</span>, doi)) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req_headers</span>(<span class="st">"Accept"</span> <span class="ot">=</span> <span class="st">"text/x-bibliography"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req_perform</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">resp_body_string</span>()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>references <span class="ot">&lt;-</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">doi =</span> <span class="fu">c</span>(</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1177/1465116507076430"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1080/01402382.2013.783347"</span>,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1017/pan.2021.28"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">reference =</span> <span class="fu">map_chr</span>(doi, get_doi_reference))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>references</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">doi</th>
+<th style="text-align: left;">reference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">10.1177/1465116507076430</td>
+<td style="text-align: left;">Döring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207–228. https://doi.org/10.1177/1465116507076430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10.1080/01402382.2013.783347</td>
+<td style="text-align: left;">Döring, H., &amp; Hellström, J. (2013). Who Gets into Government? Coalition Formation in European Democracies. West European Politics, 36(4), 683–703. https://doi.org/10.1080/01402382.2013.783347</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10.1017/pan.2021.28</td>
+<td style="text-align: left;">Herrmann, M., &amp; Döring, H. (2021). Party Positions from Wikipedia Classifications of Party Ideology. Political Analysis, 31(1), 22–41. https://doi.org/10.1017/pan.2021.28</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="doi-logo.png" class="img-fluid"></p>
 
 
 </section>
