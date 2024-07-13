@@ -299,7 +299,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/rocker-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
-  <title>Requests in JupyterLite</title>
+  <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/</link>
   <description><![CDATA[ 
 
@@ -307,10 +307,12 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 
 
 
+<section id="requests-in-jupyterlite" class="level1">
+<h1>Requests in JupyterLite</h1>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="26465ece" class="cell" data-execution_count="1">
+<div id="fe64ab4f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -325,9 +327,7 @@ font-style: inherit;">import</span> urllib3</span>
 <span id="cb1-6"></span>
 <span id="cb1-7"><span class="im" style="color: #00769E;
 background-color: null;
-font-style: inherit;">import</span> requests  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># noqa: E402</span></span>
+font-style: inherit;">import</span> requests</span>
 <span id="cb1-8"></span>
 <span id="cb1-9">headers <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -354,6 +354,7 @@ font-style: inherit;">=</span>headers)</span>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/jupyter-lite-logo.png" class="img-fluid"></p>
 
 
+</section>
 
  ]]></description>
   <category>Python</category>
