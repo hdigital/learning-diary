@@ -1,0 +1,57 @@
+---
+date: "2024-07-14"
+image: tidygeocoder-logo.png
+categories: [R, geo]
+---
+
+# Geocoding in R
+
+Geocoding of places in R with the [tidygeocoder](https://github.com/jessecambon/tidygeocoder)
+package using the OpenStreetMap [Nominatim API](https://nominatim.org/release-docs/latest/)
+and creating a [sf](https://r-spatial.github.io/sf/) geometry list-column.
+
+```{r}
+#| code-fold: false
+#| message: false
+#| eval: false
+
+library(tidyverse)
+library(sf)
+
+places <-
+  tibble(
+    city = c(
+      "Berlin", "Bremen", "Bielefeld", "Dortmund", "Dresden", "Flensburg", "Frankfurt",
+      "Freiburg", "Hamburg", "Hannover", "Kassel", "Köln", "Konstanz", "Leipzig",
+      "Magdeburg", "München", "Passau", "Rostock", "Trier", "Nürnberg", "Stuttgart"
+    )
+  )
+
+places <-
+  places |>
+  tidygeocoder::geocode(city, method = "osm") |>
+  st_as_sf(crs = "EPSG:4326", coords = c("long", "lat"), na.fail = FALSE)
+
+write_rds(places, "deu-cities_sf.rds")
+```
+
+
+```{r}
+#| code-fold: true
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+# use data in rds-file to avoid geocoding request of 20s
+places <- read_rds("deu-cities_sf.rds")
+
+ggplot() +
+  geom_sf_label(data = places, aes(label = city)) +
+  coord_sf(crs = "EPSG:4839") + # LLC projection Germany
+  theme_void()
+```
+
+---
+
+![](tidygeocoder-logo.png)
