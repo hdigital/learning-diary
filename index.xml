@@ -10,7 +10,191 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Fri, 12 Jul 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 13 Jul 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="geocoding-in-r" class="level1">
+<h1>Geocoding in R</h1>
+<p>Geocoding of places in R with the <a href="https://github.com/jessecambon/tidygeocoder">tidygeocoder</a> package using the OpenStreetMap <a href="https://nominatim.org/release-docs/latest/">Nominatim API</a> and creating a <a href="https://r-spatial.github.io/sf/">sf</a> geometry list-column.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(sf)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">places <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb1-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">city =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb1-7">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Berlin"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bremen"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Bielefeld"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dortmund"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dresden"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Flensburg"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Frankfurt"</span>,</span>
+<span id="cb1-8">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Freiburg"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hamburg"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hannover"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Kassel"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Köln"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Konstanz"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Leipzig"</span>,</span>
+<span id="cb1-9">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Magdeburg"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"München"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Passau"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Rostock"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Trier"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Nürnberg"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Stuttgart"</span></span>
+<span id="cb1-10">    )</span>
+<span id="cb1-11">  )</span>
+<span id="cb1-12"></span>
+<span id="cb1-13">places <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-14">  places <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-15">  tidygeocoder<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geocode</span>(city, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"osm"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_as_sf</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">crs =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4326</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">coords =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"long"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lat"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.fail =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb1-17"></span>
+<span id="cb1-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_rds</span>(places, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"deu-cities_sf.rds"</span>)</span></code></pre></div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># use data in rds-file to avoid geocoding request of 20s</span></span>
+<span id="cb2-4">places <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_rds</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"deu-cities_sf.rds"</span>)</span>
+<span id="cb2-5"></span>
+<span id="cb2-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf_label</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> places, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> city)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-8">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># coord_sf(crs = "EPSG:4839") +</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>()</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/tidygeocoder-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>geo</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/</guid>
+  <pubDate>Sat, 13 Jul 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/tidygeocoder-logo.png" medium="image" type="image/png" height="167" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/</link>
@@ -3618,297 +3802,6 @@ font-style: inherit;">.png"</span>)</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/</guid>
   <pubDate>Sat, 29 Jul 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/playwright-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Package versions with renv</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="versions-snapshot" class="level2">
-<h2 class="anchored" data-anchor-id="versions-snapshot">Versions snapshot</h2>
-<p><code>renv::snapshot()</code> creates an <code>renv.lock</code> file that includes the versions of all R packages used in R code in the current project folder.</p>
-<p>This is something I have looked for for a long time. In Python, I like to use <a href="https://pip-tools.readthedocs.io/en/latest/#requirements-from-requirements-in">pip-compile</a> to pin my dependencies to specified versions. For R, I have just not realized that <code>renv</code> can also do that without creating a full <code>renv</code> project.</p>
-<p>The full <code>renv</code> workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with <a href="https://rocker-project.org/">Rocker</a>.</p>
-</section>
-<section id="find-project-packages" class="level2">
-<h2 class="anchored" data-anchor-id="find-project-packages">Find project packages</h2>
-<p><code>renv::dependencies()</code> can be used to find all the packages used in a project.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(renv)</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dependencies</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>Source)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Finding R package dependencies ... Done!</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Package</th>
-<th style="text-align: left;">Require</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">Dev</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">purrr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">renv</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">callr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">conflicted</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">rmarkdown</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">rmarkdown</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">purrr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">renv</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">callr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">conflicted</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Package version number can be added with some <code>tidyverse</code> magic.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dependencies</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">version =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_chr</span>(Package, \(.x) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">as.character</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">packageVersion</span>(.x)))) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(Package, version) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(Package) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">distinct</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Finding R package dependencies ... Done!</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Package</th>
-<th style="text-align: left;">version</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">callr</td>
-<td style="text-align: left;">3.7.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">conflicted</td>
-<td style="text-align: left;">1.2.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">dplyr</td>
-<td style="text-align: left;">1.1.4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">purrr</td>
-<td style="text-align: left;">1.0.2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">renv</td>
-<td style="text-align: left;">1.0.5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">rmarkdown</td>
-<td style="text-align: left;">2.26</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="customized-session-info" class="level2">
-<h2 class="anchored" data-anchor-id="customized-session-info">Customized session info</h2>
-<p>This led me to a condensed version of loading all project packages before calling <code>sessionInfo()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">conflicted<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">conflicts_prefer</span>(callr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>run)</span>
-<span id="cb5-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_lgl</span>(dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dependencies</span>(), Package), require)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Finding R package dependencies ... Done!</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sessionInfo</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>R version 4.3.3 (2024-02-29)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 22.04.4 LTS
-
-Matrix products: default
-BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
-LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
-
-locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
- [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-
-time zone: Etc/UTC
-tzcode source: system (glibc)
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] rmarkdown_2.26   conflicted_1.2.0 callr_3.7.5      renv_1.0.5      
-[5] purrr_1.0.2      dplyr_1.1.4     
-
-loaded via a namespace (and not attached):
- [1] vctrs_0.6.5       cli_3.6.2         knitr_1.45        rlang_1.1.3      
- [5] xfun_0.42         processx_3.8.4    generics_0.1.3    jsonlite_1.8.8   
- [9] glue_1.7.0        htmltools_0.5.7   ps_1.7.6          fansi_1.0.6      
-[13] evaluate_0.23     tibble_3.2.1      fastmap_1.1.1     yaml_2.3.8       
-[17] lifecycle_1.0.4   memoise_2.0.1     compiler_4.3.3    htmlwidgets_1.6.4
-[21] pkgconfig_2.0.3   digest_0.6.35     R6_2.5.1          tidyselect_1.2.1 
-[25] utf8_1.2.4        pillar_1.9.0      magrittr_2.0.3    tools_4.3.3      
-[29] withr_3.0.0       cachem_1.0.8     </code></pre>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/lock-unsplash.jpg" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/</guid>
-  <pubDate>Fri, 28 Jul 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-29-renv/renv-logo.svg" medium="image" type="image/svg+xml"/>
 </item>
 </channel>
 </rss>
