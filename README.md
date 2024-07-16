@@ -53,7 +53,7 @@ install.packages(c("gapminder", "markdown", "patchwork", "tidyverse"))
 All R packages used in project
 
 ```sh
-Rscript snippets/packages-install.R
+Rscript snippets/r-packages-update.R
 ```
 
 ### Python

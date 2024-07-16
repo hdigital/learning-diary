@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.4.0
+FROM rocker/tidyverse:4.4.1
 
 WORKDIR /home/rstudio
 
