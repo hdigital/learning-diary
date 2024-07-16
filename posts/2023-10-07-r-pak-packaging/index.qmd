@@ -10,7 +10,7 @@ I started using [pak](https://pak.r-lib.org/) install and manage R packages.
 
 _pak_ can be used to install all R packages used in a project.
 
-The use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with _pak_ and [renv](https://rstudio.github.io/renv/index.html). In a [previous post](/posts/2023-07-29-renv/index.qmd), I discussed an approach with _renv_ only.
+The use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with _pak_ and [renv](https://rstudio.github.io/renv/index.html). In a [previous post](/posts/2023-07-29-r-renv/index.qmd), I discussed an approach with _renv_ only.
 
 _renv_ is used to detect all packages used in a project and _pac_ to create a (platform dependent) lockfile. This lockfile can be used to install the version pinned in the lock file later with _pak_ without creating an _renv_ environment.
 
