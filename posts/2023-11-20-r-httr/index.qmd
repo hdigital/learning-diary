@@ -33,7 +33,7 @@ author_id <- 51362391
 url <-
   str_glue(
     "https://api.semanticscholar.org/graph/v1/author/{author_id}",
-    "?fields=aliases,name,papers,papers.year,papers.title,papers.citationCount,papers.authors"
+    "?fields=name,papers,papers.year,papers.title,papers.citationCount,papers.authors"
   )
 
 resp <-

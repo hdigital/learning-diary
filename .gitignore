@@ -6,6 +6,9 @@ z-tmp__*
 # Local settings files
 .vscode/settings.json
 
+# Python files (see also below)
+.python_history
+
 # Quarto files
 _freeze/
 _site/
@@ -14,7 +17,7 @@ _site/
 .luarc.json
 /.luarc.json
 
-# Rocker files
+# Rocker files (see also below)
 .cache/
 .config/
 .local/
