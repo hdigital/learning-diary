@@ -1,0 +1,88 @@
+---
+date: "2024-07-17"
+image: sf-logo.png
+categories: [R, geo]
+execute:
+  messages: true
+  warning: false
+---
+
+# Select map region in R
+
+Here is an example of selecting a region from a map by specifying a rectangle for the selection.
+
+```{r}
+#| code-fold: true
+#| eval: false
+
+cities <-
+  maps::world.cities |>
+  filter(country.etc == "Germany") |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326, agr = "constant") |>
+  filter(pop >= 100000) |>
+  mutate(label = if_else(pop > 800000, name, NA_character_))
+
+write_rds(cities, "cities-deu.rds")
+```
+
+First, I create a map of German cities with more than 100,000 inhabitants.
+
+```{r}
+#| code-fold: true
+
+library(tidyverse)
+library(sf)
+
+cities <- read_rds("cities-deu.rds")
+
+ggplot(cities) +
+  geom_sf(aes(size = pop), color = "grey80", alpha = 0.5) +
+  geom_sf_label(aes(label = label), alpha = 0.4) +
+  guides(size = "none") +
+  theme_void()
+```
+
+Then, I select the wider Ruhr area by defining the bottom left and the top right of the selection area.
+
+```{r}
+#| code-fold: true
+
+create_sf_rectangle <- function(xmin, xmax, ymin, ymax, crs = "EPSG:4326") {
+  matrix(
+    c(xmin, ymin, xmax, ymin, xmax, ymax, xmin, ymax, xmin, ymin),
+    ncol = 2, byrow = TRUE
+  ) |>
+    list() |>
+    st_polygon() |>
+    st_sfc(crs = crs)
+}
+
+nrw_select <- create_sf_rectangle(6.5, 7.9, 50.9, 51.7)
+
+nrw <-
+  cities |>
+  st_intersection(nrw_select)
+```
+
+
+Finally, I create a map of the cities in the wider Ruhr area.
+
+```{r}
+#| code-fold: true
+#| message: false
+#| fig-width: 4
+#| fig-height: 3
+#| fig-align: center
+
+nrw |>
+  mutate(label = if_else(pop > 500000, name, NA_character_)) |>
+  ggplot() +
+  geom_sf(aes(size = pop), color = "grey80", alpha = 0.5) +
+  geom_sf_label(aes(label = label), alpha = 0.4) +
+  guides(size = "none") +
+  theme_void()
+```
+
+---
+
+![](sf-logo.png){width=33%}
