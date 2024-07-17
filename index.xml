@@ -10,7 +10,291 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.5.54</generator>
-<lastBuildDate>Sat, 13 Jul 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jul 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="bar-charts-with-ggplot" class="level1">
+<h1>Bar charts with ggplot</h1>
+<p>Horizontal bar charts are a regular part of my work with graphs in R. Nevertheless, I have to look up the details regularly, so here is another example.</p>
+<p>The graph visualizes the disproportionality of the results in the recent <a href="https://www.bbc.com/news/election/2024/uk/results">UK election 2024</a>.</p>
+<p>It uses <a href="https://forcats.tidyverse.org/">forcats</a> to order categories, here the parties, by another value in the dataset, here the vote share.</p>
+<p>The color codes of the parties are based on the BBC election page. I just used <em>inspect</em> on the internet browser to find the respective color code used on the page.</p>
+<p>Finding the details for the parameters to customize the legend and the axes in ggplot took some time. <a href="https://github.com/features/copilot">GitHub Copilot</a>, my new AI pair programmer, was very helpful. In fact, I use it a lot now to get examples for the use of various tidyverse functions, that I used to look up regularly.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(patchwork)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_set</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>())</span>
+<span id="cb1-5"></span>
+<span id="cb1-6"></span>
+<span id="cb1-7">elec_raw <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"uk-election-2024_bbc.csv"</span>)</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">pl_dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-10">  elec_raw <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb1-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">seat_share =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(seats <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">650</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># total seats UK Parliament: 650</span></span>
+<span id="cb1-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">party =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_reorder</span>(party, vote_share)</span>
+<span id="cb1-14">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(vote_share <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>)</span>
+<span id="cb1-16"></span>
+<span id="cb1-17">party_colors <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb1-18">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lab"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#E91D0E"</span>,</span>
+<span id="cb1-19">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Con"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#0575C9"</span>,</span>
+<span id="cb1-20">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"R-UK"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#12b6cf"</span>,</span>
+<span id="cb1-21">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Lib"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#FF9A02"</span>,</span>
+<span id="cb1-22">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Green"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#99CC33"</span>,</span>
+<span id="cb1-23">  <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SNP"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#0AD1E0"</span></span>
+<span id="cb1-24">)</span>
+<span id="cb1-25"></span>
+<span id="cb1-26">pl1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-27">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> vote_share, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> party, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> party)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-28">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-29">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xlim</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">60</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-30">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> party_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-32">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span>
+<span id="cb1-33"></span>
+<span id="cb1-34">pl2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb1-35">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(pl_dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> seat_share, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> party, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> party)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-36">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-37">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_manual</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values =</span> party_colors) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-38">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-39">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>(), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"none"</span>)</span>
+<span id="cb1-40"></span>
+<span id="cb1-41">pl1 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> pl2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-42">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot_annotation</span>(</span>
+<span id="cb1-43">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"UK election 2024"</span>,</span>
+<span id="cb1-44">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Source: BBC"</span></span>
+<span id="cb1-45">)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/union-jack_unsplash.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>Photo by Kristina Gadeikyte on Unsplash</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>ggplot</category>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/</guid>
+  <pubDate>Mon, 15 Jul 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/bar-chart.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/</link>
@@ -383,7 +667,7 @@ font-style: inherit;">--force-if-includes</span></span></code></pre></div>
 </item>
 <item>
   <title>pip install in cell</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/</link>
   <description><![CDATA[ 
 
 
@@ -433,7 +717,7 @@ font-style: inherit;">=</span>url)</span>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/jupyter-logo.png" class="img-fluid figure-img"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/jupyter-logo.png" class="img-fluid figure-img"></p>
 <figcaption>Jupyter</figcaption>
 </figure>
 </div>
@@ -442,9 +726,9 @@ font-style: inherit;">=</span>url)</span>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/</guid>
   <pubDate>Mon, 29 Apr 2024 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
 </item>
 <item>
   <title>R in Docker and Codespaces</title>
@@ -491,7 +775,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 </item>
 <item>
   <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/</link>
   <description><![CDATA[ 
 
 
@@ -503,7 +787,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="fe64ab4f" class="cell" data-execution_count="1">
+<div id="e0ad9b99" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -540,30 +824,32 @@ font-style: inherit;">=</span>headers)</span>
 <pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
 </div>
 </div>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/jupyterlite-urllib3.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyterlite-urllib3.png" class="img-fluid"></p>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/jupyter-lite-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyter-lite-logo.png" class="img-fluid"></p>
 
 
 </section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/</guid>
   <pubDate>Wed, 20 Mar 2024 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-21-jupyterlite-urllib3/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
-  <title>Python f-strings</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/</link>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="python-f-strings" class="level1">
+<h1>Python f-strings</h1>
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="4c71ecac" class="cell" data-execution_count="1">
+<div id="a6b658f5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -575,7 +861,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div>
 </div>
-<div id="03cc643d" class="cell" data-execution_count="2">
+<div id="e4e55750" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -595,7 +881,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="3f42481f" class="cell" data-execution_count="3">
+<div id="afd43a36" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -619,7 +905,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="c6f00785" class="cell" data-execution_count="4">
+<div id="1e73e7f1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -636,7 +922,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="f9be7b48" class="cell" data-execution_count="5">
+<div id="46c79ef9" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -672,7 +958,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="b2dfaa71" class="cell" data-execution_count="6">
+<div id="7c182cc0" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -692,7 +978,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="cc902acd" class="cell" data-execution_count="7">
+<div id="573d7fb6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -706,7 +992,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="08310934" class="cell" data-execution_count="8">
+<div id="7cc1e396" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -720,7 +1006,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="8cf6da16" class="cell" data-execution_count="9">
+<div id="18c68ec9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -734,7 +1020,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="d2038924" class="cell" data-execution_count="10">
+<div id="7e5c6499" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -768,7 +1054,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="9fbc1fff" class="cell" data-execution_count="11">
+<div id="f4d37f56" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -790,7 +1076,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="c30c8a18" class="cell" data-execution_count="12">
+<div id="736b1510" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -807,16 +1093,17 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/python-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/python-logo.png" class="img-fluid"></p>
 
 
+</section>
 </section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/</guid>
   <pubDate>Sun, 25 Feb 2024 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-02-26-f-strings/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
   <title>Today I learned (TIL) · 2023</title>
@@ -1122,7 +1409,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 </item>
 <item>
   <title>iPython display</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/</link>
   <description><![CDATA[ 
 
 
@@ -1136,7 +1423,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="b900a391" class="cell" data-execution_count="1">
+<div id="91f6b55b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
@@ -1177,19 +1464,19 @@ font-style: inherit;">'jane.doe@example.com'</span></span>
 <pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
 </div>
 </div>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/json-screenshot.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/json-screenshot.png" class="img-fluid"></p>
 <hr>
 </section>
 <section id="single-element" class="level2">
 <h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div id="86fe8f7c" class="cell" data-execution_count="2">
+<div id="8b241b56" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
 </div>
-<div id="3305e7f5" class="cell" data-execution_count="3">
+<div id="b1be8bd5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
@@ -1197,7 +1484,7 @@ font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></p
 <h2 class="anchored">HTML Title</h2>
 </div>
 </div>
-<div id="4175f155" class="cell" data-execution_count="4">
+<div id="222bced4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
@@ -1205,7 +1492,7 @@ font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
 </section>
 </div>
-<div id="b95ff0db" class="cell" data-execution_count="5">
+<div id="2d0e3653" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
@@ -1213,7 +1500,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
-<div id="b411bfe8" class="cell" data-execution_count="6">
+<div id="6134fc7c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
@@ -1238,7 +1525,7 @@ font-style: inherit;">True</span>)</span></code></pre></div>
 </section>
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div id="a6fe823e" class="cell" data-execution_count="7">
+<div id="576d2733" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
@@ -1259,7 +1546,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
 </div>
 </div>
 <p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div id="4fa27cc3" class="cell" data-execution_count="8">
+<div id="bcf888a7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
@@ -1274,11 +1561,13 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"'third element'"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'first element'
-'third element'</code></pre>
+<pre><code>'first element'</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <pre><code>'second element'</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'third element'</code></pre>
 </div>
 </div>
 <p>Rendering of dictionaries with <code>JSON</code> does not work in Quarto or nbconvert.</p>
@@ -1287,19 +1576,19 @@ font-style: inherit;">"'third element'"</span>)</span></code></pre></div>
 <section id="quarto-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-workflow">Quarto workflow</h2>
 <p>A note how I render the Jupyter notebook of the post.</p>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><span class="bu" style="color: null;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">cd</span> snippets <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">;</span></span>
-<span id="cb13-2"><span class="ex" style="color: null;
+<span id="cb14-2"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">ruff</span> format ipython-display.ipynb <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">;</span></span>
-<span id="cb13-3"><span class="ex" style="color: null;
+<span id="cb14-3"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1309,7 +1598,7 @@ font-style: inherit;">--inplace</span> ipython-display.ipynb <span class="kw" st
 background-color: null;
 font-weight: bold;
 font-style: inherit;">;</span></span>
-<span id="cb13-4"><span class="ex" style="color: null;
+<span id="cb14-4"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">nbdev_clean</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1317,7 +1606,7 @@ font-style: inherit;">--fname</span> ipython-display.ipynb <span class="kw" styl
 background-color: null;
 font-weight: bold;
 font-style: inherit;">;</span></span>
-<span id="cb13-5"><span class="ex" style="color: null;
+<span id="cb14-5"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -1325,26 +1614,28 @@ font-style: inherit;">--to</span> html ipython-display.ipynb <span class="at" st
 background-color: null;
 font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></code></pre></div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/ipython-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" class="img-fluid"></p>
 
 
 </section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/</guid>
   <pubDate>Fri, 24 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
 </item>
 <item>
-  <title>JupyterLite</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/</link>
+  <title>http requests</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="jupyterlite" class="level1">
+<h1>JupyterLite</h1>
 <p>I listened to the the recent <em>Talk Python To Me</em> episode <a href="https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases">Celebrating JupyterLab 4 and Jupyter 7 Releases</a> and became aware of <a href="https://github.com/jupyterlite">JupyterLite</a> which I had not used before.</p>
 <p>I was impressed to see that you can now <a href="https://jupyterlite.github.io/demo/lab/index.html">run JupyterLab in a browser</a>.</p>
 <p>Many shortcuts work and you can activate the command pallette with <em>Shift + Cmd/Ctrl + C</em></p>
@@ -1353,7 +1644,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div id="4f47c0d9" class="cell" data-execution_count="1">
+<div id="727ff30e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
@@ -1427,28 +1718,28 @@ font-style: inherit;">'b'</span></span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed {
+  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed details,
-  #altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e.vega-embed details summary {
+  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details,
+  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e"></div>
+<div id="altair-viz-0ac3429f17634df4b5eee821b06dec1e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e") {
-      outputDiv = document.getElementById("altair-viz-85f95b3c6af44504a7757b0cf0a0ba5e");
+    if (outputDiv.id !== "altair-viz-0ac3429f17634df4b5eee821b06dec1e") {
+      outputDiv = document.getElementById("altair-viz-0ac3429f17634df4b5eee821b06dec1e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.16.3?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -1484,18 +1775,15 @@ font-style: inherit;">'b'</span></span>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.16.3"))
+        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-c2a3e89ba9d5d1687d5e8c28d630a033"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.16.3.json", "datasets": {"data-c2a3e89ba9d5d1687d5e8c28d630a033": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7684334a68ab74ba4c3ca7d0ceaeb461"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-7684334a68ab74ba4c3ca7d0ceaeb461": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
-</section>
-<section id="http-requests" class="level2">
-<h2 class="anchored" data-anchor-id="http-requests">http requests</h2>
 <p>I played around a little with making http requests. You can install the <a href="https://github.com/psf/requests">requests</a> package but the http requests don’t work. You have to use the <a href="https://pyodide.org/en/stable/usage/api/js-api.html">js</a> module provided by <a href="https://github.com/pyodide/pyodide">pyodide</a> instead.</p>
 <p>Here is the notebook I wrote.</p>
 <p><a href="network-requests.ipynb.txt">network-requests.ipynb.txt</a></p>
@@ -1537,16 +1825,17 @@ font-style: inherit;">await</span> micropip.install(<span class="st" style="colo
 background-color: null;
 font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/jupyter-lite-logo.png" class="img-fluid"></p>
 
 
+</section>
 </section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</guid>
   <pubDate>Wed, 22 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>API requests with httr2</title>
@@ -1595,7 +1884,7 @@ background-color: null;
 font-style: inherit;">"https://api.semanticscholar.org/graph/v1/author/{author_id}"</span>,</span>
 <span id="cb2-6">    <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"?fields=aliases,name,papers,papers.year,papers.title,papers.citationCount,papers.authors"</span></span>
+font-style: inherit;">"?fields=name,papers,papers.year,papers.title,papers.citationCount,papers.authors"</span></span>
 <span id="cb2-7">  )</span>
 <span id="cb2-8"></span>
 <span id="cb2-9">resp <span class="ot" style="color: #003B4F;
@@ -1765,14 +2054,14 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">1b9e9</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">10</td>
+<td style="text-align: right;">11</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Positions from Wikipedia</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">e9e28</td>
 <td style="text-align: right;">2019</td>
-<td style="text-align: right;">43</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Party Facts: A database of pol</td>
 </tr>
@@ -1793,7 +2082,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">4175b</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">25</td>
+<td style="text-align: right;">27</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Is Proportional Representation</td>
 </tr>
@@ -1877,7 +2166,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">14ab0</td>
 <td style="text-align: right;">2007</td>
-<td style="text-align: right;">70</td>
+<td style="text-align: right;">69</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The Composition of the College</td>
 </tr>
@@ -2191,14 +2480,16 @@ font-style: inherit;">unnest</span>(authors)</span>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 <item>
-  <title>Python Pizza Hamburg</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/</link>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="python-pizza-hamburg" class="level1">
+<h1>Python Pizza Hamburg</h1>
 <p>This Friday, I attended the <a href="https://hamburg.python.pizza/">Python Pizza micro conference</a> in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning and diversity. The topics of the talks were very accessible and mainly experience based.</p>
 <p>Some of the technical things I took out:</p>
 <ul>
@@ -2212,7 +2503,7 @@ font-style: inherit;">unnest</span>(authors)</span>
 <p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
 <p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
 <p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
-<div id="aa6ffd9b" class="cell" data-execution_count="1">
+<div id="5db768dc" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -2394,35 +2685,38 @@ font-style: inherit;"># Show the plot</span></span>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/index_files/figure-html/cell-2-output-1.png" width="389" height="409" class="figure-img"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/index_files/figure-html/cell-2-output-1.png" width="389" height="409" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/python-pizza-photo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/python-pizza-photo.png" class="img-fluid"></p>
 
 
+</section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/</guid>
   <pubDate>Thu, 16 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-17-python-pizza/python-pizza-logo.png" medium="image" type="image/png" height="117" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/python-pizza-logo.png" medium="image" type="image/png" height="117" width="144"/>
 </item>
 <item>
-  <title>pyproject.toml metadata and dependencies</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/</link>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="pyproject.toml-metadata-and-dependencies" class="level1">
+<h1>pyproject.toml metadata and dependencies</h1>
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div id="0f87a73d" class="cell" data-execution_count="1">
+<div id="fefa8cc6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -2483,7 +2777,7 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div id="1d670734" class="cell" data-execution_count="2">
+<div id="77cbc3dd" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> tomli <span class="im" style="color: #00769E;
@@ -2527,7 +2821,7 @@ font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div id="a89206e3" class="cell" data-execution_count="3">
+<div id="70ccf18c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
@@ -2573,28 +2867,31 @@ wheel==0.41.3
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/python-logo.png" class="img-fluid"></p>
 
 
+</section>
 
  ]]></description>
   <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/</guid>
   <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
-  <title>Zenodo API</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-10-31-zenodo-api/</link>
+  <title>DOI API</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="zenodo-api" class="level1">
+<h1>Zenodo API</h1>
 <p>This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the <a href="https://github.com/hdigital/partypositions-wikitags">partypositions-wikitags</a> project.</p>
 <p>The code of the project is archived at Zenodo with the DOI <a href="https://zenodo.org/doi/10.5281/zenodo.7043510">10.5281/zenodo.7043510</a>.</p>
-<div id="e0945316" class="cell" data-execution_count="1">
+<div id="e6e50a00" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -2622,10 +2919,8 @@ font-style: inherit;">=</span>headers)</span>
 <pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
 </div>
 </div>
-<section id="doi-api" class="level2">
-<h2 class="anchored" data-anchor-id="doi-api">DOI API</h2>
 <p>So here is some metadata information. Lets start with the DOI API.</p>
-<div id="2c67dd37" class="cell" data-execution_count="2">
+<div id="442795c9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -2674,11 +2969,10 @@ font-style: inherit;">=</span>headers)</span>
  'version': '23.07'}</code></pre>
 </div>
 </div>
-</section>
 <section id="zenodo-record" class="level2">
 <h2 class="anchored" data-anchor-id="zenodo-record">Zenodo record</h2>
 <p>We can also access a <a href="https://developers.zenodo.org/#retrieve37">record</a> through the Zenodo API. This does not require a <a href="https://developers.zenodo.org/#authentication">Zenodo access token</a>.</p>
-<div id="2b7c7e11" class="cell" data-execution_count="3">
+<div id="ede7e40b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(<span class="st" style="color: #20794D;
@@ -2694,7 +2988,7 @@ font-style: inherit;">=</span> r.json()</span>
 </div>
 </div>
 <p>I was interested in the Zenodo metadata.</p>
-<div id="a5faf64d" class="cell" data-execution_count="4">
+<div id="b0d0c74b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">record[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'metadata'</span>]</span></code></pre></div>
@@ -2725,7 +3019,7 @@ font-style: inherit;">'metadata'</span>]</span></code></pre></div>
 <p>You can specify some of the addtional metadata in a <code>.zenodo.json</code> file in your GitHub repository.</p>
 <p><a href="https://developers.zenodo.org/#github" class="uri">https://developers.zenodo.org/#github</a></p>
 <p>I used the archived Zenodo record for a json dump of the metadata.</p>
-<div id="0d6c9efb" class="cell" data-execution_count="5">
+<div id="fdde9995" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
@@ -2792,7 +3086,7 @@ font-style: inherit;">2</span>))</span></code></pre></div>
 <li>used unicode characters for umlaute</li>
 <li>specified license id</li>
 </ul>
-<div id="47b67074" class="cell" data-execution_count="6">
+<div id="d5f2be79" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -2845,39 +3139,42 @@ background-color: null;
 font-style: inherit;">"""</span></span></code></pre></div>
 </div>
 <p>Here, I validate the json. Running the cell should not raise an error.</p>
-<div id="71c666cc" class="cell" data-execution_count="7">
+<div id="5719a9bb" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></div>
 </div>
 <p>Finally, I added it to the GitHub repository – <a href="https://github.com/hdigital/partypositions-wikitags/commit/ac7c4626267f9bf12015db57138d50c119982396">commit ac7c462</a> 😊</p>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-31-zenodo-api/zenodo-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/zenodo-logo.png" class="img-fluid"></p>
 
 
+</section>
 </section>
 
  ]]></description>
   <category>Python</category>
   <category>API</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-31-zenodo-api/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/</guid>
   <pubDate>Mon, 30 Oct 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-31-zenodo-api/zenodo-logo.png" medium="image" type="image/png" height="52" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/zenodo-logo.png" medium="image" type="image/png" height="52" width="144"/>
 </item>
 <item>
-  <title>Get DOI metadata</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/</link>
+  <title>Content types</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/</link>
   <description><![CDATA[ 
 
 
 
 
 
+<section id="get-doi-metadata" class="level1">
+<h1>Get DOI metadata</h1>
 <section id="doi-api-access" class="level2">
 <h2 class="anchored" data-anchor-id="doi-api-access">DOI API access</h2>
 <p>I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.</p>
 <p>Here is an example with a request for my first peer-reviewed publication.</p>
-<div id="41679e35" class="cell" data-execution_count="1">
+<div id="76cf1d05" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -2906,9 +3203,6 @@ font-style: inherit;">=</span>headers)</span>
 <pre><code>'DÃ¶ring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207â\x80\x93228. https://doi.org/10.1177/1465116507076430\n'</code></pre>
 </div>
 </div>
-</section>
-<section id="content-types" class="level2">
-<h2 class="anchored" data-anchor-id="content-types">Content types</h2>
 <p>This is the API information I was interested in.</p>
 <p><a href="https://citation.crosscite.org/docs.html#sec-4" class="uri">https://citation.crosscite.org/docs.html#sec-4</a></p>
 <blockquote class="blockquote">
@@ -2922,7 +3216,7 @@ font-style: inherit;">=</span>headers)</span>
 <li>Schema.org in JSON-LD // <code>application/vnd.schemaorg.ld+json</code> (only DataCite)</li>
 </ul>
 <p>It is actually nice to put a request into a function. I start with a simple example.</p>
-<div id="89534c7d" class="cell" data-execution_count="2">
+<div id="e928dec1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2970,7 +3264,7 @@ font-style: inherit;">"10.1177/0958928715573481"</span>)</span></code></pre></di
 </div>
 </div>
 <p>To get the different formats I am interested in, I can rewrite the function.</p>
-<div id="5801ba62" class="cell" data-execution_count="3">
+<div id="fcd5b600" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> time</span>
@@ -3095,7 +3389,7 @@ DOI content type: bibtex
 
 
 DOI content type: json-csl
-{"indexed":{"date-parts":[[2024,2,28]],"date-time":"2024-02-28T13:20:37Z","timestamp":1709126437045},"reference-count":43,"publisher":"Elsevier BV","license":[{"start":{"date-parts":[[2016,12,1]],"date-time":"2016-12-01T00:00:00Z","timestamp":1480550400000},"content-version":"tdm","delay-in-days":0,"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"published-print":{"date-parts":[[2016,12]]},"DOI":"10.1016\/j.electstud.2016.07.002","type":"journal-article","created":{"date-parts":[[2016,7,23]],"date-time":"2016-07-23T05:27:36Z","timestamp":1469251656000},"page":"535-543","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":3,"title":"Mapping established democracies: Integrated data on parties, elections and cabinets","prefix":"10.1016","volume":"44","author":[{"given":"Holger","family":"D\u00f6ring","sequence":"first","affiliation":[]}],"member":"78","reference":[{"key":"10.1016\/j.electstud.2016.07.002_bib1","series-title":"The European Representative Democracy Data Archive, Release 3","author":"Andersson","year":"2014"},{"key":"10.1016\/j.electstud.2016.07.002_bib2","series-title":"Comparative Political Data Set 1960\u20132013","author":"Armingeon","year":"2015"},{"key":"10.1016\/j.electstud.2016.07.002_bib3","doi-asserted-by":"crossref","first-page":"143","DOI":"10.1177\/1354068812462931","article-title":"Measuring party positions in Europe: the Chapel Hill expert survey trend file, 1999\u20132010","volume":"21","author":"Bakker","year":"2015","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib4","doi-asserted-by":"crossref","first-page":"303","DOI":"10.1177\/1354068810369148","article-title":"Out with the old, in with the \u201cnew\u201d: what constitutes a new party?","volume":"17","author":"Barnea","year":"2011","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib5","series-title":"Party Policy in Modern Democracies","author":"Benoit","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib6","doi-asserted-by":"crossref","first-page":"1523","DOI":"10.1177\/0010414012463905","article-title":"A\u00a0complete data set of political regimes, 1800\u20132007","volume":"46","author":"Boix","year":"2013","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib7","doi-asserted-by":"crossref","first-page":"360","DOI":"10.1016\/j.electstud.2013.01.005","article-title":"Democratic electoral systems around the world, 1946\u20132011","volume":"32","author":"Bormann","year":"2013","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib8","series-title":"Das parlamentarische Wahlrecht: Ein Handbuch \u00fcber die Bildung der gesetzgebenden K\u00f6rperschaften in Europa \u2013 2. Band: Allgemeiner Teil","author":"Braunias","year":"1932"},{"key":"10.1016\/j.electstud.2016.07.002_bib9","series-title":"Parties and Democracy: Coalition Formation and Government Functioning in Twenty States","author":"Budge","year":"1993"},{"key":"10.1016\/j.electstud.2016.07.002_bib10","series-title":"Mapping Policy Preferences: Estimates for Parties, Electors, and Governments, 1945-1998","author":"Budge","year":"2001"},{"key":"10.1016\/j.electstud.2016.07.002_bib11","series-title":"Political Parties of Eastern Europe: a Guide to Politics in the Post-communist Era","author":"Bugajski","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib12","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1111\/j.1475-6765.1984.tb00080.x","article-title":"Left right political scales: some expert judgments","volume":"12","author":"Castles","year":"1984","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib13","doi-asserted-by":"crossref","first-page":"119","DOI":"10.1111\/j.1475-6765.2009.01888.x","article-title":"Measuring government duration and stability in Central Eastern European democracies","volume":"49","author":"Conrad","year":"2010","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib14","doi-asserted-by":"crossref","first-page":"193","DOI":"10.1111\/j.1467-9477.1994.tb00144.x","article-title":"Termination of Danish government coalitions: theoretical and empirical aspects","volume":"17","author":"Damgaard","year":"1994","journal-title":"Scand. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib15","doi-asserted-by":"crossref","first-page":"161","DOI":"10.1177\/1465116512461189","article-title":"The collective action of data collection: a data infrastructure on parties, elections and cabinets","volume":"14","author":"D\u00f6ring","year":"2013","journal-title":"Eur. Union Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib16","first-page":"17","article-title":"ParlGov: a new data infrastructure in comparative politics","volume":"23","author":"D\u00f6ring","year":"2013","journal-title":"APSA Comp. Politics Newsl."},{"key":"10.1016\/j.electstud.2016.07.002_bib17","first-page":"19","article-title":"A\u00a0user-driven and flexible procedure for data linking","volume":"2010","author":"Ejik","year":"2010","journal-title":"IASSIST Q."},{"key":"10.1016\/j.electstud.2016.07.002_bib18","doi-asserted-by":"crossref","first-page":"495","DOI":"10.1111\/j.1468-2508.2007.00546.x","article-title":"Punishment or protest? understanding European Parliament elections","volume":"69","author":"Hix","year":"2007","journal-title":"J.\u00a0Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib19","doi-asserted-by":"crossref","first-page":"965","DOI":"10.1177\/001041402236310","article-title":"Does left\/right structure party positions on European integration?","volume":"35","author":"Hooghe","year":"2002","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib20","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1177\/1354068895001001004","article-title":"Expert interpretations of party space and party locations in 42 societies","volume":"1","author":"Huber","year":"1995","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib21","doi-asserted-by":"crossref","first-page":"381","DOI":"10.1111\/1475-6765.12030","article-title":"Determinants of cabinet size","volume":"53","author":"Indridason","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib22","series-title":"Western European Political Parties: a Comprehensive Guide","year":"1989"},{"key":"10.1016\/j.electstud.2016.07.002_bib23","series-title":"Mapping Policy Preferences II: Estimates for Parties, Electors and Governments in Central and Eastern Europe, European Union and OECD 1990-2003","author":"Klingemann","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib24","series-title":"Policy and Party Competition","author":"Laver","year":"1992"},{"key":"10.1016\/j.electstud.2016.07.002_bib25","series-title":"The International Almanac of Electoral History","author":"Mackie","year":"1991"},{"key":"10.1016\/j.electstud.2016.07.002_bib26","doi-asserted-by":"crossref","first-page":"211","DOI":"10.1146\/annurev.polisci.1.1.211","article-title":"The party family and its study","volume":"1","author":"Mair","year":"1998","journal-title":"Annu. Rev. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib27","doi-asserted-by":"crossref","first-page":"654","DOI":"10.1111\/1475-6765.12054","article-title":"Defining and classifying technocrat-led and technocratic governments","volume":"53","author":"McDonnell","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib28","series-title":"Political Parties of Europe","year":"1983"},{"key":"10.1016\/j.electstud.2016.07.002_bib29","series-title":"Coalition Governments in Western Europe","year":"2000"},{"key":"10.1016\/j.electstud.2016.07.002_bib30","doi-asserted-by":"crossref","first-page":"869","DOI":"10.1111\/j.0304-4130.2004.00178.x","article-title":"Party government in Central Eastern European democracies: a data collection (1990-2003)","volume":"43","author":"M\u00fcller-Rommel","year":"2004","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib31","series-title":"Elections in Europe: a Data Handbook","year":"2010"},{"key":"10.1016\/j.electstud.2016.07.002_bib32","doi-asserted-by":"crossref","first-page":"283","DOI":"10.1111\/1475-6765.00471","article-title":"Measuring party orientations towards European integration: results from an expert survey","volume":"36","author":"Ray","year":"1999","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib33","series-title":"International Guide to Electoral Statistics; Guide International Des Statistiques \u00c9lectorales","first-page":"1","article-title":"Introduction","author":"Rokkan","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib34","series-title":"International guide to electoral statistics; Guide international des statistiques \u00e9lectorales","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib35","series-title":"Elections and Parties in New European Democracies","author":"Rose","year":"2003"},{"key":"10.1016\/j.electstud.2016.07.002_bib36","doi-asserted-by":"crossref","first-page":"270","DOI":"10.1016\/j.electstud.2013.10.001","article-title":"Updating the party government data set","volume":"34","author":"Seki","year":"2014","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib37","doi-asserted-by":"crossref","first-page":"391","DOI":"10.1111\/j.1475-6765.2005.00232.x","article-title":"How unstable? Volatility and the genuinely new parties in Eastern Europe","volume":"44","author":"Sikk","year":"2005","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib38","series-title":"Die Wahl der Parlamente und anderer Staatsorgane","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib39","doi-asserted-by":"crossref","first-page":"261","DOI":"10.1111\/1475-6765.00513","article-title":"Delegation and accountability in parliamentary democracies","volume":"37","author":"Str\u00f8m","year":"2000","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib40","series-title":"Veto Players: How Political Institutions Work","author":"Tsebelis","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib41","doi-asserted-by":"crossref","first-page":"187","DOI":"10.1017\/S0007123411000263","article-title":"Constitutionalizing party democracy: the constitutive codification of political parties in post-war Europe","volume":"42","author":"Van Biezen","year":"2012","journal-title":"Br. J. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib42","series-title":"Mapping Policy Preferences from Texts III: Statistical Solutions for Manifesto Analysts","author":"Volkens","year":"2013"},{"key":"10.1016\/j.electstud.2016.07.002_bib43","series-title":"Party Government in 48 Democracies (1945-1998): Composition, Duration, Personnel","author":"Woldendorp","year":"2000"}],"container-title":"Electoral Studies","original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,7,17]],"date-time":"2018-07-17T21:43:09Z","timestamp":1531863789000},"score":1,"resource":{"primary":{"URL":"https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0261379416301652"}},"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016,12]]},"references-count":43,"alternative-id":["S0261379416301652"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.electstud.2016.07.002","relation":{},"ISSN":["0261-3794"],"subject":["Political Science and International Relations"],"container-title-short":"Electoral Studies","published":{"date-parts":[[2016,12]]},"assertion":[{"value":"Elsevier","name":"publisher","label":"This article is maintained by"},{"value":"Mapping established democracies: Integrated data on parties, elections and cabinets","name":"articletitle","label":"Article Title"},{"value":"Electoral Studies","name":"journaltitle","label":"Journal Title"},{"value":"https:\/\/doi.org\/10.1016\/j.electstud.2016.07.002","name":"articlelink","label":"CrossRef DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content Type"},{"value":"\u00a9 2016 Elsevier Ltd. All rights reserved.","name":"copyright","label":"Copyright"}]}
+{"indexed":{"date-parts":[[2024,7,6]],"date-time":"2024-07-06T18:35:25Z","timestamp":1720290925661},"reference-count":43,"publisher":"Elsevier BV","license":[{"start":{"date-parts":[[2016,12,1]],"date-time":"2016-12-01T00:00:00Z","timestamp":1480550400000},"content-version":"tdm","delay-in-days":0,"URL":"https:\/\/www.elsevier.com\/tdm\/userlicense\/1.0\/"}],"content-domain":{"domain":["elsevier.com","sciencedirect.com"],"crossmark-restriction":true},"published-print":{"date-parts":[[2016,12]]},"DOI":"10.1016\/j.electstud.2016.07.002","type":"journal-article","created":{"date-parts":[[2016,7,23]],"date-time":"2016-07-23T05:27:36Z","timestamp":1469251656000},"page":"535-543","update-policy":"http:\/\/dx.doi.org\/10.1016\/elsevier_cm_policy","source":"Crossref","is-referenced-by-count":3,"special_numbering":"C","title":"Mapping established democracies: Integrated data on parties, elections and cabinets","prefix":"10.1016","volume":"44","author":[{"given":"Holger","family":"D\u00f6ring","sequence":"first","affiliation":[]}],"member":"78","reference":[{"key":"10.1016\/j.electstud.2016.07.002_bib1","series-title":"The European Representative Democracy Data Archive, Release 3","author":"Andersson","year":"2014"},{"key":"10.1016\/j.electstud.2016.07.002_bib2","series-title":"Comparative Political Data Set 1960\u20132013","author":"Armingeon","year":"2015"},{"key":"10.1016\/j.electstud.2016.07.002_bib3","doi-asserted-by":"crossref","first-page":"143","DOI":"10.1177\/1354068812462931","article-title":"Measuring party positions in Europe: the Chapel Hill expert survey trend file, 1999\u20132010","volume":"21","author":"Bakker","year":"2015","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib4","doi-asserted-by":"crossref","first-page":"303","DOI":"10.1177\/1354068810369148","article-title":"Out with the old, in with the \u201cnew\u201d: what constitutes a new party?","volume":"17","author":"Barnea","year":"2011","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib5","series-title":"Party Policy in Modern Democracies","author":"Benoit","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib6","doi-asserted-by":"crossref","first-page":"1523","DOI":"10.1177\/0010414012463905","article-title":"A\u00a0complete data set of political regimes, 1800\u20132007","volume":"46","author":"Boix","year":"2013","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib7","doi-asserted-by":"crossref","first-page":"360","DOI":"10.1016\/j.electstud.2013.01.005","article-title":"Democratic electoral systems around the world, 1946\u20132011","volume":"32","author":"Bormann","year":"2013","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib8","series-title":"Das parlamentarische Wahlrecht: Ein Handbuch \u00fcber die Bildung der gesetzgebenden K\u00f6rperschaften in Europa \u2013 2. Band: Allgemeiner Teil","author":"Braunias","year":"1932"},{"key":"10.1016\/j.electstud.2016.07.002_bib9","series-title":"Parties and Democracy: Coalition Formation and Government Functioning in Twenty States","author":"Budge","year":"1993"},{"key":"10.1016\/j.electstud.2016.07.002_bib10","series-title":"Mapping Policy Preferences: Estimates for Parties, Electors, and Governments, 1945-1998","author":"Budge","year":"2001"},{"key":"10.1016\/j.electstud.2016.07.002_bib11","series-title":"Political Parties of Eastern Europe: a Guide to Politics in the Post-communist Era","author":"Bugajski","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib12","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1111\/j.1475-6765.1984.tb00080.x","article-title":"Left right political scales: some expert judgments","volume":"12","author":"Castles","year":"1984","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib13","doi-asserted-by":"crossref","first-page":"119","DOI":"10.1111\/j.1475-6765.2009.01888.x","article-title":"Measuring government duration and stability in Central Eastern European democracies","volume":"49","author":"Conrad","year":"2010","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib14","doi-asserted-by":"crossref","first-page":"193","DOI":"10.1111\/j.1467-9477.1994.tb00144.x","article-title":"Termination of Danish government coalitions: theoretical and empirical aspects","volume":"17","author":"Damgaard","year":"1994","journal-title":"Scand. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib15","doi-asserted-by":"crossref","first-page":"161","DOI":"10.1177\/1465116512461189","article-title":"The collective action of data collection: a data infrastructure on parties, elections and cabinets","volume":"14","author":"D\u00f6ring","year":"2013","journal-title":"Eur. Union Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib16","first-page":"17","article-title":"ParlGov: a new data infrastructure in comparative politics","volume":"23","author":"D\u00f6ring","year":"2013","journal-title":"APSA Comp. Politics Newsl."},{"key":"10.1016\/j.electstud.2016.07.002_bib17","first-page":"19","article-title":"A\u00a0user-driven and flexible procedure for data linking","volume":"2010","author":"Ejik","year":"2010","journal-title":"IASSIST Q."},{"key":"10.1016\/j.electstud.2016.07.002_bib18","doi-asserted-by":"crossref","first-page":"495","DOI":"10.1111\/j.1468-2508.2007.00546.x","article-title":"Punishment or protest? understanding European Parliament elections","volume":"69","author":"Hix","year":"2007","journal-title":"J.\u00a0Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib19","doi-asserted-by":"crossref","first-page":"965","DOI":"10.1177\/001041402236310","article-title":"Does left\/right structure party positions on European integration?","volume":"35","author":"Hooghe","year":"2002","journal-title":"Comp. Political Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib20","doi-asserted-by":"crossref","first-page":"73","DOI":"10.1177\/1354068895001001004","article-title":"Expert interpretations of party space and party locations in 42 societies","volume":"1","author":"Huber","year":"1995","journal-title":"Party Politics"},{"key":"10.1016\/j.electstud.2016.07.002_bib21","doi-asserted-by":"crossref","first-page":"381","DOI":"10.1111\/1475-6765.12030","article-title":"Determinants of cabinet size","volume":"53","author":"Indridason","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib22","series-title":"Western European Political Parties: a Comprehensive Guide","year":"1989"},{"key":"10.1016\/j.electstud.2016.07.002_bib23","series-title":"Mapping Policy Preferences II: Estimates for Parties, Electors and Governments in Central and Eastern Europe, European Union and OECD 1990-2003","author":"Klingemann","year":"2006"},{"key":"10.1016\/j.electstud.2016.07.002_bib24","series-title":"Policy and Party Competition","author":"Laver","year":"1992"},{"key":"10.1016\/j.electstud.2016.07.002_bib25","series-title":"The International Almanac of Electoral History","author":"Mackie","year":"1991"},{"key":"10.1016\/j.electstud.2016.07.002_bib26","doi-asserted-by":"crossref","first-page":"211","DOI":"10.1146\/annurev.polisci.1.1.211","article-title":"The party family and its study","volume":"1","author":"Mair","year":"1998","journal-title":"Annu. Rev. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib27","doi-asserted-by":"crossref","first-page":"654","DOI":"10.1111\/1475-6765.12054","article-title":"Defining and classifying technocrat-led and technocratic governments","volume":"53","author":"McDonnell","year":"2014","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib28","series-title":"Political Parties of Europe","year":"1983"},{"key":"10.1016\/j.electstud.2016.07.002_bib29","series-title":"Coalition Governments in Western Europe","year":"2000"},{"key":"10.1016\/j.electstud.2016.07.002_bib30","doi-asserted-by":"crossref","first-page":"869","DOI":"10.1111\/j.0304-4130.2004.00178.x","article-title":"Party government in Central Eastern European democracies: a data collection (1990-2003)","volume":"43","author":"M\u00fcller-Rommel","year":"2004","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib31","series-title":"Elections in Europe: a Data Handbook","year":"2010"},{"key":"10.1016\/j.electstud.2016.07.002_bib32","doi-asserted-by":"crossref","first-page":"283","DOI":"10.1111\/1475-6765.00471","article-title":"Measuring party orientations towards European integration: results from an expert survey","volume":"36","author":"Ray","year":"1999","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib33","series-title":"International Guide to Electoral Statistics; Guide International Des Statistiques \u00c9lectorales","first-page":"1","article-title":"Introduction","author":"Rokkan","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib34","series-title":"International guide to electoral statistics; Guide international des statistiques \u00e9lectorales","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib35","series-title":"Elections and Parties in New European Democracies","author":"Rose","year":"2003"},{"key":"10.1016\/j.electstud.2016.07.002_bib36","doi-asserted-by":"crossref","first-page":"270","DOI":"10.1016\/j.electstud.2013.10.001","article-title":"Updating the party government data set","volume":"34","author":"Seki","year":"2014","journal-title":"Elect. Stud."},{"key":"10.1016\/j.electstud.2016.07.002_bib37","doi-asserted-by":"crossref","first-page":"391","DOI":"10.1111\/j.1475-6765.2005.00232.x","article-title":"How unstable? Volatility and the genuinely new parties in Eastern Europe","volume":"44","author":"Sikk","year":"2005","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib38","series-title":"Die Wahl der Parlamente und anderer Staatsorgane","year":"1969"},{"key":"10.1016\/j.electstud.2016.07.002_bib39","doi-asserted-by":"crossref","first-page":"261","DOI":"10.1111\/1475-6765.00513","article-title":"Delegation and accountability in parliamentary democracies","volume":"37","author":"Str\u00f8m","year":"2000","journal-title":"Eur. J. Political Res."},{"key":"10.1016\/j.electstud.2016.07.002_bib40","series-title":"Veto Players: How Political Institutions Work","author":"Tsebelis","year":"2002"},{"key":"10.1016\/j.electstud.2016.07.002_bib41","doi-asserted-by":"crossref","first-page":"187","DOI":"10.1017\/S0007123411000263","article-title":"Constitutionalizing party democracy: the constitutive codification of political parties in post-war Europe","volume":"42","author":"Van Biezen","year":"2012","journal-title":"Br. J. Political Sci."},{"key":"10.1016\/j.electstud.2016.07.002_bib42","series-title":"Mapping Policy Preferences from Texts III: Statistical Solutions for Manifesto Analysts","author":"Volkens","year":"2013"},{"key":"10.1016\/j.electstud.2016.07.002_bib43","series-title":"Party Government in 48 Democracies (1945-1998): Composition, Duration, Personnel","author":"Woldendorp","year":"2000"}],"container-title":"Electoral Studies","original-title":[],"language":"en","link":[{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/xml","content-type":"text\/xml","content-version":"vor","intended-application":"text-mining"},{"URL":"https:\/\/api.elsevier.com\/content\/article\/PII:S0261379416301652?httpAccept=text\/plain","content-type":"text\/plain","content-version":"vor","intended-application":"text-mining"}],"deposited":{"date-parts":[[2018,7,17]],"date-time":"2018-07-17T21:43:09Z","timestamp":1531863789000},"score":1,"resource":{"primary":{"URL":"https:\/\/linkinghub.elsevier.com\/retrieve\/pii\/S0261379416301652"}},"subtitle":[],"short-title":[],"issued":{"date-parts":[[2016,12]]},"references-count":43,"alternative-id":["S0261379416301652"],"URL":"http:\/\/dx.doi.org\/10.1016\/j.electstud.2016.07.002","relation":{},"ISSN":["0261-3794"],"subject":[],"container-title-short":"Electoral Studies","published":{"date-parts":[[2016,12]]},"assertion":[{"value":"Elsevier","name":"publisher","label":"This article is maintained by"},{"value":"Mapping established democracies: Integrated data on parties, elections and cabinets","name":"articletitle","label":"Article Title"},{"value":"Electoral Studies","name":"journaltitle","label":"Journal Title"},{"value":"https:\/\/doi.org\/10.1016\/j.electstud.2016.07.002","name":"articlelink","label":"CrossRef DOI link to publisher maintained version"},{"value":"article","name":"content_type","label":"Content Type"},{"value":"\u00a9 2016 Elsevier Ltd. All rights reserved.","name":"copyright","label":"Copyright"}]}
 
 DOI content type: json-ld
 No acceptable resource available.
@@ -3107,7 +3401,7 @@ No acceptable resource available.
 <h2 class="anchored" data-anchor-id="linked-data-json-ld">Linked data json-ld</h2>
 <p><em>json-ld</em> is only available for content registered with <a href="https://datacite.org/">DataCite</a>.</p>
 <p>A DOI for an article does not return <em>json-ld</em> metadata.</p>
-<div id="656e9520" class="cell" data-execution_count="4">
+<div id="fa195650" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(doi, <span class="st" style="color: #20794D;
@@ -3119,7 +3413,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [406]&gt;</code></pre>
 </div>
 </div>
-<div id="72f1d704" class="cell" data-execution_count="5">
+<div id="204241e1" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'No acceptable resource available.'</code></pre>
@@ -3127,7 +3421,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 </div>
 <hr>
 <p>A DOI for a dataset returns <em>json-ld</em> metadata.</p>
-<div id="80061c1c" class="cell" data-execution_count="6">
+<div id="59b71e8a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(<span class="st" style="color: #20794D;
@@ -3141,13 +3435,13 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
-<div id="068cbfa9" class="cell" data-execution_count="7">
+<div id="e1d294c0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'{\n  "@context": "http://schema.org",\n  "@type": "Dataset",\n  "@id": "https://doi.org/10.7910/dvn/buwaaf",\n  "url": "https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF",\n  "name": "Party Facts – Version 2022",\n  "author": [\n    {\n      "name": "Paul Bederke",\n      "givenName": "Paul",\n      "familyName": "Bederke",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(University of Konstanz)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0001-7555-8656"\n    },\n    {\n      "name": "Holger Döring",\n      "givenName": "Holger",\n      "familyName": "Döring",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(GESIS – Leibniz Institute for the Social Sciences)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0002-6616-8805"\n    },\n    {\n      "name": "Sven Regel",\n      "givenName": "Sven",\n      "familyName": "Regel",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(WZB Berlin Social Science Center)"\n      },\n      "@type": "Person"\n    }\n  ],\n  "editor": {\n    "name": "Paul Bederke",\n    "givenName": "Paul",\n    "familyName": "Bederke",\n    "affiliation": {\n      "@type": "Organization",\n      "name": "(University of Konstanz)"\n    },\n    "contributorType": "ContactPerson",\n    "@type": "Person"\n  },\n  "description": "Party Facts links datasets on political parties",\n  "datePublished": "2022",\n  "schemaVersion": "http://datacite.org/schema/kernel-4",\n  "publisher": {\n    "@type": "Organization",\n    "name": "Harvard Dataverse"\n  },\n  "provider": {\n    "@type": "Organization",\n    "name": "datacite"\n  }\n}'</code></pre>
 </div>
 </div>
-<div id="d365343c" class="cell" data-execution_count="8">
+<div id="ce0ff9fd" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">doi_content.json()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{'@context': 'http://schema.org',
@@ -3189,6 +3483,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 </div>
 </div>
 </section>
+</section>
 <section id="redirects" class="level1">
 <h1>Redirects</h1>
 <p>Finally, I was interested if there is a redirect to a DOI registration agency.</p>
@@ -3197,7 +3492,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <p>“Content negotiated requests to doi.org that ask for a content type which isn’t”text/html” will be redirected to a metadata service hosted by the DOI’s registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers.”</p>
 </blockquote>
 <p>However, it seems that the content is returned by <em>doi.org</em>.</p>
-<div id="95c9715b" class="cell" data-execution_count="9">
+<div id="dc26ec05" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3213,7 +3508,7 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
 </div>
 </div>
 <p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
-<div id="08b5b9a8" class="cell" data-execution_count="10">
+<div id="df59cffd" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">doi_url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
@@ -3255,7 +3550,7 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/doi-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/doi-logo.png" class="img-fluid"></p>
 
 
 </section>
@@ -3263,13 +3558,13 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
  ]]></description>
   <category>Python</category>
   <category>API</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/</guid>
   <pubDate>Mon, 09 Oct 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-10-doi-requests/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-10-07-pak-packaging/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/</link>
   <description><![CDATA[ 
 
 
@@ -3280,7 +3575,7 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
 <h1>R packages with pak</h1>
 <p>I started using <a href="https://pak.r-lib.org/">pak</a> install and manage R packages.</p>
 <p><em>pak</em> can be used to install all R packages used in a project.</p>
-<p>The use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with <em>pak</em> and <a href="https://rstudio.github.io/renv/index.html">renv</a>. In a <a href="../../posts/2023-07-29-renv/index.html">previous post</a>, I discussed an approach with <em>renv</em> only.</p>
+<p>The use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with <em>pak</em> and <a href="https://rstudio.github.io/renv/index.html">renv</a>. In a <a href="../../posts/2023-07-29-r-renv/index.html">previous post</a>, I discussed an approach with <em>renv</em> only.</p>
 <p><em>renv</em> is used to detect all packages used in a project and <em>pac</em> to create a (platform dependent) lockfile. This lockfile can be used to install the version pinned in the lock file later with <em>pak</em> without creating an <em>renv</em> environment.</p>
 <p>Here is an example — not run:</p>
 <div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
@@ -3362,7 +3657,7 @@ font-style: inherit;">sort</span>()</span></code></pre></div>
 <p>In <em>renv</em> pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.</p>
 <p>I hope <em>pak</em> will provide the R packaging solution I am looking for.</p>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-07-pak-packaging/package-unsplash.jpg" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/package-unsplash.jpg" class="img-fluid"></p>
 
 
 </section>
@@ -3370,9 +3665,9 @@ font-style: inherit;">sort</span>()</span></code></pre></div>
 
  ]]></description>
   <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-07-pak-packaging/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/</guid>
   <pubDate>Fri, 06 Oct 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-07-pak-packaging/package-unsplash.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/package-unsplash.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title></title>
@@ -3416,7 +3711,7 @@ RUN install2.r markdown reticulate
 </item>
 <item>
   <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/</link>
   <description><![CDATA[ 
 
 
@@ -3505,20 +3800,20 @@ font-style: inherit;">hash_file</span>(files))</span></code></pre></div>
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/rlang-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/rlang-logo.png" class="img-fluid"></p>
 
 
 </section>
 
  ]]></description>
   <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/</guid>
   <pubDate>Sun, 13 Aug 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-14-file-hash/rlang-logo.png" medium="image" type="image/png" height="139" width="120"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/rlang-logo.png" medium="image" type="image/png" height="139" width="120"/>
 </item>
 <item>
   <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2023-08-12-r-dplyr-join-by/</link>
   <description><![CDATA[ 
 
 
@@ -3703,7 +3998,7 @@ font-style: inherit;">3.5</span></span>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-12-r-dplyr-join-by/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3720,88 +4015,9 @@ font-style: inherit;">3.5</span></span>
  ]]></description>
   <category>R</category>
   <category>tidyverse</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-12-r-dplyr-join-by/</guid>
   <pubDate>Fri, 11 Aug 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-12-dplyr-join-by/dplyr-logo.png" medium="image" type="image/png" height="166" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="screenshots-with-playwright" class="level1">
-<h1>Screenshots with Playwright</h1>
-<p>I heard about <a href="https://playwright.dev/python/docs/library">Playwright</a> in <a href="https://talkpython.fm/episodes/show/424/shiny-for-python">Episode #424</a> of <a href="https://talkpython.fm/">Talk Python To Me</a>.</p>
-<p>Here is an example of taking screenshots from the Playwright documentation which I updated for taking screenshots of this learning blog.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> playwright.sync_api <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> sync_playwright</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">with</span> sync_playwright() <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> spw:</span>
-<span id="cb1-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> browser_type <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> [spw.chromium, spw.firefox, spw.webkit]:</span>
-<span id="cb1-5">        browser <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> browser_type.launch()</span>
-<span id="cb1-6">        page <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> browser.new_page()</span>
-<span id="cb1-7">        page.goto(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://hdigital.github.io/learning-diary/"</span>)</span>
-<span id="cb1-8">        page.screenshot(path<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"screenshot-</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>browser_type<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>name<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">.png"</span>)</span>
-<span id="cb1-9">        browser.close()</span></code></pre></div>
-<p>The code needs to be run in a Python script and does not run in Jupyter.</p>
-<hr>
-<section id="chromium-screenshot" class="level3">
-<h3 class="anchored" data-anchor-id="chromium-screenshot">Chromium screenshot · 💻</h3>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-chromium.png" class="img-fluid"></p>
-</section>
-<section id="firefox-screenshot" class="level3">
-<h3 class="anchored" data-anchor-id="firefox-screenshot">Firefox screenshot · 💻</h3>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-firefox.png" class="img-fluid"></p>
-</section>
-<section id="webkit-screenshot" class="level3">
-<h3 class="anchored" data-anchor-id="webkit-screenshot">Webkit screenshot · 💻</h3>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/screenshot-webkit.png" class="img-fluid"></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/</guid>
-  <pubDate>Sat, 29 Jul 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-07-30-playwright/playwright-logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-12-r-dplyr-join-by/dplyr-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 </channel>
 </rss>
