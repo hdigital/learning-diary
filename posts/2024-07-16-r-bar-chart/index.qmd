@@ -1,0 +1,94 @@
+---
+date: "2024-07-16"
+image: bar-chart.png
+categories: [R, ggplot, AI]
+---
+
+# Bar charts with ggplot
+
+Horizontal bar charts are a regular part of my work with graphs in R.
+Nevertheless, I have to look up the details regularly, so here is another example.
+
+The graph visualizes the disproportionality of the results in the recent
+[UK election 2024](https://www.bbc.com/news/election/2024/uk/results).
+
+It uses [forcats](https://forcats.tidyverse.org/) to order categories,
+here the parties, by another value in the dataset, here the vote share.
+
+The color codes of the parties are based on the BBC election page. I just used
+_inspect_ on the internet browser to find the respective color code used on the page.
+
+Finding the details for the parameters to customize the legend and the axes in
+ggplot took some time. [GitHub Copilot](https://github.com/features/copilot),
+my new AI pair programmer, was very helpful. In fact, I use it a lot now to
+get examples for the use of various tidyverse functions, that I used to
+look up regularly.
+
+```{r}
+#| code-fold: true
+#| message: false
+
+library(tidyverse)
+library(patchwork)
+
+ggplot2::theme_set(theme_minimal())
+
+
+elec_raw <- read_csv("uk-election-2024_bbc.csv")
+
+pl_dt <-
+  elec_raw |>
+  mutate(
+    seat_share = round(seats / 650 * 100, 1), # total seats UK Parliament: 650
+    party = fct_reorder(party, vote_share)
+  ) |>
+  filter(vote_share >= 2.5)
+
+party_colors <-
+  c(
+    "Lab" = "#E91D0E",
+    "Con" = "#0575C9",
+    "R-UK" = "#12b6cf",
+    "Lib" = "#FF9A02",
+    "Green" = "#99CC33",
+    "SNP" = "#0AD1E0"
+  )
+
+pl1 <-
+  ggplot(pl_dt, aes(x = vote_share, y = party, fill = party)) +
+  geom_col() +
+  xlim(0, 60) +
+  scale_fill_manual(values = party_colors) +
+  labs(y = NULL) +
+  theme(legend.position = "none")
+
+pl2 <-
+  ggplot(pl_dt, aes(x = seat_share, y = party, fill = party)) +
+  geom_col() +
+  scale_fill_manual(values = party_colors) +
+  labs(y = NULL) +
+  theme(axis.text.y = element_blank(), legend.position = "none")
+
+pl1 + pl2 +
+  plot_annotation(
+    title = "UK election 2024",
+    caption = "Source: BBC"
+  )
+```
+
+
+```{r}
+#| include: false
+
+pl3 <- pl2 + theme(
+  axis.label.x = element_blank(),
+  axis.text.x = element_blank(),
+  axis.title.x = element_blank()
+)
+
+ggsave("bar-chart.png", plot = pl3, width = 4, height = 3, dpi = 300)
+```
+
+---
+
+![Photo by Kristina Gadeikyte on Unsplash](union-jack_unsplash.jpg){width=60% fig-align="left"}
