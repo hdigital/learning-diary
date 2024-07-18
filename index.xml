@@ -173,7 +173,7 @@ font-style: inherit;">theme_void</span>()</span></code></pre></div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">get_sf_rectangle <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">create_sf_rectangle <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -232,7 +232,7 @@ font-style: inherit;">crs =</span> crs)</span>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">get_sf_rectangle</span>(<span class="fl" style="color: #AD0000;
+font-style: inherit;">create_sf_rectangle</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6.365</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
