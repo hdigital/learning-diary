@@ -1,0 +1,63 @@
+---
+date: "2024-07-20"
+image: r-logo.png
+categories: [R, AI]
+---
+
+# Round to first two digits
+
+To improve the readability of a table, I wanted to round various numbers between 100 and 10,000,000 to their first two digits. 123,456 would become 120,000 and 987 would become 990.
+
+Here is the solution I came up with.
+
+```{r}
+#| code-fold: true
+#| message: false
+
+library(purrr)
+
+options(scipen = 999)
+set.seed(0)
+```
+
+
+```{r}
+round_first_two <- function(x) {
+  scale <- 10^ceiling(log10(x))
+  round(x / scale, 2) * scale
+}
+
+x1 <- c(113, 2795, 42459, 442060, 6870466)
+
+x1
+map_dbl(x1, round_first_two)
+```
+
+## Copilot
+
+[GitHub Copilot](https://copilot.github.com/) suggested a more general solution
+that works for numbers smaller and equal to zero.
+
+```{r}
+#| warning: false
+
+x2 <- c(113, -2795, -42459, -442060, 6870466, 0)
+
+x2
+map_dbl(x2, round_first_two)
+
+round_first_two_digits <- function(x) {
+  if(x == 0) return(0)
+
+  num_digits <- floor(log10(abs(x))) + 1
+  scale_factor <- 10^(num_digits - 2)
+  round(x / scale_factor) * scale_factor
+}
+
+x2
+map_dbl(x2, round_first_two_digits)
+```
+
+---
+
+![](r-logo.png){width=33%}
