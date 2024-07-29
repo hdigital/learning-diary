@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-02-18">
+<meta name="dcterms.date" content="2024-07-28">
 
 <title>index – Learning</title>
 <style>
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -68,6 +102,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -117,8 +180,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="quarto-title column-body">
       
                                 <div class="quarto-categories">
-                <div class="quarto-category">Python</div>
-                <div class="quarto-category">Quarto</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">ggplot</div>
               </div>
                   </div>
   </div>
@@ -130,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 18, 2023</p>
+        <p class="date">July 28, 2024</p>
       </div>
     </div>
     
@@ -149,23 +212,169 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="jupyter-notebooks-with-quarto" class="level1">
-<h1>Jupyter notebooks with Quarto</h1>
-<p><a href="https://jupyter.org/try-jupyter/lab/index.html">Jupyter</a> notebooks can be rendered with <a href="https://quarto.org/docs/tools/jupyter-lab.html">Quarto</a>.</p>
-<p>In a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a <a href="https://quarto.org/docs/tools/jupyter-lab.html#yaml-front-matter">Raw first cell</a>. Finally, I converted the original notebook into a Quarto document with <code>quarto convert</code>.</p>
-<p>I rendered all versions of the Jupyter notebook with Quarto and here are the results:</p>
-<ul>
-<li><a href="../../snippets/jupyter.html">Jupyter notebook</a></li>
-<li><a href="../../snippets/jupyter-options.html">notebook with Quarto first cell</a></li>
-<li><a href="../../snippets/jupyter-quarto.html">notebook converted to Quarto document</a></li>
-</ul>
-<p>I also learned that you have to pass an option when rendering ipynb-files – <code>quarto render notebook.ipynb --execute</code>. The assumption is that a notebook was already run and that the results shall be rendered.</p>
-<p>This all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.</p>
-<div class="quarto-figure quarto-figure-center">
+<section id="thousands-categories" class="level1">
+<h1>Thousands categories</h1>
+<p>I wanted to create categories of thousands and needed to put numbers into intervals of one, ten, and hundred thousands as well as millions.</p>
+<p>Here is the solution I came up with using <span class="math inline">\(10^{\lfloor \log_{10}(x) \rfloor}\)</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">seed =</span> <span class="fu">round</span>(<span class="fu">runif</span>(n, <span class="dv">1</span>, <span class="dv">10</span>), <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> seed <span class="sc">*</span> <span class="fu">sample</span>(<span class="dv">10</span><span class="sc">^</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_x =</span> <span class="fu">log10</span>(x) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">1</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">floor_log_x =</span> <span class="fu">floor</span>(log_x),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">category =</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">floor</span>(<span class="fu">log10</span>(x))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">factor</span>(category))) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="jupyterlab-preview.png" class="img-fluid figure-img"></p>
-<figcaption>Jupyter Lab</figcaption>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">seed</th>
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">log_x</th>
+<th style="text-align: right;">floor_log_x</th>
+<th style="text-align: right;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4500</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">8400</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">16000</td>
+<td style="text-align: right;">4.2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">25000</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">26000</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">68000</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">95000</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">120000</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">100000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1100000</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1300000</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">8300000</td>
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">20000000</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="at">fun =</span> log10, <span class="at">color =</span> <span class="st">"lightblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">10</span><span class="sc">^</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> <span class="fu">log10</span>(x)), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"log10(x)"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>())</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>pl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 
 

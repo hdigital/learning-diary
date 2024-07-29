@@ -9,8 +9,597 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.5.54</generator>
-<lastBuildDate>Tue, 16 Jul 2024 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.5.55</generator>
+<lastBuildDate>Sat, 27 Jul 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="thousands-categories" class="level1">
+<h1>Thousands categories</h1>
+<p>I wanted to create categories of thousands and needed to put numbers into intervals of one, ten, and hundred thousands as well as millions.</p>
+<p>Here is the solution I came up with using <img src="https://latex.codecogs.com/png.latex?10%5E%7B%5Clfloor%20%5Clog_%7B10%7D(x)%20%5Crfloor%7D"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">options</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scipen =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">999</span>)</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span>)</span></code></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">n <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3">dt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">seed =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runif</span>(n, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb2-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> seed <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>), n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">replace =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb2-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">log_x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(x) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb2-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">floor_log_x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(log_x),</span>
+<span id="cb2-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">category =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(x))</span>
+<span id="cb2-10">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb2-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(x)</span></code></pre></div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(dt, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(category))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightgreen"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"category"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">seed</th>
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">log_x</th>
+<th style="text-align: right;">floor_log_x</th>
+<th style="text-align: right;">category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">3400</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4500</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8.4</td>
+<td style="text-align: right;">8400</td>
+<td style="text-align: right;">3.9</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.6</td>
+<td style="text-align: right;">16000</td>
+<td style="text-align: right;">4.2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">25000</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2.6</td>
+<td style="text-align: right;">26000</td>
+<td style="text-align: right;">4.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6.8</td>
+<td style="text-align: right;">68000</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">95000</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">10000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.2</td>
+<td style="text-align: right;">120000</td>
+<td style="text-align: right;">5.1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">100000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">1100000</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1.3</td>
+<td style="text-align: right;">1300000</td>
+<td style="text-align: right;">6.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8.3</td>
+<td style="text-align: right;">8300000</td>
+<td style="text-align: right;">6.9</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">1000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">pl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20000000</span>)), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_function</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fun =</span> log10, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"lightblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(x)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"log10(x)"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_log10</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_comma</span>())</span>
+<span id="cb4-7"></span>
+<span id="cb4-8">pl</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>ggplot</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/</guid>
+  <pubDate>Sat, 27 Jul 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/log10-plot.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="round-to-first-two-digits" class="level1">
+<h1>Round to first two digits</h1>
+<p>To improve the readability of a table, I wanted to round various numbers between 100 and 10,000,000 to their first two digits. 123,456 would become 120,000 and 987 would become 990.</p>
+<p>Here is the solution I came up with.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Bscale%7D%20%5Cleftarrow%2010%5E%7B%5Clceil%20%5Clog_%7B10%7D(x)%20%5Crceil%7D%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Bround%7D%5Cleft(%5Cfrac%7Bx%7D%7B%5Ctext%7Bscale%7D%7D,%202%5Cright)%20%5Ctimes%20%5Ctext%7Bscale%7D%0A"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(purrr)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">options</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scipen =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">999</span>)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span></code></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">round_first_two <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb2-2">  scale <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ceiling</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(x))</span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> scale, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> scale</span>
+<span id="cb2-4">}</span>
+<span id="cb2-5"></span>
+<span id="cb2-6">x1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">113</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2795</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42459</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">442060</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6870466</span>)</span>
+<span id="cb2-7"></span>
+<span id="cb2-8">x1</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     113    2795   42459  442060 6870466</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_dbl</span>(x1, round_first_two)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     110    2800   42000  440000 6900000</code></pre>
+</div>
+</div>
+<section id="copilot" class="level2">
+<h2 class="anchored" data-anchor-id="copilot">Copilot</h2>
+<p><a href="https://copilot.github.com/">GitHub Copilot</a> suggested a more general solution that works for numbers smaller and equal to zero.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">x2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">113</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2795</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42459</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">442060</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6870466</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb6-2"></span>
+<span id="cb6-3">x2</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     113   -2795  -42459 -442060 6870466       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_dbl</span>(x2, round_first_two)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     110     NaN     NaN     NaN 6900000     NaN</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">round_first_two_digits <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb10-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span>(x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span>
+<span id="cb10-3"></span>
+<span id="cb10-4">  num_digits <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">floor</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(x))) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb10-5">  scale_factor <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>(num_digits <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> scale_factor) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> scale_factor</span>
+<span id="cb10-7">}</span>
+<span id="cb10-8"></span>
+<span id="cb10-9">x2</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     113   -2795  -42459 -442060 6870466       0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_dbl</span>(x2, round_first_two_digits)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]     110   -2800  -42000 -440000 6900000       0</code></pre>
+</div>
+</div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/r-logo.png" class="img-fluid" style="width:33.0%"></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/</guid>
+  <pubDate>Fri, 19 Jul 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/r-logo.png" medium="image" type="image/png" height="112" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-07-17-r-sf-intersection/</link>
@@ -182,7 +771,7 @@ font-style: inherit;">function</span>(xmin, xmax, ymin, ymax, <span class="at" s
 background-color: null;
 font-style: inherit;">crs =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"EPSG:4326"</span>) {</span>
+font-style: inherit;">"OGC:CRS84"</span>) {</span>
 <span id="cb3-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">matrix</span>(</span>
@@ -4000,148 +4589,6 @@ font-style: inherit;">sort</span>()</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/</guid>
   <pubDate>Fri, 06 Oct 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/package-unsplash.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="quarto-version-in-docker" class="level1">
-<h1>Quarto version in Docker</h1>
-<p>I realized that installing the latest version of <a href="https://quarto.org/">Quarto</a> in <a href="https://docs.docker.com/get-started/">Docker</a> will not lead to a reproducible environment since the latest Docker version depends on the day an image is build. So I was looking for a <code>Dockerfile</code> configuration to install a specified version of Quarto in Docker.</p>
-<p>Quarto keeps a list of <a href="https://github.com/quarto-dev/quarto-cli/releases/">releases</a> so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.</p>
-<p>For the final solution I needed several attempts but learned someting about defining arguments in a <code>Dockerfile</code>.</p>
-<p>Here is the solution I came up with.</p>
-<pre class="docker"><code>ARG QUARTO_VERSION=1.3.450
-RUN apt-get -y update &amp;&amp; apt-get install -y --no-install-recommends curl gdebi-core
-RUN curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb
-RUN gdebi --non-interactive quarto-${QUARTO_VERSION}-linux-amd64.deb
-RUN install2.r markdown reticulate
-# RUN quarto install tinytex</code></pre>
-<p>This is the version for the latest release I have used so far.</p>
-<pre class="docker"><code>RUN apt-get -y update &amp;&amp; apt-get install -y --no-install-recommends curl gdebi-core
-RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb
-RUN gdebi --non-interactive quarto-linux-amd64.deb
-RUN install2.r markdown reticulate
-# RUN quarto install tinytex</code></pre>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/docker-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Docker</category>
-  <category>Quarto</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/</guid>
-  <pubDate>Sun, 20 Aug 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-21-quarto-docker/quarto-logo.png" medium="image" type="image/png" height="35" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="file-hashing" class="level1">
-<h1>File hashing</h1>
-<p>To increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.</p>
-<p>In R, the <a href="https://rlang.r-lib.org/">rlang</a> library provides the <a href="https://rlang.r-lib.org/reference/hash.html"><code>hash_file()</code></a> function and uses the XXH128 hash algorithm to generate a 128-bit hash.</p>
-<p>This can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.</p>
-<p>Here, I have created two files for data sets from the <em>datasets</em> library and calculate the hash values of these files.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(readr)</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write_csv</span>(datasets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>iris, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"iris.csv"</span>)</span>
-<span id="cb1-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">write_csv</span>(datasets<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span>mtcars, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mtcars.csv"</span>)</span></code></pre></div>
-</details>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb2-2"></span>
-<span id="cb2-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">files =</span> fs<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dir_ls</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">glob =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"*.csv"</span>)) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">hash =</span> rlang<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">hash_file</span>(files))</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">files</th>
-<th style="text-align: left;">hash</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">iris.csv</td>
-<td style="text-align: left;">dbdc1846dff7fba30a88d5b23e15ea80</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">mtcars.csv</td>
-<td style="text-align: left;">1d350737ac40dc6fb6ae8f5ad616fc4e</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/rlang-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/</guid>
-  <pubDate>Sun, 13 Aug 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-08-14-r-file-hash/rlang-logo.png" medium="image" type="image/png" height="139" width="120"/>
 </item>
 </channel>
 </rss>
