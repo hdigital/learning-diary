@@ -1,0 +1,70 @@
+---
+date: "2024-07-28"
+image: log10-plot.png
+# jupyter: python3
+categories: [R, ggplot]
+---
+
+# Thousands categories
+
+I wanted to create categories of thousands and needed to put numbers into
+intervals of one, ten, and hundred thousands as well as millions.
+
+Here is the solution I came up with using
+$10^{\lfloor \log_{10}(x) \rfloor}$
+
+```{r}
+#| code-fold: true
+#| message: false
+
+library(tidyverse)
+options(scipen = 999)
+
+set.seed(12)
+```
+
+```{r}
+#| code-fold: false
+
+n <- 12
+
+dt <-
+  tibble(seed = round(runif(n, 1, 10), 1)) |>
+  mutate(
+    x = seed * sample(10^(3:6), n, replace = TRUE),
+    log_x = log10(x) |> round(1),
+    floor_log_x = floor(log_x),
+    category = 10^floor(log10(x))
+  ) |>
+  arrange(x)
+```
+
+```{r}
+#| code-fold: true
+ggplot(dt, aes(y = factor(category))) +
+  geom_bar(fill = "lightgreen") +
+  labs(y = "category")
+```
+
+```{r}
+#| echo: false
+dt
+```
+
+```{r}
+#| code-fold: true
+
+pl <-
+  ggplot(tibble(x = c(500, 20000000)), aes(x = x)) +
+  stat_function(fun = log10, color = "lightblue", linewidth = 1.5) +
+  geom_point(data = tibble(x = 10^(3:7)), aes(x = x, y = log10(x)), color = "blue", size = 3) +
+  labs(x = "x", y = "log10(x)") +
+  scale_x_log10(labels = scales::label_comma())
+
+pl
+```
+
+```{r}
+#| echo: false
+ggsave("log10-plot.png", plot = pl, width = 4, height = 3, dpi = 300)
+```
