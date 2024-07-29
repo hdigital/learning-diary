@@ -47,7 +47,7 @@ Then, I select the wider Ruhr area by defining the bottom left and the top right
 ```{r}
 #| code-fold: true
 
-create_sf_rectangle <- function(xmin, xmax, ymin, ymax, crs = "EPSG:4326") {
+create_sf_rectangle <- function(xmin, xmax, ymin, ymax, crs = "OGC:CRS84") {
   matrix(
     c(xmin, ymin, xmax, ymin, xmax, ymax, xmin, ymax, xmin, ymin),
     ncol = 2, byrow = TRUE
