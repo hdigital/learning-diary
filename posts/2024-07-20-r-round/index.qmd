@@ -10,6 +10,14 @@ To improve the readability of a table, I wanted to round various numbers between
 
 Here is the solution I came up with.
 
+$$
+\text{scale} \leftarrow 10^{\lceil \log_{10}(x) \rceil}
+$$
+
+$$
+\text{round}\left(\frac{x}{\text{scale}}, 2\right) \times \text{scale}
+$$
+
 ```{r}
 #| code-fold: true
 #| message: false
