@@ -58,16 +58,18 @@ Rscript snippets/r-packages-update.R
 
 ### Python
 
-Python packages — see [requirements.txt](requirements.txt)
+Python packages — see [pyproject.toml](pyproject.toml)
 
 ```sh
-python -m pip install -r requirements.txt
+uv sync
+
+uv lock --upgrade
 ```
 
 Python packages used in posts
 
 ```sh
-python -m pip install -r snippets/requirements-posts.txt
+uv pip install -r snippets/requirements-posts.txt
 ```
 
 _Note_ — Python version of [Rocker](https://github.com/rocker-org/rocker-versioned2) image used and specified in `.python-version`.

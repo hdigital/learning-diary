@@ -21,7 +21,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "uv", # venv/pip alternative
   # Code quality
   "ruff",
   "pre-commit",

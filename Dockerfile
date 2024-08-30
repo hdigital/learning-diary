@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.4.1
+FROM rocker/tidyverse:4.4
 
 WORKDIR /home/rstudio
 
@@ -9,7 +9,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
   python3 \
   python3-dev \
   python3-pip \
-  python3.10-venv \
+  python3-venv \
   python-is-python3
 
 # Install Quarto
@@ -23,7 +23,7 @@ COPY pkg.lock .
 RUN R -e 'pak::lockfile_install()'
 
 # Install Python packages
-COPY requirements.txt .
+COPY pyproject.toml uv.lock ./
 
-RUN python -m pip install --upgrade pip
-RUN python -m pip install -r requirements.txt
+RUN python -m pip install --upgrade pip uv
+RUN python -m uv sync --all-extras

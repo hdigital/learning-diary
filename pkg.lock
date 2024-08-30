@@ -22,7 +22,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/askpass_1.2.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/askpass/askpass_1.2.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/askpass_1.2.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/askpass_1.2.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -53,7 +53,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.5.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/backports_1.5.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/backports/backports_1.5.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/backports_1.5.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/backports_1.5.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -84,7 +84,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.1-3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/base64enc_0.1-3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/base64enc/base64enc_0.1-3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/base64enc_0.1-3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/base64enc_0.1-3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -115,7 +115,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "4.0.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bit_4.0.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/bit/bit_4.0.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bit_4.0.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/bit_4.0.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -146,7 +146,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "4.0.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bit64_4.0.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/bit64/bit64_4.0.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bit64_4.0.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/bit64_4.0.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -177,7 +177,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/blob_1.2.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/blob/blob_1.2.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/blob_1.2.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/blob_1.2.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -208,7 +208,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.6"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/broom_1.0.6.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/broom/broom_1.0.6.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/broom_1.0.6.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/broom_1.0.6.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -224,7 +224,7 @@
     {
       "ref": "bslib",
       "package": "bslib",
-      "version": "0.7.0",
+      "version": "0.8.0",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -237,10 +237,10 @@
         "RemoteRef": "bslib",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "0.7.0"
+        "RemoteSha": "0.8.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bslib_0.7.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/bslib/bslib_0.7.0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/bslib_0.7.0.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/bslib_0.8.0.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/bslib_0.8.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -270,7 +270,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cachem_1.1.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/cachem/cachem_1.1.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cachem_1.1.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/cachem_1.1.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -301,7 +301,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cellranger_1.1.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/cellranger/cellranger_1.1.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cellranger_1.1.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/cellranger_1.1.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -332,7 +332,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.6.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cli_3.6.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/cli/cli_3.6.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/cli_3.6.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/cli_3.6.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -363,7 +363,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.8.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/clipr_0.8.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/clipr/clipr_0.8.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/clipr_0.8.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/clipr_0.8.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -379,7 +379,7 @@
     {
       "ref": "colorspace",
       "package": "colorspace",
-      "version": "2.1-0",
+      "version": "2.1-1",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -392,10 +392,10 @@
         "RemoteRef": "colorspace",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "2.1-0"
+        "RemoteSha": "2.1-1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/colorspace_2.1-0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/colorspace/colorspace_2.1-0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/colorspace_2.1-0.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/colorspace_2.1-1.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/colorspace_2.1-1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -425,7 +425,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.5.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/crayon_1.5.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/crayon/crayon_1.5.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/crayon_1.5.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/crayon_1.5.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -441,7 +441,7 @@
     {
       "ref": "curl",
       "package": "curl",
-      "version": "5.2.1",
+      "version": "5.2.2",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -454,10 +454,10 @@
         "RemoteRef": "curl",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "5.2.1"
+        "RemoteSha": "5.2.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/curl_5.2.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/curl/curl_5.2.1.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/curl_5.2.1.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/curl_5.2.2.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/curl_5.2.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -485,7 +485,7 @@
     {
       "ref": "data.table",
       "package": "data.table",
-      "version": "1.15.4",
+      "version": "1.16.0",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -498,10 +498,10 @@
         "RemoteRef": "data.table",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "1.15.4"
+        "RemoteSha": "1.16.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/data.table_1.15.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/data.table/data.table_1.15.4.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/data.table_1.15.4.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/data.table_1.16.0.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/data.table_1.16.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -531,7 +531,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/DBI_1.2.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/DBI/DBI_1.2.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/DBI_1.2.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/DBI_1.2.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -562,7 +562,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.5.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dbplyr_2.5.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/dbplyr/dbplyr_2.5.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dbplyr_2.5.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/dbplyr_2.5.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -578,7 +578,7 @@
     {
       "ref": "digest",
       "package": "digest",
-      "version": "0.6.36",
+      "version": "0.6.37",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -591,10 +591,10 @@
         "RemoteRef": "digest",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "0.6.36"
+        "RemoteSha": "0.6.37"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/digest_0.6.36.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/digest/digest_0.6.36.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/digest_0.6.36.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/digest_0.6.37.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/digest_0.6.37.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -624,7 +624,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.3.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dtplyr_1.3.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/dtplyr/dtplyr_1.3.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dtplyr_1.3.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/dtplyr_1.3.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -655,7 +655,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.24.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/evaluate_0.24.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/evaluate/evaluate_0.24.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/evaluate_0.24.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/evaluate_0.24.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -686,7 +686,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.6"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fansi_1.0.6.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/fansi/fansi_1.0.6.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fansi_1.0.6.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/fansi_1.0.6.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -717,7 +717,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.1.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/farver_2.1.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/farver/farver_2.1.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/farver_2.1.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/farver_2.1.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -748,7 +748,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fastmap_1.2.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/fastmap/fastmap_1.2.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fastmap_1.2.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/fastmap_1.2.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -779,7 +779,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.5.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fontawesome_0.5.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/fontawesome/fontawesome_0.5.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fontawesome_0.5.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/fontawesome_0.5.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -810,7 +810,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/forcats_1.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/forcats/forcats_1.0.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/forcats_1.0.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/forcats_1.0.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -841,7 +841,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.5.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gargle_1.5.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/gargle/gargle_1.5.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gargle_1.5.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/gargle_1.5.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -872,7 +872,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.1.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/generics_0.1.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/generics/generics_0.1.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/generics_0.1.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/generics_0.1.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -903,7 +903,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.7.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/glue_1.7.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/glue/glue_1.7.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/glue_1.7.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/glue_1.7.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -934,7 +934,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.1.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/googledrive_2.1.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/googledrive/googledrive_2.1.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/googledrive_2.1.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/googledrive_2.1.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -965,7 +965,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/googlesheets4_1.1.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/googlesheets4/googlesheets4_1.1.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/googlesheets4_1.1.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/googlesheets4_1.1.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -996,7 +996,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.3.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gtable_0.3.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/gtable/gtable_0.3.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gtable_0.3.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/gtable_0.3.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1027,7 +1027,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.5.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/haven_2.5.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/haven/haven_2.5.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/haven_2.5.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/haven_2.5.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1071,7 +1071,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.11"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/highr_0.11.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/highr/highr_0.11.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/highr_0.11.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/highr_0.11.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1102,7 +1102,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/hms_1.1.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/hms/hms_1.1.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/hms_1.1.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/hms_1.1.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1133,7 +1133,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.5.8.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/htmltools_0.5.8.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/htmltools/htmltools_0.5.8.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/htmltools_0.5.8.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/htmltools_0.5.8.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1164,7 +1164,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.4.7"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/httr_1.4.7.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/httr/httr_1.4.7.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/httr_1.4.7.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/httr_1.4.7.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1195,7 +1195,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ids_1.0.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/ids/ids_1.0.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ids_1.0.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/ids_1.0.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1226,7 +1226,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.2.7"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/isoband_0.2.7.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/isoband/isoband_0.2.7.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/isoband_0.2.7.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/isoband_0.2.7.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1257,7 +1257,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.1.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/jquerylib_0.1.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/jquerylib/jquerylib_0.1.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/jquerylib_0.1.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/jquerylib_0.1.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1288,7 +1288,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/labeling_0.4.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/labeling/labeling_0.4.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/labeling_0.4.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/labeling_0.4.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1319,7 +1319,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/lifecycle_1.0.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/lifecycle/lifecycle_1.0.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/lifecycle_1.0.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/lifecycle_1.0.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1350,7 +1350,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.9.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/lubridate_1.9.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/lubridate/lubridate_1.9.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/lubridate_1.9.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/lubridate_1.9.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1381,7 +1381,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.0.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/magrittr_2.0.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/magrittr/magrittr_2.0.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/magrittr_2.0.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/magrittr_2.0.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1412,7 +1412,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.0.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/memoise_2.0.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/memoise/memoise_2.0.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/memoise_2.0.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/memoise_2.0.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1443,7 +1443,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.12"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/mime_0.12.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/mime/mime_0.12.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/mime_0.12.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/mime_0.12.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1474,7 +1474,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.1.11"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/modelr_0.1.11.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/modelr/modelr_0.1.11.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/modelr_0.1.11.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/modelr_0.1.11.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1505,7 +1505,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.5.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/munsell_0.5.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/munsell/munsell_0.5.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/munsell_0.5.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/munsell_0.5.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1521,7 +1521,7 @@
     {
       "ref": "openssl",
       "package": "openssl",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -1534,10 +1534,10 @@
         "RemoteRef": "openssl",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "2.2.0"
+        "RemoteSha": "2.2.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/openssl_2.2.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/openssl/openssl_2.2.0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/openssl_2.2.0.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/openssl_2.2.1.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/openssl_2.2.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -1574,7 +1574,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.9.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pillar_1.9.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/pillar/pillar_1.9.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pillar_1.9.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/pillar_1.9.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1605,7 +1605,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.0.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pkgconfig_2.0.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/pkgconfig/pkgconfig_2.0.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pkgconfig_2.0.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/pkgconfig_2.0.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1636,7 +1636,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.8.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/processx_3.8.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/processx/processx_3.8.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/processx_3.8.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/processx_3.8.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1667,7 +1667,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.7.7"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ps_1.7.7.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/ps/ps_1.7.7.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ps_1.7.7.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/ps_1.7.7.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1698,7 +1698,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.5.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/R6_2.5.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/R6/R6_2.5.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/R6_2.5.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/R6_2.5.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1729,7 +1729,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.3.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ragg_1.3.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/ragg/ragg_1.3.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ragg_1.3.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/ragg_1.3.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1785,7 +1785,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.3.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rappdirs_0.3.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rappdirs/rappdirs_0.3.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rappdirs_0.3.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rappdirs_0.3.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1816,7 +1816,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1-3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/RColorBrewer_1.1-3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/RColorBrewer/RColorBrewer_1.1-3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/RColorBrewer_1.1-3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/RColorBrewer_1.1-3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1847,7 +1847,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.1.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/readr_2.1.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/readr/readr_2.1.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/readr_2.1.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/readr_2.1.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1878,7 +1878,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.4.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/readxl_1.4.3.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/readxl/readxl_1.4.3.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/readxl_1.4.3.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/readxl_1.4.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1909,7 +1909,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.0.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rematch_2.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rematch/rematch_2.0.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rematch_2.0.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rematch_2.0.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1940,7 +1940,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.1.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rematch2_2.1.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rematch2/rematch2_2.1.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rematch2_2.1.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rematch2_2.1.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -1971,7 +1971,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.1.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reprex_2.1.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/reprex/reprex_2.1.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reprex_2.1.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/reprex_2.1.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2009,7 +2009,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.16.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rstudioapi_0.16.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rstudioapi/rstudioapi_0.16.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rstudioapi_0.16.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rstudioapi_0.16.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2040,7 +2040,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.9"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/sass_0.4.9.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/sass/sass_0.4.9.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/sass_0.4.9.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/sass_0.4.9.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2061,37 +2061,6 @@
       ]
     },
     {
-      "ref": "scales",
-      "package": "scales",
-      "version": "1.3.0",
-      "type": "standard",
-      "direct": false,
-      "binary": true,
-      "dependencies": ["cli", "farver", "glue", "labeling", "lifecycle", "munsell", "R6", "RColorBrewer", "rlang", "viridisLite"],
-      "vignettes": false,
-      "needscompilation": false,
-      "metadata": {
-        "RemoteType": "standard",
-        "RemotePkgRef": "scales",
-        "RemoteRef": "scales",
-        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
-        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "1.3.0"
-      },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/scales_1.3.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/scales/scales_1.3.0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/scales_1.3.0.tar.gz",
-      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-      "rversion": "4.4",
-      "directpkg": false,
-      "license": "MIT + file LICENSE",
-      "dep_types": ["Depends", "Imports", "LinkingTo"],
-      "params": [],
-      "install_args": "",
-      "repotype": "cran",
-      "sysreqs": "",
-      "sysreqs_packages": {}
-    },
-    {
       "ref": "selectr",
       "package": "selectr",
       "version": "0.4-2",
@@ -2109,7 +2078,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4-2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/selectr_0.4-2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/selectr/selectr_0.4-2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/selectr_0.4-2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/selectr_0.4-2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2140,7 +2109,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.8.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/stringi_1.8.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/stringi/stringi_1.8.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/stringi_1.8.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/stringi_1.8.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2178,7 +2147,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.5.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/stringr_1.5.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/stringr/stringr_1.5.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/stringr_1.5.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/stringr_1.5.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2209,7 +2178,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.4.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/sys_3.4.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/sys/sys_3.4.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/sys_3.4.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/sys_3.4.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2240,7 +2209,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/systemfonts_1.1.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/systemfonts/systemfonts_1.1.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/systemfonts_1.1.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/systemfonts_1.1.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2284,7 +2253,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/textshaping_0.4.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/textshaping/textshaping_0.4.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/textshaping_0.4.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/textshaping_0.4.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2334,7 +2303,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.2.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tibble_3.2.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tibble/tibble_3.2.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tibble_3.2.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tibble_3.2.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2365,7 +2334,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.3.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyr_1.3.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tidyr/tidyr_1.3.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyr_1.3.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tidyr_1.3.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2396,7 +2365,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyselect_1.2.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tidyselect/tidyselect_1.2.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyselect_1.2.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tidyselect_1.2.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2427,7 +2396,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "2.0.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyverse_2.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tidyverse/tidyverse_2.0.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidyverse_2.0.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tidyverse_2.0.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2458,7 +2427,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.3.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/timechange_0.3.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/timechange/timechange_0.3.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/timechange_0.3.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/timechange_0.3.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2474,7 +2443,7 @@
     {
       "ref": "tinytex",
       "package": "tinytex",
-      "version": "0.51",
+      "version": "0.52",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2487,10 +2456,10 @@
         "RemoteRef": "tinytex",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "0.51"
+        "RemoteSha": "0.52"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tinytex_0.51.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tinytex/tinytex_0.51.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tinytex_0.51.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tinytex_0.52.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tinytex_0.52.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -2520,7 +2489,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tzdb_0.4.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tzdb/tzdb_0.4.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tzdb_0.4.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tzdb_0.4.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2551,7 +2520,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/utf8_1.2.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/utf8/utf8_1.2.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/utf8_1.2.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/utf8_1.2.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2567,7 +2536,7 @@
     {
       "ref": "uuid",
       "package": "uuid",
-      "version": "1.2-0",
+      "version": "1.2-1",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2580,10 +2549,10 @@
         "RemoteRef": "uuid",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "1.2-0"
+        "RemoteSha": "1.2-1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/uuid_1.2-0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/uuid/uuid_1.2-0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/uuid_1.2-0.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/uuid_1.2-1.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/uuid_1.2-1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -2613,7 +2582,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.6.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/vctrs_0.6.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/vctrs/vctrs_0.6.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/vctrs_0.6.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/vctrs_0.6.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2644,7 +2613,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/viridisLite_0.4.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/viridisLite/viridisLite_0.4.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/viridisLite_0.4.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/viridisLite_0.4.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2675,7 +2644,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.6.5"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/vroom_1.6.5.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/vroom/vroom_1.6.5.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/vroom_1.6.5.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/vroom_1.6.5.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2691,7 +2660,7 @@
     {
       "ref": "withr",
       "package": "withr",
-      "version": "3.0.0",
+      "version": "3.0.1",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2704,10 +2673,10 @@
         "RemoteRef": "withr",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "3.0.0"
+        "RemoteSha": "3.0.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/withr_3.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/withr/withr_3.0.0.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/withr_3.0.0.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/withr_3.0.1.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/withr_3.0.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -2722,7 +2691,7 @@
     {
       "ref": "xfun",
       "package": "xfun",
-      "version": "0.45",
+      "version": "0.47",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2735,10 +2704,10 @@
         "RemoteRef": "xfun",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "0.45"
+        "RemoteSha": "0.47"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/xfun_0.45.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/xfun/xfun_0.45.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/xfun_0.45.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/xfun_0.47.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/xfun_0.47.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -2768,7 +2737,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.3.6"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/xml2_1.3.6.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/xml2/xml2_1.3.6.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/xml2_1.3.6.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/xml2_1.3.6.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2791,7 +2760,7 @@
     {
       "ref": "yaml",
       "package": "yaml",
-      "version": "2.3.9",
+      "version": "2.3.10",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2804,10 +2773,10 @@
         "RemoteRef": "yaml",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "2.3.9"
+        "RemoteSha": "2.3.10"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/yaml_2.3.9.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/yaml/yaml_2.3.9.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/yaml_2.3.9.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/yaml_2.3.10.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/yaml_2.3.10.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -2822,7 +2791,7 @@
     {
       "ref": "rmarkdown",
       "package": "rmarkdown",
-      "version": "2.27",
+      "version": "2.28",
       "type": "standard",
       "direct": true,
       "binary": true,
@@ -2835,10 +2804,10 @@
         "RemoteRef": "rmarkdown",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "2.27"
+        "RemoteSha": "2.28"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rmarkdown_2.27.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rmarkdown/rmarkdown_2.27.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rmarkdown_2.27.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rmarkdown_2.28.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rmarkdown_2.28.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": true,
@@ -2875,7 +2844,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dplyr_1.1.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/dplyr/dplyr_1.1.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/dplyr_1.1.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/dplyr_1.1.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2906,7 +2875,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.5.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ggplot2_3.5.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/ggplot2/ggplot2_3.5.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/ggplot2_3.5.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/ggplot2_3.5.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2937,7 +2906,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rvest_1.0.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rvest/rvest_1.0.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rvest_1.0.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rvest_1.0.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2968,7 +2937,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/janeaustenr_1.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/janeaustenr/janeaustenr_1.0.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/janeaustenr_1.0.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/janeaustenr_1.0.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -2984,7 +2953,7 @@
     {
       "ref": "Rcpp",
       "package": "Rcpp",
-      "version": "1.0.12",
+      "version": "1.0.13",
       "type": "standard",
       "direct": false,
       "binary": true,
@@ -2997,10 +2966,10 @@
         "RemoteRef": "Rcpp",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "1.0.12"
+        "RemoteSha": "1.0.13"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Rcpp_1.0.12.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/Rcpp/Rcpp_1.0.12.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/Rcpp_1.0.12.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Rcpp_1.0.13.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/Rcpp_1.0.13.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": false,
@@ -3030,7 +2999,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.7.1"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/SnowballC_0.7.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/SnowballC/SnowballC_0.7.1.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/SnowballC_0.7.1.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/SnowballC_0.7.1.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3061,7 +3030,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidytext_0.4.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tidytext/tidytext_0.4.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tidytext_0.4.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tidytext_0.4.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3092,7 +3061,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.3.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tokenizers_0.3.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/tokenizers/tokenizers_0.3.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/tokenizers_0.3.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/tokenizers_0.3.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3123,7 +3092,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.2.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/conflicted_1.2.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/conflicted/conflicted_1.2.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/conflicted_1.2.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/conflicted_1.2.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3154,7 +3123,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.48"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/knitr_1.48.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/knitr/knitr_1.48.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/knitr_1.48.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/knitr_1.48.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3192,7 +3161,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.2"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/purrr_1.0.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/purrr/purrr_1.0.2.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/purrr_1.0.2.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/purrr_1.0.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3223,7 +3192,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.7"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/renv_1.0.7.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/renv/renv_1.0.7.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/renv_1.0.7.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/renv_1.0.7.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3254,7 +3223,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "3.7.6"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/callr_3.7.6.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/callr/callr_3.7.6.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/callr_3.7.6.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/callr_3.7.6.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3285,7 +3254,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.0.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gapminder_1.0.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/gapminder/gapminder_1.0.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/gapminder_1.0.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/gapminder_1.0.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3316,7 +3285,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.6.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fs_1.6.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/fs/fs_1.6.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/fs_1.6.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/fs_1.6.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3354,7 +3323,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.1.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rlang_1.1.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/rlang/rlang_1.1.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/rlang_1.1.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/rlang_1.1.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3370,7 +3339,7 @@
     {
       "ref": "httr2",
       "package": "httr2",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "type": "standard",
       "direct": true,
       "binary": true,
@@ -3383,10 +3352,10 @@
         "RemoteRef": "httr2",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "1.0.1"
+        "RemoteSha": "1.0.3"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/httr2_1.0.1.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/httr2/httr2_1.0.1.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/httr2_1.0.1.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/httr2_1.0.3.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/httr2_1.0.3.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": true,
@@ -3416,8 +3385,326 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.8.8"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/jsonlite_1.8.8.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/jsonlite/jsonlite_1.8.8.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/jsonlite_1.8.8.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/jsonlite_1.8.8.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": true,
+      "license": "MIT + file LICENSE",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "patchwork",
+      "package": "patchwork",
+      "version": "1.2.0",
+      "type": "standard",
+      "direct": true,
+      "binary": true,
+      "dependencies": ["ggplot2", "gtable", "rlang", "cli"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "patchwork",
+        "RemoteRef": "patchwork",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "1.2.0"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/patchwork_1.2.0.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/patchwork_1.2.0.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": true,
+      "license": "MIT + file LICENSE",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "classInt",
+      "package": "classInt",
+      "version": "0.4-10",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": ["e1071", "class", "KernSmooth"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "classInt",
+        "RemoteRef": "classInt",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "0.4-10"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/classInt_0.4-10.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/classInt_0.4-10.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "GPL (>= 2)",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "e1071",
+      "package": "e1071",
+      "version": "1.7-14",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": ["class", "proxy"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "e1071",
+        "RemoteRef": "e1071",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "1.7-14"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/e1071_1.7-14.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/e1071_1.7-14.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "GPL-2 | GPL-3",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "proxy",
+      "package": "proxy",
+      "version": "0.4-27",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": [],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "proxy",
+        "RemoteRef": "proxy",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "0.4-27"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/proxy_0.4-27.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/proxy_0.4-27.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "GPL-2",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "s2",
+      "package": "s2",
+      "version": "1.1.7",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": ["Rcpp", "wk"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "s2",
+        "RemoteRef": "s2",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "1.1.7"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/s2_1.1.7.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/s2_1.1.7.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "Apache License (== 2.0)",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "OpenSSL >= 1.0.1",
+      "sysreqs_packages": [
+        {
+          "sysreq": "openssl",
+          "packages": ["libssl-dev"],
+          "pre_install": {},
+          "post_install": {}
+        }
+      ]
+    },
+    {
+      "ref": "sf",
+      "package": "sf",
+      "version": "1.0-16",
+      "type": "standard",
+      "direct": true,
+      "binary": true,
+      "dependencies": ["classInt", "DBI", "magrittr", "Rcpp", "s2", "units"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "sf",
+        "RemoteRef": "sf",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "1.0-16"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/sf_1.0-16.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/sf_1.0-16.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": true,
+      "license": "GPL-2 | MIT + file LICENSE",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ (>= 4.8.0),\n        sqlite3",
+      "sysreqs_packages": [
+        {
+          "sysreq": "gdal",
+          "packages": ["libgdal-dev", "gdal-bin"],
+          "pre_install": {},
+          "post_install": {}
+        },
+        {
+          "sysreq": "geos",
+          "packages": ["libgeos-dev"],
+          "pre_install": {},
+          "post_install": {}
+        },
+        {
+          "sysreq": "proj",
+          "packages": ["libproj-dev"],
+          "pre_install": {},
+          "post_install": {}
+        },
+        {
+          "sysreq": "sqlite3",
+          "packages": ["libsqlite3-dev"],
+          "pre_install": {},
+          "post_install": {}
+        }
+      ]
+    },
+    {
+      "ref": "units",
+      "package": "units",
+      "version": "0.8-5",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": ["Rcpp"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "units",
+        "RemoteRef": "units",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "0.8-5"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/units_0.8-5.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/units_0.8-5.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "GPL-2",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "udunits-2",
+      "sysreqs_packages": [
+        {
+          "sysreq": "udunits2",
+          "packages": ["libudunits2-dev"],
+          "pre_install": {},
+          "post_install": {}
+        }
+      ]
+    },
+    {
+      "ref": "wk",
+      "package": "wk",
+      "version": "0.9.2",
+      "type": "standard",
+      "direct": false,
+      "binary": true,
+      "dependencies": [],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "wk",
+        "RemoteRef": "wk",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "0.9.2"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/wk_0.9.2.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/wk_0.9.2.tar.gz",
+      "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+      "rversion": "4.4",
+      "directpkg": false,
+      "license": "MIT + file LICENSE",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs": "",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "scales",
+      "package": "scales",
+      "version": "1.3.0",
+      "type": "standard",
+      "direct": true,
+      "binary": true,
+      "dependencies": ["cli", "farver", "glue", "labeling", "lifecycle", "munsell", "R6", "RColorBrewer", "rlang", "viridisLite"],
+      "vignettes": false,
+      "needscompilation": false,
+      "metadata": {
+        "RemoteType": "standard",
+        "RemotePkgRef": "scales",
+        "RemoteRef": "scales",
+        "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
+        "RemoteSha": "1.3.0"
+      },
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/scales_1.3.0.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/scales_1.3.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": true,
@@ -3447,7 +3734,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "1.6.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/htmlwidgets_1.6.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/htmlwidgets/htmlwidgets_1.6.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/htmlwidgets_1.6.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/htmlwidgets_1.6.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3478,7 +3765,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.4.4"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reactable_0.4.4.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/reactable/reactable_0.4.4.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reactable_0.4.4.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/reactable_0.4.4.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3509,7 +3796,7 @@
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
         "RemoteSha": "0.6.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reactR_0.6.0.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/reactR/reactR_0.6.0.tar.gz"],
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/reactR_0.6.0.tar.gz"],
       "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/reactR_0.6.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
@@ -3525,7 +3812,7 @@
     {
       "ref": "pak",
       "package": "pak",
-      "version": "0.7.2",
+      "version": "0.8.0",
       "type": "standard",
       "direct": true,
       "binary": true,
@@ -3538,10 +3825,10 @@
         "RemoteRef": "pak",
         "RemoteRepos": "https://p3m.dev/cran/__linux__/jammy/latest",
         "RemotePkgPlatform": "x86_64-pc-linux-gnu-ubuntu-22.04",
-        "RemoteSha": "0.7.2"
+        "RemoteSha": "0.8.0"
       },
-      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pak_0.7.2.tar.gz", "https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/Archive/pak/pak_0.7.2.tar.gz"],
-      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/pak_0.7.2.tar.gz",
+      "sources": ["https://p3m.dev/cran/__linux__/jammy/latest/src/contrib/pak_0.8.0.tar.gz"],
+      "target": "src/contrib/x86_64-pc-linux-gnu-ubuntu-22.04/4.4/pak_0.8.0.tar.gz",
       "platform": "x86_64-pc-linux-gnu-ubuntu-22.04",
       "rversion": "4.4",
       "directpkg": true,
@@ -3573,7 +3860,7 @@
       "target": "src/contrib/lattice_0.22-6.tar.gz",
       "platform": "x86_64-pc-linux-gnu",
       "rversion": "R 4.4.1",
-      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-06-14 10:18:42 UTC; unix",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:53:46 UTC; unix",
       "directpkg": false,
       "license": "GPL (>= 2)",
       "dep_types": ["Depends", "Imports", "LinkingTo"],
@@ -3602,7 +3889,7 @@
       "target": "src/contrib/MASS_7.3-60.2.tar.gz",
       "platform": "x86_64-pc-linux-gnu",
       "rversion": "R 4.4.1",
-      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-06-14 10:18:37 UTC; unix",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:53:41 UTC; unix",
       "directpkg": false,
       "license": "GPL-2 | GPL-3",
       "dep_types": ["Depends", "Imports", "LinkingTo"],
@@ -3631,7 +3918,7 @@
       "target": "src/contrib/Matrix_1.7-0.tar.gz",
       "platform": "x86_64-pc-linux-gnu",
       "rversion": "R 4.4.1",
-      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-06-14 10:18:50 UTC; unix",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:53:53 UTC; unix",
       "directpkg": false,
       "license": "GPL (>= 2) | file LICENCE",
       "dep_types": ["Depends", "Imports", "LinkingTo"],
@@ -3660,7 +3947,7 @@
       "target": "src/contrib/mgcv_1.9-1.tar.gz",
       "platform": "x86_64-pc-linux-gnu",
       "rversion": "R 4.4.1",
-      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-06-14 10:22:08 UTC; unix",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:57:07 UTC; unix",
       "directpkg": false,
       "license": "GPL (>= 2)",
       "dep_types": ["Depends", "Imports", "LinkingTo"],
@@ -3689,9 +3976,67 @@
       "target": "src/contrib/nlme_3.1-164.tar.gz",
       "platform": "x86_64-pc-linux-gnu",
       "rversion": "R 4.4.1",
-      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-06-14 10:21:04 UTC; unix",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:56:06 UTC; unix",
       "directpkg": false,
       "license": "GPL (>= 2)",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "installed::/usr/local/lib/R/library/class",
+      "package": "class",
+      "version": "7.3-22",
+      "type": "installed",
+      "direct": false,
+      "binary": true,
+      "dependencies": ["MASS"],
+      "vignettes": false,
+      "needscompilation": true,
+      "metadata": {
+        "RemoteType": "installed",
+        "RemotePkgRef": "installed::/usr/local/lib/R/library/class",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu",
+        "RemoteSha": "7.3-22"
+      },
+      "sources": [],
+      "target": "src/contrib/class_7.3-22.tar.gz",
+      "platform": "x86_64-pc-linux-gnu",
+      "rversion": "R 4.4.1",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:57:03 UTC; unix",
+      "directpkg": false,
+      "license": "GPL-2 | GPL-3",
+      "dep_types": ["Depends", "Imports", "LinkingTo"],
+      "params": [],
+      "install_args": "",
+      "repotype": "cran",
+      "sysreqs_packages": {}
+    },
+    {
+      "ref": "installed::/usr/local/lib/R/library/KernSmooth",
+      "package": "KernSmooth",
+      "version": "2.23-24",
+      "type": "installed",
+      "direct": false,
+      "binary": true,
+      "dependencies": [],
+      "vignettes": false,
+      "needscompilation": true,
+      "metadata": {
+        "RemoteType": "installed",
+        "RemotePkgRef": "installed::/usr/local/lib/R/library/KernSmooth",
+        "RemotePkgPlatform": "x86_64-pc-linux-gnu",
+        "RemoteSha": "2.23-24"
+      },
+      "sources": [],
+      "target": "src/contrib/KernSmooth_2.23-24.tar.gz",
+      "platform": "x86_64-pc-linux-gnu",
+      "rversion": "R 4.4.1",
+      "built": "R 4.4.1; x86_64-pc-linux-gnu; 2024-08-09 13:56:57 UTC; unix",
+      "directpkg": false,
+      "license": "Unlimited",
       "dep_types": ["Depends", "Imports", "LinkingTo"],
       "params": [],
       "install_args": "",
@@ -3705,8 +4050,8 @@
     "version": "22.04",
     "url": null,
     "pre_install": ["apt-get -y update"],
-    "install_scripts": ["apt-get -y install libcurl4-openssl-dev libssl-dev make zlib1g-dev libfreetype6-dev libjpeg-dev libpng-dev libtiff-dev pandoc libicu-dev libfontconfig1-dev libfribidi-dev libharfbuzz-dev libxml2-dev"],
+    "install_scripts": ["apt-get -y install libcurl4-openssl-dev libssl-dev make zlib1g-dev libfreetype6-dev libjpeg-dev libpng-dev libtiff-dev pandoc libicu-dev libfontconfig1-dev libfribidi-dev libharfbuzz-dev libxml2-dev libgdal-dev gdal-bin libgeos-dev libproj-dev libsqlite3-dev libudunits2-dev"],
     "post_install": {},
-    "packages": ["libcurl4-openssl-dev", "libssl-dev", "make", "zlib1g-dev", "libfreetype6-dev", "libjpeg-dev", "libpng-dev", "libtiff-dev", "pandoc", "libicu-dev", "libfontconfig1-dev", "libfribidi-dev", "libharfbuzz-dev", "libxml2-dev"]
+    "packages": ["libcurl4-openssl-dev", "libssl-dev", "make", "zlib1g-dev", "libfreetype6-dev", "libjpeg-dev", "libpng-dev", "libtiff-dev", "pandoc", "libicu-dev", "libfontconfig1-dev", "libfribidi-dev", "libharfbuzz-dev", "libxml2-dev", "libgdal-dev", "gdal-bin", "libgeos-dev", "libproj-dev", "libsqlite3-dev", "libudunits2-dev"]
   }
 }

@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# remove existing Python environment
-rm -rf .venv
-
-# create and sync local Python environment
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
+# sync local Python environment
+uv sync --all-extras
 
 # install post packages
 Rscript -e "pak::lockfile_install(update = FALSE)"
-python -m pip install -r snippets/requirements-posts.txt
+uv pip install -r snippets/requirements-posts.txt
 
 # remove freeze folder for full rebuild
 rm -rf _freeze
