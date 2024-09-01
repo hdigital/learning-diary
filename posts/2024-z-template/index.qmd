@@ -3,12 +3,14 @@ date: "2024-0x-xx"
 image: thumbnail.png
 # jupyter: python3
 categories: [R, Python]
+title: Title
+# format:
+#   html:
+#     toc: true
 draft: true
 ---
 
-# Title
-
-post text and snippets
+post text and snippets, add title to header
 
 ```{r}
 #| code-fold: false
