@@ -3,12 +3,11 @@ date: "2023-10-31"
 image: zenodo-logo.png
 jupyter: python3
 categories: [Python, API]
+title: Zenodo API
 format:
   html:
     toc: true
 ---
-
-# Zenodo API
 
 This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the [partypositions-wikitags](https://github.com/hdigital/partypositions-wikitags) project.
 

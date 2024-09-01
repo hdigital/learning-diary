@@ -3,12 +3,11 @@ date: "2023-05-01"
 image: wikipedia-berlin.png
 jupyter: python3
 categories: [Python, AI, geo]
+title: Wikipedia, Python, ChatGPT
 format:
   html:
     toc: true
 ---
-
-# Wikipedia, Python, ChatGPT
 
 I wanted to get the first image of a Wikipedia page and the coordinates.
 

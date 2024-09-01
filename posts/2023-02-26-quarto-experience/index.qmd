@@ -3,9 +3,11 @@ date: "2023-02-26"
 image: quarto-logo.png
 jupyter: python3
 categories: [Docker, Python, Quarto]
+title: A few days of Quarto
+format:
+  html:
+    toc: true
 ---
-
-# A few days of Quarto
 
 ## Quarto
 
