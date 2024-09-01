@@ -1,7 +1,7 @@
 ---
 date: "2023-07-29"
 image: renv-logo.svg
-categories: [R]
+categories: [R, packaging]
 title: "Package versions with renv"
 toc: true
 ---

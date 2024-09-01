@@ -2,10 +2,7 @@
 date: "2023-11-23"
 image: jupyter-lite-logo.png
 jupyter: python3
-categories: [Python]
----
-
-# JupyterLite
+categories: [Python, packaging]
 
 I listened to the the recent _Talk Python To Me_ episode [Celebrating JupyterLab 4 and Jupyter 7 Releases](https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases) and became aware of [JupyterLite](https://github.com/jupyterlite) which I had not used before.
 

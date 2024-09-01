@@ -2,7 +2,7 @@
 date: "2023-11-04"
 image: python-logo.png
 jupyter: python3
-categories: [Python]
+categories: [Python, packaging]
 ---
 
 # pyproject.toml metadata and dependencies
