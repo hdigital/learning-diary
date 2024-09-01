@@ -2,6 +2,7 @@
 date: "2023-04-27"
 image: dataverse-url.png
 categories: [R]
+eval: false
 ---
 
 # Dataverse URLs
@@ -39,14 +40,14 @@ conflicts_prefer(dplyr::filter)
 #| message: false
 
 if (FALSE) {
-  url_csv <- "https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"
-  elec_raw <- read_csv(url_csv)
+    url_csv <- "https://dataverse.harvard.edu/api/access/datafile/3754546?format=original"
+    elec_raw <- read_csv(url_csv)
 }
 
 url <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ"
 
 if (!exists("elec_raw")) {
-  elec_raw <- read_tsv(url)
+    elec_raw <- read_tsv(url)
 }
 
 # glimpse(elec_raw)
@@ -57,24 +58,24 @@ if (!exists("elec_raw")) {
 #| message: false
 
 hnd <-
-  elec_raw |>
-  filter(country == "HND") |>
-  mutate(
-    year = as.integer(substr(election_date, 1, 4)),
-    seats_share = 100 * seats / seats_total
-  )
+    elec_raw |>
+    filter(country == "HND") |>
+    mutate(
+        year = as.integer(substr(election_date, 1, 4)),
+        seats_share = 100 * seats / seats_total
+    )
 
 hnd |>
-  summarise(
-    n = n(),
-    share_mean = mean(seats_share, na.rm = TRUE) |> round(1),
-    share_max = max(seats_share, na.rm = TRUE) |> round(1),
-    year_first = min(year, na.rm = TRUE),
-    year_last = max(year, na.rm = TRUE),
-    .by = party
-  ) |>
-  select(party, n, n:year_last) |>
-  arrange(desc(n), desc(share_mean))
+    summarise(
+        n = n(),
+        share_mean = mean(seats_share, na.rm = TRUE) |> round(1),
+        share_max = max(seats_share, na.rm = TRUE) |> round(1),
+        year_first = min(year, na.rm = TRUE),
+        year_last = max(year, na.rm = TRUE),
+        .by = party
+    ) |>
+    select(party, n, n:year_last) |>
+    arrange(desc(n), desc(share_mean))
 ```
 
 ```{r}
@@ -82,10 +83,10 @@ hnd |>
 #| message: false
 
 hnd |>
-  mutate(n = n(), .by = party) |>
-  filter(n > 10) |>
-  ggplot(aes(year, seats_share, colour = party)) +
-  geom_line()
+    mutate(n = n(), .by = party) |>
+    filter(n > 10) |>
+    ggplot(aes(year, seats_share, colour = party)) +
+    geom_line()
 ```
 
 ---

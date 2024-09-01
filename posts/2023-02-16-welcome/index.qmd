@@ -13,10 +13,7 @@ So here is an initial version and today the TIL has been [Quarto](https://quarto
 
 Here is an example of integrating __Tidyverse-R__ code.
 
-```{r}
-#| message: false
-#| warning: false
-
+```r
 library(tidyverse)
 
 mtcars <- as_tibble(datasets::mtcars)
@@ -29,9 +26,7 @@ ggplot(mtcars, aes(x = hp, y = mpg)) +
 Here is an example of integrating __Python__ code.
 
 
-```{python}
-#| python.reticulate: false
-
+```python
 import statsmodels.api as sm
 import pandas as pd
 
