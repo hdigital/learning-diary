@@ -1,0 +1,149 @@
+---
+date: "2024-08-31"
+image: python-logo.png
+categories: [Python, packaging]
+title: uv instead of venv/pip
+format:
+  html:
+    toc: true
+---
+
+[uv](https://docs.astral.sh/uv/) recently released its
+[0.3](https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#030) version.
+
+_uv_ is a package and project manager that potentially allows me to fully
+replace my venv/pip/pip-tools workflow and the use of _pyenv_ as well as _pipx_.
+It provides a single tool, is significantly faster, and includes a complete
+project manager.
+
+The 0.3 release added many new features and comprehensive documentation.
+Version [0.4](https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#040),
+which revised the project workflow, has been released.
+
+Package management has been challenging in Python and has often taken me a lot
+of time. _uv_ has the potential to harmonize the approaches and tools I have
+used with a single tool.
+
+Here are the _uv_ commands relevant to me, a collection inspired by this
+[post](https://simonwillison.net/2024/Aug/20/uv-unified-python-packaging/).
+
+## Installation
+
+It is recommended to [install](https://docs.astral.sh/uv/getting-started/installation/)
+_uv_ globally instead of using `pip install uv`.
+
+## uv workflow
+
+Specify Python dependencies in a `pyproject.toml` (see [Projects](#projects) below).
+
+```sh
+uv add ruff
+
+uv run ruff check
+
+uv lock --upgrade
+uv sync
+
+source .venv/bin/activate
+which python
+```
+
+## Projects
+
+Create a project with a `README.md`, a `pyproject.toml`, and an example script.
+
+```sh
+uv init
+uv run hello.py
+```
+
+You can also specify a project name to create the project in a new folder.
+
+## Python versions
+
+_uv_ can install a specific
+[Python version](https://docs.astral.sh/uv/concepts/python-versions/#installing-a-python-version)
+from [python-build-standalone](https://github.com/indygreg/python-build-standalone).
+
+The Python version in a `pyproject.toml` or a `.python-version` file is used.
+
+This allows me to replace _pyenv_, which I have used to manage different Python versions.
+
+```sh
+uv venv --python 3.11
+
+uv python list
+uv python install --reinstall 3.10 3.11
+```
+
+There may be minor differences with other Python builds.
+
+## Scripts
+
+You can specify dependencies as
+[embedded metadata](https://packaging.python.org/en/latest/specifications/inline-script-metadata/#example)
+in a script. _uv_ will run the script and install the dependencies.
+
+```sh
+echo 'import urllib3; print(urllib3.request("GET", "http://httpbin.org/robots.txt").data)' > robots.py
+
+uv add --script robots.py urllib3
+
+uv run robots.py
+```
+
+## Python tools
+
+You can run and install Python tools with
+[`uvx`](https://docs.astral.sh/uv/#tool-management).
+
+It can be used as a replacement for _pipx_.
+
+```sh
+uvx ruff clean
+
+uv tool install ruff
+ls -l $(which ruff)
+
+uv tool list
+uv tool upgrade --all
+```
+
+## venv/pip workflow
+
+My goal is to use the [uv workflow](#uv-workflow), but here are some examples
+of using _uv_ as as venv/pip/pip-tools replacement with the respective parameters.
+
+```sh
+uv venv
+uv pip install urllib3
+source .venv/bin/activate
+which python
+
+echo "urllib3" > requirements.in
+uv pip compile -U requirements.in -o requirements.txt
+uv pip sync requirements.txt
+```
+
+## Clean-up
+
+The _uv_ cache folder can get large quickly, so it is helpful to clean it up regularly
+
+```sh
+uv cache prune
+
+uv cache clean
+
+du -h -d 1 $(uv cache dir)
+```
+
+Keep in mind that many `.venv` folders are created with a _uv_ workflow,
+so you may want to remove them at some point.
+
+```sh
+find . -type d -name ".venv" -print0 | xargs -0 du -sh
+```
+
+---
+
+![](python-logo.png)
