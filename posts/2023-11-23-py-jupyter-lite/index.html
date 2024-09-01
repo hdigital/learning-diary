@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2023-11-23">
 
-<title>index – Learning</title>
+<title>JupyterLite – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -152,9 +152,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">http requests</h1>
+      <h1 class="title">JupyterLite</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
+                <div class="quarto-category">packaging</div>
               </div>
                   </div>
   </div>
@@ -177,7 +178,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#visualization-example" id="toc-visualization-example" class="nav-link active" data-scroll-target="#visualization-example">Visualization example</a></li>
+  <li><a href="#http-requests" id="toc-http-requests" class="nav-link" data-scroll-target="#http-requests">http requests</a></li>
+  <li><a href="#pip-with-micropip" id="toc-pip-with-micropip" class="nav-link" data-scroll-target="#pip-with-micropip">pip with micropip</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -185,8 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="jupyterlite" class="level1">
-<h1>JupyterLite</h1>
 <p>I listened to the the recent <em>Talk Python To Me</em> episode <a href="https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases">Celebrating JupyterLab 4 and Jupyter 7 Releases</a> and became aware of <a href="https://github.com/jupyterlite">JupyterLite</a> which I had not used before.</p>
 <p>I was impressed to see that you can now <a href="https://jupyterlite.github.io/demo/lab/index.html">run JupyterLab in a browser</a>.</p>
 <p>Many shortcuts work and you can activate the command pallette with <em>Shift + Cmd/Ctrl + C</em></p>
@@ -195,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div id="727ff30e" class="cell" data-execution_count="1">
+<div id="2920f76e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -211,28 +220,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed {
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details,
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details summary {
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details,
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0ac3429f17634df4b5eee821b06dec1e"></div>
+<div id="altair-viz-f10a2215a1cf402b9c637420dd09ac0b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0ac3429f17634df4b5eee821b06dec1e") {
-      outputDiv = document.getElementById("altair-viz-0ac3429f17634df4b5eee821b06dec1e");
+    if (outputDiv.id !== "altair-viz-f10a2215a1cf402b9c637420dd09ac0b") {
+      outputDiv = document.getElementById("altair-viz-f10a2215a1cf402b9c637420dd09ac0b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -268,15 +277,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7684334a68ab74ba4c3ca7d0ceaeb461"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-7684334a68ab74ba4c3ca7d0ceaeb461": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7684334a68ab74ba4c3ca7d0ceaeb461"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-7684334a68ab74ba4c3ca7d0ceaeb461": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
+</section>
+<section id="http-requests" class="level2">
+<h2 class="anchored" data-anchor-id="http-requests">http requests</h2>
 <p>I played around a little with making http requests. You can install the <a href="https://github.com/psf/requests">requests</a> package but the http requests don’t work. You have to use the <a href="https://pyodide.org/en/stable/usage/api/js-api.html">js</a> module provided by <a href="https://github.com/pyodide/pyodide">pyodide</a> instead.</p>
 <p>Here is the notebook I wrote.</p>
 <p><a href="network-requests.ipynb.txt">network-requests.ipynb.txt</a></p>
@@ -297,7 +309,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="jupyter-lite-logo.png" class="img-fluid"></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

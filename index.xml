@@ -9,8 +9,230 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.5.55</generator>
-<lastBuildDate>Sat, 27 Jul 2024 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.5.57</generator>
+<lastBuildDate>Fri, 30 Aug 2024 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>uv instead of venv/pip</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="https://docs.astral.sh/uv/">uv</a> recently released its <a href="https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#030">0.3</a> version.</p>
+<p><em>uv</em> is a package and project manager that potentially allows me to fully replace my venv/pip/pip-tools workflow and the use of <em>pyenv</em> as well as <em>pipx</em>. It provides a single tool, is significantly faster, and includes a complete project manager.</p>
+<p>The 0.3 release added many new features and comprehensive documentation. Version <a href="https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#040">0.4</a>, which revised the project workflow, has been released.</p>
+<p>Package management has been challenging in Python and has often taken me a lot of time. <em>uv</em> has the potential to harmonize the approaches and tools I have used with a single tool.</p>
+<p>Here are the <em>uv</em> commands relevant to me, a collection inspired by this <a href="https://simonwillison.net/2024/Aug/20/uv-unified-python-packaging/">post</a>.</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>It is recommended to <a href="https://docs.astral.sh/uv/getting-started/installation/">install</a> <em>uv</em> globally instead of using <code>pip install uv</code>.</p>
+</section>
+<section id="uv-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="uv-workflow">uv workflow</h2>
+<p>Specify Python dependencies in a <code>pyproject.toml</code> (see Projects below).</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> add ruff</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> run ruff check</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> lock <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--upgrade</span></span>
+<span id="cb1-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> sync</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">source</span> .venv/bin/activate</span>
+<span id="cb1-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span> python</span></code></pre></div>
+</section>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
+<p>Create a project with a <code>README.md</code>, a <code>pyproject.toml</code>, and an example script.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> init</span>
+<span id="cb2-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> run hello.py</span></code></pre></div>
+<p>You can also specify a project name to create the project in a new folder.</p>
+</section>
+<section id="python-versions" class="level2">
+<h2 class="anchored" data-anchor-id="python-versions">Python versions</h2>
+<p><em>uv</em> can install a specific <a href="https://docs.astral.sh/uv/concepts/python-versions/#installing-a-python-version">Python version</a> from <a href="https://github.com/indygreg/python-build-standalone">python-build-standalone</a>.</p>
+<p>The Python version in a <code>pyproject.toml</code> or a <code>.python-version</code> file is used.</p>
+<p>This allows me to replace <em>pyenv</em>, which I have used to manage different Python versions.</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> venv <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--python</span> 3.11</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> python list</span>
+<span id="cb3-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> python install <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--reinstall</span> 3.10 3.11</span></code></pre></div>
+<p>There may be minor differences with other Python builds.</p>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<p>You can specify dependencies as <a href="https://packaging.python.org/en/latest/specifications/inline-script-metadata/#example">embedded metadata</a> in a script. <em>uv</em> will run the script and install the dependencies.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'import urllib3; print(urllib3.request("GET", "http://httpbin.org/robots.txt").data)'</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> robots.py</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> add <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--script</span> robots.py urllib3</span>
+<span id="cb4-4"></span>
+<span id="cb4-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> run robots.py</span></code></pre></div>
+</section>
+<section id="python-tools" class="level2">
+<h2 class="anchored" data-anchor-id="python-tools">Python tools</h2>
+<p>You can run and install Python tools with <a href="https://docs.astral.sh/uv/#tool-management"><code>uvx</code></a>.</p>
+<p>It can be used as a replacement for <em>pipx</em>.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uvx</span> ruff clean</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> tool install ruff</span>
+<span id="cb5-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ls</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-l</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span> ruff<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span id="cb5-5"></span>
+<span id="cb5-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> tool list</span>
+<span id="cb5-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> tool upgrade <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--all</span></span></code></pre></div>
+</section>
+<section id="venvpip-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="venvpip-workflow">venv/pip workflow</h2>
+<p>My goal is to use the uv workflow, but here are some examples of using <em>uv</em> as as venv/pip/pip-tools replacement with the respective parameters.</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> venv</span>
+<span id="cb6-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> pip install urllib3</span>
+<span id="cb6-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">source</span> .venv/bin/activate</span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">which</span> python</span>
+<span id="cb6-5"></span>
+<span id="cb6-6"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">echo</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"urllib3"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> requirements.in</span>
+<span id="cb6-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> pip compile <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-U</span> requirements.in <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-o</span> requirements.txt</span>
+<span id="cb6-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> pip sync requirements.txt</span></code></pre></div>
+</section>
+<section id="clean-up" class="level2">
+<h2 class="anchored" data-anchor-id="clean-up">Clean-up</h2>
+<p>The <em>uv</em> cache folder can get large quickly, so it is helpful to clean it up regularly</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> cache prune</span>
+<span id="cb7-2"></span>
+<span id="cb7-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> cache clean</span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">du</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-h</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-d</span> 1 <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$(</span><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> cache dir<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div>
+<p>Keep in mind that many <code>.venv</code> folders are created with a <em>uv</em> workflow, so you may want to remove them at some point.</p>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">find</span> . <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-type</span> d <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-name</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">".venv"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-print0</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">xargs</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-0</span> du <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-sh</span></span></code></pre></div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/python-logo.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <category>packaging</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/</guid>
+  <pubDate>Fri, 30 Aug 2024 22:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/</link>
@@ -1647,6 +1869,7 @@ font-style: inherit;">=</span>url)</span>
 
  ]]></description>
   <category>Python</category>
+  <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/</guid>
   <pubDate>Mon, 29 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
@@ -1690,6 +1913,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
  ]]></description>
   <category>R</category>
   <category>cloud</category>
+  <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/</guid>
   <pubDate>Thu, 21 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/rocker-logo.png" medium="image" type="image/png" height="144" width="144"/>
@@ -1708,7 +1932,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="e0ad9b99" class="cell" data-execution_count="1">
+<div id="66bc8ad7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -1742,7 +1966,7 @@ font-style: inherit;">=</span>headers)</span>
 <span id="cb1-11"></span>
 <span id="cb1-12">r.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
+<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2024). &lt;i&gt;Party positions from Wikipedia tags&lt;/i&gt; (Version 24.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
 </div>
 </div>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyterlite-urllib3.png" class="img-fluid"></p>
@@ -1770,7 +1994,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="python-f-strings" class="level1">
 <h1>Python f-strings</h1>
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="a6b658f5" class="cell" data-execution_count="1">
+<div id="cfb4d0d1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -1782,7 +2006,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div>
 </div>
-<div id="e4e55750" class="cell" data-execution_count="2">
+<div id="9a6a4949" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -1802,7 +2026,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="afd43a36" class="cell" data-execution_count="3">
+<div id="10d15c28" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -1826,7 +2050,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="1e73e7f1" class="cell" data-execution_count="4">
+<div id="d4758b29" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -1843,7 +2067,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="46c79ef9" class="cell" data-execution_count="5">
+<div id="a34449bb" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -1879,7 +2103,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="7c182cc0" class="cell" data-execution_count="6">
+<div id="b01f62d3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -1899,7 +2123,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="573d7fb6" class="cell" data-execution_count="7">
+<div id="b17d9de6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -1913,7 +2137,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="7cc1e396" class="cell" data-execution_count="8">
+<div id="c150c2b9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -1927,7 +2151,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="18c68ec9" class="cell" data-execution_count="9">
+<div id="31b01c65" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -1941,7 +2165,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="7e5c6499" class="cell" data-execution_count="10">
+<div id="7141b5ce" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -1975,7 +2199,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="f4d37f56" class="cell" data-execution_count="11">
+<div id="284331e6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -1997,7 +2221,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="736b1510" class="cell" data-execution_count="12">
+<div id="22ae093a" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -2344,7 +2568,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="91f6b55b" class="cell" data-execution_count="1">
+<div id="7f2e49d7" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
@@ -2390,14 +2614,14 @@ font-style: inherit;">'jane.doe@example.com'</span></span>
 </section>
 <section id="single-element" class="level2">
 <h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div id="8b241b56" class="cell" data-execution_count="2">
+<div id="91058ea9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
 </div>
-<div id="b1be8bd5" class="cell" data-execution_count="3">
+<div id="65b434f8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
@@ -2405,7 +2629,7 @@ font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></p
 <h2 class="anchored">HTML Title</h2>
 </div>
 </div>
-<div id="222bced4" class="cell" data-execution_count="4">
+<div id="d6d09095" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
@@ -2413,7 +2637,7 @@ font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
 </section>
 </div>
-<div id="2d0e3653" class="cell" data-execution_count="5">
+<div id="204e0d09" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
@@ -2421,7 +2645,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
-<div id="6134fc7c" class="cell" data-execution_count="6">
+<div id="2996606b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
@@ -2446,7 +2670,7 @@ font-style: inherit;">True</span>)</span></code></pre></div>
 </section>
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div id="576d2733" class="cell" data-execution_count="7">
+<div id="629b4313" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
@@ -2467,7 +2691,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
 </div>
 </div>
 <p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div id="bcf888a7" class="cell" data-execution_count="8">
+<div id="6b334484" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
@@ -2547,7 +2771,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
 </item>
 <item>
-  <title>http requests</title>
+  <title>JupyterLite</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</link>
   <description><![CDATA[ 
 
@@ -2555,8 +2779,6 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 
 
 
-<section id="jupyterlite" class="level1">
-<h1>JupyterLite</h1>
 <p>I listened to the the recent <em>Talk Python To Me</em> episode <a href="https://talkpython.fm/episodes/show/438/celebrating-jupyterlab-4-and-jupyter-7-releases">Celebrating JupyterLab 4 and Jupyter 7 Releases</a> and became aware of <a href="https://github.com/jupyterlite">JupyterLite</a> which I had not used before.</p>
 <p>I was impressed to see that you can now <a href="https://jupyterlite.github.io/demo/lab/index.html">run JupyterLab in a browser</a>.</p>
 <p>Many shortcuts work and you can activate the command pallette with <em>Shift + Cmd/Ctrl + C</em></p>
@@ -2565,7 +2787,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div id="727ff30e" class="cell" data-execution_count="1">
+<div id="2920f76e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
@@ -2639,28 +2861,28 @@ font-style: inherit;">'b'</span></span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed {
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details,
-  #altair-viz-0ac3429f17634df4b5eee821b06dec1e.vega-embed details summary {
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details,
+  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0ac3429f17634df4b5eee821b06dec1e"></div>
+<div id="altair-viz-f10a2215a1cf402b9c637420dd09ac0b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0ac3429f17634df4b5eee821b06dec1e") {
-      outputDiv = document.getElementById("altair-viz-0ac3429f17634df4b5eee821b06dec1e");
+    if (outputDiv.id !== "altair-viz-f10a2215a1cf402b9c637420dd09ac0b") {
+      outputDiv = document.getElementById("altair-viz-f10a2215a1cf402b9c637420dd09ac0b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.17.0?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
       "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
     };
 
@@ -2696,15 +2918,18 @@ font-style: inherit;">'b'</span></span>
       require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.17.0"))
+        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
         .then(() => maybeLoadScript("vega-embed", "6"))
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7684334a68ab74ba4c3ca7d0ceaeb461"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.17.0.json", "datasets": {"data-7684334a68ab74ba4c3ca7d0ceaeb461": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7684334a68ab74ba4c3ca7d0ceaeb461"}, "mark": {"type": "bar"}, "encoding": {"x": {"field": "a", "type": "nominal"}, "y": {"field": "b", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-7684334a68ab74ba4c3ca7d0ceaeb461": [{"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43}, {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53}, {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
+</section>
+<section id="http-requests" class="level2">
+<h2 class="anchored" data-anchor-id="http-requests">http requests</h2>
 <p>I played around a little with making http requests. You can install the <a href="https://github.com/psf/requests">requests</a> package but the http requests don’t work. You have to use the <a href="https://pyodide.org/en/stable/usage/api/js-api.html">js</a> module provided by <a href="https://github.com/pyodide/pyodide">pyodide</a> instead.</p>
 <p>Here is the notebook I wrote.</p>
 <p><a href="network-requests.ipynb.txt">network-requests.ipynb.txt</a></p>
@@ -2750,10 +2975,10 @@ font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
 
 
 </section>
-</section>
 
  ]]></description>
   <category>Python</category>
+  <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</guid>
   <pubDate>Wed, 22 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
@@ -2968,7 +3193,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="even">
 <td style="text-align: left;">8bd34</td>
 <td style="text-align: right;">2020</td>
-<td style="text-align: right;">8</td>
+<td style="text-align: right;">9</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Institutional constraints on c</td>
 </tr>
@@ -3017,7 +3242,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">a9372</td>
 <td style="text-align: right;">2015</td>
-<td style="text-align: right;">30</td>
+<td style="text-align: right;">32</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">Revisiting the left cabinet sh</td>
 </tr>
@@ -3038,7 +3263,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="even">
 <td style="text-align: left;">31eff</td>
 <td style="text-align: right;">2013</td>
-<td style="text-align: right;">30</td>
+<td style="text-align: right;">31</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The collective action of data</td>
 </tr>
@@ -3087,7 +3312,7 @@ font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">14ab0</td>
 <td style="text-align: right;">2007</td>
-<td style="text-align: right;">69</td>
+<td style="text-align: right;">70</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">The Composition of the College</td>
 </tr>
@@ -3424,7 +3649,7 @@ font-style: inherit;">unnest</span>(authors)</span>
 <p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
 <p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
 <p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
-<div id="5db768dc" class="cell" data-execution_count="1">
+<div id="331941bb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -3637,7 +3862,7 @@ font-style: inherit;"># Show the plot</span></span>
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div id="fefa8cc6" class="cell" data-execution_count="1">
+<div id="d185d433" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -3698,7 +3923,7 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div id="77cbc3dd" class="cell" data-execution_count="2">
+<div id="41a748b7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> tomli <span class="im" style="color: #00769E;
@@ -3742,7 +3967,7 @@ font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div id="70ccf18c" class="cell" data-execution_count="3">
+<div id="1b4457e2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
@@ -3795,12 +4020,13 @@ wheel==0.41.3
 
  ]]></description>
   <category>Python</category>
+  <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/</guid>
   <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
-  <title>DOI API</title>
+  <title>Zenodo API</title>
   <link>https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/</link>
   <description><![CDATA[ 
 
@@ -3808,11 +4034,9 @@ wheel==0.41.3
 
 
 
-<section id="zenodo-api" class="level1">
-<h1>Zenodo API</h1>
 <p>This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the <a href="https://github.com/hdigital/partypositions-wikitags">partypositions-wikitags</a> project.</p>
 <p>The code of the project is archived at Zenodo with the DOI <a href="https://zenodo.org/doi/10.5281/zenodo.7043510">10.5281/zenodo.7043510</a>.</p>
-<div id="e6e50a00" class="cell" data-execution_count="1">
+<div id="c38deeed" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -3837,11 +4061,13 @@ font-style: inherit;">=</span>headers)</span>
 <span id="cb1-6">r.text</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2023). &lt;i&gt;Party positions from Wikipedia tags (July 2023)&lt;/i&gt; (Version 23.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
+<pre><code>'Döring, H., &amp;amp; Herrmann, M. (2024). &lt;i&gt;Party positions from Wikipedia tags&lt;/i&gt; (Version 24.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'</code></pre>
 </div>
 </div>
+<section id="doi-api" class="level2">
+<h2 class="anchored" data-anchor-id="doi-api">DOI API</h2>
 <p>So here is some metadata information. Lets start with the DOI API.</p>
-<div id="442795c9" class="cell" data-execution_count="2">
+<div id="b1a6309e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -3880,20 +4106,21 @@ font-style: inherit;">=</span>headers)</span>
  'language': 'en',
  'author': [{'family': 'Döring', 'given': 'Holger'},
   {'family': 'Herrmann', 'given': 'Michael'}],
- 'issued': {'date-parts': [[2023, 8, 23]]},
- 'abstract': 'Estimation of party positions from Wikipedia tags with Stan (July 2023)',
+ 'issued': {'date-parts': [[2024, 7, 31]]},
+ 'abstract': 'Estimation of party positions from Wikipedia tags with Stan',
  'DOI': '10.5281/ZENODO.7043510',
  'publisher': 'Zenodo',
- 'title': 'Party positions from Wikipedia tags (July 2023)',
- 'URL': 'https://zenodo.org/record/7043510',
- 'copyright': 'Open Access',
- 'version': '23.07'}</code></pre>
+ 'title': 'Party positions from Wikipedia tags',
+ 'URL': 'https://zenodo.org/doi/10.5281/zenodo.7043510',
+ 'copyright': 'MIT License',
+ 'version': '24.07'}</code></pre>
 </div>
 </div>
+</section>
 <section id="zenodo-record" class="level2">
 <h2 class="anchored" data-anchor-id="zenodo-record">Zenodo record</h2>
 <p>We can also access a <a href="https://developers.zenodo.org/#retrieve37">record</a> through the Zenodo API. This does not require a <a href="https://developers.zenodo.org/#authentication">Zenodo access token</a>.</p>
-<div id="ede7e40b" class="cell" data-execution_count="3">
+<div id="4fe8cff6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(<span class="st" style="color: #20794D;
@@ -3909,7 +4136,7 @@ font-style: inherit;">=</span> r.json()</span>
 </div>
 </div>
 <p>I was interested in the Zenodo metadata.</p>
-<div id="b0d0c74b" class="cell" data-execution_count="4">
+<div id="6e28a041" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">record[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'metadata'</span>]</span></code></pre></div>
@@ -3929,7 +4156,7 @@ font-style: inherit;">'metadata'</span>]</span></code></pre></div>
  'resource_type': {'title': 'Software', 'type': 'software'},
  'license': {'id': 'other-open'},
  'relations': {'version': [{'index': 1,
-    'is_last': True,
+    'is_last': False,
     'parent': {'pid_type': 'recid', 'pid_value': '7043510'}}]}}</code></pre>
 </div>
 </div>
@@ -3940,7 +4167,7 @@ font-style: inherit;">'metadata'</span>]</span></code></pre></div>
 <p>You can specify some of the addtional metadata in a <code>.zenodo.json</code> file in your GitHub repository.</p>
 <p><a href="https://developers.zenodo.org/#github" class="uri">https://developers.zenodo.org/#github</a></p>
 <p>I used the archived Zenodo record for a json dump of the metadata.</p>
-<div id="fdde9995" class="cell" data-execution_count="5">
+<div id="dd40965e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
@@ -3990,7 +4217,7 @@ font-style: inherit;">2</span>))</span></code></pre></div>
     "version": [
       {
         "index": 1,
-        "is_last": true,
+        "is_last": false,
         "parent": {
           "pid_type": "recid",
           "pid_value": "7043510"
@@ -4007,7 +4234,7 @@ font-style: inherit;">2</span>))</span></code></pre></div>
 <li>used unicode characters for umlaute</li>
 <li>specified license id</li>
 </ul>
-<div id="d5f2be79" class="cell" data-execution_count="6">
+<div id="a06b51bc" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -4060,7 +4287,7 @@ background-color: null;
 font-style: inherit;">"""</span></span></code></pre></div>
 </div>
 <p>Here, I validate the json. Running the cell should not raise an error.</p>
-<div id="5719a9bb" class="cell" data-execution_count="7">
+<div id="a2e15055" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></div>
@@ -4070,7 +4297,6 @@ font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></di
 <p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/zenodo-logo.png" class="img-fluid"></p>
 
 
-</section>
 </section>
 
  ]]></description>
@@ -4095,7 +4321,7 @@ font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></di
 <h2 class="anchored" data-anchor-id="doi-api-access">DOI API access</h2>
 <p>I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.</p>
 <p>Here is an example with a request for my first peer-reviewed publication.</p>
-<div id="76cf1d05" class="cell" data-execution_count="1">
+<div id="0b344aa5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -4137,7 +4363,7 @@ font-style: inherit;">=</span>headers)</span>
 <li>Schema.org in JSON-LD // <code>application/vnd.schemaorg.ld+json</code> (only DataCite)</li>
 </ul>
 <p>It is actually nice to put a request into a function. I start with a simple example.</p>
-<div id="e928dec1" class="cell" data-execution_count="2">
+<div id="b00755b9" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4185,7 +4411,7 @@ font-style: inherit;">"10.1177/0958928715573481"</span>)</span></code></pre></di
 </div>
 </div>
 <p>To get the different formats I am interested in, I can rewrite the function.</p>
-<div id="fcd5b600" class="cell" data-execution_count="3">
+<div id="98ecc203" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> time</span>
@@ -4322,7 +4548,7 @@ No acceptable resource available.
 <h2 class="anchored" data-anchor-id="linked-data-json-ld">Linked data json-ld</h2>
 <p><em>json-ld</em> is only available for content registered with <a href="https://datacite.org/">DataCite</a>.</p>
 <p>A DOI for an article does not return <em>json-ld</em> metadata.</p>
-<div id="fa195650" class="cell" data-execution_count="4">
+<div id="5c5f69b3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(doi, <span class="st" style="color: #20794D;
@@ -4334,7 +4560,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [406]&gt;</code></pre>
 </div>
 </div>
-<div id="204241e1" class="cell" data-execution_count="5">
+<div id="43d7fe58" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'No acceptable resource available.'</code></pre>
@@ -4342,7 +4568,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 </div>
 <hr>
 <p>A DOI for a dataset returns <em>json-ld</em> metadata.</p>
-<div id="59b71e8a" class="cell" data-execution_count="6">
+<div id="a887d671" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">doi_content <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_doi_data(<span class="st" style="color: #20794D;
@@ -4356,13 +4582,13 @@ font-style: inherit;">"json-ld"</span>)</span>
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
-<div id="e1d294c0" class="cell" data-execution_count="7">
+<div id="cde63a55" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">doi_content.text</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'{\n  "@context": "http://schema.org",\n  "@type": "Dataset",\n  "@id": "https://doi.org/10.7910/dvn/buwaaf",\n  "url": "https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF",\n  "name": "Party Facts – Version 2022",\n  "author": [\n    {\n      "name": "Paul Bederke",\n      "givenName": "Paul",\n      "familyName": "Bederke",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(University of Konstanz)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0001-7555-8656"\n    },\n    {\n      "name": "Holger Döring",\n      "givenName": "Holger",\n      "familyName": "Döring",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(GESIS – Leibniz Institute for the Social Sciences)"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0002-6616-8805"\n    },\n    {\n      "name": "Sven Regel",\n      "givenName": "Sven",\n      "familyName": "Regel",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "(WZB Berlin Social Science Center)"\n      },\n      "@type": "Person"\n    }\n  ],\n  "editor": {\n    "name": "Paul Bederke",\n    "givenName": "Paul",\n    "familyName": "Bederke",\n    "affiliation": {\n      "@type": "Organization",\n      "name": "(University of Konstanz)"\n    },\n    "contributorType": "ContactPerson",\n    "@type": "Person"\n  },\n  "description": "Party Facts links datasets on political parties",\n  "datePublished": "2022",\n  "schemaVersion": "http://datacite.org/schema/kernel-4",\n  "publisher": {\n    "@type": "Organization",\n    "name": "Harvard Dataverse"\n  },\n  "provider": {\n    "@type": "Organization",\n    "name": "datacite"\n  }\n}'</code></pre>
 </div>
 </div>
-<div id="ce0ff9fd" class="cell" data-execution_count="8">
+<div id="13c8499b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">doi_content.json()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{'@context': 'http://schema.org',
@@ -4413,7 +4639,7 @@ font-style: inherit;">"json-ld"</span>)</span>
 <p>“Content negotiated requests to doi.org that ask for a content type which isn’t”text/html” will be redirected to a metadata service hosted by the DOI’s registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers.”</p>
 </blockquote>
 <p>However, it seems that the content is returned by <em>doi.org</em>.</p>
-<div id="dc26ec05" class="cell" data-execution_count="9">
+<div id="1a018e19" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4429,7 +4655,7 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
 </div>
 </div>
 <p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
-<div id="df59cffd" class="cell" data-execution_count="10">
+<div id="6115b4ed" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">doi_url <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
@@ -4482,113 +4708,6 @@ font-style: inherit;">print</span>(request_history.status_code, request_history.
   <guid>https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/</guid>
   <pubDate>Mon, 09 Oct 2023 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-10-py-doi-requests/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="r-packages-with-pak" class="level1">
-<h1>R packages with pak</h1>
-<p>I started using <a href="https://pak.r-lib.org/">pak</a> install and manage R packages.</p>
-<p><em>pak</em> can be used to install all R packages used in a project.</p>
-<p>The use case I am mainly interested in is installing and locking project packages to create reproducible environments. This can be accomplished with <em>pak</em> and <a href="https://rstudio.github.io/renv/index.html">renv</a>. In a <a href="../../posts/2023-07-29-r-renv/index.html">previous post</a>, I discussed an approach with <em>renv</em> only.</p>
-<p><em>renv</em> is used to detect all packages used in a project and <em>pac</em> to create a (platform dependent) lockfile. This lockfile can be used to install the version pinned in the lock file later with <em>pak</em> without creating an <em>renv</em> environment.</p>
-<p>Here is an example — not run:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># get packages used in project folder</span></span>
-<span id="cb1-2">deps <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unique</span>(renv<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dependencies</span>()[[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Package"</span>]])</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># install project packages</span></span>
-<span id="cb1-5">pak<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pkg_install</span>(deps, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ask =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">upgrade =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb1-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># pak::lockfile_install()</span></span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># create lock files</span></span>
-<span id="cb1-9">pak<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lockfile_create</span>(deps)</span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># renv::snapshot(prompt = FALSE)</span></span></code></pre></div>
-<p><em>renv</em> can be used to create a lock file as well. However, currently you have to use <em>renv</em> to install dependencies from an <code>renv.lock</code> file and need to create a new <em>renv</em> environment to reinstall the packages. There are plans to support installing packages from <code>renv.lock</code> with <em>pak</em> — see <a href="https://github.com/r-lib/pak/issues/343">#343</a></p>
-<p>Here are the R packages <em>renv</em> finds locally.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">renv<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dependencies</span>()[[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Package"</span>]] <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unique</span>() <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sort</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Finding R package dependencies ... Done!</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "renv"      "rmarkdown"</code></pre>
-</div>
-</div>
-<section id="python-vs.-r-packaging-tools" class="level2">
-<h2 class="anchored" data-anchor-id="python-vs.-r-packaging-tools">Python vs.&nbsp;R packaging tools</h2>
-<p>Pinning package versions in a lock file is an established workflow in Python with <a href="https://github.com/jazzband/pip-tools">pip-tools</a>.</p>
-<p>In <em>renv</em> pinning package versions and creating local environments are too tightly coupled in my view. Often, I don’t want to create an environment for a project and need to document the used package versions only. In Docker or cloud platforms I don’t like to use local environments. In a local R install, working with the latest versions of R packages and freezing them is often sufficient for me.</p>
-<p>I hope <em>pak</em> will provide the R packaging solution I am looking for.</p>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/package-unsplash.jpg" class="img-fluid"></p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>R</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/</guid>
-  <pubDate>Fri, 06 Oct 2023 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-07-r-pak-packaging/package-unsplash.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

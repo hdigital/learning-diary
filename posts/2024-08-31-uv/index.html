@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-07-13">
+<meta name="dcterms.date" content="2024-08-31">
 
-<title>index – Learning</title>
+<title>uv instead of venv/pip – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -149,10 +149,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      
+      <h1 class="title">uv instead of venv/pip</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">API</div>
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">packaging</div>
               </div>
                   </div>
   </div>
@@ -164,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 13, 2024</p>
+        <p class="date">August 31, 2024</p>
       </div>
     </div>
     
@@ -175,7 +175,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#uv-workflow" id="toc-uv-workflow" class="nav-link" data-scroll-target="#uv-workflow">uv workflow</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">Projects</a></li>
+  <li><a href="#python-versions" id="toc-python-versions" class="nav-link" data-scroll-target="#python-versions">Python versions</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
+  <li><a href="#python-tools" id="toc-python-tools" class="nav-link" data-scroll-target="#python-tools">Python tools</a></li>
+  <li><a href="#venvpip-workflow" id="toc-venvpip-workflow" class="nav-link" data-scroll-target="#venvpip-workflow">venv/pip workflow</a></li>
+  <li><a href="#clean-up" id="toc-clean-up" class="nav-link" data-scroll-target="#clean-up">Clean-up</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -183,69 +198,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="doi-reference-with-httr2" class="level1">
-<h1>DOI reference with httr2</h1>
-<p>Get citation references from DOI API with httr2.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>get_doi_reference <span class="ot">&lt;-</span> <span class="cf">function</span>(doi) {</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">request</span>(<span class="fu">paste0</span>(<span class="st">"https://doi.org/"</span>, doi)) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req_headers</span>(<span class="st">"Accept"</span> <span class="ot">=</span> <span class="st">"text/x-bibliography"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">req_perform</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">resp_body_string</span>()</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>references <span class="ot">&lt;-</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">doi =</span> <span class="fu">c</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1177/1465116507076430"</span>,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1080/01402382.2013.783347"</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1177/0958928715573481"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="st">"10.1017/pan.2021.28"</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">reference =</span> <span class="fu">map_chr</span>(doi, get_doi_reference))</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>references</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 89%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">doi</th>
-<th style="text-align: left;">reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">10.1177/1465116507076430</td>
-<td style="text-align: left;">Döring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207–228. https://doi.org/10.1177/1465116507076430</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10.1080/01402382.2013.783347</td>
-<td style="text-align: left;">Döring, H., &amp; Hellström, J. (2013). Who Gets into Government? Coalition Formation in European Democracies. West European Politics, 36(4), 683–703. https://doi.org/10.1080/01402382.2013.783347</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">10.1177/0958928715573481</td>
-<td style="text-align: left;">Döring, H., &amp; Schwander, H. (2015). Revisiting the left cabinet share: How to measure the partisan profile of governments in welfare state research. Journal of European Social Policy, 25(2), 175–193. https://doi.org/10.1177/0958928715573481</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10.1017/pan.2021.28</td>
-<td style="text-align: left;">Herrmann, M., &amp; Döring, H. (2021). Party Positions from Wikipedia Classifications of Party Ideology. Political Analysis, 31(1), 22–41. https://doi.org/10.1017/pan.2021.28</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+<p><a href="https://docs.astral.sh/uv/">uv</a> recently released its <a href="https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#030">0.3</a> version.</p>
+<p><em>uv</em> is a package and project manager that potentially allows me to fully replace my venv/pip/pip-tools workflow and the use of <em>pyenv</em> as well as <em>pipx</em>. It provides a single tool, is significantly faster, and includes a complete project manager.</p>
+<p>The 0.3 release added many new features and comprehensive documentation. Version <a href="https://github.com/astral-sh/uv/blob/main/CHANGELOG.md#040">0.4</a>, which revised the project workflow, has been released.</p>
+<p>Package management has been challenging in Python and has often taken me a lot of time. <em>uv</em> has the potential to harmonize the approaches and tools I have used with a single tool.</p>
+<p>Here are the <em>uv</em> commands relevant to me, a collection inspired by this <a href="https://simonwillison.net/2024/Aug/20/uv-unified-python-packaging/">post</a>.</p>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>It is recommended to <a href="https://docs.astral.sh/uv/getting-started/installation/">install</a> <em>uv</em> globally instead of using <code>pip install uv</code>.</p>
+</section>
+<section id="uv-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="uv-workflow">uv workflow</h2>
+<p>Specify Python dependencies in a <code>pyproject.toml</code> (see <a href="#projects">Projects</a> below).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add ruff</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run ruff check</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> lock <span class="at">--upgrade</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">Projects</h2>
+<p>Create a project with a <code>README.md</code>, a <code>pyproject.toml</code>, and an example script.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> init</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run hello.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also specify a project name to create the project in a new folder.</p>
+</section>
+<section id="python-versions" class="level2">
+<h2 class="anchored" data-anchor-id="python-versions">Python versions</h2>
+<p><em>uv</em> can install a specific <a href="https://docs.astral.sh/uv/concepts/python-versions/#installing-a-python-version">Python version</a> from <a href="https://github.com/indygreg/python-build-standalone">python-build-standalone</a>.</p>
+<p>The Python version in a <code>pyproject.toml</code> or a <code>.python-version</code> file is used.</p>
+<p>This allows me to replace <em>pyenv</em>, which I have used to manage different Python versions.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv <span class="at">--python</span> 3.11</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python list</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> python install <span class="at">--reinstall</span> 3.10 3.11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There may be minor differences with other Python builds.</p>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<p>You can specify dependencies as <a href="https://packaging.python.org/en/latest/specifications/inline-script-metadata/#example">embedded metadata</a> in a script. <em>uv</em> will run the script and install the dependencies.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'import urllib3; print(urllib3.request("GET", "http://httpbin.org/robots.txt").data)'</span> <span class="op">&gt;</span> robots.py</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--script</span> robots.py urllib3</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run robots.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="python-tools" class="level2">
+<h2 class="anchored" data-anchor-id="python-tools">Python tools</h2>
+<p>You can run and install Python tools with <a href="https://docs.astral.sh/uv/#tool-management"><code>uvx</code></a>.</p>
+<p>It can be used as a replacement for <em>pipx</em>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uvx</span> ruff clean</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool install ruff</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="va">$(</span><span class="fu">which</span> ruff<span class="va">)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool list</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> tool upgrade <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="venvpip-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="venvpip-workflow">venv/pip workflow</h2>
+<p>My goal is to use the <a href="#uv-workflow">uv workflow</a>, but here are some examples of using <em>uv</em> as as venv/pip/pip-tools replacement with the respective parameters.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> venv</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install urllib3</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"urllib3"</span> <span class="op">&gt;</span> requirements.in</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip compile <span class="at">-U</span> requirements.in <span class="at">-o</span> requirements.txt</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip sync requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="clean-up" class="level2">
+<h2 class="anchored" data-anchor-id="clean-up">Clean-up</h2>
+<p>The <em>uv</em> cache folder can get large quickly, so it is helpful to clean it up regularly</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> cache prune</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> cache clean</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-h</span> <span class="at">-d</span> 1 <span class="va">$(</span><span class="ex">uv</span> cache dir<span class="va">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Keep in mind that many <code>.venv</code> folders are created with a <em>uv</em> workflow, so you may want to remove them at some point.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> d <span class="at">-name</span> <span class="st">".venv"</span> <span class="at">-print0</span> <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-0</span> du <span class="at">-sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
-<p><img src="doi-logo.png" class="img-fluid"></p>
+<p><img src="python-logo.png" class="img-fluid"></p>
 
 
 </section>

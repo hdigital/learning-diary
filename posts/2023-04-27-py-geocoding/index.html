@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="geocoding-in-python" class="level1">
 <h1>Geocoding in Python</h1>
 <p>Get geographic coordinates for an address with <a href="https://nominatim.org/">Nominatim</a> from <a href="https://www.openstreetmap.org/#map=6/51.330/10.453">OpenStreetMap</a> data.</p>
-<div id="96637f16" class="cell" data-execution_count="1">
+<div id="ba6630ef" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> geopy.geocoders <span class="im">import</span> Nominatim</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a geolocator object</span></span>
@@ -206,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>(50.9426743, 6.9523814687194125)</code></pre>
 </div>
 </div>
-<div id="f314439e" class="cell" data-execution_count="2">
+<div id="45ac846d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>coordinates <span class="op">=</span> [location.latitude, location.longitude]</span>
@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_bea1146b3354ac093d25f1c4b81c2715 {
+                #map_a4abb48e97dd724b501d0728d797f85f {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -260,14 +260,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_bea1146b3354ac093d25f1c4b81c2715&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_a4abb48e97dd724b501d0728d797f85f&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_bea1146b3354ac093d25f1c4b81c2715 = L.map(
-                &quot;map_bea1146b3354ac093d25f1c4b81c2715&quot;,
+            var map_a4abb48e97dd724b501d0728d797f85f = L.map(
+                &quot;map_a4abb48e97dd724b501d0728d797f85f&quot;,
                 {
                     center: [50.9426743, 6.9523814687194125],
                     crs: L.CRS.EPSG3857,
@@ -281,31 +281,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         
     
-            var tile_layer_43dd06b69c7492a9e43faa4149e0ea2b = L.tileLayer(
+            var tile_layer_c17e3407a639de5fff47f234db3393c8 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_43dd06b69c7492a9e43faa4149e0ea2b.addTo(map_bea1146b3354ac093d25f1c4b81c2715);
+            tile_layer_c17e3407a639de5fff47f234db3393c8.addTo(map_a4abb48e97dd724b501d0728d797f85f);
         
     
-            var marker_c6584ea89d525852582f0a1fa6ffc640 = L.marker(
+            var marker_3aca25fabe1298391dcc9353810b581d = L.marker(
                 [50.9426743, 6.9523814687194125],
                 {}
-            ).addTo(map_bea1146b3354ac093d25f1c4b81c2715);
+            ).addTo(map_a4abb48e97dd724b501d0728d797f85f);
         
     
-        var popup_df83930a12bda971efea59c8723f5533 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_e1d1e9f3d5cbfca9e8663e14f070ac44 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_4e6c9dfd589d9846cfd300349f6e3598 = $(`<div id=&quot;html_4e6c9dfd589d9846cfd300349f6e3598&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
-                popup_df83930a12bda971efea59c8723f5533.setContent(html_4e6c9dfd589d9846cfd300349f6e3598);
+                var html_4026a6e9578fd85c13a79cbe11727160 = $(`<div id=&quot;html_4026a6e9578fd85c13a79cbe11727160&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Unter Sachsenhausen 6, Köln, Germany</div>`)[0];
+                popup_e1d1e9f3d5cbfca9e8663e14f070ac44.setContent(html_4026a6e9578fd85c13a79cbe11727160);
             
         
 
-        marker_c6584ea89d525852582f0a1fa6ffc640.bindPopup(popup_df83930a12bda971efea59c8723f5533)
+        marker_3aca25fabe1298391dcc9353810b581d.bindPopup(popup_e1d1e9f3d5cbfca9e8663e14f070ac44)
         ;
 
         
