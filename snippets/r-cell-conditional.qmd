@@ -21,12 +21,12 @@ _Note_ --- Interactive data table shown in html-document.
 
 ```{r explore}
 tbl <-
-    datasets::mtcars |>
-    dplyr::select(mpg, hp, cyl, gear)
+  datasets::mtcars |>
+  dplyr::select(mpg, hp, cyl, gear)
 
 if (knitr::is_html_output()) {
-    reactable::reactable(tbl, searchable = TRUE, striped = TRUE)
+  reactable::reactable(tbl, searchable = TRUE, striped = TRUE)
 } else {
-    knitr::kable(tbl)
+  knitr::kable(tbl)
 }
 ```
