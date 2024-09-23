@@ -1,0 +1,58 @@
+---
+date: "2024-09-22"
+image: patchwork-logo.png
+# jupyter: python3
+categories: [R, ggplot]
+title: Arrange plots with tables
+# format:
+#   html:
+#     toc: true
+---
+
+I use [`patchwork`](https://patchwork.data-imaginist.com/) regularly to combine ggplots; see my [R template](https://github.com/hdigital/starter-r).
+
+The recent [v1.3](https://www.tidyverse.org/blog/2024/09/patchwork-1-3-0/) release of `patchwork` allows adding [`gt`](https://www.tidyverse.org/blog/2024/09/patchwork-1-3-0/#tables-are-figures-too) tables.
+
+Tables with short descriptive information are an essential element of my notebooks. So far, I have mainly relied on the default [`knitr`](https://github.com/yihui/knitr) for simple tables and used [`reactable`](https://glin.github.io/reactable/) for larger interactive tables.
+
+So here is an example of `patchwork` that combines a figure and a `gt` table, using the [`palmerpenguins`](https://allisonhorst.github.io/palmerpenguins/) data.
+
+```{r}
+#| code-fold: true
+#| warning: false
+
+library(tidyverse)
+library(patchwork)
+library(gt)
+
+library(palmerpenguins)
+
+pg <-
+  penguins %>%
+  group_by(species) |>
+  summarise(
+    n = n(),
+    bill = mean(bill_length_mm, na.rm = TRUE),
+    flipper = mean(flipper_length_mm, na.rm = TRUE)
+  )
+
+pl1 <-
+  ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = factor(species))) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme(legend.position = "none")
+
+gt1 <-
+  gt(pg) |>
+  tab_header(title = "Length mean (mm)") |>
+  fmt_number(
+    columns = c(bill, flipper),
+    decimals = 1
+  )
+
+pl1 + gt1
+```
+
+---
+
+![](patchwork-logo.png)
