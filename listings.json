@@ -2,7 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2024-09-22-post/index.html",
+      "/posts/2024-09-22-r-patchwork/index.html",
       "/posts/2024-08-31-uv/index.html",
       "/posts/2024-07-28-r-log10/index.html",
       "/posts/2024-07-20-r-round/index.html",
@@ -39,9 +39,9 @@
       "/posts/2023-06-03-github-pages/index.html",
       "/posts/2023-06-02-ai-dalle-images/index.html",
       "/posts/2023-05-01-py-wikipedia-data/index.html",
-      "/posts/2023-04-27-py-geocoding/index.html",
       "/posts/2023-04-26-r-dataverse/index.html",
       "/posts/2023-04-27-r-posit-cloud/index.html",
+      "/posts/2023-04-27-py-geocoding/index.html",
       "/posts/2023-04-23-py-chatgpt/index.html",
       "/posts/2023-03-20-r-wasm/index.html",
       "/posts/2023-03-15-py-pyscript/index.html",

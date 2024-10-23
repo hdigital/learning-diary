@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="66bc8ad7" class="cell" data-execution_count="1">
+<div id="c152c424" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import micropip</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># await micropip.install("requests")</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The code ChatGPT provided worked with the examples it used. I made only some small adjustments to the code below.</p>
 <section id="image" class="level2">
 <h2 class="anchored" data-anchor-id="image">Image</h2>
-<div id="3a1098da" class="cell" data-execution_count="1">
+<div id="4d43db6a" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>ChatGPT added comments to every line of the code. I combined them into blocks to make the snippet more concise.</p>
-<div id="ead3e714" class="cell" data-message="false" data-execution_count="2">
+<div id="443f9c14" class="cell" data-message="false" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -240,14 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the image</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>urllib.request.urlretrieve(image_url, <span class="st">'image.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x7f9550c6c310&gt;)</code></pre>
+<pre><code>('image.jpg', &lt;http.client.HTTPMessage at 0x756e801b0b80&gt;)</code></pre>
 </div>
 </div>
 <p><img src="image.jpg" class="img-fluid"></p>
 </section>
 <section id="coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="coordinates">Coordinates</h2>
-<div id="834e1a9a" class="cell" data-execution_count="3">
+<div id="90dcac7a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -282,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="map" class="level2">
 <h2 class="anchored" data-anchor-id="map">Map</h2>
-<div id="7bfe5ee5" class="cell" data-execution_count="4">
+<div id="55e1a59c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>map_coord <span class="op">=</span> [coordinates[<span class="st">'lat'</span>], coordinates[<span class="st">'lon'</span>]]</span>
@@ -323,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
             <style>
-                #map_2ec67a5e39ca5b46696d9d3380eebcab {
+                #map_56539f3a2df517ef861472c1dfd011a0 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -337,14 +337,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body>
     
     
-            <div class=&quot;folium-map&quot; id=&quot;map_2ec67a5e39ca5b46696d9d3380eebcab&quot; ></div>
+            <div class=&quot;folium-map&quot; id=&quot;map_56539f3a2df517ef861472c1dfd011a0&quot; ></div>
         
 </body>
 <script>
     
     
-            var map_2ec67a5e39ca5b46696d9d3380eebcab = L.map(
-                &quot;map_2ec67a5e39ca5b46696d9d3380eebcab&quot;,
+            var map_56539f3a2df517ef861472c1dfd011a0 = L.map(
+                &quot;map_56539f3a2df517ef861472c1dfd011a0&quot;,
                 {
                     center: [52.52, 13.405],
                     crs: L.CRS.EPSG3857,
@@ -358,31 +358,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
         
     
-            var tile_layer_418dd4378652d43d94bfe2656dca1ac0 = L.tileLayer(
+            var tile_layer_cb9272aa58eac8393a4ea8c298577d63 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 19, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_418dd4378652d43d94bfe2656dca1ac0.addTo(map_2ec67a5e39ca5b46696d9d3380eebcab);
+            tile_layer_cb9272aa58eac8393a4ea8c298577d63.addTo(map_56539f3a2df517ef861472c1dfd011a0);
         
     
-            var marker_daf25b32fe04665da488b6cd76566dd4 = L.marker(
+            var marker_f1a68dd140e91776ba6fa464dc2b4e28 = L.marker(
                 [52.52, 13.405],
                 {}
-            ).addTo(map_2ec67a5e39ca5b46696d9d3380eebcab);
+            ).addTo(map_56539f3a2df517ef861472c1dfd011a0);
         
     
-        var popup_ff43db00fcac3ec8205f11eb834f18a2 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_adcc7965ea0801772b9291d03f16e0d9 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_9e0c087b499f0915c87d3717277bd744 = $(`<div id=&quot;html_9e0c087b499f0915c87d3717277bd744&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
-                popup_ff43db00fcac3ec8205f11eb834f18a2.setContent(html_9e0c087b499f0915c87d3717277bd744);
+                var html_c607fdeb0c729f4de3310bb0f6364588 = $(`<div id=&quot;html_c607fdeb0c729f4de3310bb0f6364588&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;>Berlin</div>`)[0];
+                popup_adcc7965ea0801772b9291d03f16e0d9.setContent(html_c607fdeb0c729f4de3310bb0f6364588);
             
         
 
-        marker_daf25b32fe04665da488b6cd76566dd4.bindPopup(popup_ff43db00fcac3ec8205f11eb834f18a2)
+        marker_f1a68dd140e91776ba6fa464dc2b4e28.bindPopup(popup_adcc7965ea0801772b9291d03f16e0d9)
         ;
 
         

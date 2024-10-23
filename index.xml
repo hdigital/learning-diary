@@ -10,10 +10,10 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Sat, 21 Sep 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 22 Sep 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Arrange plots with tables</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2024-09-22-post/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/</link>
   <description><![CDATA[ 
 
 
@@ -163,22 +163,22 @@ font-style: inherit;">+</span> gt1</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-09-22-post/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2024-09-22-post/patchwork-logo.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/patchwork-logo.png" class="img-fluid"></p>
 
 
 
  ]]></description>
   <category>R</category>
   <category>ggplot</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2024-09-22-post/</guid>
-  <pubDate>Sat, 21 Sep 2024 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-09-22-post/patchwork-logo.png" medium="image" type="image/png" height="166" width="144"/>
+  <guid>https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/</guid>
+  <pubDate>Sun, 22 Sep 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/patchwork-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 <item>
   <title>uv instead of venv/pip</title>
@@ -399,7 +399,7 @@ font-style: inherit;">-sh</span></span></code></pre></div>
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/</guid>
-  <pubDate>Fri, 30 Aug 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
@@ -781,7 +781,7 @@ font-style: inherit;">label_comma</span>())</span>
   <category>R</category>
   <category>ggplot</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/</guid>
-  <pubDate>Sat, 27 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 28 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/log10-plot.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
@@ -990,7 +990,7 @@ font-style: inherit;">map_dbl</span>(x2, round_first_two_digits)</span></code></
   <category>R</category>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/</guid>
-  <pubDate>Fri, 19 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 20 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/r-logo.png" medium="image" type="image/png" height="112" width="144"/>
 </item>
 <item>
@@ -1313,7 +1313,7 @@ font-style: inherit;">theme_void</span>()</span></code></pre></div>
   <category>R</category>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-17-r-sf-intersection/</guid>
-  <pubDate>Tue, 16 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 17 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-17-r-sf-intersection/sf-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -1598,7 +1598,7 @@ font-style: inherit;">"Source: BBC"</span></span>
   <category>ggplot</category>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/</guid>
-  <pubDate>Mon, 15 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 16 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/bar-chart.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
@@ -1790,7 +1790,7 @@ font-style: inherit;">theme_void</span>()</span></code></pre></div>
   <category>R</category>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/</guid>
-  <pubDate>Sat, 13 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 14 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/tidygeocoder-logo.png" medium="image" type="image/png" height="167" width="144"/>
 </item>
 <item>
@@ -1930,7 +1930,7 @@ font-style: inherit;">map_chr</span>(doi, get_doi_reference))</span>
   <category>R</category>
   <category>API</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/</guid>
-  <pubDate>Fri, 12 Jul 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sat, 13 Jul 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -1976,7 +1976,7 @@ font-style: inherit;">--force-if-includes</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-til/</guid>
-  <pubDate>Mon, 10 Jun 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 11 Jun 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2042,7 +2042,7 @@ font-style: inherit;">=</span>url)</span>
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/</guid>
-  <pubDate>Mon, 29 Apr 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 30 Apr 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
 </item>
 <item>
@@ -2086,7 +2086,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
   <category>cloud</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/</guid>
-  <pubDate>Thu, 21 Mar 2024 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/rocker-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2103,7 +2103,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="66bc8ad7" class="cell" data-execution_count="1">
+<div id="c152c424" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -2150,7 +2150,7 @@ font-style: inherit;">=</span>headers)</span>
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/</guid>
-  <pubDate>Wed, 20 Mar 2024 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2165,7 +2165,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="python-f-strings" class="level1">
 <h1>Python f-strings</h1>
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="cfb4d0d1" class="cell" data-execution_count="1">
+<div id="0e759986" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -2177,7 +2177,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div>
 </div>
-<div id="9a6a4949" class="cell" data-execution_count="2">
+<div id="72fa4961" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -2197,7 +2197,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="10d15c28" class="cell" data-execution_count="3">
+<div id="522d0075" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -2221,7 +2221,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="d4758b29" class="cell" data-execution_count="4">
+<div id="0f90350b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -2238,7 +2238,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="a34449bb" class="cell" data-execution_count="5">
+<div id="fc5d1d81" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -2274,7 +2274,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="b01f62d3" class="cell" data-execution_count="6">
+<div id="1b93faf5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -2294,7 +2294,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="b17d9de6" class="cell" data-execution_count="7">
+<div id="80f971d2" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -2308,7 +2308,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="c150c2b9" class="cell" data-execution_count="8">
+<div id="40cb3458" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -2322,7 +2322,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="31b01c65" class="cell" data-execution_count="9">
+<div id="ed0866e7" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -2336,7 +2336,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="7141b5ce" class="cell" data-execution_count="10">
+<div id="3b303154" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -2370,7 +2370,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="284331e6" class="cell" data-execution_count="11">
+<div id="cc71065f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -2392,7 +2392,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="22ae093a" class="cell" data-execution_count="12">
+<div id="e4a38b88" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -2418,7 +2418,7 @@ font-style: inherit;">'</span></span></code></pre></div>
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/</guid>
-  <pubDate>Sun, 25 Feb 2024 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 26 Feb 2024 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
@@ -2720,7 +2720,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 
  ]]></description>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/</guid>
-  <pubDate>Sat, 25 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Sun, 26 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2739,7 +2739,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="7f2e49d7" class="cell" data-execution_count="1">
+<div id="2df44756" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
@@ -2785,14 +2785,14 @@ font-style: inherit;">'jane.doe@example.com'</span></span>
 </section>
 <section id="single-element" class="level2">
 <h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div id="91058ea9" class="cell" data-execution_count="2">
+<div id="8da8a47b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
 </div>
-<div id="65b434f8" class="cell" data-execution_count="3">
+<div id="e5df6d0e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
@@ -2800,7 +2800,7 @@ font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></p
 <h2 class="anchored">HTML Title</h2>
 </div>
 </div>
-<div id="d6d09095" class="cell" data-execution_count="4">
+<div id="f398d88d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
@@ -2808,7 +2808,7 @@ font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
 </section>
 </div>
-<div id="204e0d09" class="cell" data-execution_count="5">
+<div id="1586ce4e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
@@ -2816,7 +2816,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
-<div id="2996606b" class="cell" data-execution_count="6">
+<div id="c31ec643" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
@@ -2841,7 +2841,7 @@ font-style: inherit;">True</span>)</span></code></pre></div>
 </section>
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div id="629b4313" class="cell" data-execution_count="7">
+<div id="1dc1a507" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
@@ -2862,7 +2862,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
 </div>
 </div>
 <p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div id="6b334484" class="cell" data-execution_count="8">
+<div id="24c22a63" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
@@ -2938,7 +2938,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/</guid>
-  <pubDate>Fri, 24 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 25 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
 </item>
 <item>
@@ -2958,7 +2958,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div id="2920f76e" class="cell" data-execution_count="1">
+<div id="f38a270b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
@@ -3032,23 +3032,23 @@ font-style: inherit;">'b'</span></span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed {
+  #altair-viz-713f0858f9364127836bd6d640501617.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details,
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details summary {
+  #altair-viz-713f0858f9364127836bd6d640501617.vega-embed details,
+  #altair-viz-713f0858f9364127836bd6d640501617.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f10a2215a1cf402b9c637420dd09ac0b"></div>
+<div id="altair-viz-713f0858f9364127836bd6d640501617"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f10a2215a1cf402b9c637420dd09ac0b") {
-      outputDiv = document.getElementById("altair-viz-f10a2215a1cf402b9c637420dd09ac0b");
+    if (outputDiv.id !== "altair-viz-713f0858f9364127836bd6d640501617") {
+      outputDiv = document.getElementById("altair-viz-713f0858f9364127836bd6d640501617");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3151,7 +3151,7 @@ font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</guid>
-  <pubDate>Wed, 22 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 23 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -3793,7 +3793,7 @@ font-style: inherit;">unnest</span>(authors)</span>
   <category>R</category>
   <category>API</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/</guid>
-  <pubDate>Sun, 19 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 20 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 <item>
@@ -3820,7 +3820,7 @@ font-style: inherit;">unnest</span>(authors)</span>
 <p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
 <p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
 <p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
-<div id="331941bb" class="cell" data-execution_count="1">
+<div id="4223e4d3" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -4016,7 +4016,7 @@ font-style: inherit;"># Show the plot</span></span>
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/</guid>
-  <pubDate>Thu, 16 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 17 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/python-pizza-logo.png" medium="image" type="image/png" height="117" width="144"/>
 </item>
 <item>
@@ -4033,7 +4033,7 @@ font-style: inherit;"># Show the plot</span></span>
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div id="d185d433" class="cell" data-execution_count="1">
+<div id="175ab62e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="kw" style="color: #003B4F;
@@ -4094,7 +4094,7 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div id="41a748b7" class="cell" data-execution_count="2">
+<div id="dea302a6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> tomli <span class="im" style="color: #00769E;
@@ -4138,7 +4138,7 @@ font-style: inherit;">=</span> tomllib.load(toml_file)</span>
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div id="1b4457e2" class="cell" data-execution_count="3">
+<div id="57eb3126" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">print_file(<span class="st" style="color: #20794D;
@@ -4193,7 +4193,7 @@ wheel==0.41.3
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/</guid>
-  <pubDate>Fri, 03 Nov 2023 23:00:00 GMT</pubDate>
+  <pubDate>Sat, 04 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-04-py-pyproject-toml/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
@@ -4207,7 +4207,7 @@ wheel==0.41.3
 
 <p>This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the <a href="https://github.com/hdigital/partypositions-wikitags">partypositions-wikitags</a> project.</p>
 <p>The code of the project is archived at Zenodo with the DOI <a href="https://zenodo.org/doi/10.5281/zenodo.7043510">10.5281/zenodo.7043510</a>.</p>
-<div id="c38deeed" class="cell" data-execution_count="1">
+<div id="9588d893" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
@@ -4238,7 +4238,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="doi-api" class="level2">
 <h2 class="anchored" data-anchor-id="doi-api">DOI API</h2>
 <p>So here is some metadata information. Lets start with the DOI API.</p>
-<div id="b1a6309e" class="cell" data-execution_count="2">
+<div id="24ba113a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> requests</span>
@@ -4291,7 +4291,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="zenodo-record" class="level2">
 <h2 class="anchored" data-anchor-id="zenodo-record">Zenodo record</h2>
 <p>We can also access a <a href="https://developers.zenodo.org/#retrieve37">record</a> through the Zenodo API. This does not require a <a href="https://developers.zenodo.org/#authentication">Zenodo access token</a>.</p>
-<div id="4fe8cff6" class="cell" data-execution_count="3">
+<div id="689645d4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> requests.get(<span class="st" style="color: #20794D;
@@ -4307,7 +4307,7 @@ font-style: inherit;">=</span> r.json()</span>
 </div>
 </div>
 <p>I was interested in the Zenodo metadata.</p>
-<div id="6e28a041" class="cell" data-execution_count="4">
+<div id="6720aebc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">record[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'metadata'</span>]</span></code></pre></div>
@@ -4338,7 +4338,7 @@ font-style: inherit;">'metadata'</span>]</span></code></pre></div>
 <p>You can specify some of the addtional metadata in a <code>.zenodo.json</code> file in your GitHub repository.</p>
 <p><a href="https://developers.zenodo.org/#github" class="uri">https://developers.zenodo.org/#github</a></p>
 <p>I used the archived Zenodo record for a json dump of the metadata.</p>
-<div id="dd40965e" class="cell" data-execution_count="5">
+<div id="cdf00213" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> json</span>
@@ -4405,7 +4405,7 @@ font-style: inherit;">2</span>))</span></code></pre></div>
 <li>used unicode characters for umlaute</li>
 <li>specified license id</li>
 </ul>
-<div id="a06b51bc" class="cell" data-execution_count="6">
+<div id="0c73168a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -4458,7 +4458,7 @@ background-color: null;
 font-style: inherit;">"""</span></span></code></pre></div>
 </div>
 <p>Here, I validate the json. Running the cell should not raise an error.</p>
-<div id="a2e15055" class="cell" data-execution_count="7">
+<div id="0c32e208" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">metadata_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></div>
@@ -4474,7 +4474,7 @@ font-style: inherit;">=</span> json.loads(metadata_json)</span></code></pre></di
   <category>Python</category>
   <category>API</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/</guid>
-  <pubDate>Mon, 30 Oct 2023 23:00:00 GMT</pubDate>
+  <pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-10-31-py-zenodo-api/zenodo-logo.png" medium="image" type="image/png" height="52" width="144"/>
 </item>
 </channel>
