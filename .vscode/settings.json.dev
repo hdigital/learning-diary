@@ -32,8 +32,11 @@
     "githistory",
     "guiyomh",
     "ipynb",
+    "lintr",
     "nbdev",
+    "Rscript",
     "tamasfe",
+    "tinytex",
     "toolsai",
     "venv"
   ]

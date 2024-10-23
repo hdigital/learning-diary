@@ -6,10 +6,15 @@ alias pf := push-force
 
 ## Recipes 'just' — https://just.systems/man/en/chapter_20.html
 
+# create environment to render all posts
+init-all: init-local
+  uv pip install -r snippets/requirements-posts.txt
+  Rscript -e "pak::lockfile_install(update = FALSE)"
+  quarto install tinytex
+
 # initialize Codespace
 init-codespace: init-local
   cp .vscode/settings.json.dev .vscode/settings.json
-  # Rscript -e "pak::lockfile_install(update = FALSE)"
 
 # initialize local environment
 init-local:
