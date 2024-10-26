@@ -1,0 +1,17 @@
+state,state_name,population,service
+BW,Baden-Württemberg,11280257,SWR
+BY,Bayern,13369393,BR
+BE,Berlin,3755251,RBB
+BB,Brandenburg,2573135,RBB
+HB,Bremen,684864,RB
+HH,Hamburg,1892122,NDR
+HE,Hessen,6391360,HR
+MV,Mecklenburg-Vorpommern,1628378,NDR
+NI,Niedersachsen,8140242,NDR
+NW,Nordrhein-Westfalen,18139116,WDR
+RP,Rheinland-Pfalz,4159150,SWR
+SL,Saarland,992666,SR
+SN,Sachsen,4086152,MDR
+ST,Sachsen-Anhalt,2186643,MDR
+SH,Schleswig-Holstein,2953270,NDR
+TH,Thüringen,2126846,MDR

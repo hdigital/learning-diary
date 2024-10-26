@@ -1,0 +1,96 @@
+---
+date: "2024-10-25"
+image: broadcaster-deu.png
+# jupyter: python3
+categories: [R, ggplot, geo]
+title: Public broadcasting Germany
+---
+
+Today, there was a [decision](https://www1.wdr.de/nachrichten/zukunft-von-ard-und-zdf-laenderchefs-wollen-weniger-tv-und-radiosender-100.html)
+about a public broadcasting reform in Germany.
+
+There were suggestions to reduce the number of public broadcasters before the
+meeting of the Minister-presidents.
+
+So, I was interested in the state's population, which is covered by German
+public broadcasters.
+
+```{r libraries}
+#| code-fold: true
+#| message: false
+
+library(conflicted) # create errors for function name conflicts
+
+library(tidyverse)
+conflicts_prefer(dplyr::filter, .quiet = TRUE)
+
+library(sf)
+library(patchwork)
+
+ggplot2::theme_set(theme_minimal())
+```
+
+
+```{r table}
+#| code-fold: true
+#| message: false
+
+states_raw <- read_csv("rundfunk-laender.csv")
+map_raw <- read_rds("r-ne_states-deu.rds")
+
+## Broadcaster ----
+
+services <-
+  map_raw |>
+  inner_join(states_raw) |>
+  summarise(
+    n = n(),
+    pop_sum = sum(population),
+    pop_mio = NA,
+    states = paste0(sort(state), collapse = ", "),
+    geometry = st_union(geometry) |> st_centroid(),
+    .by = service
+  ) |>
+  mutate(pop_mio = round(pop_sum / 1e6, 1)) |>
+  select(-pop_sum) |>
+  arrange(service)
+```
+
+
+```{r figures}
+#| code-fold: true
+#| message: false
+
+pl_dt <-
+  services |>
+  mutate(service = fct_reorder(factor(service), pop_mio))
+
+## bar chart
+pl1 <-
+  ggplot(pl_dt, aes(x = pop_mio, y = service)) +
+  geom_col(fill = "lightblue") +
+  labs(y = "")
+
+# map German states
+pl2 <-
+  ggplot() +
+  geom_sf(data = map_raw, colour = "grey85", lwd = 0.3) +
+  geom_sf(data = services, aes(size = pop_mio, colour = service), alpha = 0.4) +
+  coord_sf(crs = "EPSG:4839") + # LCC projection Germany
+  guides(colour = "none", size = "none") +
+  theme_void()
+
+pl2 + pl1 + plot_layout(widths = c(3, 2))
+
+
+ggsave("broadcaster-deu.png", pl2, width = 3, height = 5, dpi = 300)
+
+services |>
+  st_drop_geometry()
+```
+
+__Sources__
+
+- Statistische Ämter des Bundes und der Länder, [dl-de/by-2-0](http://www.govdata.de/dl-de/by-2-0)
+  - [Fläche und Bevölkerung nach Ländern](https://www.statistikportal.de/de/bevoelkerung/flaeche-und-bevoelkerung)
+- [Natural Earth](https://cran.r-project.org/web/packages/rnaturalearth/vignettes/rnaturalearth.html)
