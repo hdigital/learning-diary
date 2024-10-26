@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Python allows to specify <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#declaring-project-metadata">metadata</a> and <a href="https://packaging.python.org/en/latest/specifications/declaring-project-metadata/#dependencies-optional-dependencies">dependencies</a> in a <code>pyproject.toml</code>.</p>
 <p>I have started using the <em>metadata</em> declaration recently and tried the dependency specification this week.</p>
 <p>I added an <a href="pyproject.toml">example</a> to the folder of the post. It contains project metadata and examples for project and development dependencies.</p>
-<div id="175ab62e" class="cell" data-execution_count="1">
+<div id="d185d433" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_file(file_name):</span>
@@ -229,7 +229,7 @@ build-backend = "hatchling.build"
 </div>
 </div>
 <p>There is a <a href="https://docs.python.org/3/library/tomllib.html">toml parser</a> in the standard library since Python 3.11, released in October last year. It can be used to read the <code>pyproject.toml</code>.</p>
-<div id="dea302a6" class="cell" data-execution_count="2">
+<div id="41a748b7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tomli <span class="im">as</span> tomllib  <span class="co"># Python &lt;= 3.10</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"pyproject.toml"</span>, <span class="st">"rb"</span>) <span class="im">as</span> toml_file:</span>
@@ -254,7 +254,7 @@ build-backend = "hatchling.build"
 <p>I like to pin dependencies in one <code>requirements.txt</code>. Such a file can be created with <a href="https://github.com/jazzband/pip-tools#requirements-from-pyprojecttoml">pip-tools</a>.</p>
 <p><code>python -m piptools compile --upgrade --extra dev pyproject.toml</code></p>
 <p>Usually, I include the <code>--generate-hashes</code> option but leave it out here to shorten the output by not including hash keys.</p>
-<div id="57eb3126" class="cell" data-execution_count="3">
+<div id="1b4457e2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>print_file(<span class="st">"requirements.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
