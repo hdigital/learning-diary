@@ -322,11 +322,11 @@ font-style: inherit;">"broadcaster-deu.png"</span>, pl2, <span class="at" style=
 background-color: null;
 font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>, <span class="at" style="color: #657422;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+font-style: inherit;">5</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">dpi =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -427,7 +427,7 @@ font-style: inherit;">st_drop_geometry</span>()</span></code></pre></div>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-10-25-r-broadcaster/</guid>
   <pubDate>Thu, 24 Oct 2024 22:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-10-25-r-broadcaster/broadcaster-deu.png" medium="image" type="image/png" height="86" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2024-10-25-r-broadcaster/broadcaster-deu.png" medium="image" type="image/png" height="240" width="144"/>
 </item>
 <item>
   <title>Arrange plots with tables</title>
