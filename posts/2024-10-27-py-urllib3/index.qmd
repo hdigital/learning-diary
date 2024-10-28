@@ -1,0 +1,78 @@
+---
+date: "2024-10-27"
+image: urllib3-logo.png
+jupyter: python3
+categories: [Python, API]
+title: http requests with urllib3
+# format:
+#   html:
+#     toc: true
+---
+
+My goal is to use the [urllib3](https://urllib3.readthedocs.io/en/stable/user-guide.html) more regularly. It is a library that has no dependencies (see below)
+
+Here are some examples of making http requests with _urllib3_.
+
+```{python}
+import urllib3
+
+resp = urllib3.request(
+  "GET",
+  "https://doi.org/10.1177/1465116507076430",
+  headers = {"accept": "application/vnd.citationstyles.csl+json"}
+  )
+```
+
+```{python}
+resp.status
+```
+
+```{python}
+doi_json = resp.json()
+doi_json['author']
+```
+
+```{python}
+resp.data[:100]
+```
+
+
+## Dependencies
+
+urllib3 has no dependencies and the popular [requests](https://requests.readthedocs.io/en/latest/) library uses _urllib3_.
+
+Here is a documentation of the dependencies with _uv_.
+
+```sh
+uv init uv-project
+cd uv-project
+
+uv add urllib3
+uv tree
+```
+
+```txt
+Resolved 2 packages in 2ms
+uv-project v0.1.0
+└── urllib3 v2.2.3
+```
+
+```sh
+uv remove urllib3
+uv add requests
+uv tree
+```
+
+```txt
+Resolved 6 packages in 2ms
+uv-project v0.1.0
+└── requests v2.32.3
+    ├── certifi v2024.8.30
+    ├── charset-normalizer v3.4.0
+    ├── idna v3.10
+    └── urllib3 v2.2.3
+```
+
+---
+
+![](urllib3-logo.png)
