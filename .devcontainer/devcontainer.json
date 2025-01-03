@@ -14,7 +14,7 @@
     }
   },
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "python -m pip install --user uv",
+  "updateContentCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh",
   "postCreateCommand": "just init-codespace",
   "customizations": {
     "vscode": {
