@@ -4,7 +4,7 @@ version = "0"
 description = "A diary of things I learned (TIL)"
 maintainers = [{ name = "Holger Döring" }]
 license = { text = "MIT License" }
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 
 ## ----------------------------------------------------------------------------
 ## Pip packages (see requirements.txt created with pip compile)
