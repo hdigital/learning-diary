@@ -14,7 +14,7 @@ if os.getcwd() != os.path.dirname(os.path.dirname(os.path.abspath(__file__))):
 
 current_date = datetime.now().strftime("%Y-%m-%d")
 
-source_folder = "posts/2024-z-template/"
+source_folder = "posts/2025-z-template/"
 destination_folder = f"posts/{current_date}-post/"
 
 shutil.copytree(source_folder, destination_folder)
@@ -27,7 +27,7 @@ file_path = destination_folder + "index.qmd"
 with open(file_path) as file:
     file_data = file.read()
 
-file_data = file_data.replace('"2024-0x-xx"', f'"{current_date}"')
+file_data = file_data.replace('"202x-xx-xx"', f'"{current_date}"')
 
 with open(file_path, "w") as file:
     file.write(file_data)
