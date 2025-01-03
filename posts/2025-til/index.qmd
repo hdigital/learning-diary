@@ -1,0 +1,23 @@
+---
+date: "2025-01-03"
+title: Today I learned (TIL)
+image: computer_ai.png
+format:
+  html:
+    toc: true
+---
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+
+## 03. January
+
+[self-installing Python scripts with uv](https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes) (2024)
+
+```sh
+#!/usr/bin/env -S uv run --script`
+```
+
+---
+
+![](computer_ai.png){ width=300 }
