@@ -66,12 +66,6 @@ uv sync
 uv lock --upgrade
 ```
 
-Python packages used in posts
-
-```sh
-uv pip install -r snippets/requirements-posts.txt
-```
-
 _Note_ — Python version of [Rocker](https://github.com/rocker-org/rocker-versioned2) image used and specified in `.python-version`.
 
 ### Docker
