@@ -9,8 +9,36 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.5.57</generator>
-<lastBuildDate>Sat, 26 Oct 2024 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.39</generator>
+<lastBuildDate>Thu, 02 Jan 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL)</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+<section id="january" class="level2">
+<h2 class="anchored" data-anchor-id="january">03. January</h2>
+<p><a href="https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes">self-installing Python scripts with uv</a> (2024)</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></pre></div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
+  <pubDate>Thu, 02 Jan 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>http requests with urllib3</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-10-27-py-urllib3/</link>
@@ -4324,229 +4352,6 @@ font-style: inherit;">unnest</span>(authors)</span>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/</guid>
   <pubDate>Sun, 19 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" medium="image" type="image/png" height="166" width="144"/>
-</item>
-<item>
-  <title></title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="python-pizza-hamburg" class="level1">
-<h1>Python Pizza Hamburg</h1>
-<p>This Friday, I attended the <a href="https://hamburg.python.pizza/">Python Pizza micro conference</a> in Hamburg. It was a very nice, welcoming and informative event. I liked the broad perspectives on how-to, learning and diversity. The topics of the talks were very accessible and mainly experience based.</p>
-<p>Some of the technical things I took out:</p>
-<ul>
-<li>“Streamlit: Making Data Shine in Minute” (Alessandro Romano) showed me that <a href="https://github.com/streamlit/streamlit">Streamlit</a> may be the tool I need to quickly create data dashboards without getting into webdev details.</li>
-<li>“Introducing the ORMIR community and the book ‘Learn Python with Jupyter’” (Serena Bonaretti) helped me to better understand the evolving relation between open source, open science, research and learning.</li>
-<li>“Choose HTMX and avoid learning too much JavaScript” (Martin Borus) demonstrated once more that I should start to experiment with <a href="https://github.com/bigskysoftware/htmx">htmx</a>. I run the <a href="https://github.com/mborus/choose_htmx">repository code</a> in Codespaces later and want to try <a href="https://github.com/tiangolo/fastapi">FastAPI</a> and async web page element reloading.</li>
-</ul>
-<p>The friendly environment and some nice exchanges about data science, Python, and open source projects over delicious pizza were really nice.</p>
-<hr>
-<p>This was a Python Pizza conference. So I asked ChatGPT to draw a Pizza in Python, something it happily did.</p>
-<p>ChatGPT message: <em>draw a figure of a pizza in python in a jupyter notebook</em></p>
-<p>This provided code for a pizza with peperoni. I tried to get a <a href="https://altair-viz.github.io/">Vega-Altair</a> version but this did not work out. So I stayed with the <a href="https://matplotlib.org/">Matplotlib</a> version and asked to have some pizza slices.</p>
-<p>ChatGPT message: <em>add slices to the matplotlib plot</em></p>
-<div id="331941bb" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> plt</span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> matplotlib.patches <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> patches</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Create a figure and axis</span></span>
-<span id="cb1-5">fig, ax <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.subplots()</span>
-<span id="cb1-6"></span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Draw the pizza circle</span></span>
-<span id="cb1-8">pizza_circle <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.Circle((<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.4</span>, color<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'brown'</span>, fill<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb1-9">ax.add_patch(pizza_circle)</span>
-<span id="cb1-10"></span>
-<span id="cb1-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Draw the cheese circle (a smaller circle on top of the pizza)</span></span>
-<span id="cb1-12">cheese_circle <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> plt.Circle((<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.35</span>, color<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'yellow'</span>, fill<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb1-13">ax.add_patch(cheese_circle)</span>
-<span id="cb1-14"></span>
-<span id="cb1-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Draw pizza slices</span></span>
-<span id="cb1-16">num_slices <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span></span>
-<span id="cb1-17">theta <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">360</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> num_slices</span>
-<span id="cb1-18">slice_colors <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'orange'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lightgreen'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'tomato'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'wheat'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lightcoral'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lightblue'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'sandybrown'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'lightpink'</span>]</span>
-<span id="cb1-19"></span>
-<span id="cb1-20"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(num_slices):</span>
-<span id="cb1-21">    slice_wedge <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> patches.Wedge((<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>), <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.4</span>, i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> theta, (i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> theta, color<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>slice_colors[i], fill<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb1-22">    ax.add_patch(slice_wedge)</span>
-<span id="cb1-23"></span>
-<span id="cb1-24"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Set aspect ratio to be equal</span></span>
-<span id="cb1-25">ax.set_aspect(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'equal'</span>, adjustable<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'box'</span>)</span>
-<span id="cb1-26"></span>
-<span id="cb1-27"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Set axis limits</span></span>
-<span id="cb1-28">ax.set_xlim(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb1-29">ax.set_ylim(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb1-30"></span>
-<span id="cb1-31"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Remove axis labels and ticks</span></span>
-<span id="cb1-32">ax.set_xticks([])</span>
-<span id="cb1-33">ax.set_yticks([])</span>
-<span id="cb1-34">ax.set_xticklabels([])</span>
-<span id="cb1-35">ax.set_yticklabels([])</span>
-<span id="cb1-36"></span>
-<span id="cb1-37"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Set the title</span></span>
-<span id="cb1-38">plt.title(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Delicious Pizza with Slices"</span>)</span>
-<span id="cb1-39"></span>
-<span id="cb1-40"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Show the plot</span></span>
-<span id="cb1-41">plt.show()</span></code></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/index_files/figure-html/cell-2-output-1.png" width="389" height="409" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/python-pizza-photo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/</guid>
-  <pubDate>Thu, 16 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-17-py-python-pizza/python-pizza-logo.png" medium="image" type="image/png" height="117" width="144"/>
 </item>
 </channel>
 </rss>

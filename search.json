@@ -182,32 +182,39 @@
     "text": "Requests in JupyterLite\nIn a recent post, I tried to use requests in JupyterLite. It did not work at the time.\nToday, I have found out that urllib3 recently announced support for Pyodide, the Python distribution used by JupyterLite.\nNow, you can use requests or urllib3 in JupyterLite and this code does also work in the browser environment (install packages with micropip).\n\n# import micropip\n# await micropip.install(\"requests\")\n\nimport urllib3\nurllib3.disable_warnings()\n\nimport requests\n\nheaders = {\"accept\": \"text/x-bibliography\"}\nr = requests.get(\"https://doi.org/10.5281/zenodo.7043510\", headers=headers)\n\nr.text\n\n'Döring, H., &amp; Herrmann, M. (2024). &lt;i&gt;Party positions from Wikipedia tags&lt;/i&gt; (Version 24.07) [Computer software]. Zenodo. https://doi.org/10.5281/ZENODO.7043510'"
   },
   {
-    "objectID": "posts/2023-07-29-r-renv/index.html",
-    "href": "posts/2023-07-29-r-renv/index.html",
-    "title": "Package versions with renv",
+    "objectID": "posts/2024-til/index.html",
+    "href": "posts/2024-til/index.html",
+    "title": "Today I learned (TIL)",
     "section": "",
-    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
   },
   {
-    "objectID": "posts/2023-07-29-r-renv/index.html#versions-snapshot",
-    "href": "posts/2023-07-29-r-renv/index.html#versions-snapshot",
-    "title": "Package versions with renv",
+    "objectID": "posts/2024-til/index.html#june",
+    "href": "posts/2024-til/index.html#june",
+    "title": "Today I learned (TIL)",
     "section": "",
-    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
   },
   {
-    "objectID": "posts/2023-07-29-r-renv/index.html#find-project-packages",
-    "href": "posts/2023-07-29-r-renv/index.html#find-project-packages",
-    "title": "Package versions with renv",
-    "section": "Find project packages",
-    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n  mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n  select(Package, version) |&gt;\n  arrange(Package) |&gt;\n  distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.6\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.4\n\n\npurrr\n1.0.2\n\n\nrenv\n1.0.7\n\n\nrmarkdown\n2.28"
+    "objectID": "posts/2024-til/index.html#april",
+    "href": "posts/2024-til/index.html#april",
+    "title": "Today I learned (TIL)",
+    "section": "1. April",
+    "text": "1. April\nFor Python, I’ve configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration export PIP_REQUIRE_VIRTUALENV=\"true\" is set in my .zshrc file. The configuration was inspired by the post On pip isolation."
   },
   {
-    "objectID": "posts/2023-07-29-r-renv/index.html#customized-session-info",
-    "href": "posts/2023-07-29-r-renv/index.html#customized-session-info",
-    "title": "Package versions with renv",
-    "section": "Customized session info",
-    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.4.1 (2024-06-14)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.28   conflicted_1.2.0 callr_3.7.6      renv_1.0.7      \n[5] purrr_1.0.2      dplyr_1.1.4     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.5       cli_3.6.3         knitr_1.48        rlang_1.1.4      \n [5] xfun_0.47         processx_3.8.4    generics_0.1.3    jsonlite_1.8.8   \n [9] glue_1.7.0        htmltools_0.5.8.1 ps_1.7.7          fansi_1.0.6      \n[13] evaluate_0.24.0   tibble_3.2.1      fastmap_1.2.0     yaml_2.3.10      \n[17] lifecycle_1.0.4   memoise_2.0.1     compiler_4.4.1    htmlwidgets_1.6.4\n[21] pkgconfig_2.0.3   rstudioapi_0.16.0 digest_0.6.37     R6_2.5.1         \n[25] tidyselect_1.2.1  utf8_1.2.4        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.4.1       withr_3.0.1       cachem_1.1.0"
+    "objectID": "posts/2024-til/index.html#march",
+    "href": "posts/2024-til/index.html#march",
+    "title": "Today I learned (TIL)",
+    "section": "17. March",
+    "text": "17. March\nCreating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march-1",
+    "href": "posts/2024-til/index.html#march-1",
+    "title": "Today I learned (TIL)",
+    "section": "10. March",
+    "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."
   },
   {
     "objectID": "posts/2024-07-28-r-log10/index.html",
@@ -392,18 +399,25 @@
     "text": "Sometimes, I want to install pip packages in a Jupyter notebook without specifying the packages and pinning them in a requirements.txt.\nThis is mainly for short notebooks that I want to share and that should run without any modifications.\nI have now found a solution with two IPython magic commands.\n%%capture suppresses cell output so that no information about the pip install or the already installed packages is added to the notebook.\n%pip install installs the specified packages.\n\n%%capture\n\n%pip install goose3\n\n\nfrom goose3 import Goose\n\nurl = \"https://www.bbc.com/news/world-europe-68929873\"\n\ng = Goose()\narticle = g.extract(url=url)\n\narticle.meta_description\n\n'Nicaragua accused Germany of breaching the UN genocide convention by sending military hardware to Israel.'\n\n\n\n\n\nJupyter"
   },
   {
-    "objectID": "snippets/jupyter-options.html",
-    "href": "snippets/jupyter-options.html",
-    "title": "Jupyter Quarto",
+    "objectID": "snippets/r-cell-conditional.html",
+    "href": "snippets/r-cell-conditional.html",
+    "title": "Conditional R code cell execution",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
   },
   {
-    "objectID": "snippets/jupyter-quarto.html",
-    "href": "snippets/jupyter-quarto.html",
+    "objectID": "snippets/r-cell-conditional.html#explore-data",
+    "href": "snippets/r-cell-conditional.html#explore-data",
+    "title": "Conditional R code cell execution",
+    "section": "Explore data",
+    "text": "Explore data"
+  },
+  {
+    "objectID": "snippets/jupyter.html",
+    "href": "snippets/jupyter.html",
     "title": "Learning",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "snippets/ipython-display.html",
@@ -476,25 +490,18 @@
     "text": "Network requests and JSON\nHere, I use requests instead of the JupyterLite version with js.\n\n%pip install -q requests\n\n/Users/hd/hd/learning/learning-diary/.venv/bin/python: No module named pip\nNote: you may need to restart the kernel to use updated packages.\n\n\n\nimport requests\n\nr = requests.get(\"https://httpbin.org/get\")\nr.text\n\n'{\\n  \"args\": {}, \\n  \"headers\": {\\n    \"Accept\": \"*/*\", \\n    \"Accept-Encoding\": \"gzip, deflate\", \\n    \"Host\": \"httpbin.org\", \\n    \"User-Agent\": \"python-requests/2.31.0\", \\n    \"X-Amzn-Trace-Id\": \"Root=1-65fab6bc-1087d67f265788bf1f4c3a6d\"\\n  }, \\n  \"origin\": \"79.212.250.177\", \\n  \"url\": \"https://httpbin.org/get\"\\n}\\n'\n\n\n\nJSON(r.json())\n\n&lt;IPython.core.display.JSON object&gt;"
   },
   {
-    "objectID": "snippets/jupyter.html",
-    "href": "snippets/jupyter.html",
+    "objectID": "snippets/jupyter-quarto.html",
+    "href": "snippets/jupyter-quarto.html",
     "title": "Learning",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
-    "objectID": "snippets/r-cell-conditional.html",
-    "href": "snippets/r-cell-conditional.html",
-    "title": "Conditional R code cell execution",
+    "objectID": "snippets/jupyter-options.html",
+    "href": "snippets/jupyter-options.html",
+    "title": "Jupyter Quarto",
     "section": "",
-    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
-  },
-  {
-    "objectID": "snippets/r-cell-conditional.html#explore-data",
-    "href": "snippets/r-cell-conditional.html#explore-data",
-    "title": "Conditional R code cell execution",
-    "section": "Explore data",
-    "text": "Explore data"
+    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "posts/2024-02-26-py-f-strings/index.html",
@@ -784,39 +791,46 @@
     "text": "Dataverse URLs\nI followed a talk on electoral politics in Honduras. The presenter referred to the very stable two party system in Honduras. That made me interested to look at election results in Honduras. A quick analysis with Elections Global gave a good overview – see below.\nThe technical point is that I wanted to access the original data file at the Harvard Dataverse.\nData uploaded to the Dataverse is imported and a tab separated data version of the imported data is provided by the Dataverse. This is not the original file and may include some import errors. I ran into the issue in previous work so that I have worked with the original data file from the Dataverse. However, there is no direct link available at the Dataverse page of a data file.\nHere is an example for the Elections Global data used in the snippet – see page screenshot below.\ndoi:10.7910/DVN/OGOURC/YK9DOZ&version=2.0\nSo I tried to find the permanent link to the original data file.\nFirst, I checked the documentation of the Dataverse API but could not find a way to access an original data file through API parameters. Only the imported file is available through the API.\nSecond, I got the link by checking the request from clicking on the respective dynamic button at the Dataverse page with the browser developer tools. However, this url does not seem to have a structure that is related to the identifier of the dataset. Getting the url of the original data file this way is cumbersome.\nFor now, I will start to using the imported data version with the provided url for data files from the Dataverse.\n\n\nCode\nlibrary(conflicted)\nlibrary(tidyverse)\nconflicts_prefer(dplyr::filter)\n\n\n\nif (FALSE) {\n  url_csv &lt;- \"https://dataverse.harvard.edu/api/access/datafile/3754546?format=original\"\n  elec_raw &lt;- read_csv(url_csv)\n}\n\nurl &lt;- \"https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/OGOURC/YK9DOZ\"\n\nif (!exists(\"elec_raw\")) {\n  elec_raw &lt;- read_tsv(url)\n}\n\n# glimpse(elec_raw)\n\n\n\nCode\nhnd &lt;-\n  elec_raw |&gt;\n  filter(country == \"HND\") |&gt;\n  mutate(\n    year = as.integer(substr(election_date, 1, 4)),\n    seats_share = 100 * seats / seats_total\n  )\n\nhnd |&gt;\n  summarise(\n    n = n(),\n    share_mean = mean(seats_share, na.rm = TRUE) |&gt; round(1),\n    share_max = max(seats_share, na.rm = TRUE) |&gt; round(1),\n    year_first = min(year, na.rm = TRUE),\n    year_last = max(year, na.rm = TRUE),\n    .by = party\n  ) |&gt;\n  select(party, n, n:year_last) |&gt;\n  arrange(desc(n), desc(share_mean))\n\n\n\n\nCode\nhnd |&gt;\n  mutate(n = n(), .by = party) |&gt;\n  filter(n &gt; 10) |&gt;\n  ggplot(aes(year, seats_share, colour = party)) +\n  geom_line()"
   },
   {
-    "objectID": "posts/2024-til/index.html",
-    "href": "posts/2024-til/index.html",
+    "objectID": "posts/2023-07-29-r-renv/index.html",
+    "href": "posts/2023-07-29-r-renv/index.html",
+    "title": "Package versions with renv",
+    "section": "",
+    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+  },
+  {
+    "objectID": "posts/2023-07-29-r-renv/index.html#versions-snapshot",
+    "href": "posts/2023-07-29-r-renv/index.html#versions-snapshot",
+    "title": "Package versions with renv",
+    "section": "",
+    "text": "renv::snapshot() creates an renv.lock file that includes the versions of all R packages used in R code in the current project folder.\nThis is something I have looked for for a long time. In Python, I like to use pip-compile to pin my dependencies to specified versions. For R, I have just not realized that renv can also do that without creating a full renv project.\nThe full renv workflow has seemed to me to be overhead. I prefer to create fully reproducible environments with Rocker."
+  },
+  {
+    "objectID": "posts/2023-07-29-r-renv/index.html#find-project-packages",
+    "href": "posts/2023-07-29-r-renv/index.html#find-project-packages",
+    "title": "Package versions with renv",
+    "section": "Find project packages",
+    "text": "Find project packages\nrenv::dependencies() can be used to find all the packages used in a project.\n\nlibrary(renv)\n\ndependencies() |&gt; select(-Source)\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nRequire\nVersion\nDev\n\n\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\nrmarkdown\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\npurrr\n\n\nFALSE\n\n\nrenv\n\n\nFALSE\n\n\ncallr\n\n\nFALSE\n\n\nconflicted\n\n\nFALSE\n\n\ndplyr\n\n\nFALSE\n\n\n\n\n\n\nPackage version number can be added with some tidyverse magic.\n\ndependencies() |&gt;\n  mutate(version = map_chr(Package, \\(.x) as.character(packageVersion(.x)))) |&gt;\n  select(Package, version) |&gt;\n  arrange(Package) |&gt;\n  distinct()\n\nFinding R package dependencies ... Done!\n\n\n\n\n\n\nPackage\nversion\n\n\n\n\ncallr\n3.7.6\n\n\nconflicted\n1.2.0\n\n\ndplyr\n1.1.4\n\n\npurrr\n1.0.2\n\n\nrenv\n1.0.7\n\n\nrmarkdown\n2.28"
+  },
+  {
+    "objectID": "posts/2023-07-29-r-renv/index.html#customized-session-info",
+    "href": "posts/2023-07-29-r-renv/index.html#customized-session-info",
+    "title": "Package versions with renv",
+    "section": "Customized session info",
+    "text": "Customized session info\nThis led me to a condensed version of loading all project packages before calling sessionInfo()\n\nconflicted::conflicts_prefer(callr::run)\nmap_lgl(dplyr::pull(dependencies(), Package), require)\n\nFinding R package dependencies ... Done!\n\n\n [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE\n\nsessionInfo()\n\nR version 4.4.1 (2024-06-14)\nPlatform: x86_64-pc-linux-gnu\nRunning under: Ubuntu 22.04.4 LTS\n\nMatrix products: default\nBLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 \nLAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0\n\nlocale:\n [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              \n [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    \n [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   \n [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 \n [9] LC_ADDRESS=C               LC_TELEPHONE=C            \n[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       \n\ntime zone: Etc/UTC\ntzcode source: system (glibc)\n\nattached base packages:\n[1] stats     graphics  grDevices utils     datasets  methods   base     \n\nother attached packages:\n[1] rmarkdown_2.28   conflicted_1.2.0 callr_3.7.6      renv_1.0.7      \n[5] purrr_1.0.2      dplyr_1.1.4     \n\nloaded via a namespace (and not attached):\n [1] vctrs_0.6.5       cli_3.6.3         knitr_1.48        rlang_1.1.4      \n [5] xfun_0.47         processx_3.8.4    generics_0.1.3    jsonlite_1.8.8   \n [9] glue_1.7.0        htmltools_0.5.8.1 ps_1.7.7          fansi_1.0.6      \n[13] evaluate_0.24.0   tibble_3.2.1      fastmap_1.2.0     yaml_2.3.10      \n[17] lifecycle_1.0.4   memoise_2.0.1     compiler_4.4.1    htmlwidgets_1.6.4\n[21] pkgconfig_2.0.3   rstudioapi_0.16.0 digest_0.6.37     R6_2.5.1         \n[25] tidyselect_1.2.1  utf8_1.2.4        pillar_1.9.0      magrittr_2.0.3   \n[29] tools_4.4.1       withr_3.0.1       cachem_1.1.0"
+  },
+  {
+    "objectID": "posts/2025-til/index.html",
+    "href": "posts/2025-til/index.html",
     "title": "Today I learned (TIL)",
     "section": "",
-    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
+    "text": "self-installing Python scripts with uv (2024)\n#!/usr/bin/env -S uv run --script`"
   },
   {
-    "objectID": "posts/2024-til/index.html#june",
-    "href": "posts/2024-til/index.html#june",
+    "objectID": "posts/2025-til/index.html#january",
+    "href": "posts/2025-til/index.html#january",
     "title": "Today I learned (TIL)",
     "section": "",
-    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
-  },
-  {
-    "objectID": "posts/2024-til/index.html#april",
-    "href": "posts/2024-til/index.html#april",
-    "title": "Today I learned (TIL)",
-    "section": "1. April",
-    "text": "1. April\nFor Python, I’ve configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration export PIP_REQUIRE_VIRTUALENV=\"true\" is set in my .zshrc file. The configuration was inspired by the post On pip isolation."
-  },
-  {
-    "objectID": "posts/2024-til/index.html#march",
-    "href": "posts/2024-til/index.html#march",
-    "title": "Today I learned (TIL)",
-    "section": "17. March",
-    "text": "17. March\nCreating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
-  },
-  {
-    "objectID": "posts/2024-til/index.html#march-1",
-    "href": "posts/2024-til/index.html#march-1",
-    "title": "Today I learned (TIL)",
-    "section": "10. March",
-    "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."
+    "text": "self-installing Python scripts with uv (2024)\n#!/usr/bin/env -S uv run --script`"
   },
   {
     "objectID": "posts/2023-06-12-py-nbdev-clean/index.html",
@@ -914,6 +928,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "http requests with urllib3\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPublic broadcasting Germany\n\n\n\n\n\n\nR\n\n\nggplot\n\n\ngeo\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nArrange plots with tables\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nuv instead of venv/pip\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nAug 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThousands categories\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nJul 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRound to first two digits\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSelect map region in R\n\n\n\n\n\n\nR\n\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 17, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBar charts with ggplot\n\n\n\n\n\n\nR\n\n\nggplot\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in R\n\n\n\n\n\n\nR\n\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nDOI reference with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\npip install in cell\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nR in Docker and Codespaces\n\n\n\n\n\n\nR\n\n\ncloud\n\n\npackaging\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRequests in JupyterLite\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nMar 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPython f-strings\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2023\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\n\n\n\nR\n\n\npackaging\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\nR\n\n\npackaging\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Today I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nJan 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nhttp requests with urllib3\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPublic broadcasting Germany\n\n\n\n\n\n\nR\n\n\nggplot\n\n\ngeo\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nArrange plots with tables\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nuv instead of venv/pip\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nAug 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThousands categories\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nJul 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRound to first two digits\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSelect map region in R\n\n\n\n\n\n\nR\n\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 17, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBar charts with ggplot\n\n\n\n\n\n\nR\n\n\nggplot\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in R\n\n\n\n\n\n\nR\n\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nDOI reference with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL)\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\npip install in cell\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nR in Docker and Codespaces\n\n\n\n\n\n\nR\n\n\ncloud\n\n\npackaging\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRequests in JupyterLite\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nMar 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPython f-strings\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2023\n\n\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\n\n\n\nR\n\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\n\n\n\nPython\n\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\n\n\n\nPython\n\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\n\n\n\nR\n\n\npackaging\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\n\n\n\nDocker\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\n\n\n\nR\n\n\npackaging\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\n\n\n\nR\n\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\n\n\n\nR\n\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\n\n\n\nR\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\n\n\n\ncloud\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\n\n\n\nPython\n\n\nAI\n\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\n\n\n\nPython\n\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\n\n\n\nR\n\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\n\n\n\nR\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\n\n\n\nPython\n\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\n\n\n\nDocker\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\n\n\n\nPython\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\n\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\n\n\n\nR\n\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\n\n\n\nR\n\n\nPython\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
