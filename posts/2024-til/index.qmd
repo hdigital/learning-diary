@@ -1,6 +1,7 @@
 ---
 date: "2024-06-11"
-title: Today I learned (TIL)
+title: Today I learned (TIL) · 2024
+categories: [TIL yearly]
 image: computer_ai.png
 format:
   html:

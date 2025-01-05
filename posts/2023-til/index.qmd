@@ -1,6 +1,7 @@
 ---
 date: "2023-11-26"
 title: Today I learned (TIL) · 2023
+categories: [TIL yearly]
 image: computer_ai.png
 format:
   html:
