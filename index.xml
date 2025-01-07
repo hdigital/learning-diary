@@ -9,10 +9,114 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.6.39</generator>
-<lastBuildDate>Thu, 02 Jan 2025 23:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.40</generator>
+<lastBuildDate>Sat, 04 Jan 2025 23:00:00 GMT</lastBuildDate>
 <item>
-  <title>Today I learned (TIL)</title>
+  <title>Color Chart page with AI</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Gerhard Richter inspired · 🤖🎨</p>
+<p>Over the weekend, I ran into two books in our local bookstore.</p>
+<ul>
+<li>Schneede, U. M., &amp; Richter, G. (2024). Gerhard Richter: Der unbedingte Maler. C.H.Beck. — <a href="https://www.chbeck.de/schneede-gerhard-richter/product/36959113">ISBN-13 978-3406821493</a></li>
+<li>Taulli, T. (2024). AI-assisted programming: Better planning, coding, testing, and deployment. O’Reilly. — <a href="https://www.oreilly.com/library/view/ai-assisted-programming/9781098164553/">ISBN-13 978-1098164560</a></li>
+</ul>
+<p>For some time, I had the idea of creating a program to reproduce the <a href="https://www.gerhard-richter.com/de/art/paintings/abstracts/colour-charts-12"><em>Farbtafeln</em> (Color Charts)</a> by Gerhard Richter, a German painter. Richter’s <em>Farbtafeln</em> are a series of abstract paintings composed of grids filled with randomly arranged colored squares, showcasing his exploration of color and chance. This weekend, paired with the inspiration from these two books, provided a good opportunity to bring that idea to life and explore how AI could assist in such a creative programming project.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview · 📋</h2>
+<p>In this project, I created a program replicating Gerhard Richter’s <em>Farbtafeln</em>. By leveraging AI-assisted programming, I developed a webpage that generates a random color grid inspired by Richter’s work. This project highlights the potential of AI assistants in creative coding.</p>
+<p>It marks my first experience with AI assistants suggesting nearly all of the code, which I then reviewed and refined. My knowledge of JavaScript, Processing (<em>p5.js</em>), and CSS is rather limited and the AI assistants helped me implement the <em>Farbtafeln</em> efficiently.</p>
+<p>The <a href="../../snippets/farbtafeln.html">resulting webpage</a> dynamically reshuffles the colors of the grid with each refresh, offering a fresh take on Richter’s exploration of randomness and color.</p>
+</section>
+<section id="development" class="level2">
+<h2 class="anchored" data-anchor-id="development">Development · 🛠️</h2>
+<p>So here is a summary of my steps to create the <em>Farbtafeln</em> code, documentation, and this blog post with AI assistants.</p>
+<section id="some-tech-background" class="level3">
+<h3 class="anchored" data-anchor-id="some-tech-background">1. Some Tech Background · 🧑‍💻</h3>
+<p>I knew that <a href="https://p5js.org/"><em>p5.js</em></a> would be a good fit for creating a <em>Farbtafel</em> webpage. <em>p5.js</em> is a JavaScript library that simplifies the creation of graphics and interactive content for the web.</p>
+<p>However, my knowledge of <em>p5.js</em>, JavaScript, and CSS is limited. Building the project from scratch with these tools would have been tedious for me. With the help of AI assistants, the process became not only manageable but also enjoyable.</p>
+</section>
+<section id="a-p5.js-script-in-chatgpt" class="level3">
+<h3 class="anchored" data-anchor-id="a-p5.js-script-in-chatgpt">2. A p5.js Script in ChatGPT · 🤖</h3>
+<p>To create the page, I started by uploading an image of one of the original <em>Farbtafeln</em> to ChatGPT and asking it to generate a <em>p5.js</em> script to replicate the image. I then revised the script. Here are the steps I took in ChatGPT:</p>
+<ul>
+<li>Defined the role for ChatGPT and provided information about my programming background.</li>
+<li>Uploaded a <em>Farbtafel</em> image to ChatGPT and asked it to create a <em>p5.js</em> script.</li>
+<li>Got explanations for parts of the script.</li>
+<li>Modified the script to remove square borders and add padding.</li>
+<li>Refactored the script with ChatGPT’s instructions (created functions).</li>
+<li>Created a webpage with the script.</li>
+</ul>
+<p>While interacting with ChatGPT, I ran and modified the script in the <a href="https://editor.p5js.org/">p5.js Web Editor</a> in another browser tab.</p>
+<p>ChatGPT was an invaluable assistant to generate an initial version of the page, generating code, offering clear explanations, and refining the <em>Farbtafeln</em> script based on my inputs. It streamlined development and enriched my learning experience, highlighting the benefits of AI in creative coding.</p>
+</section>
+<section id="completing-with-copilot" class="level3">
+<h3 class="anchored" data-anchor-id="completing-with-copilot">3. Completing with Copilot · 💻</h3>
+<p>After creating the initial script with ChatGPT, I turned to GitHub Copilot for further refinements and enhancements. Here are the steps I followed with Copilot:</p>
+<ul>
+<li>Created a project in VS Code with GitHub Copilot enabled.</li>
+<li>Revised the script based on Copilot’s recommendations.</li>
+<li>Added and refined CSS styles for the page.</li>
+<li>Added and revised page and script comments.</li>
+</ul>
+<p>Copilot helped me create a simple yet visually appealing webpage. The additional revisions I made to the processing script were minimal. I really appreciated the workflow, with the script in my editor being modified based on Copilot’s suggestions. It was an interactive process I preferred over the ChatGPT chat-based interaction.</p>
+</section>
+<section id="creating-the-readme" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-readme">4. Creating the README · 📄</h3>
+<p>With GitHub Copilot, I generated a README file for the project by following these steps:</p>
+<ul>
+<li>Created a new, empty <code>README.md</code> file in the project directory.</li>
+<li>Used Copilot to generate an initial draft.</li>
+<li>Reviewed and refined the content manually.</li>
+<li>Added links to relevant resources.</li>
+</ul>
+<p>The structure of the suggested README was helpful, and the content provided some good initial ideas. However, it was overly general and somewhat bloated, so I significantly revised the document manually.</p>
+</section>
+<section id="writing-the-blog-post" class="level3">
+<h3 class="anchored" data-anchor-id="writing-the-blog-post">5. Writing the Blog Post · 📝</h3>
+<p>Finally, I asked GitHub Copilot to generate this blog post based on the page code and the README. Here are the steps I used:</p>
+<ul>
+<li>Created an empty Markdown file.</li>
+<li>Asked Copilot to generate the blog post.</li>
+<li>Reviewed and revised each paragraph with Copilot.</li>
+<li>Added sentences and paragraphs manually.</li>
+<li>Revised and finalized the draft with ChatGPT.</li>
+</ul>
+<p>The generated post served as a solid foundation, but I refined it significantly to better reflect my experience. ChatGPT was particularly helpful for fine-tuning the content and improving its flow, while Copilot provided a reasonable starting point for structuring the post.</p>
+</section>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
+<p>This project was a great example of how AI, ChatGPT and Copilot, can assist in the development process. By generating code and providing suggestions, AI assistants helped streamline the creation of this random color grid. The result is a simple and visually appealing webpage that pays homage to Gerhard Richter’s iconic color charts.</p>
+<p>The code was generated quickly with ChatGPT, and I was impressed by the quality. However, creating the documentation and blog post took more time. While AI drafted the README and blog post, it was less instrumental, and I spent significantly more time refining them manually.</p>
+<p>Overall, I thoroughly enjoyed this project, and I’m very pleased with how the <em>Farbtafeln</em>-inspired webpage turned out. It brings Richter’s exploration of color and chance nicely into a digital space.</p>
+</section>
+<section id="links" class="level2">
+<h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
+<ul>
+<li><a href="https://www.gerhard-richter.com/en/art/paintings/abstracts/colour-charts-12/colour-chart-5793?categoryid=19&amp;p=1&amp;sp=32&amp;pg=13">Gerhard Richter’s Color Charts</a></li>
+<li><a href="https://p5js.org/">p5.js Library</a></li>
+<li><a href="https://editor.p5js.org/">p5.js Editor</a></li>
+</ul>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/farbtafeln-page.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/</guid>
+  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/farbtafeln.png" medium="image" type="image/png" height="135" width="144"/>
+</item>
+<item>
+  <title>Today I learned (TIL) · 2025</title>
   <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
   <description><![CDATA[ 
 
@@ -35,6 +139,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></p
 </section>
 
  ]]></description>
+  <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
   <pubDate>Thu, 02 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
@@ -50,7 +155,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></p
 
 <p>My goal is to use the <a href="https://urllib3.readthedocs.io/en/stable/user-guide.html">urllib3</a> more regularly. It is a library that has no dependencies (see below)</p>
 <p>Here are some examples of making http requests with <em>urllib3</em>.</p>
-<div id="5055562b" class="cell" data-execution_count="1">
+<div id="59c415a9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> urllib3</span>
@@ -73,13 +178,13 @@ background-color: null;
 font-style: inherit;">"application/vnd.citationstyles.csl+json"</span>}</span>
 <span id="cb1-7">  )</span></code></pre></div>
 </div>
-<div id="f5ee53b2" class="cell" data-execution_count="2">
+<div id="1901df2d" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">resp.status</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>200</code></pre>
 </div>
 </div>
-<div id="27a94cc1" class="cell" data-execution_count="3">
+<div id="947d4bcc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">doi_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> resp.json()</span>
@@ -93,7 +198,7 @@ font-style: inherit;">'author'</span>]</span></code></pre></div>
   'affiliation': [{'name': 'Max Planck Institute for the Study of Societies, Germany,'}]}]</code></pre>
 </div>
 </div>
-<div id="dc5fc965" class="cell" data-execution_count="4">
+<div id="711e7c91" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">resp.data[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">100</span>]</span></code></pre></div>
@@ -2491,7 +2596,7 @@ font-style: inherit;">map_chr</span>(doi, get_doi_reference))</span>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
-  <title>Today I learned (TIL)</title>
+  <title>Today I learned (TIL) · 2024</title>
   <link>https://hdigital.github.io/learning-diary/posts/2024-til/</link>
   <description><![CDATA[ 
 
@@ -2532,6 +2637,7 @@ font-style: inherit;">--force-if-includes</span></span></code></pre></div>
 </section>
 
  ]]></description>
+  <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-til/</guid>
   <pubDate>Mon, 10 Jun 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
@@ -2641,6 +2747,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
  ]]></description>
   <category>R</category>
   <category>cloud</category>
+  <category>Docker</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/</guid>
   <pubDate>Thu, 21 Mar 2024 23:00:00 GMT</pubDate>
@@ -2660,7 +2767,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="66bc8ad7" class="cell" data-execution_count="1">
+<div id="e876a8a2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -2722,7 +2829,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="python-f-strings" class="level1">
 <h1>Python f-strings</h1>
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="cfb4d0d1" class="cell" data-execution_count="1">
+<div id="a3fef60f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -2734,7 +2841,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div>
 </div>
-<div id="9a6a4949" class="cell" data-execution_count="2">
+<div id="05de9fed" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -2754,7 +2861,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="10d15c28" class="cell" data-execution_count="3">
+<div id="d3f84e39" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -2778,7 +2885,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="d4758b29" class="cell" data-execution_count="4">
+<div id="b6d9f0bd" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -2795,7 +2902,7 @@ font-style: inherit;">"</span></span></code></pre></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="a34449bb" class="cell" data-execution_count="5">
+<div id="511fa1bc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -2831,7 +2938,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="b01f62d3" class="cell" data-execution_count="6">
+<div id="bc2f0a0a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -2851,7 +2958,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="b17d9de6" class="cell" data-execution_count="7">
+<div id="34157e06" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -2865,7 +2972,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="c150c2b9" class="cell" data-execution_count="8">
+<div id="a275d925" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -2879,7 +2986,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="31b01c65" class="cell" data-execution_count="9">
+<div id="48c3ead4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -2893,7 +3000,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="7141b5ce" class="cell" data-execution_count="10">
+<div id="d6d4e50e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -2927,7 +3034,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="284331e6" class="cell" data-execution_count="11">
+<div id="6e46f310" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -2949,7 +3056,7 @@ font-style: inherit;">'</span></span></code></pre></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="22ae093a" class="cell" data-execution_count="12">
+<div id="a7a3483e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -3276,6 +3383,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 </section>
 
  ]]></description>
+  <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/</guid>
   <pubDate>Sat, 25 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
@@ -3296,7 +3404,7 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
 <section id="json" class="level2">
 <h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="7f2e49d7" class="cell" data-execution_count="1">
+<div id="e4a3359c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
@@ -3342,14 +3450,14 @@ font-style: inherit;">'jane.doe@example.com'</span></span>
 </section>
 <section id="single-element" class="level2">
 <h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div id="91058ea9" class="cell" data-execution_count="2">
+<div id="58c64378" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div>
 </div>
-<div id="65b434f8" class="cell" data-execution_count="3">
+<div id="a3192305" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div>
@@ -3357,7 +3465,7 @@ font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></p
 <h2 class="anchored">HTML Title</h2>
 </div>
 </div>
-<div id="d6d09095" class="cell" data-execution_count="4">
+<div id="281d3156" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
@@ -3365,7 +3473,7 @@ font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
 </section>
 </div>
-<div id="204e0d09" class="cell" data-execution_count="5">
+<div id="3ec3e3b4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
@@ -3373,7 +3481,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div>
 <p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
 </div>
 </div>
-<div id="2996606b" class="cell" data-execution_count="6">
+<div id="c7fcbe7e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
@@ -3398,7 +3506,7 @@ font-style: inherit;">True</span>)</span></code></pre></div>
 </section>
 <section id="multiple-elements" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div id="629b4313" class="cell" data-execution_count="7">
+<div id="695c2a26" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
@@ -3419,7 +3527,7 @@ font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div>
 </div>
 </div>
 <p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div id="6b334484" class="cell" data-execution_count="8">
+<div id="40697d82" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
@@ -3515,7 +3623,7 @@ font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></cod
 <section id="visualization-example" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-example">Visualization example</h2>
 <p>Here is an example form the <em>altair.ipynb</em> notebook in the <em>pyodide</em> folder. It runs here but also in the JupyterLite, purely browser based, version.</p>
-<div id="2920f76e" class="cell" data-execution_count="1">
+<div id="94c50025" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> altair <span class="im" style="color: #00769E;
@@ -3589,24 +3697,25 @@ font-style: inherit;">'b'</span></span>
 <div class="cell-output cell-output-display" data-execution_count="1">
 
 <style>
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed {
+  #altair-viz-8539b7f65a9446a096d232192d0bdf9d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details,
-  #altair-viz-f10a2215a1cf402b9c637420dd09ac0b.vega-embed details summary {
+  #altair-viz-8539b7f65a9446a096d232192d0bdf9d.vega-embed details,
+  #altair-viz-8539b7f65a9446a096d232192d0bdf9d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f10a2215a1cf402b9c637420dd09ac0b"></div>
+<div id="altair-viz-8539b7f65a9446a096d232192d0bdf9d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f10a2215a1cf402b9c637420dd09ac0b") {
-      outputDiv = document.getElementById("altair-viz-f10a2215a1cf402b9c637420dd09ac0b");
+    if (outputDiv.id !== "altair-viz-8539b7f65a9446a096d232192d0bdf9d") {
+      outputDiv = document.getElementById("altair-viz-8539b7f65a9446a096d232192d0bdf9d");
     }
+
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
       "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
@@ -3643,7 +3752,8 @@ font-style: inherit;">'b'</span></span>
 
     if(typeof define === "function" && define.amd) {
       requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
     } else {
       maybeLoadScript("vega", "5")
         .then(() => maybeLoadScript("vega-lite", "5.20.1"))
@@ -3710,648 +3820,6 @@ font-style: inherit;">"snowballstemmer"</span>)</span></code></pre></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/</guid>
   <pubDate>Wed, 22 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-23-py-jupyter-lite/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>API requests with httr2</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p><a href="https://www.tidyverse.org/blog/2023/11/httr2-1-0-0/">httr2 1.0</a> was recently released. I used it earlier this month in my API explorations to understand what the Python <a href="https://github.com/psf/requests">requests</a> equivalent is in R. Python and <em>requests</em> are so convenient that I had not used R yet to access an API.</p>
-<p>I became aware of <a href="https://www.semanticscholar.org/author/Holger-D%C3%B6ring/51362391">Semantic Scholar</a>, a database of scientific literature, with a nice <a href="https://api.semanticscholar.org/api-docs/">API</a>.</p>
-<p>So here is an exploration of my Semantic Scholar records (ID 51362391) in R with httr2.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(tidyverse)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(httr2)</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(jsonlite)</span></code></pre></div>
-</details>
-</div>
-<section id="api-request" class="level2">
-<h2 class="anchored" data-anchor-id="api-request">API request</h2>
-<p><a href="https://api.semanticscholar.org/api-docs/#tag/Author-Data/operation/get_graph_get_author">API · Fetch paper and author data</a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">author_id <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">51362391</span></span>
-<span id="cb2-2"></span>
-<span id="cb2-3">url <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb2-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_glue</span>(</span>
-<span id="cb2-5">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"https://api.semanticscholar.org/graph/v1/author/{author_id}"</span>,</span>
-<span id="cb2-6">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"?fields=name,papers,papers.year,papers.title,papers.citationCount,papers.authors"</span></span>
-<span id="cb2-7">  )</span>
-<span id="cb2-8"></span>
-<span id="cb2-9">resp <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb2-10">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">request</span>(url) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb2-11">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">req_perform</span>()</span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">dt <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">resp_body_string</span>(resp) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb3-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fromJSON</span>()</span>
-<span id="cb3-4"></span>
-<span id="cb3-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(dt[[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"name"</span>]])</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Holger Döring"</code></pre>
-</div>
-</div>
-</section>
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">papers <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb5-2">  dt[[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"papers"</span>]] <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb5-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mutate</span>(</span>
-<span id="cb5-4">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id_short =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_sub</span>(paperId, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>),</span>
-<span id="cb5-5">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">title_short =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_sub</span>(title, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>),</span>
-<span id="cb5-6">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">authors_n =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_int</span>(authors, \(.x) <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(.x))</span>
-<span id="cb5-7">  )</span></code></pre></div>
-</div>
-<p>Number of publications at Semantic Scholar</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(papers)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 24</code></pre>
-</div>
-</div>
-<p>Publications</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">papers <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb8-2">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(id_short, year, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cita.</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> citationCount, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">auth.</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> authors_n, title_short)</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">id_short</th>
-<th style="text-align: right;">year</th>
-<th style="text-align: right;">cita.</th>
-<th style="text-align: right;">auth.</th>
-<th style="text-align: left;">title_short</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">a9408</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Formal binary logic, tidal for</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">c229b</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Beyond the light-barrier -fast</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e3034</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Occams Razor-No Dark Matter in</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">37135</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Lorentzian SRT-Transformation</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">84d1f</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Germany: From Stable Coalition</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8bd34</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Institutional constraints on c</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1b9e9</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Party Positions from Wikipedia</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e9e28</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: right;">51</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Party Facts: A database of pol</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">f93aa</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Gathering and Managing Data on</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">69fe5</td>
-<td style="text-align: right;">2016</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Mapping established democracie</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">4175b</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Is Proportional Representation</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">85957</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">How do European democracies co</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">a9372</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Revisiting the left cabinet sh</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">34e81</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Jean-Claude Juncker’s new Euro</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1273f</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: right;">61</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Who Gets into Government? Coal</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">31eff</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">The collective action of data</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">c01fd</td>
-<td style="text-align: right;">2012</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Ministerial Careers and ’The M</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">c4f64</td>
-<td style="text-align: right;">2011</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Why are States with Pr More Re</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e3cbe</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Collaborative Data Collection</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">f5948</td>
-<td style="text-align: right;">2009</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Political representation in Eu</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2ebbf</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Electoral and Mechanical Cause</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ec86a</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Evaluating Scripting Languages</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">14ab0</td>
-<td style="text-align: right;">2007</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">The Composition of the College</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">9674d</td>
-<td style="text-align: right;">2006</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Divided Government European St</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</section>
-<section id="authors" class="level2">
-<h2 class="anchored" data-anchor-id="authors">Authors</h2>
-<p>Authors by paper</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">authors <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span></span>
-<span id="cb9-2">  papers <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(id_short, year, authors) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb9-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unnest</span>(authors)</span>
-<span id="cb9-5"></span>
-<span id="cb9-6">authors</span></code></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">id_short</th>
-<th style="text-align: right;">year</th>
-<th style="text-align: left;">authorId</th>
-<th style="text-align: left;">name</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">a9408</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">c229b</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e3034</td>
-<td style="text-align: right;">2022</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">37135</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">84d1f</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: left;">94263396</td>
-<td style="text-align: left;">M. Debus</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">84d1f</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">84d1f</td>
-<td style="text-align: right;">2021</td>
-<td style="text-align: left;">143708020</td>
-<td style="text-align: left;">Alejandro Ecker</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8bd34</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: left;">119358998</td>
-<td style="text-align: left;">Maria Thürk</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">8bd34</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: left;">145985059</td>
-<td style="text-align: left;">Johan Hellström</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8bd34</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1b9e9</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: left;">145315358</td>
-<td style="text-align: left;">M. Herrmann</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1b9e9</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e9e28</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e9e28</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: left;">1685592</td>
-<td style="text-align: left;">Sven Regel</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">f93aa</td>
-<td style="text-align: right;">2019</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">69fe5</td>
-<td style="text-align: right;">2016</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">4175b</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4175b</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">2072035416</td>
-<td style="text-align: left;">P. Manow</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">85957</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">144008442</td>
-<td style="text-align: left;">Jonathan Bright</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">85957</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">85957</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">145474393</td>
-<td style="text-align: left;">Conor Little</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">a9372</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">a9372</td>
-<td style="text-align: right;">2015</td>
-<td style="text-align: left;">115016266</td>
-<td style="text-align: left;">Hanna Schwander</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">34e81</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: left;">82184129</td>
-<td style="text-align: left;">A. Wonka</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">34e81</td>
-<td style="text-align: right;">2014</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">1273f</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1273f</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">145985059</td>
-<td style="text-align: left;">Johan Hellström</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">31eff</td>
-<td style="text-align: right;">2013</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">c01fd</td>
-<td style="text-align: right;">2012</td>
-<td style="text-align: left;">144008442</td>
-<td style="text-align: left;">Jonathan Bright</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">c01fd</td>
-<td style="text-align: right;">2012</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">c01fd</td>
-<td style="text-align: right;">2012</td>
-<td style="text-align: left;">145474393</td>
-<td style="text-align: left;">Conor Little</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">c4f64</td>
-<td style="text-align: right;">2011</td>
-<td style="text-align: left;">2072035416</td>
-<td style="text-align: left;">P. Manow</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">c4f64</td>
-<td style="text-align: right;">2011</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e3cbe</td>
-<td style="text-align: right;">2010</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">f5948</td>
-<td style="text-align: right;">2009</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2ebbf</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">2072035416</td>
-<td style="text-align: left;">P. Manow</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">2ebbf</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ec86a</td>
-<td style="text-align: right;">2008</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">14ab0</td>
-<td style="text-align: right;">2007</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">9674d</td>
-<td style="text-align: right;">2006</td>
-<td style="text-align: left;">2072035416</td>
-<td style="text-align: left;">P. Manow</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9674d</td>
-<td style="text-align: right;">2006</td>
-<td style="text-align: left;">51362391</td>
-<td style="text-align: left;">Holger Döring</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>API</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/</guid>
-  <pubDate>Sun, 19 Nov 2023 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-20-r-httr/httr2-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 </channel>
 </rss>

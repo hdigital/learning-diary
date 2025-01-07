@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-d1b12f2568ecbe55642fee6aa00bd082.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>This week, I worked with the Zenodo API. My goals was to add Zenodo metadata to GitHub for the <a href="https://github.com/hdigital/partypositions-wikitags">partypositions-wikitags</a> project.</p>
 <p>The code of the project is archived at Zenodo with the DOI <a href="https://zenodo.org/doi/10.5281/zenodo.7043510">10.5281/zenodo.7043510</a>.</p>
-<div id="c38deeed" class="cell" data-execution_count="1">
+<div id="69ecfdbd" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="doi-api" class="level2">
 <h2 class="anchored" data-anchor-id="doi-api">DOI API</h2>
 <p>So here is some metadata information. Lets start with the DOI API.</p>
-<div id="b1a6309e" class="cell" data-execution_count="2">
+<div id="0a8d7d7a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>doi <span class="op">=</span> <span class="st">"10.5281/zenodo.7043510"</span></span>
@@ -241,17 +241,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="zenodo-record" class="level2">
 <h2 class="anchored" data-anchor-id="zenodo-record">Zenodo record</h2>
 <p>We can also access a <a href="https://developers.zenodo.org/#retrieve37">record</a> through the Zenodo API. This does not require a <a href="https://developers.zenodo.org/#authentication">Zenodo access token</a>.</p>
-<div id="4fe8cff6" class="cell" data-execution_count="3">
+<div id="dc01e462" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">"https://zenodo.org/api/records/8275697"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>record <span class="op">=</span> r.json()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>record.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>dict_keys(['created', 'modified', 'id', 'conceptrecid', 'doi', 'conceptdoi', 'doi_url', 'metadata', 'title', 'links', 'updated', 'recid', 'revision', 'files', 'owners', 'status', 'stats', 'state', 'submitted'])</code></pre>
+<pre><code>dict_keys(['created', 'modified', 'id', 'conceptrecid', 'doi', 'conceptdoi', 'doi_url', 'metadata', 'title', 'links', 'updated', 'recid', 'revision', 'files', 'swh', 'owners', 'status', 'stats', 'state', 'submitted'])</code></pre>
 </div>
 </div>
 <p>I was interested in the Zenodo metadata.</p>
-<div id="6e28a041" class="cell" data-execution_count="4">
+<div id="9566300e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>record[<span class="st">'metadata'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'title': 'Party positions from Wikipedia tags (July 2023)',
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can specify some of the addtional metadata in a <code>.zenodo.json</code> file in your GitHub repository.</p>
 <p><a href="https://developers.zenodo.org/#github" class="uri">https://developers.zenodo.org/#github</a></p>
 <p>I used the archived Zenodo record for a json dump of the metadata.</p>
-<div id="dd40965e" class="cell" data-execution_count="5">
+<div id="f3b561d8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps(record[<span class="st">'metadata'</span>], indent<span class="op">=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>used unicode characters for umlaute</li>
 <li>specified license id</li>
 </ul>
-<div id="a06b51bc" class="cell" data-execution_count="6">
+<div id="c51b66aa" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>metadata_json <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">  "title": "Party positions from Wikipedia tags",</span></span>
@@ -356,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, I validate the json. Running the cell should not raise an error.</p>
-<div id="a2e15055" class="cell" data-execution_count="7">
+<div id="4c770393" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>metadata_json <span class="op">=</span> json.loads(metadata_json)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, I added it to the GitHub repository – <a href="https://github.com/hdigital/partypositions-wikitags/commit/ac7c4626267f9bf12015db57138d50c119982396">commit ac7c462</a> 😊</p>

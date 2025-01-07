@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-07-17">
+<meta name="dcterms.date" content="2025-01-05">
 
-<title>index – Learning</title>
+<title>Color Chart page with AI – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -105,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -149,10 +115,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      
+      <h1 class="title">Color Chart page with AI</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">geo</div>
+                <div class="quarto-category">AI</div>
               </div>
                   </div>
   </div>
@@ -164,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 17, 2024</p>
+        <p class="date">January 5, 2025</p>
       </div>
     </div>
     
@@ -175,7 +140,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview · 📋</a></li>
+  <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development · 🛠️</a>
+  <ul class="collapse">
+  <li><a href="#some-tech-background" id="toc-some-tech-background" class="nav-link" data-scroll-target="#some-tech-background">1. Some Tech Background · 🧑‍💻</a></li>
+  <li><a href="#a-p5.js-script-in-chatgpt" id="toc-a-p5.js-script-in-chatgpt" class="nav-link" data-scroll-target="#a-p5.js-script-in-chatgpt">2. A p5.js Script in ChatGPT · 🤖</a></li>
+  <li><a href="#completing-with-copilot" id="toc-completing-with-copilot" class="nav-link" data-scroll-target="#completing-with-copilot">3. Completing with Copilot · 💻</a></li>
+  <li><a href="#creating-the-readme" id="toc-creating-the-readme" class="nav-link" data-scroll-target="#creating-the-readme">4. Creating the README · 📄</a></li>
+  <li><a href="#writing-the-blog-post" id="toc-writing-the-blog-post" class="nav-link" data-scroll-target="#writing-the-blog-post">5. Writing the Blog Post · 📝</a></li>
+  </ul></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts · 💭</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links · 🔗</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -183,88 +166,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="select-map-region-in-r" class="level1">
-<h1>Select map region in R</h1>
-<p>Here is an example of selecting a region from a map by specifying a rectangle for the selection.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  maps<span class="sc">::</span>world.cities <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country.etc <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"long"</span>, <span class="st">"lat"</span>), <span class="at">crs =</span> <span class="dv">4326</span>, <span class="at">agr =</span> <span class="st">"constant"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pop <span class="sc">&gt;=</span> <span class="dv">100000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">if_else</span>(pop <span class="sc">&gt;</span> <span class="dv">800000</span>, name, <span class="cn">NA_character_</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(cities, <span class="st">"cities-deu.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>First, I create a map of German cities with more than 100,000 inhabitants.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cities <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"cities-deu.rds"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(cities) <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">size =</span> pop), <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Then, I select the wider Ruhr area by defining the bottom left and the top right of the selection area.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>create_sf_rectangle <span class="ot">&lt;-</span> <span class="cf">function</span>(xmin, xmax, ymin, ymax, <span class="at">crs =</span> <span class="st">"OGC:CRS84"</span>) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">matrix</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(xmin, ymin, xmax, ymin, xmax, ymax, xmin, ymax, xmin, ymin),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_polygon</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_sfc</span>(<span class="at">crs =</span> crs)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>nrw_select <span class="ot">&lt;-</span> <span class="fu">create_sf_rectangle</span>(<span class="fl">6.5</span>, <span class="fl">7.9</span>, <span class="fl">50.9</span>, <span class="fl">51.7</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>nrw <span class="ot">&lt;-</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  cities <span class="sc">|&gt;</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_intersection</span>(nrw_select)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Finally, I create a map of the cities in the wider Ruhr area.</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nrw <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">if_else</span>(pop <span class="sc">&gt;</span> <span class="dv">500000</span>, name, <span class="cn">NA_character_</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">size =</span> pop), <span class="at">color =</span> <span class="st">"grey80"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">size =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384"></p>
-</figure>
-</div>
-</div>
-</div>
+<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Gerhard Richter inspired · 🤖🎨</p>
+<p>Over the weekend, I ran into two books in our local bookstore.</p>
+<ul>
+<li>Schneede, U. M., &amp; Richter, G. (2024). Gerhard Richter: Der unbedingte Maler. C.H.Beck. — <a href="https://www.chbeck.de/schneede-gerhard-richter/product/36959113">ISBN-13 978-3406821493</a></li>
+<li>Taulli, T. (2024). AI-assisted programming: Better planning, coding, testing, and deployment. O’Reilly. — <a href="https://www.oreilly.com/library/view/ai-assisted-programming/9781098164553/">ISBN-13 978-1098164560</a></li>
+</ul>
+<p>For some time, I had the idea of creating a program to reproduce the <a href="https://www.gerhard-richter.com/de/art/paintings/abstracts/colour-charts-12"><em>Farbtafeln</em> (Color Charts)</a> by Gerhard Richter, a German painter. Richter’s <em>Farbtafeln</em> are a series of abstract paintings composed of grids filled with randomly arranged colored squares, showcasing his exploration of color and chance. This weekend, paired with the inspiration from these two books, provided a good opportunity to bring that idea to life and explore how AI could assist in such a creative programming project.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview · 📋</h2>
+<p>In this project, I created a program replicating Gerhard Richter’s <em>Farbtafeln</em>. By leveraging AI-assisted programming, I developed a webpage that generates a random color grid inspired by Richter’s work. This project highlights the potential of AI assistants in creative coding.</p>
+<p>It marks my first experience with AI assistants suggesting nearly all of the code, which I then reviewed and refined. My knowledge of JavaScript, Processing (<em>p5.js</em>), and CSS is rather limited and the AI assistants helped me implement the <em>Farbtafeln</em> efficiently.</p>
+<p>The <a href="../../snippets/farbtafeln.html">resulting webpage</a> dynamically reshuffles the colors of the grid with each refresh, offering a fresh take on Richter’s exploration of randomness and color.</p>
+</section>
+<section id="development" class="level2">
+<h2 class="anchored" data-anchor-id="development">Development · 🛠️</h2>
+<p>So here is a summary of my steps to create the <em>Farbtafeln</em> code, documentation, and this blog post with AI assistants.</p>
+<section id="some-tech-background" class="level3">
+<h3 class="anchored" data-anchor-id="some-tech-background">1. Some Tech Background · 🧑‍💻</h3>
+<p>I knew that <a href="https://p5js.org/"><em>p5.js</em></a> would be a good fit for creating a <em>Farbtafel</em> webpage. <em>p5.js</em> is a JavaScript library that simplifies the creation of graphics and interactive content for the web.</p>
+<p>However, my knowledge of <em>p5.js</em>, JavaScript, and CSS is limited. Building the project from scratch with these tools would have been tedious for me. With the help of AI assistants, the process became not only manageable but also enjoyable.</p>
+</section>
+<section id="a-p5.js-script-in-chatgpt" class="level3">
+<h3 class="anchored" data-anchor-id="a-p5.js-script-in-chatgpt">2. A p5.js Script in ChatGPT · 🤖</h3>
+<p>To create the page, I started by uploading an image of one of the original <em>Farbtafeln</em> to ChatGPT and asking it to generate a <em>p5.js</em> script to replicate the image. I then revised the script. Here are the steps I took in ChatGPT:</p>
+<ul>
+<li>Defined the role for ChatGPT and provided information about my programming background.</li>
+<li>Uploaded a <em>Farbtafel</em> image to ChatGPT and asked it to create a <em>p5.js</em> script.</li>
+<li>Got explanations for parts of the script.</li>
+<li>Modified the script to remove square borders and add padding.</li>
+<li>Refactored the script with ChatGPT’s instructions (created functions).</li>
+<li>Created a webpage with the script.</li>
+</ul>
+<p>While interacting with ChatGPT, I ran and modified the script in the <a href="https://editor.p5js.org/">p5.js Web Editor</a> in another browser tab.</p>
+<p>ChatGPT was an invaluable assistant to generate an initial version of the page, generating code, offering clear explanations, and refining the <em>Farbtafeln</em> script based on my inputs. It streamlined development and enriched my learning experience, highlighting the benefits of AI in creative coding.</p>
+</section>
+<section id="completing-with-copilot" class="level3">
+<h3 class="anchored" data-anchor-id="completing-with-copilot">3. Completing with Copilot · 💻</h3>
+<p>After creating the initial script with ChatGPT, I turned to GitHub Copilot for further refinements and enhancements. Here are the steps I followed with Copilot:</p>
+<ul>
+<li>Created a project in VS Code with GitHub Copilot enabled.</li>
+<li>Revised the script based on Copilot’s recommendations.</li>
+<li>Added and refined CSS styles for the page.</li>
+<li>Added and revised page and script comments.</li>
+</ul>
+<p>Copilot helped me create a simple yet visually appealing webpage. The additional revisions I made to the processing script were minimal. I really appreciated the workflow, with the script in my editor being modified based on Copilot’s suggestions. It was an interactive process I preferred over the ChatGPT chat-based interaction.</p>
+</section>
+<section id="creating-the-readme" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-readme">4. Creating the README · 📄</h3>
+<p>With GitHub Copilot, I generated a README file for the project by following these steps:</p>
+<ul>
+<li>Created a new, empty <code>README.md</code> file in the project directory.</li>
+<li>Used Copilot to generate an initial draft.</li>
+<li>Reviewed and refined the content manually.</li>
+<li>Added links to relevant resources.</li>
+</ul>
+<p>The structure of the suggested README was helpful, and the content provided some good initial ideas. However, it was overly general and somewhat bloated, so I significantly revised the document manually.</p>
+</section>
+<section id="writing-the-blog-post" class="level3">
+<h3 class="anchored" data-anchor-id="writing-the-blog-post">5. Writing the Blog Post · 📝</h3>
+<p>Finally, I asked GitHub Copilot to generate this blog post based on the page code and the README. Here are the steps I used:</p>
+<ul>
+<li>Created an empty Markdown file.</li>
+<li>Asked Copilot to generate the blog post.</li>
+<li>Reviewed and revised each paragraph with Copilot.</li>
+<li>Added sentences and paragraphs manually.</li>
+<li>Revised and finalized the draft with ChatGPT.</li>
+</ul>
+<p>The generated post served as a solid foundation, but I refined it significantly to better reflect my experience. ChatGPT was particularly helpful for fine-tuning the content and improving its flow, while Copilot provided a reasonable starting point for structuring the post.</p>
+</section>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
+<p>This project was a great example of how AI, ChatGPT and Copilot, can assist in the development process. By generating code and providing suggestions, AI assistants helped streamline the creation of this random color grid. The result is a simple and visually appealing webpage that pays homage to Gerhard Richter’s iconic color charts.</p>
+<p>The code was generated quickly with ChatGPT, and I was impressed by the quality. However, creating the documentation and blog post took more time. While AI drafted the README and blog post, it was less instrumental, and I spent significantly more time refining them manually.</p>
+<p>Overall, I thoroughly enjoyed this project, and I’m very pleased with how the <em>Farbtafeln</em>-inspired webpage turned out. It brings Richter’s exploration of color and chance nicely into a digital space.</p>
+</section>
+<section id="links" class="level2">
+<h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
+<ul>
+<li><a href="https://www.gerhard-richter.com/en/art/paintings/abstracts/colour-charts-12/colour-chart-5793?categoryid=19&amp;p=1&amp;sp=32&amp;pg=13">Gerhard Richter’s Color Charts</a></li>
+<li><a href="https://p5js.org/">p5.js Library</a></li>
+<li><a href="https://editor.p5js.org/">p5.js Editor</a></li>
+</ul>
 <hr>
-<p><img src="sf-logo.png" class="img-fluid" style="width:33.0%"></p>
+<p><img src="farbtafeln-page.png" class="img-fluid"></p>
 
 
 </section>
