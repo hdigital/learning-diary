@@ -8,7 +8,7 @@ alias pf := push-force
 
 # create environment to render all posts
 init-all: init-local
-  uv pip install -r snippets/requirements-posts.txt
+  uv sync --all-groups
   Rscript -e "pak::lockfile_install(update = FALSE)"
   quarto install tinytex
 
@@ -18,7 +18,7 @@ init-codespace: init-local
 
 # initialize local environment
 init-local:
-  uv sync --all-extras
+  uv sync
   uv run pre-commit install --allow-missing-config
   uv run nbdev_install_hooks
 
@@ -32,6 +32,12 @@ lint:
 # create new post
 post:
   uv run snippets/create-post.py
+
+# update Python packages
+pip-update:
+  uv lock --upgrade
+  uv sync
+  uv run pre-commit autoupdate
 
 # render and publish page
 publish:

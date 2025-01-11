@@ -19,7 +19,7 @@ dependencies = [
   "statsmodels",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
   # Code quality
   "ruff",
@@ -27,6 +27,13 @@ dev = [
   "nbdev",
   # VS Code interactive shell
   "ipykernel",
+]
+posts = [
+  # Additional requirements used in some posts
+  "geopy",
+  "seaborn",
+  "tomli",
+  "wikipedia",
 ]
 
 
