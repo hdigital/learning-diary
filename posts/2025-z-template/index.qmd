@@ -1,5 +1,5 @@
 ---
-date: "202x-xx-xx"
+date: "2025-01-01"
 image: thumbnail.png
 # jupyter: python3
 categories: [R, Python]

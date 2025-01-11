@@ -1,6 +1,7 @@
 ---
 date: "2025-01-03"
-title: Today I learned (TIL)
+title: Today I learned (TIL) · 2025
+categories: [TIL yearly]
 image: computer_ai.png
 format:
   html:

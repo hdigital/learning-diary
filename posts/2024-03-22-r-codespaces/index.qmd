@@ -2,7 +2,7 @@
 date: "2024-03-22"
 image: rocker-logo.png
 title: R in Docker and Codespaces
-categories: [R, cloud, packaging]
+categories: [R, cloud, Docker, packaging]
 format:
   html:
     toc: true
