@@ -179,7 +179,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#january" id="toc-january" class="nav-link active" data-scroll-target="#january">03. January</a></li>
+  <li><a href="#january" id="toc-january" class="nav-link active" data-scroll-target="#january">16. January</a></li>
+  <li><a href="#january-1" id="toc-january-1" class="nav-link" data-scroll-target="#january-1">03. January</a></li>
   </ul>
 </nav>
     </div>
@@ -193,9 +194,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
 <section id="january" class="level2">
-<h2 class="anchored" data-anchor-id="january">03. January</h2>
+<h2 class="anchored" data-anchor-id="january">16. January</h2>
+<p>Run a Python script with <a href="https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies">uv</a> in a temporary virtual environment, specifying the Python version and script dependencies.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run <span class="at">--python</span> 3.11 <span class="at">--with</span> cowsay python <span class="at">-c</span> <span class="st">'import cowsay;cowsay.cow("Hello Cow")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="january-1" class="level2">
+<h2 class="anchored" data-anchor-id="january-1">03. January</h2>
 <p><a href="https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes">self-installing Python scripts with uv</a> (2024)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env -S uv run --script`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env -S uv run --script`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 <p><img src="computer_ai.png" class="img-fluid" width="300"></p>
 
