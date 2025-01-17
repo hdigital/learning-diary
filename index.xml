@@ -10,7 +10,51 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Sat, 04 Jan 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 15 Jan 2025 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Today I learned (TIL) · 2025</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+<section id="january" class="level2">
+<h2 class="anchored" data-anchor-id="january">16. January</h2>
+<p>Run a Python script with <a href="https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies">uv</a> in a temporary virtual environment, specifying the Python version and script dependencies.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uv</span> run <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--python</span> 3.11 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--with</span> cowsay python <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'import cowsay;cowsay.cow("Hello Cow")'</span></span></code></pre></div>
+</section>
+<section id="january-1" class="level2">
+<h2 class="anchored" data-anchor-id="january-1">03. January</h2>
+<p><a href="https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes">self-installing Python scripts with uv</a> (2024)</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></pre></div>
+<hr>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" class="img-fluid" width="300"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>TIL yearly</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
+  <pubDate>Wed, 15 Jan 2025 23:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Color Chart page with AI</title>
   <link>https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/</link>
@@ -114,50 +158,6 @@
   <guid>https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/</guid>
   <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/farbtafeln.png" medium="image" type="image/png" height="135" width="144"/>
-</item>
-<item>
-  <title>Today I learned (TIL) · 2025</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<!--- Keeping brief information here that don't create a post. -->
-<!--- Update date in header for new entries. -->
-<section id="january" class="level2">
-<h2 class="anchored" data-anchor-id="january">16. January</h2>
-<p>Run a Python script with <a href="https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies">uv</a> in a temporary virtual environment, specifying the Python version and script dependencies.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">uv</span> run <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--python</span> 3.11 <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--with</span> cowsay python <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'import cowsay;cowsay.cow("Hello Cow")'</span></span></code></pre></div>
-</section>
-<section id="january-1" class="level2">
-<h2 class="anchored" data-anchor-id="january-1">03. January</h2>
-<p><a href="https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes">self-installing Python scripts with uv</a> (2024)</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></pre></div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" class="img-fluid" width="300"></p>
-
-
-</section>
-
- ]]></description>
-  <category>TIL yearly</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
-  <pubDate>Thu, 02 Jan 2025 23:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>http requests with urllib3</title>
