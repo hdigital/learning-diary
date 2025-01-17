@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 # install 'pak' to use modern package installer
 if (!"pak" %in% installed.packages()) {
   install.packages("pak", repos = getOption("repos")[[1]])
