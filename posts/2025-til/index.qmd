@@ -1,5 +1,5 @@
 ---
-date: "2025-01-03"
+date: "2025-01-16"
 title: Today I learned (TIL) · 2025
 categories: [TIL yearly]
 image: computer_ai.png
@@ -10,6 +10,17 @@ format:
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+
+## 16. January
+
+Run a Python script with
+[uv](https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies)
+in a temporary virtual environment, specifying the Python version and script
+dependencies.
+
+```sh
+uv run --python 3.11 --with cowsay python -c 'import cowsay;cowsay.cow("Hello Cow")'
+```
 
 ## 03. January
 
