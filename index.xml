@@ -10,7 +10,7 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.6.43</generator>
-<lastBuildDate>Wed, 15 Jan 2025 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 18 Apr 2025 22:00:00 GMT</lastBuildDate>
 <item>
   <title>Today I learned (TIL) · 2025</title>
   <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
@@ -59,7 +59,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
  ]]></description>
   <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
-  <pubDate>Wed, 15 Jan 2025 23:00:00 GMT</pubDate>
+  <pubDate>Fri, 18 Apr 2025 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
