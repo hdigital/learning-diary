@@ -858,21 +858,28 @@
     "href": "posts/2025-til/index.html",
     "title": "Today I learned (TIL) · 2025",
     "section": "",
-    "text": "Run a Python script with uv in a temporary virtual environment, specifying the Python version and script dependencies.\nuv run --python 3.11 --with cowsay python -c 'import cowsay;cowsay.cow(\"Hello Cow\")'"
+    "text": "Format Markdown with mdformat and uv.\nuvx mdformat markdown-file.md"
+  },
+  {
+    "objectID": "posts/2025-til/index.html#april",
+    "href": "posts/2025-til/index.html#april",
+    "title": "Today I learned (TIL) · 2025",
+    "section": "",
+    "text": "Format Markdown with mdformat and uv.\nuvx mdformat markdown-file.md"
   },
   {
     "objectID": "posts/2025-til/index.html#january",
     "href": "posts/2025-til/index.html#january",
     "title": "Today I learned (TIL) · 2025",
-    "section": "",
-    "text": "Run a Python script with uv in a temporary virtual environment, specifying the Python version and script dependencies.\nuv run --python 3.11 --with cowsay python -c 'import cowsay;cowsay.cow(\"Hello Cow\")'"
+    "section": "16. January",
+    "text": "16. January\nRun a Python script with uv in a temporary virtual environment, specifying the Python version and script dependencies.\nuv run --python 3.11 --with cowsay python -c 'import cowsay;cowsay.cow(\"Hello Cow\")'"
   },
   {
     "objectID": "posts/2025-til/index.html#january-1",
     "href": "posts/2025-til/index.html#january-1",
     "title": "Today I learned (TIL) · 2025",
     "section": "03. January",
-    "text": "03. January\nself-installing Python scripts with uv (2024)\n#!/usr/bin/env -S uv run --script`"
+    "text": "03. January\nself-installing Python scripts with uv (2024)\n#!/usr/bin/env -S uv run --script"
   },
   {
     "objectID": "posts/2023-06-12-py-nbdev-clean/index.html",

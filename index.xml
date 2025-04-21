@@ -9,7 +9,7 @@
 <link>https://hdigital.github.io/learning-diary/</link>
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
-<generator>quarto-1.6.40</generator>
+<generator>quarto-1.6.43</generator>
 <lastBuildDate>Wed, 15 Jan 2025 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Today I learned (TIL) · 2025</title>
@@ -22,10 +22,17 @@
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+<section id="april" class="level2">
+<h2 class="anchored" data-anchor-id="april">19. April</h2>
+<p>Format Markdown with <a href="https://github.com/hukkin/mdformat">mdformat</a> and <a href="https://docs.astral.sh/uv/guides/tools/#running-tools">uv</a>.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">uvx</span> mdformat markdown-file.md</span></code></pre></div>
+</section>
 <section id="january" class="level2">
 <h2 class="anchored" data-anchor-id="january">16. January</h2>
 <p>Run a Python script with <a href="https://docs.astral.sh/uv/guides/scripts/#running-a-script-with-dependencies">uv</a> in a temporary virtual environment, specifying the Python version and script dependencies.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">uv</span> run <span class="at" style="color: #657422;
 background-color: null;
@@ -40,9 +47,9 @@ font-style: inherit;">'import cowsay;cowsay.cow("Hello Cow")'</span></span></cod
 <section id="january-1" class="level2">
 <h2 class="anchored" data-anchor-id="january-1">03. January</h2>
 <p><a href="https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes">self-installing Python scripts with uv</a> (2024)</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#!/usr/bin/env -S uv run --script`</span></span></code></pre></div>
+font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pre></div>
 <hr>
 <p><img src="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" class="img-fluid" width="300"></p>
 
