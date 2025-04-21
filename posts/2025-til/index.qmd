@@ -1,5 +1,5 @@
 ---
-date: "2025-01-16"
+date: "2025-04-19"
 title: Today I learned (TIL) · 2025
 categories: [TIL yearly]
 image: computer_ai.png
@@ -10,6 +10,15 @@ format:
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+
+## 19. April
+
+Format Markdown with [mdformat](https://github.com/hukkin/mdformat)
+and [uv](https://docs.astral.sh/uv/guides/tools/#running-tools).
+
+```sh
+uvx mdformat markdown-file.md
+```
 
 ## 16. January
 
@@ -27,7 +36,7 @@ uv run --python 3.11 --with cowsay python -c 'import cowsay;cowsay.cow("Hello Co
 [self-installing Python scripts with uv](https://treyhunner.com/2024/12/lazy-self-installing-python-scripts-with-uv/?featured_on=pythonbytes) (2024)
 
 ```sh
-#!/usr/bin/env -S uv run --script`
+#!/usr/bin/env -S uv run --script
 ```
 
 ---
