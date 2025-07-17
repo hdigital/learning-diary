@@ -38,9 +38,9 @@ lintr::lint_dir('posts')
 
 ## Installation
 
-+ [Quarto](https://quarto.org/docs/get-started/)
-+ Tidyverse-R — R and tidyverse
-+ Python — [create `env`](https://quarto.org/docs/projects/virtual-environments.html#using-venv)
+- [Quarto](https://quarto.org/docs/get-started/)
+- Tidyverse-R — R and tidyverse
+- Python — [create `env`](https://quarto.org/docs/projects/virtual-environments.html#using-venv)
 
 ### R
 
@@ -66,8 +66,6 @@ uv sync
 uv lock --upgrade
 ```
 
-_Note_ — Python version of [Rocker](https://github.com/rocker-org/rocker-versioned2) image used and specified in `.python-version`.
-
 ### Docker
 
 Use Docker to run RStudio in a browser with all dependencies.
@@ -80,4 +78,4 @@ docker compose up
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/) – Copyright (c) 2024 Holger Döring
+[MIT](https://choosealicense.com/licenses/mit/) – Copyright (c) 2023 Holger Döring
