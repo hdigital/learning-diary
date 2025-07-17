@@ -2,7 +2,6 @@
 default:
   just --list
 
-alias pf := push-force
 
 ## Recipes 'just' — https://just.systems/man/en/chapter_20.html
 
@@ -33,26 +32,20 @@ lint:
 post:
   uv run snippets/create-post.py
 
-# update Python packages
-pip-update:
-  uv lock --upgrade
-  uv sync
-  uv run pre-commit autoupdate
-
 # render and publish page
 publish:
   quarto publish gh-pages --no-prompt
   git push origin gh-pages
   git push origin main
 
-# push Git and force updates
-push-force:
-  git push --force-with-lease
+# update all packages (py/R)
+update-all: update-py
+  ./snippets/r-packages-update.R
 
-# pull Git and force updates
-pull-force branch:
-  git fetch --all
-  git reset --soft origin/{{branch}}
-  @echo "Creating backup with 'git stash'"
-  git stash --message "pull-force stash backup"
-  git reset --hard origin/{{branch}}
+# update Python packages
+update-py:
+  uv tree --outdated --depth 1
+  uv lock --upgrade
+  uv sync
+  uv run -- pre-commit autoupdate
+  uv run -- pre-commit run --all-files
