@@ -27,6 +27,7 @@ I added the `rvest::read_html` parts from the ChatGPT suggestion. I did not find
 I don't use `tidytext` regularly so looking up the information would have taken some time for me. Here, ChatGPT was very helpful. Thanks.
 
 ```{r}
+#| eval: false
 #| code-fold: true
 #| message: false
 
@@ -65,6 +66,8 @@ word_freq %>%
     subtitle = "Most common words"
   )
 ```
+
+![Joe Biden's American Jobs Plan speech](figure_biden-jobs-plan.png){#figure_biden-jobs-plan}
 
 ---
 
