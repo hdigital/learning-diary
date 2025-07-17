@@ -6,6 +6,7 @@ set -e
 
 docker run \
   --detach \
+  --platform linux/amd64 \
   --name rocker_latest \
   --volume .:/home/rstudio/ \
   rocker/tidyverse:latest

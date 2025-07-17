@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.4
+FROM rocker/tidyverse:4.5
 
 WORKDIR /home/rstudio
 
@@ -6,6 +6,7 @@ WORKDIR /home/rstudio
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
   curl \
   gdebi-core \
+  just \
   python3 \
   python3-dev \
   python3-pip \

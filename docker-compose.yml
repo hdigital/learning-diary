@@ -3,6 +3,7 @@ services:
     build: .
     environment:
       - DISABLE_AUTH=true
+    platform: linux/amd64
     ports:
       - "8787:8787"
     volumes:
