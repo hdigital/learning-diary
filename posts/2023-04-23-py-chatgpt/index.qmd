@@ -36,7 +36,7 @@ library(tidytext)
 library(rvest)
 
 # Read in the HTML document
-html_doc <- read_html(str_glue(
+html_doc <- read_html(paste0(
   "https://www.whitehouse.gov/briefing-room/speeches-remarks/",
   "2021/03/31/remarks-by-president-biden-on-the-american-jobs-plan/"
 ))
