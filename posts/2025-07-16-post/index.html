@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-07-16">
+<meta name="dcterms.date" content="2025-07-16">
 
-<title>index – Learning</title>
+<title>Claude Sonnet 4 coding agent – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,10 +116,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      
+      <h1 class="title">Claude Sonnet 4 coding agent</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">git</div>
+                <div class="quarto-category">AI</div>
               </div>
                   </div>
   </div>
@@ -131,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 16, 2023</p>
+        <p class="date">July 16, 2025</p>
       </div>
     </div>
     
@@ -150,15 +149,36 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="first-pull-request-accepted" class="level1">
-<h1>First pull request accepted · 😊</h1>
-<p>My first public pull request on Github was <a href="https://github.com/hadley/r4ds/pull/1525">accepted</a>.</p>
-<p>Over the last weeks, I have been reading <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a> (R4DS). The first edition really helped me to get deeply into the <a href="https://www.tidyverse.org/">tidyverse</a>. So I was interested in the content of the second edition.</p>
-<p>At some point, I realized that the book used an older parameter in <code>case_when()</code> that was recently superseded in <a href="https://www.tidyverse.org/blog/2023/02/dplyr-1-1-0-vctrs/#case_when">dplyr 1.1</a>. Since, I had switched to the new <code>.default</code> parameter already, I thought that it may be a small and valuable contribution to update the section.</p>
-<p>Making the code changes was easy. It took me a little to find out how to clone the project and submit the pull requests. The GitHub documentation was helpful and it went smoothly following it.</p>
-<p>I have used R4DS and the tidyverse so often that I am quite proud about my very minor addition to it.</p>
-<hr>
-<p><img src="r4ds-pr.png" class="img-fluid"></p>
+<p>This week I explored <a href="https://www.anthropic.com/news/claude-4">Claude Sonnet 4</a> and GitHub Copilot’s new <a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/">Agent Mode</a>. Claude Sonnet 4, recently released by Anthropic, is particularly strong at coding tasks. Agent Mode was added to Copilot and VS Code earlier this year. I was inspired to try them both after reading a recent <a href="https://lucumr.pocoo.org/2025/6/12/agentic-coding/">post</a> that advocates delegating all development tasks to a coding agent.</p>
+<section id="what-is-agent-mode" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-agent-mode">What Is Agent Mode?</h2>
+<p>Until now, I’ve mainly interacted with LLMs via chat and through Copilot’s inline suggestions in VS Code. Agent Mode is something more: it’s like a true pair programmer. It reads files in your project, executes commands, makes and reviews changes, commits code, and creates pull requests. It supports nearly the full programming workflow autonomously.</p>
+</section>
+<section id="what-i-tried" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-tried">What I Tried</h2>
+<p>I used the Claude coding agent for several tasks—code reviews, feature implementation, and changelog updates—and was impressed across the board.</p>
+<section id="code-reviews" class="level3">
+<h3 class="anchored" data-anchor-id="code-reviews">Code Reviews</h3>
+<p>First, I asked Claude to review multiple projects. For two current ones, it gave helpful feedback and practical improvement suggestions. For two legacy codebases, Claude’s assessments were insightful: one codebase was maintainable but needed refactoring, while the other was outdated beyond repair—though Claude acknowledged the embedded domain expertise.</p>
+</section>
+<section id="issue-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="issue-resolution">Issue Resolution</h3>
+<p>Next, I asked Claude to fix an open GitHub issue, replacing one package with another offering similar functionality. Claude reviewed the GitHub issue, checked the documentation for both packages, implemented the change, validated it, and refined it after testing. It then created a branch, made the commit, and opened a PR. I only had to supervise and approve command execution. The entire task, from reading the issue to a working PR, was handled autonomously.</p>
+</section>
+<section id="changelog-updates" class="level3">
+<h3 class="anchored" data-anchor-id="changelog-updates">Changelog Updates</h3>
+<p>Finally, I asked Claude to generate and update changelogs for several projects. I provided a template from one project, and Claude analyzed commits, PRs, and issues to generate changelogs for each project, following the structure I shared.</p>
+</section>
+</section>
+<section id="what-didnt-work" class="level2">
+<h2 class="anchored" data-anchor-id="what-didnt-work">What Didn’t Work?</h2>
+<p>In one code review, Claude overemphasized legacy documentation included in the repo, resulting in an overly critical assessment.</p>
+<p>Additionally, I realized that the way I phrased my prompt had a significant impact on its interpretation. Once reframed, Claude’s feedback was more balanced.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
+<p>Claude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow.</p>
+<p><img src="claude-4.png" class="img-fluid"></p>
 
 
 </section>
