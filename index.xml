@@ -3432,17 +3432,17 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>A <a href="https://github.com/rstudio/rstudio/issues/12452">bug</a> in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the <a href="https://dailies.rstudio.com/rstudio/mountain-hydrangea/">daily build</a> and had R/RStudio running again.</p>
 <p>Originally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between.</p>
 </section>
-<section id="apr." class="level2">
-<h2 class="anchored" data-anchor-id="apr.">25. Apr.</h2>
+<section id="april" class="level2">
+<h2 class="anchored" data-anchor-id="april">25. April</h2>
 <p>I got back into <a href="https://quarto.org/">Quarto</a> and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.</p>
 <p>Setting up the page worked well. I got a little confused by the quarto difference between <em>freeze</em> and <em>cache</em>. I also wondered why the <em>cache</em> was added into several folders in the main directory and not into a <em>_cache</em> folder.</p>
 </section>
-<section id="apr.-1" class="level2">
-<h2 class="anchored" data-anchor-id="apr.-1">03. Apr.</h2>
+<section id="april-1" class="level2">
+<h2 class="anchored" data-anchor-id="april-1">03. April</h2>
 <p>I read about the new <a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">pandas release</a>. None of the changes seem to be relevant for my work with <em>pandas</em></p>
 </section>
-<section id="feb." class="level2">
-<h2 class="anchored" data-anchor-id="feb.">25. Feb.</h2>
+<section id="february" class="level2">
+<h2 class="anchored" data-anchor-id="february">25. February</h2>
 <p>I worked on <a href="https://github.com/hdigital/mixtape">code</a> from a causal inference book. It includes Stata, R and Python versions of the examples.</p>
 <p>For R and Python I wanted to have one environment to install all dependencies. This led me to <a href="https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html">conda</a>.</p>
 <p>Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.</p>

@@ -280,25 +280,25 @@
     "text": "02. May\nA bug in the current version of RStudio kept me busy. I reinstalled R and RStudio on Windows, but RStudio did not find the new R version afterwards. So I reinstalled the two and it kept not working. Fortunately, I found information about the RStudio bug somewhat quickly. I installed the daily build and had R/RStudio running again.\nOriginally, I only wanted to do a quick data analysis but my previous R/RStudio updates came in between."
   },
   {
-    "objectID": "posts/2023-til/index.html#apr.",
-    "href": "posts/2023-til/index.html#apr.",
+    "objectID": "posts/2023-til/index.html#april",
+    "href": "posts/2023-til/index.html#april",
     "title": "Today I learned (TIL) · 2023",
-    "section": "25. Apr.",
-    "text": "25. Apr.\nI got back into Quarto and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.\nSetting up the page worked well. I got a little confused by the quarto difference between freeze and cache. I also wondered why the cache was added into several folders in the main directory and not into a _cache folder."
+    "section": "25. April",
+    "text": "25. April\nI got back into Quarto and created a website for a learning project I have started. My goal is to have some structured information about topics of a book I am reading and some code snippets that apply concepts of the book.\nSetting up the page worked well. I got a little confused by the quarto difference between freeze and cache. I also wondered why the cache was added into several folders in the main directory and not into a _cache folder."
   },
   {
-    "objectID": "posts/2023-til/index.html#apr.-1",
-    "href": "posts/2023-til/index.html#apr.-1",
+    "objectID": "posts/2023-til/index.html#april-1",
+    "href": "posts/2023-til/index.html#april-1",
     "title": "Today I learned (TIL) · 2023",
-    "section": "03. Apr.",
-    "text": "03. Apr.\nI read about the new pandas release. None of the changes seem to be relevant for my work with pandas"
+    "section": "03. April",
+    "text": "03. April\nI read about the new pandas release. None of the changes seem to be relevant for my work with pandas"
   },
   {
-    "objectID": "posts/2023-til/index.html#feb.",
-    "href": "posts/2023-til/index.html#feb.",
+    "objectID": "posts/2023-til/index.html#february",
+    "href": "posts/2023-til/index.html#february",
     "title": "Today I learned (TIL) · 2023",
-    "section": "25. Feb.",
-    "text": "25. Feb.\nI worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the more convenient interface."
+    "section": "25. February",
+    "text": "25. February\nI worked on code from a causal inference book. It includes Stata, R and Python versions of the examples.\nFor R and Python I wanted to have one environment to install all dependencies. This led me to conda.\nCreating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.\nAt the end, VS Code seems to be the more convenient interface."
   },
   {
     "objectID": "posts/2023-03-20-r-wasm/index.html",
