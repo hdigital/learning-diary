@@ -1,5 +1,5 @@
 ---
-date: "2025-04-19"
+date: "2025-12-23"
 title: Today I learned (TIL) · 2025
 categories: [TIL yearly]
 image: computer_ai.png
@@ -10,6 +10,14 @@ format:
 
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
+
+## 23. December
+
+Check spelling with [typos](https://github.com/crate-ci/typos).
+
+```sh
+uvx typos .
+```
 
 ## 19. April
 
