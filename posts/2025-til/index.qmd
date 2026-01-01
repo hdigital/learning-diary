@@ -11,6 +11,14 @@ format:
 <!--- Keeping brief information here that don't create a post. -->
 <!--- Update date in header for new entries. -->
 
+## 23. December
+
+Check spelling with [typos](https://github.com/crate-ci/typos).
+
+```sh
+uvx typos .
+```
+
 ## 19. April
 
 Format Markdown with [mdformat](https://github.com/hukkin/mdformat)
