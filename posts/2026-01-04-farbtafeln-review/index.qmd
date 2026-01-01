@@ -1,0 +1,88 @@
+---
+date: "2026-01-04"
+image: farbtafeln.png
+categories: [AI]
+title: Farbtafeln AI code review
+format:
+  html:
+    toc: true
+---
+
+[Farbtafel (Color Chart)](/snippets/farbtafeln.html) webpage — code review and updates · 🤖🔧
+
+*Note: This post was drafted by Claude Sonnet 4 and revised by me.*
+
+A year after creating the [Farbtafeln page](/posts/2025-01-05-farbtafeln/) ([2025 version](/snippets/farbtafeln-2025.html)) with ChatGPT and GitHub Copilot, I revisited the project with Claude Sonnet 4 for a code review and updates. This session explored using AI as a code reviewer rather than just a code generator, with human guidance directing the process.
+
+## Code review · 🔍
+
+Claude reviewed the 'farbtafeln' page and identified several issues:
+
+**Critical issues:**
+
+- The color shuffle only shuffled rows as units, not individual colors across the grid.
+- [p5.js](https://github.com/processing/p5.js) was drawing continuously at 60fps despite static content.
+- The p5.js version (1.11.2) was outdated.
+
+**Best practice improvements:**
+
+- The external link was missing security attributes.
+- The canvas had a fixed 600px width and wasn't responsive.
+- There was no window resize handler.
+
+## The update process · 🛠️
+
+### Planning and clarification
+
+Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve the row structure.
+
+### Implementation iterations
+
+The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out a simpler approach: flatten colors, shuffle them, and read sequentially with an index.
+
+### Finding p5.js version 2
+
+Claude found version 2.0.5 on cdnjs, but I noted that GitHub showed version 2.1.2. The cdnjs repository lagged behind—jsdelivr had the latest version.
+
+### Testing the implementation
+
+At my suggestion, Claude created verification scripts that checked the following:
+
+- Shuffle algorithm
+- HTML structure
+- Version 2 API compatibility
+- CDN availability
+- p5.js functions
+
+All tests passed.
+
+## Lessons learned · 💡
+
+**Human guidance matters.** AI proposed important updates, but corrections at key decision points prevented overengineering and ensured we used the latest p5.js version.
+
+**Keep it simple.** A simple solution (flatten, shuffle, index) was better than the initial complexity.
+
+**Test thoroughly.** Comprehensive testing revealed not just whether the code worked, but why it worked.
+
+**Use AI as a reviewer.** Claude's code review was effective at identifying real issues and explaining them clearly while leaving the implementation open for refinement.
+
+## Final thoughts · 💭
+
+This session demonstrated to me once more how effective AI can be at reviewing and improving existing code. The page now:
+
+- Shuffles colors correctly
+- Adapts to different screen sizes
+- Performs efficiently
+- Runs p5.js version 2.1.2
+
+The iterative process felt like pair programming rather than simple delegation or passive code generation.
+
+---
+
+## Links
+
+- [Original Farbtafeln Post](/posts/2025-01-05-farbtafeln/)
+- [2025 Version](/snippets/farbtafeln-2025.html)
+- [Updated Version](/snippets/farbtafeln.html)
+- [p5.js v2.1.2 Release](https://github.com/processing/p5.js/releases/tag/v2.1.2)
+- [jsdelivr CDN](https://www.jsdelivr.com/)

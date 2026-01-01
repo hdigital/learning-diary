@@ -8,7 +8,7 @@ format:
     toc: true
 ---
 
-[Farbtafel (Color Chart)](/snippets/farbtafeln.html) webpage — Gerhard Richter inspired · 🤖🎨
+[Farbtafel (Color Chart)](/snippets/farbtafeln-2025.html) webpage — Gerhard Richter inspired · 🤖🎨
 
 Over the weekend, I ran into two books in our local bookstore.
 
@@ -38,7 +38,7 @@ the code, which I then reviewed and refined. My knowledge of JavaScript,
 Processing (_p5.js_), and CSS is rather limited and the AI assistants helped me
 implement the _Farbtafeln_ efficiently.
 
-The [resulting webpage](/snippets/farbtafeln.html) dynamically reshuffles the
+The [resulting webpage](/snippets/farbtafeln-2025.html) dynamically reshuffles the
 colors of the grid with each refresh, offering a fresh take on Richter's
 exploration of randomness and color.
 

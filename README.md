@@ -19,7 +19,7 @@ quarto render posts/welcome/index.qmd
 Publish page on [GitHub Pages](https://quarto.org/docs/publishing/github-pages.html).
 
 ```sh
-quarto publish --no-prompt
+quarto publish gh-pages --no-prompt
 ```
 
 Run page locally at <http://localhost:8000/>
