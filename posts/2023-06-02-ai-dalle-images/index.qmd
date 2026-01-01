@@ -12,7 +12,7 @@ This has worked well and may solve my issue of needing images for blog posts, re
 
 Sometimes, images from [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page) worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.
 
-I had to pay for the service but the number of images that can be generated for 15$ seem to be resonable.
+I had to pay for the service but the number of images that can be generated for 15$ seem to be reasonable.
 
 I have still to twist the art styles to results that I like.
 

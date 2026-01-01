@@ -58,7 +58,7 @@ record['metadata']
 
 Some of the metadata is imported by Zenodo from Github and some metadata needs to be added or updated manually.
 
-You can specify some of the addtional metadata in a `.zenodo.json` file in your GitHub repository.
+You can specify some of the additional metadata in a `.zenodo.json` file in your GitHub repository.
 
 <https://developers.zenodo.org/#github>
 

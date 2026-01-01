@@ -21,7 +21,7 @@ Many of my Python struggles in Quarto may have been related to the [reticulate](
 
 ## Docker
 
-To get there I also created a `Dockerfile` to have an OS independent version of Quarto. That was another challenge until I first found a [Rocker](https://github.com/rocker-org/rocker) configuration that worked with Python. It is a whopping 4.5 GB image but incudes Latex to create pdf-files.
+To get there I also created a `Dockerfile` to have an OS independent version of Quarto. That was another challenge until I first found a [Rocker](https://github.com/rocker-org/rocker) configuration that worked with Python. It is a whopping 4.5 GB image but includes Latex to create pdf-files.
 
 Later I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.
 

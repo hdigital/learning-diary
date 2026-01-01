@@ -121,7 +121,7 @@ Another use of the Base-R shorthand anonymous function and explaining it to a co
 
 ## 06. May
 
-Excluding variables in _tidyselect_ is now done with `!` as I found out by reading the [documentation](https://tidyselect.r-lib.org/reference/language.html) more carfully. I have still used `-` to exclude variables by their name. This is not documented in the tidyselect help page anymore.
+Excluding variables in _tidyselect_ is now done with `!` as I found out by reading the [documentation](https://tidyselect.r-lib.org/reference/language.html) more carefully. I have still used `-` to exclude variables by their name. This is not documented in the tidyselect help page anymore.
 
 [readstata13](https://github.com/sjewo/readstata13) creates more R friendly data structures than [haven](https://haven.tidyverse.org/). Its default option converts labeled data into factors if appropriate.
 
@@ -158,7 +158,7 @@ I worked on [code](https://github.com/hdigital/mixtape) from a causal inference 
 
 For R and Python I wanted to have one environment to install all dependencies. This led me to [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html).
 
-Creating a new conda environment in a new file was extremly slow. It also took me a while to fully configure Jupyter Lab with Python and R.
+Creating a new conda environment in a new file was extremely slow. It also took me a while to fully configure Jupyter Lab with Python and R.
 
 At the end, VS Code seems to be the more convenient interface.
 

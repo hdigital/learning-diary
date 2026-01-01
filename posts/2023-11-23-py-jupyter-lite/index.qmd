@@ -13,7 +13,7 @@ I listened to the the recent _Talk Python To Me_ episode [Celebrating JupyterLab
 
 I was impressed to see that you can now [run JupyterLab in a browser](https://jupyterlite.github.io/demo/lab/index.html).
 
-Many shortcuts work and you can activate the command pallette with _Shift + Cmd/Ctrl + C_
+Many shortcuts work and you can activate the command palette with _Shift + Cmd/Ctrl + C_
 
 For me, the examples in the _pyodide_ folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.
 

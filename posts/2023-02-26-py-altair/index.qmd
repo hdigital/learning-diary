@@ -7,7 +7,7 @@ categories: [Python, ggplot]
 
 # Python visualization with Altair
 
-I have been interested in finding a visualization library for Python that is similiar to [ggplot2](https://ggplot2.tidyverse.org/) in R. I like the quick plots in [pandas](https://pandas.pydata.org/) but [Matplotlib](https://matplotlib.org/) has never worked for me.
+I have been interested in finding a visualization library for Python that is similar to [ggplot2](https://ggplot2.tidyverse.org/) in R. I like the quick plots in [pandas](https://pandas.pydata.org/) but [Matplotlib](https://matplotlib.org/) has never worked for me.
 
 For customized visualizations I like the _ggplot2_ approach with layers. Its _grammar of graphics_ provides a good balance between adjusting a visualization and productivity. The code with layers is nicely readable.
 

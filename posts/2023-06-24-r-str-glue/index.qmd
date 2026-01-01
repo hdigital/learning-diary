@@ -10,7 +10,7 @@ In R, I like string interpolation with [glue](https://glue.tidyverse.org/) and p
 
 A tidyverse [blog post](https://www.tidyverse.org/blog/2023/05/purrr-walk-this-way/) made me realize that [stringr](https://stringr.tidyverse.org/) includes a `str_glue()` function that wraps `glue()`. stringr is loaded with `library(tidyverse)` so that I can include it into my regular tidyverse workflow.
 
-It is also documented on the [stringr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/strings.pdf), but I have not relized that. It serves as useful reminder to look at the [Posit Cheatsheets](https://rstudio.github.io/cheatsheets/) more regularly to review and update my workflow.
+It is also documented on the [stringr cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/strings.pdf), but I have not realized that. It serves as useful reminder to look at the [Posit Cheatsheets](https://rstudio.github.io/cheatsheets/) more regularly to review and update my workflow.
 
 ```{r}
 #| code-fold: false

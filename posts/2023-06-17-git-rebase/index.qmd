@@ -9,7 +9,7 @@ categories: [git]
 Git rebase interactive is nice. I have used Git for a long time and correcting wrong commits has been a hassle so far. I try to keep a nice Git history and pay attention to details in Git commits. Merge conflicts and rebasing in Git have so far been challenging to me and I run regular into conflicts.
 
 
-So today I was pleasently surprised how well interactive rebasing in Git works. Here is the magic message:
+So today I was pleasantly surprised how well interactive rebasing in Git works. Here is the magic message:
 
 ```sh
 git rebase -i HEAD~5

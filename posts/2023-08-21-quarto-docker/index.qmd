@@ -10,7 +10,7 @@ I realized that installing the latest version of [Quarto](https://quarto.org/) i
 
 Quarto keeps a list of [releases](https://github.com/quarto-dev/quarto-cli/releases/) so that I had to figure out what the download url is. This was easy. The version number is used in the Quarto section of a Docker file three times so that I also wanted to find a way to specify that version in variable. This was a little more tricky.
 
-For the final solution I needed several attempts but learned someting about defining arguments in a `Dockerfile`.
+For the final solution I needed several attempts but learned something about defining arguments in a `Dockerfile`.
 
 Here is the solution I came up with.
 

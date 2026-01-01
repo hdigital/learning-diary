@@ -34,9 +34,9 @@ This is the API information I was interested in.
 
 <https://citation.crosscite.org/docs.html#sec-4>
 
-> "Currently three DOI registration agencies have implemented content negotation for their DOIs: Crossref, DataCite and mEDRA. They support a number of metadata content types, some of which are common to the three RAs."
+> "Currently three DOI registration agencies have implemented content negotiation for their DOIs: Crossref, DataCite and mEDRA. They support a number of metadata content types, some of which are common to the three RAs."
 
-I try to avoid xml-based formats, so that the following content types are of interst to me.
+I try to avoid xml-based formats, so that the following content types are of interest to me.
 
 - Formatted text citation // `text/x-bibliography`
 - BibTeX // `application/x-bibtex`
