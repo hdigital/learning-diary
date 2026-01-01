@@ -23,6 +23,7 @@ dependencies = [
 dev = [
   # Code quality
   "ruff",
+  "typos",
   "pre-commit",
   "nbdev",
   # VS Code interactive shell
@@ -73,3 +74,16 @@ select = [
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+
+## ----------------------------------------------------------------------------
+## Typos settings
+
+[tool.typos.files]
+# typos respects .gitignore by default, only need to exclude committed generated files
+extend-exclude = ["*.html"]
+
+[tool.typos.default.extend-words]
+# https://github.com/crate-ci/typos/blob/master/docs/reference.md#defaultextend-words
+arange = "arange" # NumPy function
+Unter = "Unter"   # German word (street name)
