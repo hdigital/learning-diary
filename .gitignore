@@ -14,8 +14,7 @@ _freeze/
 _site/
 .quarto/
 /.quarto/
-.luarc.json
-/.luarc.json
+**/*.quarto_ipynb
 
 # Rocker files (see also below)
 .cache/

@@ -35,8 +35,6 @@ ChatGPT added comments to every line of the code. I combined them into blocks to
 ```{python}
 #| message: false
 
-import urllib
-
 import requests
 import wikipedia
 
@@ -54,8 +52,11 @@ soup = BeautifulSoup(html, "html.parser")
 image_element = soup.find("table", class_="infobox").find("img")
 image_url = "https:" + image_element["src"]
 
-# Download the image
-urllib.request.urlretrieve(image_url, 'image.jpg')
+# Download the image with proper headers
+headers = {'User-Agent': 'Mozilla/5.0'}
+response = requests.get(image_url, headers=headers)
+with open('image.jpg', 'wb') as f:
+    f.write(response.content)
 ```
 
 ![](image.jpg)
@@ -77,8 +78,9 @@ def get_coordinates(title):
         "format": "json",
         "formatversion": 2
     }
-    response = requests.get(url, params=params)
-    data = json.loads(response.text)
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    response = requests.get(url, params=params, headers=headers)
+    data = response.json()
     pages = data["query"]["pages"]
     coordinates = None
     for page in pages:
