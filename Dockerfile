@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:4.5
+FROM ghcr.io/rocker-org/devcontainer/tidyverse:4
 
 WORKDIR /home/rstudio
 
@@ -21,9 +21,9 @@ RUN quarto install tinytex
 # Install R packages with 'pak'
 RUN install2.r pak
 COPY pkg.lock .
-RUN R -e 'pak::lockfile_install()'
+RUN R -e 'pak::lockfile_install(update = FALSE)'
 
 # Install Python packages with 'uv'
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY pyproject.toml uv.lock ./
-RUN uv sync
+RUN uv sync --all-groups

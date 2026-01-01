@@ -3,6 +3,7 @@ services:
     build: .
     environment:
       - DISABLE_AUTH=true
+      - QUARTO_PYTHON=/home/rstudio/.venv/bin/python
     platform: linux/amd64
     ports:
       - "8787:8787"
