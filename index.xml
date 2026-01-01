@@ -10,56 +10,7 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Wed, 16 Jul 2025 00:00:00 GMT</lastBuildDate>
-<item>
-  <title>Claude Sonnet 4 coding agent</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>This week I explored <a href="https://www.anthropic.com/news/claude-4">Claude Sonnet 4</a> and GitHub Copilot’s new <a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/">Agent Mode</a>. Claude Sonnet 4, recently released by Anthropic, is particularly strong at coding tasks. Agent Mode was added to Copilot and VS Code earlier this year. I was inspired to try them both after reading a recent <a href="https://lucumr.pocoo.org/2025/6/12/agentic-coding/">post</a> that advocates delegating all development tasks to a coding agent.</p>
-<section id="what-is-agent-mode" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-agent-mode">What Is Agent Mode?</h2>
-<p>Until now, I’ve mainly interacted with LLMs via chat and through Copilot’s inline suggestions in VS Code. Agent Mode is something more: it’s like a true pair programmer. It reads files in your project, executes commands, makes and reviews changes, commits code, and creates pull requests. It supports nearly the full programming workflow autonomously.</p>
-</section>
-<section id="what-i-tried" class="level2">
-<h2 class="anchored" data-anchor-id="what-i-tried">What I Tried</h2>
-<p>I used the Claude coding agent for several tasks—code reviews, feature implementation, and changelog updates—and was impressed across the board.</p>
-<section id="code-reviews" class="level3">
-<h3 class="anchored" data-anchor-id="code-reviews">Code Reviews</h3>
-<p>First, I asked Claude to review multiple projects. For two current ones, it gave helpful feedback and practical improvement suggestions. For two legacy codebases, Claude’s assessments were insightful: one codebase was maintainable but needed refactoring, while the other was outdated beyond repair—though Claude acknowledged the embedded domain expertise.</p>
-</section>
-<section id="issue-resolution" class="level3">
-<h3 class="anchored" data-anchor-id="issue-resolution">Issue Resolution</h3>
-<p>Next, I asked Claude to fix an open GitHub issue, replacing one package with another offering similar functionality. Claude reviewed the GitHub issue, checked the documentation for both packages, implemented the change, validated it, and refined it after testing. It then created a branch, made the commit, and opened a PR. I only had to supervise and approve command execution. The entire task, from reading the issue to a working PR, was handled autonomously.</p>
-</section>
-<section id="changelog-updates" class="level3">
-<h3 class="anchored" data-anchor-id="changelog-updates">Changelog Updates</h3>
-<p>Finally, I asked Claude to generate and update changelogs for several projects. I provided a template from one project, and Claude analyzed commits, PRs, and issues to generate changelogs for each project, following the structure I shared.</p>
-</section>
-</section>
-<section id="what-didnt-work" class="level2">
-<h2 class="anchored" data-anchor-id="what-didnt-work">What Didn’t Work?</h2>
-<p>In one code review, Claude overemphasized legacy documentation included in the repo, resulting in an overly critical assessment.</p>
-<p>Additionally, I realized that the way I phrased my prompt had a significant impact on its interpretation. Once reframed, Claude’s feedback was more balanced.</p>
-</section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
-<p>Claude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow.</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/claude-4.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>AI</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</guid>
-  <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/anthropic-logo.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
+<lastBuildDate>Tue, 23 Dec 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Today I learned (TIL) · 2025</title>
   <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
@@ -115,8 +66,57 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
  ]]></description>
   <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
-  <pubDate>Sat, 19 Apr 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Claude Sonnet 4 coding agent</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This week I explored <a href="https://www.anthropic.com/news/claude-4">Claude Sonnet 4</a> and GitHub Copilot’s new <a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/">Agent Mode</a>. Claude Sonnet 4, recently released by Anthropic, is particularly strong at coding tasks. Agent Mode was added to Copilot and VS Code earlier this year. I was inspired to try them both after reading a recent <a href="https://lucumr.pocoo.org/2025/6/12/agentic-coding/">post</a> that advocates delegating all development tasks to a coding agent.</p>
+<section id="what-is-agent-mode" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-agent-mode">What Is Agent Mode?</h2>
+<p>Until now, I’ve mainly interacted with LLMs via chat and through Copilot’s inline suggestions in VS Code. Agent Mode is something more: it’s like a true pair programmer. It reads files in your project, executes commands, makes and reviews changes, commits code, and creates pull requests. It supports nearly the full programming workflow autonomously.</p>
+</section>
+<section id="what-i-tried" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-tried">What I Tried</h2>
+<p>I used the Claude coding agent for several tasks—code reviews, feature implementation, and changelog updates—and was impressed across the board.</p>
+<section id="code-reviews" class="level3">
+<h3 class="anchored" data-anchor-id="code-reviews">Code Reviews</h3>
+<p>First, I asked Claude to review multiple projects. For two current ones, it gave helpful feedback and practical improvement suggestions. For two legacy codebases, Claude’s assessments were insightful: one codebase was maintainable but needed refactoring, while the other was outdated beyond repair—though Claude acknowledged the embedded domain expertise.</p>
+</section>
+<section id="issue-resolution" class="level3">
+<h3 class="anchored" data-anchor-id="issue-resolution">Issue Resolution</h3>
+<p>Next, I asked Claude to fix an open GitHub issue, replacing one package with another offering similar functionality. Claude reviewed the GitHub issue, checked the documentation for both packages, implemented the change, validated it, and refined it after testing. It then created a branch, made the commit, and opened a PR. I only had to supervise and approve command execution. The entire task, from reading the issue to a working PR, was handled autonomously.</p>
+</section>
+<section id="changelog-updates" class="level3">
+<h3 class="anchored" data-anchor-id="changelog-updates">Changelog Updates</h3>
+<p>Finally, I asked Claude to generate and update changelogs for several projects. I provided a template from one project, and Claude analyzed commits, PRs, and issues to generate changelogs for each project, following the structure I shared.</p>
+</section>
+</section>
+<section id="what-didnt-work" class="level2">
+<h2 class="anchored" data-anchor-id="what-didnt-work">What Didn’t Work?</h2>
+<p>In one code review, Claude overemphasized legacy documentation included in the repo, resulting in an overly critical assessment.</p>
+<p>Additionally, I realized that the way I phrased my prompt had a significant impact on its interpretation. Once reframed, Claude’s feedback was more balanced.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
+<p>Claude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow.</p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/claude-4.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</guid>
+  <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/anthropic-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Color Chart page with AI</title>
