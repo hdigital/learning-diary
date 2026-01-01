@@ -5,7 +5,6 @@ execute:
 format:
   html:
     embed-resources: true
-  pdf: default
 eval: false
 ---
 
