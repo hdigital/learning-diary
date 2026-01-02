@@ -25,8 +25,18 @@
 <section id="code-review" class="level2">
 <h2 class="anchored" data-anchor-id="code-review">Code Review · 🔍</h2>
 <p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
-<p><strong>Critical:</strong> - Color shuffle only shuffled rows as units, not individual colors across the grid - p5.js drawing continuously at 60fps despite static content - Outdated p5.js version (1.11.2)</p>
-<p><strong>Best Practices:</strong> - Missing security attributes on external link - Fixed 600px canvas not responsive - No window resize handler</p>
+<p><strong>Critical:</strong></p>
+<ul>
+<li>Color shuffle only shuffled rows as units, not individual colors across the grid</li>
+<li>p5.js drawing continuously at 60fps despite static content</li>
+<li>Outdated p5.js version (1.11.2)</li>
+</ul>
+<p><strong>Best Practices:</strong></p>
+<ul>
+<li>Missing security attributes on external link</li>
+<li>Fixed 600px canvas not responsive</li>
+<li>No window resize handler</li>
+</ul>
 </section>
 <section id="the-update-process" class="level2">
 <h2 class="anchored" data-anchor-id="the-update-process">The Update Process · 🛠️</h2>

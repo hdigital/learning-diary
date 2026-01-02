@@ -228,7 +228,7 @@
     "href": "posts/2026-01-04-farbtafeln-review/index.html#code-review",
     "title": "Farbtafeln AI code review",
     "section": "Code Review · 🔍",
-    "text": "Code Review · 🔍\nClaude reviewed the ‘farbtafeln’ page and identified several issues:\nCritical: - Color shuffle only shuffled rows as units, not individual colors across the grid - p5.js drawing continuously at 60fps despite static content - Outdated p5.js version (1.11.2)\nBest Practices: - Missing security attributes on external link - Fixed 600px canvas not responsive - No window resize handler"
+    "text": "Code Review · 🔍\nClaude reviewed the ‘farbtafeln’ page and identified several issues:\nCritical:\n\nColor shuffle only shuffled rows as units, not individual colors across the grid\np5.js drawing continuously at 60fps despite static content\nOutdated p5.js version (1.11.2)\n\nBest Practices:\n\nMissing security attributes on external link\nFixed 600px canvas not responsive\nNo window resize handler"
   },
   {
     "objectID": "posts/2026-01-04-farbtafeln-review/index.html#the-update-process",
