@@ -10,7 +10,75 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Tue, 23 Dec 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 04 Jan 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Farbtafeln AI code review</title>
+  <link>https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Code review and updates · 🤖🔧</p>
+<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored AI as a code reviewer rather than just a generator, with human guidance directing the process.</p>
+<section id="code-review" class="level2">
+<h2 class="anchored" data-anchor-id="code-review">Code Review · 🔍</h2>
+<p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
+<p><strong>Critical:</strong> - Color shuffle only shuffled rows as units, not individual colors across the grid - p5.js drawing continuously at 60fps despite static content - Outdated p5.js version (1.11.2)</p>
+<p><strong>Best Practices:</strong> - Missing security attributes on external link - Fixed 600px canvas not responsive - No window resize handler</p>
+</section>
+<section id="the-update-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-update-process">The Update Process · 🛠️</h2>
+<section id="planning-and-clarification" class="level3">
+<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and Clarification</h3>
+<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve row structure. Clarifying intent upfront avoided implementation assumptions.</p>
+</section>
+<section id="implementation-iterations" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation Iterations</h3>
+<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out the simpler approach: flatten colors, shuffle them, read sequentially with an index. Much cleaner.</p>
+</section>
+<section id="finding-p5.js-v2" class="level3">
+<h3 class="anchored" data-anchor-id="finding-p5.js-v2">Finding p5.js v2</h3>
+<p>Claude found v2.0.5 on cdnjs, but I noted GitHub showed v2.1.2. cdnjs lagged behind—jsdelivr had the latest. Lesson: check multiple CDN sources.</p>
+</section>
+<section id="testing" class="level3">
+<h3 class="anchored" data-anchor-id="testing">Testing</h3>
+<p>At my suggestion, Claude created verification scripts checking CDN availability, p5.js functions, shuffle algorithm, HTML structure, and v2 API compatibility. All tests passed.</p>
+</section>
+</section>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned · 💡</h2>
+<p><strong>Human guidance matters.</strong> AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.</p>
+<p><strong>Keep it simple.</strong> Flatten, shuffle, index—the simplest solution won over initial complexity.</p>
+<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just if code worked, but why.</p>
+<p><strong>AI as reviewer.</strong> Claude’s code review was effective, identifying real issues and explaining them clearly while leaving implementation open for refinement.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
+<p>This session demonstrated AI’s effectiveness at reviewing and improving existing code with human oversight. The page now runs p5.js v2.1.2, shuffles colors correctly, performs efficiently, and adapts to screen sizes. The iterative process felt like pair programming rather than delegation.</p>
+<hr>
+<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
+</section>
+<section id="links" class="level2">
+<h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
+<ul>
+<li><a href="../../posts/2025-01-05-farbtafeln/">Original Farbtafeln Post</a></li>
+<li><a href="../../snippets/farbtafeln-2025.html">2025 Version</a></li>
+<li><a href="../../snippets/farbtafeln.html">Updated Version</a></li>
+<li><a href="https://github.com/processing/p5.js/releases/tag/v2.1.2">p5.js v2.1.2 Release</a></li>
+<li><a href="https://www.jsdelivr.com/">jsdelivr CDN</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>AI</category>
+  <guid>https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/</guid>
+  <pubDate>Sun, 04 Jan 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/farbtafeln.png" medium="image" type="image/png" height="135" width="144"/>
+</item>
 <item>
   <title>Today I learned (TIL) · 2025</title>
   <link>https://hdigital.github.io/learning-diary/posts/2025-til/</link>
@@ -71,7 +139,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
 </item>
 <item>
   <title>Claude Sonnet 4 coding agent</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</link>
+  <link>https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/</link>
   <description><![CDATA[ 
 
 
@@ -107,16 +175,16 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
 <section id="final-thoughts" class="level2">
 <h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
 <p>Claude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow.</p>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/claude-4.png" class="img-fluid"></p>
+<p><img src="https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/claude-4.png" class="img-fluid"></p>
 
 
 </section>
 
  ]]></description>
   <category>AI</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2025-07-16-post/</guid>
+  <guid>https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/</guid>
   <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-07-16-post/anthropic-logo.png" medium="image" type="image/png" height="144" width="144"/>
+  <media:content url="https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/anthropic-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Color Chart page with AI</title>
@@ -127,7 +195,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
 
 
 
-<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Gerhard Richter inspired · 🤖🎨</p>
+<p><a href="../../snippets/farbtafeln-2025.html">Farbtafel (Color Chart)</a> webpage — Gerhard Richter inspired · 🤖🎨</p>
 <p>Over the weekend, I ran into two books in our local bookstore.</p>
 <ul>
 <li>Schneede, U. M., &amp; Richter, G. (2024). Gerhard Richter: Der unbedingte Maler. C.H.Beck. — <a href="https://www.chbeck.de/schneede-gerhard-richter/product/36959113">ISBN-13 978-3406821493</a></li>
@@ -138,7 +206,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview · 📋</h2>
 <p>In this project, I created a program replicating Gerhard Richter’s <em>Farbtafeln</em>. By leveraging AI-assisted programming, I developed a webpage that generates a random color grid inspired by Richter’s work. This project highlights the potential of AI assistants in creative coding.</p>
 <p>It marks my first experience with AI assistants suggesting nearly all of the code, which I then reviewed and refined. My knowledge of JavaScript, Processing (<em>p5.js</em>), and CSS is rather limited and the AI assistants helped me implement the <em>Farbtafeln</em> efficiently.</p>
-<p>The <a href="../../snippets/farbtafeln.html">resulting webpage</a> dynamically reshuffles the colors of the grid with each refresh, offering a fresh take on Richter’s exploration of randomness and color.</p>
+<p>The <a href="../../snippets/farbtafeln-2025.html">resulting webpage</a> dynamically reshuffles the colors of the grid with each refresh, offering a fresh take on Richter’s exploration of randomness and color.</p>
 </section>
 <section id="development" class="level2">
 <h2 class="anchored" data-anchor-id="development">Development · 🛠️</h2>
@@ -3465,224 +3533,6 @@ font-style: inherit;">fi</span></span></code></pre></div></div>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/</guid>
   <pubDate>Sun, 26 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>iPython display</title>
-  <link>https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The <em>display</em> functions from <a href="https://ipython.readthedocs.io/en/stable/interactive/tutorial.html">iPython</a> is nice in an interactive Jupyter notebook. Unfortunately, it does not work equally well in Quarto or in a Jupyter notebook converted into html.</p>
-<p>The <em>JSON</em> method is particularly helpful to explore a Python dictionary but does not work in rendered notebooks.</p>
-<p>Nevertheless, it was good to get to know the functions and I add them here for the learning record.</p>
-<hr>
-<p>see the <a href="../../snippets/ipython-display-nbconvert.html">Jupyter notebook</a> (with <code>nbconvert</code>) and <a href="../../snippets/ipython-display.html">Quarto rendered</a> version.</p>
-<section id="json" class="level2">
-<h2 class="anchored" data-anchor-id="json">JSON</h2>
-<div id="d6020d19" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> JSON</span>
-<span id="cb1-2"></span>
-<span id="cb1-3">person <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> {</span>
-<span id="cb1-4">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'name'</span>: {</span>
-<span id="cb1-5">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'first'</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'Jane'</span>,</span>
-<span id="cb1-6">        <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'last'</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'Doe'</span></span>
-<span id="cb1-7">    },</span>
-<span id="cb1-8">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'age'</span>: <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">43</span>,</span>
-<span id="cb1-9">    <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'email'</span>: <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'jane.doe@example.com'</span></span>
-<span id="cb1-10">}</span>
-<span id="cb1-11"></span>
-<span id="cb1-12">JSON(person)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
-</div>
-</div>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/json-screenshot.png" class="img-fluid"></p>
-<hr>
-</section>
-<section id="single-element" class="level2">
-<h2 class="anchored" data-anchor-id="single-element">Single element</h2>
-<div id="cc68e7e0" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> Markdown, HTML, JSON, Math</span></code></pre></div></div>
-</div>
-<div id="5d7749c0" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">HTML(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;h2&gt;HTML Title&lt;/h2&gt;"</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<h2 class="anchored">HTML Title</h2>
-</div>
-</div>
-<div id="78c793aa" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">Markdown(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"## Markdown title"</span>)</span></code></pre></div></div>
-<section id="markdown-title" class="level2 cell-output cell-output-display cell-output-markdown" data-execution_count="4">
-<h2 class="anchored" data-anchor-id="markdown-title">Markdown title</h2>
-</section>
-</div>
-<div id="475ecc5f" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">Math(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"a^2 + b^2 = c^2"</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
-<p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
-</div>
-</div>
-<div id="d02a3e44" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">JSON([<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"foo"</span>, {<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"bar"</span>: (<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"baz"</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1.0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>)}], expanded<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>&lt;IPython.core.display.JSON object&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="multiple-elements" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-elements">Multiple elements</h2>
-<div id="36ed51bc" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">display(HTML(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"&lt;em&gt;HTML element&lt;/em&gt;"</span>))</span>
-<span id="cb9-2">display(Markdown(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"__Markdown title__"</span>))</span>
-<span id="cb9-3">display(Math(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"a^2 + b^2 = c^2"</span>))</span></code></pre></div></div>
-<div class="cell-output cell-output-display">
-<em>HTML element</em>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><strong>Markdown title</strong></p>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p><img src="https://latex.codecogs.com/png.latex?%5Cdisplaystyle%20a%5E2%20+%20b%5E2%20=%20c%5E2"></p>
-</div>
-</div>
-<p>An example of a Quarto issue with <code>display()</code>. The elements are ordered differently in the code cell and the output.</p>
-<div id="d6017835" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"'first element'"</span>)</span>
-<span id="cb10-2">display(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"second element"</span>)</span>
-<span id="cb10-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"'third element'"</span>)</span></code></pre></div></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'first element'</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>'second element'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'third element'</code></pre>
-</div>
-</div>
-<p>Rendering of dictionaries with <code>JSON</code> does not work in Quarto or nbconvert.</p>
-<hr>
-</section>
-<section id="quarto-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="quarto-workflow">Quarto workflow</h2>
-<p>A note how I render the Jupyter notebook of the post.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">cd</span> snippets <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">;</span></span>
-<span id="cb14-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">ruff</span> format ipython-display.ipynb <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">;</span></span>
-<span id="cb14-3"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--execute</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--inplace</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">;</span></span>
-<span id="cb14-4"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">nbdev_clean</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--fname</span> ipython-display.ipynb <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">;</span></span>
-<span id="cb14-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">jupyter-nbconvert</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--to</span> html ipython-display.ipynb <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--output</span> ipython-display-nbconvert.html</span></code></pre></div></div>
-<hr>
-<p><img src="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" class="img-fluid"></p>
-
-
-</section>
-
- ]]></description>
-  <category>Python</category>
-  <guid>https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/</guid>
-  <pubDate>Sat, 25 Nov 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://hdigital.github.io/learning-diary/posts/2023-11-25-py-ipython-display/ipython-logo.png" medium="image" type="image/png" height="43" width="144"/>
 </item>
 </channel>
 </rss>

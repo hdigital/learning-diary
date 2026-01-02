@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-05">
+<meta name="dcterms.date" content="2026-01-04">
 
-<title>Color Chart page with AI – Learning</title>
+<title>Farbtafeln AI code review – Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Color Chart page with AI</h1>
+      <h1 class="title">Farbtafeln AI code review</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">AI</div>
               </div>
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 5, 2025</p>
+        <p class="date">January 4, 2026</p>
       </div>
     </div>
     
@@ -147,15 +147,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview · 📋</a></li>
-  <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development · 🛠️</a>
+  <li><a href="#code-review" id="toc-code-review" class="nav-link active" data-scroll-target="#code-review">Code Review · 🔍</a></li>
+  <li><a href="#the-update-process" id="toc-the-update-process" class="nav-link" data-scroll-target="#the-update-process">The Update Process · 🛠️</a>
   <ul class="collapse">
-  <li><a href="#some-tech-background" id="toc-some-tech-background" class="nav-link" data-scroll-target="#some-tech-background">1. Some Tech Background · 🧑‍💻</a></li>
-  <li><a href="#a-p5.js-script-in-chatgpt" id="toc-a-p5.js-script-in-chatgpt" class="nav-link" data-scroll-target="#a-p5.js-script-in-chatgpt">2. A p5.js Script in ChatGPT · 🤖</a></li>
-  <li><a href="#completing-with-copilot" id="toc-completing-with-copilot" class="nav-link" data-scroll-target="#completing-with-copilot">3. Completing with Copilot · 💻</a></li>
-  <li><a href="#creating-the-readme" id="toc-creating-the-readme" class="nav-link" data-scroll-target="#creating-the-readme">4. Creating the README · 📄</a></li>
-  <li><a href="#writing-the-blog-post" id="toc-writing-the-blog-post" class="nav-link" data-scroll-target="#writing-the-blog-post">5. Writing the Blog Post · 📝</a></li>
+  <li><a href="#planning-and-clarification" id="toc-planning-and-clarification" class="nav-link" data-scroll-target="#planning-and-clarification">Planning and Clarification</a></li>
+  <li><a href="#implementation-iterations" id="toc-implementation-iterations" class="nav-link" data-scroll-target="#implementation-iterations">Implementation Iterations</a></li>
+  <li><a href="#finding-p5.js-v2" id="toc-finding-p5.js-v2" class="nav-link" data-scroll-target="#finding-p5.js-v2">Finding p5.js v2</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
   </ul></li>
+  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned">Lessons Learned · 💡</a></li>
   <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts · 💭</a></li>
   <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links · 🔗</a></li>
   </ul>
@@ -168,91 +168,55 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><a href="../../snippets/farbtafeln-2025.html">Farbtafel (Color Chart)</a> webpage — Gerhard Richter inspired · 🤖🎨</p>
-<p>Over the weekend, I ran into two books in our local bookstore.</p>
-<ul>
-<li>Schneede, U. M., &amp; Richter, G. (2024). Gerhard Richter: Der unbedingte Maler. C.H.Beck. — <a href="https://www.chbeck.de/schneede-gerhard-richter/product/36959113">ISBN-13 978-3406821493</a></li>
-<li>Taulli, T. (2024). AI-assisted programming: Better planning, coding, testing, and deployment. O’Reilly. — <a href="https://www.oreilly.com/library/view/ai-assisted-programming/9781098164553/">ISBN-13 978-1098164560</a></li>
-</ul>
-<p>For some time, I had the idea of creating a program to reproduce the <a href="https://www.gerhard-richter.com/de/art/paintings/abstracts/colour-charts-12"><em>Farbtafeln</em> (Color Charts)</a> by Gerhard Richter, a German painter. Richter’s <em>Farbtafeln</em> are a series of abstract paintings composed of grids filled with randomly arranged colored squares, showcasing his exploration of color and chance. This weekend, paired with the inspiration from these two books, provided a good opportunity to bring that idea to life and explore how AI could assist in such a creative programming project.</p>
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">Project Overview · 📋</h2>
-<p>In this project, I created a program replicating Gerhard Richter’s <em>Farbtafeln</em>. By leveraging AI-assisted programming, I developed a webpage that generates a random color grid inspired by Richter’s work. This project highlights the potential of AI assistants in creative coding.</p>
-<p>It marks my first experience with AI assistants suggesting nearly all of the code, which I then reviewed and refined. My knowledge of JavaScript, Processing (<em>p5.js</em>), and CSS is rather limited and the AI assistants helped me implement the <em>Farbtafeln</em> efficiently.</p>
-<p>The <a href="../../snippets/farbtafeln-2025.html">resulting webpage</a> dynamically reshuffles the colors of the grid with each refresh, offering a fresh take on Richter’s exploration of randomness and color.</p>
+<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Code review and updates · 🤖🔧</p>
+<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored AI as a code reviewer rather than just a generator, with human guidance directing the process.</p>
+<section id="code-review" class="level2">
+<h2 class="anchored" data-anchor-id="code-review">Code Review · 🔍</h2>
+<p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
+<p><strong>Critical:</strong> - Color shuffle only shuffled rows as units, not individual colors across the grid - p5.js drawing continuously at 60fps despite static content - Outdated p5.js version (1.11.2)</p>
+<p><strong>Best Practices:</strong> - Missing security attributes on external link - Fixed 600px canvas not responsive - No window resize handler</p>
 </section>
-<section id="development" class="level2">
-<h2 class="anchored" data-anchor-id="development">Development · 🛠️</h2>
-<p>So here is a summary of my steps to create the <em>Farbtafeln</em> code, documentation, and this blog post with AI assistants.</p>
-<section id="some-tech-background" class="level3">
-<h3 class="anchored" data-anchor-id="some-tech-background">1. Some Tech Background · 🧑‍💻</h3>
-<p>I knew that <a href="https://p5js.org/"><em>p5.js</em></a> would be a good fit for creating a <em>Farbtafel</em> webpage. <em>p5.js</em> is a JavaScript library that simplifies the creation of graphics and interactive content for the web.</p>
-<p>However, my knowledge of <em>p5.js</em>, JavaScript, and CSS is limited. Building the project from scratch with these tools would have been tedious for me. With the help of AI assistants, the process became not only manageable but also enjoyable.</p>
+<section id="the-update-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-update-process">The Update Process · 🛠️</h2>
+<section id="planning-and-clarification" class="level3">
+<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and Clarification</h3>
+<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve row structure. Clarifying intent upfront avoided implementation assumptions.</p>
 </section>
-<section id="a-p5.js-script-in-chatgpt" class="level3">
-<h3 class="anchored" data-anchor-id="a-p5.js-script-in-chatgpt">2. A p5.js Script in ChatGPT · 🤖</h3>
-<p>To create the page, I started by uploading an image of one of the original <em>Farbtafeln</em> to ChatGPT and asking it to generate a <em>p5.js</em> script to replicate the image. I then revised the script. Here are the steps I took in ChatGPT:</p>
-<ul>
-<li>Defined the role for ChatGPT and provided information about my programming background.</li>
-<li>Uploaded a <em>Farbtafel</em> image to ChatGPT and asked it to create a <em>p5.js</em> script.</li>
-<li>Got explanations for parts of the script.</li>
-<li>Modified the script to remove square borders and add padding.</li>
-<li>Refactored the script with ChatGPT’s instructions (created functions).</li>
-<li>Created a webpage with the script.</li>
-</ul>
-<p>While interacting with ChatGPT, I ran and modified the script in the <a href="https://editor.p5js.org/">p5.js Web Editor</a> in another browser tab.</p>
-<p>ChatGPT was an invaluable assistant to generate an initial version of the page, generating code, offering clear explanations, and refining the <em>Farbtafeln</em> script based on my inputs. It streamlined development and enriched my learning experience, highlighting the benefits of AI in creative coding.</p>
+<section id="implementation-iterations" class="level3">
+<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation Iterations</h3>
+<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out the simpler approach: flatten colors, shuffle them, read sequentially with an index. Much cleaner.</p>
 </section>
-<section id="completing-with-copilot" class="level3">
-<h3 class="anchored" data-anchor-id="completing-with-copilot">3. Completing with Copilot · 💻</h3>
-<p>After creating the initial script with ChatGPT, I turned to GitHub Copilot for further refinements and enhancements. Here are the steps I followed with Copilot:</p>
-<ul>
-<li>Created a project in VS Code with GitHub Copilot enabled.</li>
-<li>Revised the script based on Copilot’s recommendations.</li>
-<li>Added and refined CSS styles for the page.</li>
-<li>Added and revised page and script comments.</li>
-</ul>
-<p>Copilot helped me create a simple yet visually appealing webpage. The additional revisions I made to the processing script were minimal. I really appreciated the workflow, with the script in my editor being modified based on Copilot’s suggestions. It was an interactive process I preferred over the ChatGPT chat-based interaction.</p>
+<section id="finding-p5.js-v2" class="level3">
+<h3 class="anchored" data-anchor-id="finding-p5.js-v2">Finding p5.js v2</h3>
+<p>Claude found v2.0.5 on cdnjs, but I noted GitHub showed v2.1.2. cdnjs lagged behind—jsdelivr had the latest. Lesson: check multiple CDN sources.</p>
 </section>
-<section id="creating-the-readme" class="level3">
-<h3 class="anchored" data-anchor-id="creating-the-readme">4. Creating the README · 📄</h3>
-<p>With GitHub Copilot, I generated a README file for the project by following these steps:</p>
-<ul>
-<li>Created a new, empty <code>README.md</code> file in the project directory.</li>
-<li>Used Copilot to generate an initial draft.</li>
-<li>Reviewed and refined the content manually.</li>
-<li>Added links to relevant resources.</li>
-</ul>
-<p>The structure of the suggested README was helpful, and the content provided some good initial ideas. However, it was overly general and somewhat bloated, so I significantly revised the document manually.</p>
+<section id="testing" class="level3">
+<h3 class="anchored" data-anchor-id="testing">Testing</h3>
+<p>At my suggestion, Claude created verification scripts checking CDN availability, p5.js functions, shuffle algorithm, HTML structure, and v2 API compatibility. All tests passed.</p>
 </section>
-<section id="writing-the-blog-post" class="level3">
-<h3 class="anchored" data-anchor-id="writing-the-blog-post">5. Writing the Blog Post · 📝</h3>
-<p>Finally, I asked GitHub Copilot to generate this blog post based on the page code and the README. Here are the steps I used:</p>
-<ul>
-<li>Created an empty Markdown file.</li>
-<li>Asked Copilot to generate the blog post.</li>
-<li>Reviewed and revised each paragraph with Copilot.</li>
-<li>Added sentences and paragraphs manually.</li>
-<li>Revised and finalized the draft with ChatGPT.</li>
-</ul>
-<p>The generated post served as a solid foundation, but I refined it significantly to better reflect my experience. ChatGPT was particularly helpful for fine-tuning the content and improving its flow, while Copilot provided a reasonable starting point for structuring the post.</p>
 </section>
+<section id="lessons-learned" class="level2">
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned · 💡</h2>
+<p><strong>Human guidance matters.</strong> AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.</p>
+<p><strong>Keep it simple.</strong> Flatten, shuffle, index—the simplest solution won over initial complexity.</p>
+<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just if code worked, but why.</p>
+<p><strong>AI as reviewer.</strong> Claude’s code review was effective, identifying real issues and explaining them clearly while leaving implementation open for refinement.</p>
 </section>
 <section id="final-thoughts" class="level2">
 <h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
-<p>This project was a great example of how AI, ChatGPT and Copilot, can assist in the development process. By generating code and providing suggestions, AI assistants helped streamline the creation of this random color grid. The result is a simple and visually appealing webpage that pays homage to Gerhard Richter’s iconic color charts.</p>
-<p>The code was generated quickly with ChatGPT, and I was impressed by the quality. However, creating the documentation and blog post took more time. While AI drafted the README and blog post, it was less instrumental, and I spent significantly more time refining them manually.</p>
-<p>Overall, I thoroughly enjoyed this project, and I’m very pleased with how the <em>Farbtafeln</em>-inspired webpage turned out. It brings Richter’s exploration of color and chance nicely into a digital space.</p>
+<p>This session demonstrated AI’s effectiveness at reviewing and improving existing code with human oversight. The page now runs p5.js v2.1.2, shuffles colors correctly, performs efficiently, and adapts to screen sizes. The iterative process felt like pair programming rather than delegation.</p>
+<hr>
+<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
 </section>
 <section id="links" class="level2">
 <h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
 <ul>
-<li><a href="https://www.gerhard-richter.com/en/art/paintings/abstracts/colour-charts-12/colour-chart-5793?categoryid=19&amp;p=1&amp;sp=32&amp;pg=13">Gerhard Richter’s Color Charts</a></li>
-<li><a href="https://p5js.org/">p5.js Library</a></li>
-<li><a href="https://editor.p5js.org/">p5.js Editor</a></li>
+<li><a href="../../posts/2025-01-05-farbtafeln/">Original Farbtafeln Post</a></li>
+<li><a href="../../snippets/farbtafeln-2025.html">2025 Version</a></li>
+<li><a href="../../snippets/farbtafeln.html">Updated Version</a></li>
+<li><a href="https://github.com/processing/p5.js/releases/tag/v2.1.2">p5.js v2.1.2 Release</a></li>
+<li><a href="https://www.jsdelivr.com/">jsdelivr CDN</a></li>
 </ul>
-<hr>
-<p><img src="farbtafeln-page.png" class="img-fluid"></p>
 
 
 </section>

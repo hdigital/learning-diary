@@ -105,88 +105,158 @@
     "text": "WebR (WebAssembly)\nI read about the webR release on the Tidyverse blog. It allows to run R in a browser.\nSo I went to webr.r-wasm.org and gave it a try.\nI tried to install the tidyverse with webr::install(\"tidyverse\"). That did not work. For me, there is little use of R without the tidyverse.\nInstalling dplyr and ggplot2 individually worked. So that I could run the following code.\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndt &lt;- as_tibble(mtcars)\nglimpse(dt)\n\nRows: 32\nColumns: 11\n$ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8,…\n$ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8,…\n$ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 16…\n$ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180…\n$ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92,…\n$ wt   &lt;dbl&gt; 2.620, 2.875, 2.320, 3.215, 3.440, 3.460, 3.570, 3.190, 3.150, 3.…\n$ qsec &lt;dbl&gt; 16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20.00, 22.90, 18…\n$ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0,…\n$ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0,…\n$ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3,…\n$ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2,…\n\nggplot(dt, aes(x = hp, y = mpg, color = cyl)) +\n  geom_point()\n\n\n\n\n\n\n\n\nTyping the R commands in a browser shell without tab completion and no R help was challenging though.\nHaving R in a browser quickly available is nice 😊."
   },
   {
-    "objectID": "posts/2023-06-12-py-nbdev-clean/index.html",
-    "href": "posts/2023-06-12-py-nbdev-clean/index.html",
-    "title": "Jupyter notebooks in Git",
+    "objectID": "posts/2024-08-31-uv/index.html",
+    "href": "posts/2024-08-31-uv/index.html",
+    "title": "uv instead of venv/pip",
     "section": "",
-    "text": "Jupyter notebooks in Git\nWorking with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.\nNow, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. nbdev_clean removes cell execution related metadata from a notebook.\nnbdev_clean --fname . cleans all Juypter notebooks in a repository. I run it on this learning diary Git repository to clean the two notebooks in the snippets folder. I also used it in the project that initially caused me to look into nbdev.\nFinally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with nbdev_clean. Again, Codespaces are really nice."
+    "text": "uv recently released its 0.3 version.\nuv is a package and project manager that potentially allows me to fully replace my venv/pip/pip-tools workflow and the use of pyenv as well as pipx. It provides a single tool, is significantly faster, and includes a complete project manager.\nThe 0.3 release added many new features and comprehensive documentation. Version 0.4, which revised the project workflow, has been released.\nPackage management has been challenging in Python and has often taken me a lot of time. uv has the potential to harmonize the approaches and tools I have used with a single tool.\nHere are the uv commands relevant to me, a collection inspired by this post."
   },
   {
-    "objectID": "posts/2024-07-16-r-bar-chart/index.html",
-    "href": "posts/2024-07-16-r-bar-chart/index.html",
-    "title": "Bar charts with ggplot",
+    "objectID": "posts/2024-08-31-uv/index.html#installation",
+    "href": "posts/2024-08-31-uv/index.html#installation",
+    "title": "uv instead of venv/pip",
+    "section": "Installation",
+    "text": "Installation\nIt is recommended to install uv globally instead of using pip install uv."
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#uv-workflow",
+    "href": "posts/2024-08-31-uv/index.html#uv-workflow",
+    "title": "uv instead of venv/pip",
+    "section": "uv workflow",
+    "text": "uv workflow\nSpecify Python dependencies in a pyproject.toml (see Projects below).\nuv add ruff\n\nuv run ruff check\n\nuv lock --upgrade\nuv sync\n\nsource .venv/bin/activate\nwhich python"
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#projects",
+    "href": "posts/2024-08-31-uv/index.html#projects",
+    "title": "uv instead of venv/pip",
+    "section": "Projects",
+    "text": "Projects\nCreate a project with a README.md, a pyproject.toml, and an example script.\nuv init\nuv run hello.py\nYou can also specify a project name to create the project in a new folder."
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#python-versions",
+    "href": "posts/2024-08-31-uv/index.html#python-versions",
+    "title": "uv instead of venv/pip",
+    "section": "Python versions",
+    "text": "Python versions\nuv can install a specific Python version from python-build-standalone.\nThe Python version in a pyproject.toml or a .python-version file is used.\nThis allows me to replace pyenv, which I have used to manage different Python versions.\nuv venv --python 3.11\n\nuv python list\nuv python install --reinstall 3.10 3.11\nThere may be minor differences with other Python builds."
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#scripts",
+    "href": "posts/2024-08-31-uv/index.html#scripts",
+    "title": "uv instead of venv/pip",
+    "section": "Scripts",
+    "text": "Scripts\nYou can specify dependencies as embedded metadata in a script. uv will run the script and install the dependencies.\necho 'import urllib3; print(urllib3.request(\"GET\", \"http://httpbin.org/robots.txt\").data)' &gt; robots.py\n\nuv add --script robots.py urllib3\n\nuv run robots.py"
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#python-tools",
+    "href": "posts/2024-08-31-uv/index.html#python-tools",
+    "title": "uv instead of venv/pip",
+    "section": "Python tools",
+    "text": "Python tools\nYou can run and install Python tools with uvx.\nIt can be used as a replacement for pipx.\nuvx ruff clean\n\nuv tool install ruff\nls -l $(which ruff)\n\nuv tool list\nuv tool upgrade --all"
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#venvpip-workflow",
+    "href": "posts/2024-08-31-uv/index.html#venvpip-workflow",
+    "title": "uv instead of venv/pip",
+    "section": "venv/pip workflow",
+    "text": "venv/pip workflow\nMy goal is to use the uv workflow, but here are some examples of using uv as as venv/pip/pip-tools replacement with the respective parameters.\nuv venv\nuv pip install urllib3\nsource .venv/bin/activate\nwhich python\n\necho \"urllib3\" &gt; requirements.in\nuv pip compile -U requirements.in -o requirements.txt\nuv pip sync requirements.txt"
+  },
+  {
+    "objectID": "posts/2024-08-31-uv/index.html#clean-up",
+    "href": "posts/2024-08-31-uv/index.html#clean-up",
+    "title": "uv instead of venv/pip",
+    "section": "Clean-up",
+    "text": "Clean-up\nThe uv cache folder can get large quickly, so it is helpful to clean it up regularly\nuv cache prune\n\nuv cache clean\n\ndu -h -d 1 $(uv cache dir)\nKeep in mind that many .venv folders are created with a uv workflow, so you may want to remove them at some point.\nfind . -type d -name \".venv\" -print0 | xargs -0 du -sh"
+  },
+  {
+    "objectID": "posts/2023-02-18-py-jupyter/index.html",
+    "href": "posts/2023-02-18-py-jupyter/index.html",
+    "title": "Jupyter notebooks with Quarto",
     "section": "",
-    "text": "Bar charts with ggplot\nHorizontal bar charts are a regular part of my work with graphs in R. Nevertheless, I have to look up the details regularly, so here is another example.\nThe graph visualizes the disproportionality of the results in the recent UK election 2024.\nIt uses forcats to order categories, here the parties, by another value in the dataset, here the vote share.\nThe color codes of the parties are based on the BBC election page. I just used inspect on the internet browser to find the respective color code used on the page.\nFinding the details for the parameters to customize the legend and the axes in ggplot took some time. GitHub Copilot, my new AI pair programmer, was very helpful. In fact, I use it a lot now to get examples for the use of various tidyverse functions, that I used to look up regularly.\n\n\nCode\nlibrary(tidyverse)\nlibrary(patchwork)\n\nggplot2::theme_set(theme_minimal())\n\n\nelec_raw &lt;- read_csv(\"uk-election-2024_bbc.csv\")\n\npl_dt &lt;-\n  elec_raw |&gt;\n  mutate(\n    seat_share = round(seats / 650 * 100, 1), # total seats UK Parliament: 650\n    party = fct_reorder(party, vote_share)\n  ) |&gt;\n  filter(vote_share &gt;= 2.5)\n\nparty_colors &lt;-\n  c(\n    \"Lab\" = \"#E91D0E\",\n    \"Con\" = \"#0575C9\",\n    \"R-UK\" = \"#12b6cf\",\n    \"Lib\" = \"#FF9A02\",\n    \"Green\" = \"#99CC33\",\n    \"SNP\" = \"#0AD1E0\"\n  )\n\npl1 &lt;-\n  ggplot(pl_dt, aes(x = vote_share, y = party, fill = party)) +\n  geom_col() +\n  xlim(0, 60) +\n  scale_fill_manual(values = party_colors) +\n  labs(y = NULL) +\n  theme(legend.position = \"none\")\n\npl2 &lt;-\n  ggplot(pl_dt, aes(x = seat_share, y = party, fill = party)) +\n  geom_col() +\n  scale_fill_manual(values = party_colors) +\n  labs(y = NULL) +\n  theme(axis.text.y = element_blank(), legend.position = \"none\")\n\npl1 + pl2 +\n  plot_annotation(\n    title = \"UK election 2024\",\n    caption = \"Source: BBC\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhoto by Kristina Gadeikyte on Unsplash"
+    "text": "Jupyter notebooks with Quarto\nJupyter notebooks can be rendered with Quarto.\nIn a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a Raw first cell. Finally, I converted the original notebook into a Quarto document with quarto convert.\nI rendered all versions of the Jupyter notebook with Quarto and here are the results:\n\nJupyter notebook\nnotebook with Quarto first cell\nnotebook converted to Quarto document\n\nI also learned that you have to pass an option when rendering ipynb-files – quarto render notebook.ipynb --execute. The assumption is that a notebook was already run and that the results shall be rendered.\nThis all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.\n\n\n\nJupyter Lab"
   },
   {
-    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html",
-    "href": "posts/2023-11-23-py-jupyter-lite/index.html",
-    "title": "JupyterLite",
+    "objectID": "posts/2023-08-14-r-file-hash/index.html",
+    "href": "posts/2023-08-14-r-file-hash/index.html",
+    "title": "File hashing",
     "section": "",
-    "text": "I listened to the the recent Talk Python To Me episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.\nI was impressed to see that you can now run JupyterLab in a browser.\nMany shortcuts work and you can activate the command palette with Shift + Cmd/Ctrl + C\nFor me, the examples in the pyodide folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.\nSo now I can run Python in an interactive environment on any computer with JupyterLite. I may use Codespaces or Google Colab in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite."
+    "text": "File hashing\nTo increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.\nIn R, the rlang library provides the hash_file() function and uses the XXH128 hash algorithm to generate a 128-bit hash.\nThis can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.\nHere, I have created two files for data sets from the datasets library and calculate the hash values of these files.\n\n\nCode\nlibrary(readr)\n\nwrite_csv(datasets::iris, \"iris.csv\")\nwrite_csv(datasets::mtcars, \"mtcars.csv\")\n\n\n\nlibrary(tidyverse)\n\ntibble(files = fs::dir_ls(glob = \"*.csv\")) |&gt;\n  mutate(hash = rlang::hash_file(files))\n\n\n\n\n\nfiles\nhash\n\n\n\n\niris.csv\ndbdc1846dff7fba30a88d5b23e15ea80\n\n\nmtcars.csv\n1d350737ac40dc6fb6ae8f5ad616fc4e"
   },
   {
-    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#visualization-example",
-    "href": "posts/2023-11-23-py-jupyter-lite/index.html#visualization-example",
-    "title": "JupyterLite",
-    "section": "Visualization example",
-    "text": "Visualization example\nHere is an example form the altair.ipynb notebook in the pyodide folder. It runs here but also in the JupyterLite, purely browser based, version.\n\nimport altair as alt\nimport pandas as pd\n\nsource = pd.DataFrame({\n    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],\n    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]\n})\n\nalt.Chart(source).mark_bar().encode(\n    x='a',\n    y='b'\n)"
-  },
-  {
-    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#http-requests",
-    "href": "posts/2023-11-23-py-jupyter-lite/index.html#http-requests",
-    "title": "JupyterLite",
-    "section": "http requests",
-    "text": "http requests\nI played around a little with making http requests. You can install the requests package but the http requests don’t work. You have to use the js module provided by pyodide instead.\nHere is the notebook I wrote.\nnetwork-requests.ipynb.txt\nI added a txt extension because I don’t want the notebook to be rendered in Quarto. Save it, remove the txt extension, drag and drop it into the JupyterLite browser window and run it."
-  },
-  {
-    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#pip-with-micropip",
-    "href": "posts/2023-11-23-py-jupyter-lite/index.html#pip-with-micropip",
-    "title": "JupyterLite",
-    "section": "pip with micropip",
-    "text": "pip with micropip\nYou can install packages with pip. In JupyterLite, it is based on micropip.\nThe recommended way to install packages is:\n%pip install -q snowballstemmer\nSo far, I have been reluctant to use pip with a magic command but may use it more regularly in the future.\nHere is a Python version to use micropip.\nimport micropip\n\nif \"snowballstemmer\" not in micropip.list():\n    await micropip.install(\"snowballstemmer\")"
-  },
-  {
-    "objectID": "posts/2023-02-26-quarto-experience/index.html",
-    "href": "posts/2023-02-26-quarto-experience/index.html",
-    "title": "A few days of Quarto",
+    "objectID": "posts/2024-07-13-r-httr-doi/index.html",
+    "href": "posts/2024-07-13-r-httr-doi/index.html",
+    "title": "DOI reference with httr2",
     "section": "",
-    "text": "So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the local Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nRendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting #| python.reticulate: false in a Python cell solved the issue.\nMany of my Python struggles in Quarto may have been related to the reticulate R package."
+    "text": "DOI reference with httr2\nGet citation references from DOI API with httr2.\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nget_doi_reference &lt;- function(doi) {\n  request(paste0(\"https://doi.org/\", doi)) |&gt;\n    req_headers(\"Accept\" = \"text/x-bibliography\") |&gt;\n    req_perform() |&gt;\n    resp_body_string()\n}\n\nreferences &lt;-\n  tibble(\n    doi = c(\n      \"10.1177/1465116507076430\",\n      \"10.1080/01402382.2013.783347\",\n      \"10.1177/0958928715573481\",\n      \"10.1017/pan.2021.28\"\n    )\n  ) |&gt;\n  mutate(reference = map_chr(doi, get_doi_reference))\n\nreferences\n\n\n\n\n\n\n\n\n\ndoi\nreference\n\n\n\n\n10.1177/1465116507076430\nDöring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207–228. https://doi.org/10.1177/1465116507076430\n\n\n10.1080/01402382.2013.783347\nDöring, H., & Hellström, J. (2013). Who Gets into Government? Coalition Formation in European Democracies. West European Politics, 36(4), 683–703. https://doi.org/10.1080/01402382.2013.783347\n\n\n10.1177/0958928715573481\nDöring, H., & Schwander, H. (2015). Revisiting the left cabinet share: How to measure the partisan profile of governments in welfare state research. Journal of European Social Policy, 25(2), 175–193. https://doi.org/10.1177/0958928715573481\n\n\n10.1017/pan.2021.28\nHerrmann, M., & Döring, H. (2021). Party Positions from Wikipedia Classifications of Party Ideology. Political Analysis, 31(1), 22–41. https://doi.org/10.1017/pan.2021.28"
   },
   {
-    "objectID": "posts/2023-02-26-quarto-experience/index.html#quarto",
-    "href": "posts/2023-02-26-quarto-experience/index.html#quarto",
-    "title": "A few days of Quarto",
+    "objectID": "posts/2023-11-20-r-httr/index.html",
+    "href": "posts/2023-11-20-r-httr/index.html",
+    "title": "API requests with httr2",
     "section": "",
-    "text": "So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the local Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nRendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting #| python.reticulate: false in a Python cell solved the issue.\nMany of my Python struggles in Quarto may have been related to the reticulate R package."
+    "text": "httr2 1.0 was recently released. I used it earlier this month in my API explorations to understand what the Python requests equivalent is in R. Python and requests are so convenient that I had not used R yet to access an API.\nI became aware of Semantic Scholar, a database of scientific literature, with a nice API.\nSo here is an exploration of my Semantic Scholar records (ID 51362391) in R with httr2.\nCode\nlibrary(tidyverse)\nlibrary(httr2)\nlibrary(jsonlite)"
   },
   {
-    "objectID": "posts/2023-02-26-quarto-experience/index.html#docker",
-    "href": "posts/2023-02-26-quarto-experience/index.html#docker",
-    "title": "A few days of Quarto",
-    "section": "Docker",
-    "text": "Docker\nTo get there I also created a Dockerfile to have an OS independent version of Quarto. That was another challenge until I first found a Rocker configuration that worked with Python. It is a whopping 4.5 GB image but includes Latex to create pdf-files.\nLater I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.\nI’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well."
+    "objectID": "posts/2023-11-20-r-httr/index.html#api-request",
+    "href": "posts/2023-11-20-r-httr/index.html#api-request",
+    "title": "API requests with httr2",
+    "section": "API request",
+    "text": "API request\nAPI · Fetch paper and author data\n\nauthor_id &lt;- 51362391\n\nurl &lt;-\n  str_glue(\n    \"https://api.semanticscholar.org/graph/v1/author/{author_id}\",\n    \"?fields=name,papers,papers.year,papers.title,papers.citationCount,papers.authors\"\n  )\n\nresp &lt;-\n  request(url) |&gt;\n  req_perform()\n\n\ndt &lt;-\n  resp_body_string(resp) |&gt;\n  fromJSON()\n\nprint(dt[[\"name\"]])\n\n[1] \"Holger Döring\""
   },
   {
-    "objectID": "posts/2023-02-26-quarto-experience/index.html#python-in-quarto",
-    "href": "posts/2023-02-26-quarto-experience/index.html#python-in-quarto",
-    "title": "A few days of Quarto",
-    "section": "Python in Quarto",
-    "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
+    "objectID": "posts/2023-11-20-r-httr/index.html#publications",
+    "href": "posts/2023-11-20-r-httr/index.html#publications",
+    "title": "API requests with httr2",
+    "section": "Publications",
+    "text": "Publications\n\npapers &lt;-\n  dt[[\"papers\"]] |&gt;\n  mutate(\n    id_short = str_sub(paperId, 1, 5),\n    title_short = str_sub(title, 1, 30),\n    authors_n = map_int(authors, \\(.x) nrow(.x))\n  )\n\nNumber of publications at Semantic Scholar\n\nnrow(papers)\n\n[1] 24\n\n\nPublications\n\npapers |&gt;\n  select(id_short, year, `cita.` = citationCount, `auth.` = authors_n, title_short)\n\n\n\n\n\nid_short\nyear\ncita.\nauth.\ntitle_short\n\n\n\n\na9408\n2022\n0\n1\nFormal binary logic, tidal for\n\n\nc229b\n2022\n0\n1\nBeyond the light-barrier -fast\n\n\ne3034\n2022\n0\n1\nOccams Razor-No Dark Matter in\n\n\n37135\n2021\n0\n1\nLorentzian SRT-Transformation\n\n\n84d1f\n2021\n3\n3\nGermany: From Stable Coalition\n\n\n8bd34\n2020\n13\n3\nInstitutional constraints on c\n\n\n1b9e9\n2019\n19\n2\nParty Positions from Wikipedia\n\n\ne9e28\n2019\n73\n2\nParty Facts: A database of pol\n\n\nf93aa\n2019\n0\n1\nGathering and Managing Data on\n\n\n69fe5\n2016\n9\n1\nMapping established democracie\n\n\n4175b\n2015\n31\n2\nIs Proportional Representation\n\n\n85957\n2015\n0\n3\nHow do European democracies co\n\n\na9372\n2015\n35\n2\nRevisiting the left cabinet sh\n\n\n34e81\n2014\n1\n2\nJean-Claude Juncker’s new Euro\n\n\n1273f\n2013\n65\n2\nWho Gets into Government? Coal\n\n\n31eff\n2013\n31\n1\nThe collective action of data\n\n\nc01fd\n2012\n3\n3\nMinisterial Careers and ’The M\n\n\nc4f64\n2011\n0\n2\nWhy are States with Pr More Re\n\n\ne3cbe\n2010\n0\n1\nCollaborative Data Collection\n\n\nf5948\n2009\n0\n1\nPolitical representation in Eu\n\n\n2ebbf\n2008\n38\n2\nElectoral and Mechanical Cause\n\n\nec86a\n2008\n1\n1\nEvaluating Scripting Languages\n\n\n14ab0\n2007\n71\n1\nThe Composition of the College\n\n\n9674d\n2006\n3\n2\nDivided Government European St"
   },
   {
-    "objectID": "posts/2023-02-17-r-geom-col/index.html",
-    "href": "posts/2023-02-17-r-geom-col/index.html",
-    "title": "Horizontal bar chart",
+    "objectID": "posts/2023-11-20-r-httr/index.html#authors",
+    "href": "posts/2023-11-20-r-httr/index.html#authors",
+    "title": "API requests with httr2",
+    "section": "Authors",
+    "text": "Authors\nAuthors by paper\n\nauthors &lt;-\n  papers |&gt;\n  select(id_short, year, authors) |&gt;\n  unnest(authors)\n\nauthors\n\n\n\n\n\nid_short\nyear\nauthorId\nname\n\n\n\n\na9408\n2022\n51362391\nHolger Döring\n\n\nc229b\n2022\n51362391\nHolger Döring\n\n\ne3034\n2022\n51362391\nHolger Döring\n\n\n37135\n2021\n51362391\nHolger Döring\n\n\n84d1f\n2021\n94263396\nM. Debus\n\n\n84d1f\n2021\n51362391\nHolger Döring\n\n\n84d1f\n2021\n143708020\nAlejandro Ecker\n\n\n8bd34\n2020\n119358998\nMaria Thürk\n\n\n8bd34\n2020\n145985059\nJohan Hellström\n\n\n8bd34\n2020\n51362391\nHolger Döring\n\n\n1b9e9\n2019\n145315358\nM. Herrmann\n\n\n1b9e9\n2019\n51362391\nHolger Döring\n\n\ne9e28\n2019\n51362391\nHolger Döring\n\n\ne9e28\n2019\n1685592\nSven Regel\n\n\nf93aa\n2019\n51362391\nHolger Döring\n\n\n69fe5\n2016\n51362391\nHolger Döring\n\n\n4175b\n2015\n51362391\nHolger Döring\n\n\n4175b\n2015\n2072035416\nP. Manow\n\n\n85957\n2015\n144008442\nJonathan Bright\n\n\n85957\n2015\n51362391\nHolger Döring\n\n\n85957\n2015\n145474393\nConor Little\n\n\na9372\n2015\n51362391\nHolger Döring\n\n\na9372\n2015\n115016266\nHanna Schwander\n\n\n34e81\n2014\n82184129\nA. Wonka\n\n\n34e81\n2014\n51362391\nHolger Döring\n\n\n1273f\n2013\n51362391\nHolger Döring\n\n\n1273f\n2013\n145985059\nJohan Hellström\n\n\n31eff\n2013\n51362391\nHolger Döring\n\n\nc01fd\n2012\n144008442\nJonathan Bright\n\n\nc01fd\n2012\n51362391\nHolger Döring\n\n\nc01fd\n2012\n145474393\nConor Little\n\n\nc4f64\n2011\n2072035416\nP. Manow\n\n\nc4f64\n2011\n51362391\nHolger Döring\n\n\ne3cbe\n2010\n51362391\nHolger Döring\n\n\nf5948\n2009\n51362391\nHolger Döring\n\n\n2ebbf\n2008\n2072035416\nP. Manow\n\n\n2ebbf\n2008\n51362391\nHolger Döring\n\n\nec86a\n2008\n51362391\nHolger Döring\n\n\n14ab0\n2007\n51362391\nHolger Döring\n\n\n9674d\n2006\n2072035416\nP. Manow\n\n\n9674d\n2006\n51362391\nHolger Döring"
+  },
+  {
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html",
+    "title": "Farbtafeln AI code review",
     "section": "",
-    "text": "Horizontal bar chart\nTo have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars &lt;- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt &lt;-\n  mtcars |&gt;\n  mutate(cyl = fct_infreq(factor(cyl)) |&gt; fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt &lt;-\n  mtcars |&gt;\n  count(cyl) |&gt;\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
+    "text": "Farbtafel (Color Chart) webpage — Code review and updates · 🤖🔧\nA year after creating the Farbtafeln page (2025 version) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored AI as a code reviewer rather than just a generator, with human guidance directing the process."
   },
   {
-    "objectID": "posts/2023-06-02-ai-dalle-images/index.html",
-    "href": "posts/2023-06-02-ai-dalle-images/index.html",
-    "title": "AI images with DALL-E",
-    "section": "",
-    "text": "AI images with DALL-E\nToday, I became aware of an OpenAI service to generate images — DALL-E.\nThis has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.\nSometimes, images from Wikimedia Commons worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.\nI had to pay for the service but the number of images that can be generated for 15$ seem to be reasonable.\nI have still to twist the art styles to results that I like.\n\nHere are some examples.\n“a man working on a computer – style Pieter Bruegel the Elder”\n\n“a working class man on a computer – leipzig school art style”\n\n“A comic book cover of a superhero working on a computer doing data analysis”\n\n“a man working on a computer – style 3d art”"
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html#code-review",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html#code-review",
+    "title": "Farbtafeln AI code review",
+    "section": "Code Review · 🔍",
+    "text": "Code Review · 🔍\nClaude reviewed the ‘farbtafeln’ page and identified several issues:\nCritical: - Color shuffle only shuffled rows as units, not individual colors across the grid - p5.js drawing continuously at 60fps despite static content - Outdated p5.js version (1.11.2)\nBest Practices: - Missing security attributes on external link - Fixed 600px canvas not responsive - No window resize handler"
+  },
+  {
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html#the-update-process",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html#the-update-process",
+    "title": "Farbtafeln AI code review",
+    "section": "The Update Process · 🛠️",
+    "text": "The Update Process · 🛠️\n\nPlanning and Clarification\nClaude proposed six improvements. I asked whether to shuffle all colors individually or preserve row structure. Clarifying intent upfront avoided implementation assumptions.\n\n\nImplementation Iterations\nThe first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out the simpler approach: flatten colors, shuffle them, read sequentially with an index. Much cleaner.\n\n\nFinding p5.js v2\nClaude found v2.0.5 on cdnjs, but I noted GitHub showed v2.1.2. cdnjs lagged behind—jsdelivr had the latest. Lesson: check multiple CDN sources.\n\n\nTesting\nAt my suggestion, Claude created verification scripts checking CDN availability, p5.js functions, shuffle algorithm, HTML structure, and v2 API compatibility. All tests passed."
+  },
+  {
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html#lessons-learned",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html#lessons-learned",
+    "title": "Farbtafeln AI code review",
+    "section": "Lessons Learned · 💡",
+    "text": "Lessons Learned · 💡\nHuman guidance matters. AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.\nKeep it simple. Flatten, shuffle, index—the simplest solution won over initial complexity.\nTest thoroughly. Comprehensive testing revealed not just if code worked, but why.\nAI as reviewer. Claude’s code review was effective, identifying real issues and explaining them clearly while leaving implementation open for refinement."
+  },
+  {
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html#final-thoughts",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html#final-thoughts",
+    "title": "Farbtafeln AI code review",
+    "section": "Final Thoughts · 💭",
+    "text": "Final Thoughts · 💭\nThis session demonstrated AI’s effectiveness at reviewing and improving existing code with human oversight. The page now runs p5.js v2.1.2, shuffles colors correctly, performs efficiently, and adapts to screen sizes. The iterative process felt like pair programming rather than delegation.\n\nNote: This post was drafted by Claude Sonnet 4 and reviewed by me."
+  },
+  {
+    "objectID": "posts/2026-01-04-farbtafeln-review/index.html#links",
+    "href": "posts/2026-01-04-farbtafeln-review/index.html#links",
+    "title": "Farbtafeln AI code review",
+    "section": "Links · 🔗",
+    "text": "Links · 🔗\n\nOriginal Farbtafeln Post\n2025 Version\nUpdated Version\np5.js v2.1.2 Release\njsdelivr CDN"
   },
   {
     "objectID": "posts/2023-04-26-r-dataverse/index.html",
@@ -350,32 +420,53 @@
     "text": "Dependencies\nurllib3 has no dependencies and the popular requests library uses urllib3.\nHere is a documentation of the dependencies with uv.\nuv init uv-project\ncd uv-project\n\nuv add urllib3\nuv tree\nResolved 2 packages in 2ms\nuv-project v0.1.0\n└── urllib3 v2.2.3\nuv remove urllib3\nuv add requests\nuv tree\nResolved 6 packages in 2ms\nuv-project v0.1.0\n└── requests v2.32.3\n    ├── certifi v2024.8.30\n    ├── charset-normalizer v3.4.0\n    ├── idna v3.10\n    └── urllib3 v2.2.3"
   },
   {
-    "objectID": "posts/2023-03-15-py-pyscript/index.html",
-    "href": "posts/2023-03-15-py-pyscript/index.html",
-    "title": "PyScript (WebAssembly)",
+    "objectID": "posts/2024-til/index.html",
+    "href": "posts/2024-til/index.html",
+    "title": "Today I learned (TIL) · 2024",
     "section": "",
-    "text": "PyScript (WebAssembly)\nI used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n😎😅😁😂😃😆😀🤗😎😊😋😂😎😎😇🙂😇😂😅🤗\n😎🙂😎🙂🙂😋🙂😄🤗😄😇😋😉🙂😁😀🙂😁😎😉\n😁😋😆😄🤗😂😁😄😎😎😅😉😇😎😀😊🙂🤗😋😅\n😂😂😉🙂😇😎😎🤗🙂😂😉😀😁😎😇😅😄😃🙂🤗\n😆😀😄😀😁😁😄🙂😎😋😅😁😁😋😃🤗😀🙂😄🤗\n🤗😃🙂😎😅😅😆🤗😃🙂😃😉😃😀😁😇😋😋😋😇\n🤗😂😅😅😎😄😂😄🙂😄😆😀😀😎😄😇😋😉😁😊\n😎😉🙂😀😎😋😆😄😃🙂😉😊😂🙂🙂😎😀😃😂🤗\n😀😋😂😉😋😊😋🤗😅🤗🤗😄🙂😂😄😉🙂😇😃😁\n😅😀😁🙂😃😁🙂😅😉😋😄😇😆🙂😀😅😆😉🙂😉\n😎😇😆😊😅😉🙂😇😄🤗😃😋😄🤗😀😉😎😉😂😀\n😀😁🤗😊😆😁😋😂😄🙂😇😋😊😆😉😇😄😉😃😂\n😃😄😋😇😇😋😇🙂😄😀😃😃😊🤗😀🙂😇😃😁😀\n🙂🙂😁😂😆😇🤗🙂😅😇😂🤗😇🙂😀😎😉😊😆😋\n😊😅😀😃😄😂🙂😊😇🙂😇😅🙂🤗😄🙂😎🙂😋😃\n😅😇🤗😀😆🙂😉😁🤗😂🙂😃🤗😀😉😊😇😋😂😀\n🙂😀😇😎😅😃😃😊😉😉😂😁🤗🤗🙂🤗🙂😃🤗😀\n😂😎😁🙂😇😎😂😂😀🙂😊😄🤗😄🙂😇😋😆😉🤗\n🤗😅🤗🤗🤗😋😀😆😃😀😉😂🙂🤗🙂😇😁😇😇😇\n😃😆🙂😎🤗🤗😉🙂😅😁🙂😅😋😉🙂🙂🤗😄😁😇\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
+    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
   },
   {
-    "objectID": "snippets/jupyter-quarto.html",
-    "href": "snippets/jupyter-quarto.html",
+    "objectID": "posts/2024-til/index.html#june",
+    "href": "posts/2024-til/index.html#june",
+    "title": "Today I learned (TIL) · 2024",
+    "section": "",
+    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
+  },
+  {
+    "objectID": "posts/2024-til/index.html#april",
+    "href": "posts/2024-til/index.html#april",
+    "title": "Today I learned (TIL) · 2024",
+    "section": "1. April",
+    "text": "1. April\nFor Python, I’ve configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration export PIP_REQUIRE_VIRTUALENV=\"true\" is set in my .zshrc file. The configuration was inspired by the post On pip isolation."
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march",
+    "href": "posts/2024-til/index.html#march",
+    "title": "Today I learned (TIL) · 2024",
+    "section": "17. March",
+    "text": "17. March\nCreating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
+  },
+  {
+    "objectID": "posts/2024-til/index.html#march-1",
+    "href": "posts/2024-til/index.html#march-1",
+    "title": "Today I learned (TIL) · 2024",
+    "section": "10. March",
+    "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."
+  },
+  {
+    "objectID": "snippets/jupyter.html",
+    "href": "snippets/jupyter.html",
     "title": "Learning",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
-    "objectID": "snippets/r-cell-conditional.html",
-    "href": "snippets/r-cell-conditional.html",
-    "title": "Conditional R code cell execution",
+    "objectID": "snippets/jupyter-options.html",
+    "href": "snippets/jupyter-options.html",
+    "title": "Jupyter Quarto",
     "section": "",
-    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
-  },
-  {
-    "objectID": "snippets/r-cell-conditional.html#explore-data",
-    "href": "snippets/r-cell-conditional.html#explore-data",
-    "title": "Conditional R code cell execution",
-    "section": "Explore data",
-    "text": "Explore data"
+    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
     "objectID": "snippets/ipython-display.html",
@@ -448,53 +539,67 @@
     "text": "Network requests and JSON\nHere, I use requests instead of the JupyterLite version with js.\n\n%pip install -q requests\n\n/Users/hd/hd/learning/learning-diary/.venv/bin/python: No module named pip\nNote: you may need to restart the kernel to use updated packages.\n\n\n\nimport requests\n\nr = requests.get(\"https://httpbin.org/get\")\nr.text\n\n'{\\n  \"args\": {}, \\n  \"headers\": {\\n    \"Accept\": \"*/*\", \\n    \"Accept-Encoding\": \"gzip, deflate\", \\n    \"Host\": \"httpbin.org\", \\n    \"User-Agent\": \"python-requests/2.31.0\", \\n    \"X-Amzn-Trace-Id\": \"Root=1-65fab6bc-1087d67f265788bf1f4c3a6d\"\\n  }, \\n  \"origin\": \"79.212.250.177\", \\n  \"url\": \"https://httpbin.org/get\"\\n}\\n'\n\n\n\nJSON(r.json())\n\n&lt;IPython.core.display.JSON object&gt;"
   },
   {
-    "objectID": "snippets/jupyter-options.html",
-    "href": "snippets/jupyter-options.html",
-    "title": "Jupyter Quarto",
+    "objectID": "snippets/r-cell-conditional.html",
+    "href": "snippets/r-cell-conditional.html",
+    "title": "Conditional R code cell execution",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nJupyter notebook with Quarto options in first cell\nsee post\n\n\nCode\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/cars.html"
   },
   {
-    "objectID": "snippets/jupyter.html",
-    "href": "snippets/jupyter.html",
+    "objectID": "snippets/r-cell-conditional.html#explore-data",
+    "href": "snippets/r-cell-conditional.html#explore-data",
+    "title": "Conditional R code cell execution",
+    "section": "Explore data",
+    "text": "Explore data"
+  },
+  {
+    "objectID": "snippets/jupyter-quarto.html",
+    "href": "snippets/jupyter-quarto.html",
     "title": "Learning",
     "section": "",
-    "text": "Jupyter notebook rendering with Quarto\n\nOriginal Jupyter notebook rendered with Quarto\nsee post\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={\"projection\": \"polar\"})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "Jupyter notebook rendering with Quarto\n\nQuarto document converted from Jupyter notebook with quarto convert\nsee post\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   },
   {
-    "objectID": "posts/2024-til/index.html",
-    "href": "posts/2024-til/index.html",
-    "title": "Today I learned (TIL) · 2024",
+    "objectID": "posts/2023-03-15-py-pyscript/index.html",
+    "href": "posts/2023-03-15-py-pyscript/index.html",
+    "title": "PyScript (WebAssembly)",
     "section": "",
-    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
+    "text": "PyScript (WebAssembly)\nI used pyscript for the first time and created a web page that run some Python code.\nSo here is the script I run.\n\nimport random\n\nn = 20\nemojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\nlines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\nprint(\"\\n\".join(lines))\n\n😎😅😁😂😃😆😀🤗😎😊😋😂😎😎😇🙂😇😂😅🤗\n😎🙂😎🙂🙂😋🙂😄🤗😄😇😋😉🙂😁😀🙂😁😎😉\n😁😋😆😄🤗😂😁😄😎😎😅😉😇😎😀😊🙂🤗😋😅\n😂😂😉🙂😇😎😎🤗🙂😂😉😀😁😎😇😅😄😃🙂🤗\n😆😀😄😀😁😁😄🙂😎😋😅😁😁😋😃🤗😀🙂😄🤗\n🤗😃🙂😎😅😅😆🤗😃🙂😃😉😃😀😁😇😋😋😋😇\n🤗😂😅😅😎😄😂😄🙂😄😆😀😀😎😄😇😋😉😁😊\n😎😉🙂😀😎😋😆😄😃🙂😉😊😂🙂🙂😎😀😃😂🤗\n😀😋😂😉😋😊😋🤗😅🤗🤗😄🙂😂😄😉🙂😇😃😁\n😅😀😁🙂😃😁🙂😅😉😋😄😇😆🙂😀😅😆😉🙂😉\n😎😇😆😊😅😉🙂😇😄🤗😃😋😄🤗😀😉😎😉😂😀\n😀😁🤗😊😆😁😋😂😄🙂😇😋😊😆😉😇😄😉😃😂\n😃😄😋😇😇😋😇🙂😄😀😃😃😊🤗😀🙂😇😃😁😀\n🙂🙂😁😂😆😇🤗🙂😅😇😂🤗😇🙂😀😎😉😊😆😋\n😊😅😀😃😄😂🙂😊😇🙂😇😅🙂🤗😄🙂😎🙂😋😃\n😅😇🤗😀😆🙂😉😁🤗😂🙂😃🤗😀😉😊😇😋😂😀\n🙂😀😇😎😅😃😃😊😉😉😂😁🤗🤗🙂🤗🙂😃🤗😀\n😂😎😁🙂😇😎😂😂😀🙂😊😄🤗😄🙂😇😋😆😉🤗\n🤗😅🤗🤗🤗😋😀😆😃😀😉😂🙂🤗🙂😇😁😇😇😇\n😃😆🙂😎🤗🤗😉🙂😅😁🙂😅😋😉🙂🙂🤗😄😁😇\n\n\nHere is the full html page that uses pyscript.\n&lt;!DOCTYPE html&gt;\n&lt;html lang=\"en\"&gt;\n\n    &lt;head&gt;\n        &lt;meta charset=\"UTF-8\"&gt;\n        &lt;title&gt;Happy DSS Hacking&lt;/title&gt;\n        &lt;link rel=\"stylesheet\" href=\"https://pyscript.net/latest/pyscript.css\" /&gt;\n        &lt;script defer src=\"https://pyscript.net/latest/pyscript.js\"&gt;&lt;/script&gt;\n    &lt;/head&gt;\n\n    &lt;body&gt;\n        &lt;py-script&gt;\n            import random\n\n            n = 100\n            emojis = \"🙂😊🙂😀😇😅😃😄😁😂😆😉😋😎🤗\"\n\n            lines = [\"\".join(random.choices(emojis, k=n)) for index in range(n)]\n\n            print(\"\\n\".join(lines))\n        &lt;/py-script&gt;\n    &lt;/body&gt;\n\n&lt;/html&gt;"
   },
   {
-    "objectID": "posts/2024-til/index.html#june",
-    "href": "posts/2024-til/index.html#june",
-    "title": "Today I learned (TIL) · 2024",
+    "objectID": "posts/2025-07-16-claude-ai-coding/index.html",
+    "href": "posts/2025-07-16-claude-ai-coding/index.html",
+    "title": "Claude Sonnet 4 coding agent",
     "section": "",
-    "text": "Use git force push safely (2023) with\ngit push --force-with-lease --force-if-includes"
+    "text": "This week I explored Claude Sonnet 4 and GitHub Copilot’s new Agent Mode. Claude Sonnet 4, recently released by Anthropic, is particularly strong at coding tasks. Agent Mode was added to Copilot and VS Code earlier this year. I was inspired to try them both after reading a recent post that advocates delegating all development tasks to a coding agent."
   },
   {
-    "objectID": "posts/2024-til/index.html#april",
-    "href": "posts/2024-til/index.html#april",
-    "title": "Today I learned (TIL) · 2024",
-    "section": "1. April",
-    "text": "1. April\nFor Python, I’ve configured my OS to prevent pip installations outside of virtual environments by setting the PIP_REQUIRE_VIRTUALENV environment variable. For this configuration export PIP_REQUIRE_VIRTUALENV=\"true\" is set in my .zshrc file. The configuration was inspired by the post On pip isolation."
+    "objectID": "posts/2025-07-16-claude-ai-coding/index.html#what-is-agent-mode",
+    "href": "posts/2025-07-16-claude-ai-coding/index.html#what-is-agent-mode",
+    "title": "Claude Sonnet 4 coding agent",
+    "section": "What Is Agent Mode?",
+    "text": "What Is Agent Mode?\nUntil now, I’ve mainly interacted with LLMs via chat and through Copilot’s inline suggestions in VS Code. Agent Mode is something more: it’s like a true pair programmer. It reads files in your project, executes commands, makes and reviews changes, commits code, and creates pull requests. It supports nearly the full programming workflow autonomously."
   },
   {
-    "objectID": "posts/2024-til/index.html#march",
-    "href": "posts/2024-til/index.html#march",
-    "title": "Today I learned (TIL) · 2024",
-    "section": "17. March",
-    "text": "17. March\nCreating the last post I realized that it is more convenient to work in VS Code with a Jupyter notebook (ipynb) than in a Quarto document (qmd). The notebook enables the use of Jupyter keyboard shortcuts whereas the Quarto document usage is rather static in VS Code.\nThe documents can be converted into the other format with\nquarto convert"
+    "objectID": "posts/2025-07-16-claude-ai-coding/index.html#what-i-tried",
+    "href": "posts/2025-07-16-claude-ai-coding/index.html#what-i-tried",
+    "title": "Claude Sonnet 4 coding agent",
+    "section": "What I Tried",
+    "text": "What I Tried\nI used the Claude coding agent for several tasks—code reviews, feature implementation, and changelog updates—and was impressed across the board.\n\nCode Reviews\nFirst, I asked Claude to review multiple projects. For two current ones, it gave helpful feedback and practical improvement suggestions. For two legacy codebases, Claude’s assessments were insightful: one codebase was maintainable but needed refactoring, while the other was outdated beyond repair—though Claude acknowledged the embedded domain expertise.\n\n\nIssue Resolution\nNext, I asked Claude to fix an open GitHub issue, replacing one package with another offering similar functionality. Claude reviewed the GitHub issue, checked the documentation for both packages, implemented the change, validated it, and refined it after testing. It then created a branch, made the commit, and opened a PR. I only had to supervise and approve command execution. The entire task, from reading the issue to a working PR, was handled autonomously.\n\n\nChangelog Updates\nFinally, I asked Claude to generate and update changelogs for several projects. I provided a template from one project, and Claude analyzed commits, PRs, and issues to generate changelogs for each project, following the structure I shared."
   },
   {
-    "objectID": "posts/2024-til/index.html#march-1",
-    "href": "posts/2024-til/index.html#march-1",
-    "title": "Today I learned (TIL) · 2024",
-    "section": "10. March",
-    "text": "10. March\nRecently, I started using the just command runner and have now used it regularly in several of my Python projects."
+    "objectID": "posts/2025-07-16-claude-ai-coding/index.html#what-didnt-work",
+    "href": "posts/2025-07-16-claude-ai-coding/index.html#what-didnt-work",
+    "title": "Claude Sonnet 4 coding agent",
+    "section": "What Didn’t Work?",
+    "text": "What Didn’t Work?\nIn one code review, Claude overemphasized legacy documentation included in the repo, resulting in an overly critical assessment.\nAdditionally, I realized that the way I phrased my prompt had a significant impact on its interpretation. Once reframed, Claude’s feedback was more balanced."
+  },
+  {
+    "objectID": "posts/2025-07-16-claude-ai-coding/index.html#final-thoughts",
+    "href": "posts/2025-07-16-claude-ai-coding/index.html#final-thoughts",
+    "title": "Claude Sonnet 4 coding agent",
+    "section": "Final Thoughts",
+    "text": "Final Thoughts\nClaude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow."
   },
   {
     "objectID": "posts/2023-til/index.html",
@@ -756,151 +861,88 @@
     "text": "I use patchwork regularly to combine ggplots; see my R template.\nThe recent v1.3 release of patchwork allows adding gt tables.\nTables with short descriptive information are an essential element of my notebooks. So far, I have mainly relied on the default knitr for simple tables and used reactable for larger interactive tables.\nSo here is an example of patchwork that combines a figure and a gt table, using the palmerpenguins data.\n\n\nCode\nlibrary(tidyverse)\nlibrary(patchwork)\nlibrary(gt)\n\nlibrary(palmerpenguins)\n\npg &lt;-\n  penguins %&gt;%\n  group_by(species) |&gt;\n  summarise(\n    n = n(),\n    bill = mean(bill_length_mm, na.rm = TRUE),\n    flipper = mean(flipper_length_mm, na.rm = TRUE)\n  )\n\npl1 &lt;-\n  ggplot(penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = factor(species))) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme(legend.position = \"none\")\n\ngt1 &lt;-\n  gt(pg) |&gt;\n  tab_header(title = \"Length mean (mm)\") |&gt;\n  fmt_number(\n    columns = c(bill, flipper),\n    decimals = 1\n  )\n\npl1 + gt1"
   },
   {
-    "objectID": "posts/2023-11-20-r-httr/index.html",
-    "href": "posts/2023-11-20-r-httr/index.html",
-    "title": "API requests with httr2",
+    "objectID": "posts/2023-06-02-ai-dalle-images/index.html",
+    "href": "posts/2023-06-02-ai-dalle-images/index.html",
+    "title": "AI images with DALL-E",
     "section": "",
-    "text": "httr2 1.0 was recently released. I used it earlier this month in my API explorations to understand what the Python requests equivalent is in R. Python and requests are so convenient that I had not used R yet to access an API.\nI became aware of Semantic Scholar, a database of scientific literature, with a nice API.\nSo here is an exploration of my Semantic Scholar records (ID 51362391) in R with httr2.\nCode\nlibrary(tidyverse)\nlibrary(httr2)\nlibrary(jsonlite)"
+    "text": "AI images with DALL-E\nToday, I became aware of an OpenAI service to generate images — DALL-E.\nThis has worked well and may solve my issue of needing images for blog posts, readme documents, and other content. I like having visual elements in writings and presentations.\nSometimes, images from Wikimedia Commons worked well. It often took some time to find nice images. DALL-E may be a quicker approach to get an image.\nI had to pay for the service but the number of images that can be generated for 15$ seem to be reasonable.\nI have still to twist the art styles to results that I like.\n\nHere are some examples.\n“a man working on a computer – style Pieter Bruegel the Elder”\n\n“a working class man on a computer – leipzig school art style”\n\n“A comic book cover of a superhero working on a computer doing data analysis”\n\n“a man working on a computer – style 3d art”"
   },
   {
-    "objectID": "posts/2023-11-20-r-httr/index.html#api-request",
-    "href": "posts/2023-11-20-r-httr/index.html#api-request",
-    "title": "API requests with httr2",
-    "section": "API request",
-    "text": "API request\nAPI · Fetch paper and author data\n\nauthor_id &lt;- 51362391\n\nurl &lt;-\n  str_glue(\n    \"https://api.semanticscholar.org/graph/v1/author/{author_id}\",\n    \"?fields=name,papers,papers.year,papers.title,papers.citationCount,papers.authors\"\n  )\n\nresp &lt;-\n  request(url) |&gt;\n  req_perform()\n\n\ndt &lt;-\n  resp_body_string(resp) |&gt;\n  fromJSON()\n\nprint(dt[[\"name\"]])\n\n[1] \"Holger Döring\""
-  },
-  {
-    "objectID": "posts/2023-11-20-r-httr/index.html#publications",
-    "href": "posts/2023-11-20-r-httr/index.html#publications",
-    "title": "API requests with httr2",
-    "section": "Publications",
-    "text": "Publications\n\npapers &lt;-\n  dt[[\"papers\"]] |&gt;\n  mutate(\n    id_short = str_sub(paperId, 1, 5),\n    title_short = str_sub(title, 1, 30),\n    authors_n = map_int(authors, \\(.x) nrow(.x))\n  )\n\nNumber of publications at Semantic Scholar\n\nnrow(papers)\n\n[1] 24\n\n\nPublications\n\npapers |&gt;\n  select(id_short, year, `cita.` = citationCount, `auth.` = authors_n, title_short)\n\n\n\n\n\nid_short\nyear\ncita.\nauth.\ntitle_short\n\n\n\n\na9408\n2022\n0\n1\nFormal binary logic, tidal for\n\n\nc229b\n2022\n0\n1\nBeyond the light-barrier -fast\n\n\ne3034\n2022\n0\n1\nOccams Razor-No Dark Matter in\n\n\n37135\n2021\n0\n1\nLorentzian SRT-Transformation\n\n\n84d1f\n2021\n3\n3\nGermany: From Stable Coalition\n\n\n8bd34\n2020\n13\n3\nInstitutional constraints on c\n\n\n1b9e9\n2019\n19\n2\nParty Positions from Wikipedia\n\n\ne9e28\n2019\n73\n2\nParty Facts: A database of pol\n\n\nf93aa\n2019\n0\n1\nGathering and Managing Data on\n\n\n69fe5\n2016\n9\n1\nMapping established democracie\n\n\n4175b\n2015\n31\n2\nIs Proportional Representation\n\n\n85957\n2015\n0\n3\nHow do European democracies co\n\n\na9372\n2015\n35\n2\nRevisiting the left cabinet sh\n\n\n34e81\n2014\n1\n2\nJean-Claude Juncker’s new Euro\n\n\n1273f\n2013\n65\n2\nWho Gets into Government? Coal\n\n\n31eff\n2013\n31\n1\nThe collective action of data\n\n\nc01fd\n2012\n3\n3\nMinisterial Careers and ’The M\n\n\nc4f64\n2011\n0\n2\nWhy are States with Pr More Re\n\n\ne3cbe\n2010\n0\n1\nCollaborative Data Collection\n\n\nf5948\n2009\n0\n1\nPolitical representation in Eu\n\n\n2ebbf\n2008\n38\n2\nElectoral and Mechanical Cause\n\n\nec86a\n2008\n1\n1\nEvaluating Scripting Languages\n\n\n14ab0\n2007\n71\n1\nThe Composition of the College\n\n\n9674d\n2006\n3\n2\nDivided Government European St"
-  },
-  {
-    "objectID": "posts/2023-11-20-r-httr/index.html#authors",
-    "href": "posts/2023-11-20-r-httr/index.html#authors",
-    "title": "API requests with httr2",
-    "section": "Authors",
-    "text": "Authors\nAuthors by paper\n\nauthors &lt;-\n  papers |&gt;\n  select(id_short, year, authors) |&gt;\n  unnest(authors)\n\nauthors\n\n\n\n\n\nid_short\nyear\nauthorId\nname\n\n\n\n\na9408\n2022\n51362391\nHolger Döring\n\n\nc229b\n2022\n51362391\nHolger Döring\n\n\ne3034\n2022\n51362391\nHolger Döring\n\n\n37135\n2021\n51362391\nHolger Döring\n\n\n84d1f\n2021\n94263396\nM. Debus\n\n\n84d1f\n2021\n51362391\nHolger Döring\n\n\n84d1f\n2021\n143708020\nAlejandro Ecker\n\n\n8bd34\n2020\n119358998\nMaria Thürk\n\n\n8bd34\n2020\n145985059\nJohan Hellström\n\n\n8bd34\n2020\n51362391\nHolger Döring\n\n\n1b9e9\n2019\n145315358\nM. Herrmann\n\n\n1b9e9\n2019\n51362391\nHolger Döring\n\n\ne9e28\n2019\n51362391\nHolger Döring\n\n\ne9e28\n2019\n1685592\nSven Regel\n\n\nf93aa\n2019\n51362391\nHolger Döring\n\n\n69fe5\n2016\n51362391\nHolger Döring\n\n\n4175b\n2015\n51362391\nHolger Döring\n\n\n4175b\n2015\n2072035416\nP. Manow\n\n\n85957\n2015\n144008442\nJonathan Bright\n\n\n85957\n2015\n51362391\nHolger Döring\n\n\n85957\n2015\n145474393\nConor Little\n\n\na9372\n2015\n51362391\nHolger Döring\n\n\na9372\n2015\n115016266\nHanna Schwander\n\n\n34e81\n2014\n82184129\nA. Wonka\n\n\n34e81\n2014\n51362391\nHolger Döring\n\n\n1273f\n2013\n51362391\nHolger Döring\n\n\n1273f\n2013\n145985059\nJohan Hellström\n\n\n31eff\n2013\n51362391\nHolger Döring\n\n\nc01fd\n2012\n144008442\nJonathan Bright\n\n\nc01fd\n2012\n51362391\nHolger Döring\n\n\nc01fd\n2012\n145474393\nConor Little\n\n\nc4f64\n2011\n2072035416\nP. Manow\n\n\nc4f64\n2011\n51362391\nHolger Döring\n\n\ne3cbe\n2010\n51362391\nHolger Döring\n\n\nf5948\n2009\n51362391\nHolger Döring\n\n\n2ebbf\n2008\n2072035416\nP. Manow\n\n\n2ebbf\n2008\n51362391\nHolger Döring\n\n\nec86a\n2008\n51362391\nHolger Döring\n\n\n14ab0\n2007\n51362391\nHolger Döring\n\n\n9674d\n2006\n2072035416\nP. Manow\n\n\n9674d\n2006\n51362391\nHolger Döring"
-  },
-  {
-    "objectID": "posts/2024-07-13-r-httr-doi/index.html",
-    "href": "posts/2024-07-13-r-httr-doi/index.html",
-    "title": "DOI reference with httr2",
+    "objectID": "posts/2023-02-17-r-geom-col/index.html",
+    "href": "posts/2023-02-17-r-geom-col/index.html",
+    "title": "Horizontal bar chart",
     "section": "",
-    "text": "DOI reference with httr2\nGet citation references from DOI API with httr2.\n\nlibrary(tidyverse)\nlibrary(httr2)\n\nget_doi_reference &lt;- function(doi) {\n  request(paste0(\"https://doi.org/\", doi)) |&gt;\n    req_headers(\"Accept\" = \"text/x-bibliography\") |&gt;\n    req_perform() |&gt;\n    resp_body_string()\n}\n\nreferences &lt;-\n  tibble(\n    doi = c(\n      \"10.1177/1465116507076430\",\n      \"10.1080/01402382.2013.783347\",\n      \"10.1177/0958928715573481\",\n      \"10.1017/pan.2021.28\"\n    )\n  ) |&gt;\n  mutate(reference = map_chr(doi, get_doi_reference))\n\nreferences\n\n\n\n\n\n\n\n\n\ndoi\nreference\n\n\n\n\n10.1177/1465116507076430\nDöring, H. (2007). The Composition of the College of Commissioners. European Union Politics, 8(2), 207–228. https://doi.org/10.1177/1465116507076430\n\n\n10.1080/01402382.2013.783347\nDöring, H., & Hellström, J. (2013). Who Gets into Government? Coalition Formation in European Democracies. West European Politics, 36(4), 683–703. https://doi.org/10.1080/01402382.2013.783347\n\n\n10.1177/0958928715573481\nDöring, H., & Schwander, H. (2015). Revisiting the left cabinet share: How to measure the partisan profile of governments in welfare state research. Journal of European Social Policy, 25(2), 175–193. https://doi.org/10.1177/0958928715573481\n\n\n10.1017/pan.2021.28\nHerrmann, M., & Döring, H. (2021). Party Positions from Wikipedia Classifications of Party Ideology. Political Analysis, 31(1), 22–41. https://doi.org/10.1017/pan.2021.28"
+    "text": "Horizontal bar chart\nTo have horizontal bar charts ordered by frequency, I have used geom_bar() and coord_flip for a long time.\nI have now learned in an example that this is not necessary.\nHere are a few examples and the code for future references.\n\nlibrary(tidyverse)\n\nmtcars &lt;- as_tibble(datasets::mtcars)\n\n\nggplot(mtcars, aes(x = cyl)) +\n  geom_bar(fill = \"lightgreen\")\n\n\n\n\n\n\n\n\nI used to do some pre-processing to prepare data for the plot.\n\npl_dt &lt;-\n  mtcars |&gt;\n  mutate(cyl = fct_infreq(factor(cyl)) |&gt; fct_rev())\n\nFor the figure, I used coord_flip.\n\nggplot(pl_dt, aes(cyl)) +\n  geom_bar(fill = \"grey\") +\n  coord_flip()\n\n\n\n\n\n\n\n\nThat was not necessary, as I have learned now.\n\nggplot(pl_dt, aes(y = cyl)) +\n  geom_bar(fill = \"lightblue\")\n\n\n\n\n\n\n\n\nHere is an alternative approach with geom_col().\n\npl_dt &lt;-\n  mtcars |&gt;\n  count(cyl) |&gt;\n  mutate(cyl = fct_reorder(factor(cyl), n))\n\nggplot(pl_dt, aes(x = n, y = cyl)) +\n  geom_col(fill = \"lightblue\")"
   },
   {
-    "objectID": "posts/2023-08-14-r-file-hash/index.html",
-    "href": "posts/2023-08-14-r-file-hash/index.html",
-    "title": "File hashing",
+    "objectID": "posts/2023-02-26-quarto-experience/index.html",
+    "href": "posts/2023-02-26-quarto-experience/index.html",
+    "title": "A few days of Quarto",
     "section": "",
-    "text": "File hashing\nTo increase the transparency of my work, I was interested in file hashing. It allows to assign a unique value to a file. Such a value is calculated with a defined algorithm.\nIn R, the rlang library provides the hash_file() function and uses the XXH128 hash algorithm to generate a 128-bit hash.\nThis can be used to uniquely identify a data file. For reproducible research, you can add hash values for the datafiles used in a project to uniquely identify them.\nHere, I have created two files for data sets from the datasets library and calculate the hash values of these files.\n\n\nCode\nlibrary(readr)\n\nwrite_csv(datasets::iris, \"iris.csv\")\nwrite_csv(datasets::mtcars, \"mtcars.csv\")\n\n\n\nlibrary(tidyverse)\n\ntibble(files = fs::dir_ls(glob = \"*.csv\")) |&gt;\n  mutate(hash = rlang::hash_file(files))\n\n\n\n\n\nfiles\nhash\n\n\n\n\niris.csv\ndbdc1846dff7fba30a88d5b23e15ea80\n\n\nmtcars.csv\n1d350737ac40dc6fb6ae8f5ad616fc4e"
+    "text": "So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the local Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nRendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting #| python.reticulate: false in a Python cell solved the issue.\nMany of my Python struggles in Quarto may have been related to the reticulate R package."
   },
   {
-    "objectID": "posts/2023-02-18-py-jupyter/index.html",
-    "href": "posts/2023-02-18-py-jupyter/index.html",
-    "title": "Jupyter notebooks with Quarto",
+    "objectID": "posts/2023-02-26-quarto-experience/index.html#quarto",
+    "href": "posts/2023-02-26-quarto-experience/index.html#quarto",
+    "title": "A few days of Quarto",
     "section": "",
-    "text": "Jupyter notebooks with Quarto\nJupyter notebooks can be rendered with Quarto.\nIn a first step, I create a simple notebook with the code from the Quarto documentation on Jupyter Lab. Secondly, I copied the notebook and added a Quarto header in a Raw first cell. Finally, I converted the original notebook into a Quarto document with quarto convert.\nI rendered all versions of the Jupyter notebook with Quarto and here are the results:\n\nJupyter notebook\nnotebook with Quarto first cell\nnotebook converted to Quarto document\n\nI also learned that you have to pass an option when rendering ipynb-files – quarto render notebook.ipynb --execute. The assumption is that a notebook was already run and that the results shall be rendered.\nThis all worked well for me and it solved a major issue I had with Jupyter notebooks. With R Markdown I really liked that you could convert a notebook into static HTML. To my knowledge, this was not possible with Jupyter notebooks. They could be exported to HTML in Jupyter Lab but not rendered into HTML.\n\n\n\nJupyter Lab"
+    "text": "So I have had my first experience with creating dynamic documents in Quarto. It has been a pleasant experience. I could use some of my RMarkdown und knitr skills and like that it is a program independent of R and RStudio. Working in VS Code to create a blog on Things I Learned worked well.\nOnly working with Python was really challenging. For some time several attempts to find the local Python version in the env folder did not work. quarto check found the respective Python version but it was not used when I rendered the document. At the end it was simply the header option jupyter: python3 in the qmd-document that did the trick.\nRendering a document with Python and R cells remained a challenge. Again, it was an option that was missing. Setting #| python.reticulate: false in a Python cell solved the issue.\nMany of my Python struggles in Quarto may have been related to the reticulate R package."
   },
   {
-    "objectID": "posts/2024-08-31-uv/index.html",
-    "href": "posts/2024-08-31-uv/index.html",
-    "title": "uv instead of venv/pip",
+    "objectID": "posts/2023-02-26-quarto-experience/index.html#docker",
+    "href": "posts/2023-02-26-quarto-experience/index.html#docker",
+    "title": "A few days of Quarto",
+    "section": "Docker",
+    "text": "Docker\nTo get there I also created a Dockerfile to have an OS independent version of Quarto. That was another challenge until I first found a Rocker configuration that worked with Python. It is a whopping 4.5 GB image but includes Latex to create pdf-files.\nLater I did some more experimenting with Docker and created a Jupyter Lab Docker image that is also quite large with almost 5 GB. In addition, I created a smaller image that includes only a minimal Python and Jupyter Lab. At least this one is a little smaller than 1 GB.\nI’ll try to work with the local Quarto versions mainly but it is good to have OS independent Docker versions as well."
+  },
+  {
+    "objectID": "posts/2023-02-26-quarto-experience/index.html#python-in-quarto",
+    "href": "posts/2023-02-26-quarto-experience/index.html#python-in-quarto",
+    "title": "A few days of Quarto",
+    "section": "Python in Quarto",
+    "text": "Python in Quarto\nHere is a Quarto Guide demonstration of a line plot on a polar axis, see Figure 1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'}\n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html",
+    "href": "posts/2023-11-23-py-jupyter-lite/index.html",
+    "title": "JupyterLite",
     "section": "",
-    "text": "uv recently released its 0.3 version.\nuv is a package and project manager that potentially allows me to fully replace my venv/pip/pip-tools workflow and the use of pyenv as well as pipx. It provides a single tool, is significantly faster, and includes a complete project manager.\nThe 0.3 release added many new features and comprehensive documentation. Version 0.4, which revised the project workflow, has been released.\nPackage management has been challenging in Python and has often taken me a lot of time. uv has the potential to harmonize the approaches and tools I have used with a single tool.\nHere are the uv commands relevant to me, a collection inspired by this post."
+    "text": "I listened to the the recent Talk Python To Me episode Celebrating JupyterLab 4 and Jupyter 7 Releases and became aware of JupyterLite which I had not used before.\nI was impressed to see that you can now run JupyterLab in a browser.\nMany shortcuts work and you can activate the command palette with Shift + Cmd/Ctrl + C\nFor me, the examples in the pyodide folder were helpful and demonstrated how much Python data analysis can be already done with this fully web based version of Jupyter.\nSo now I can run Python in an interactive environment on any computer with JupyterLite. I may use Codespaces or Google Colab in a browser more often because they provide the standard Python environment. For small snippets and examples I will also use JupyterLite."
   },
   {
-    "objectID": "posts/2024-08-31-uv/index.html#installation",
-    "href": "posts/2024-08-31-uv/index.html#installation",
-    "title": "uv instead of venv/pip",
-    "section": "Installation",
-    "text": "Installation\nIt is recommended to install uv globally instead of using pip install uv."
+    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#visualization-example",
+    "href": "posts/2023-11-23-py-jupyter-lite/index.html#visualization-example",
+    "title": "JupyterLite",
+    "section": "Visualization example",
+    "text": "Visualization example\nHere is an example form the altair.ipynb notebook in the pyodide folder. It runs here but also in the JupyterLite, purely browser based, version.\n\nimport altair as alt\nimport pandas as pd\n\nsource = pd.DataFrame({\n    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],\n    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]\n})\n\nalt.Chart(source).mark_bar().encode(\n    x='a',\n    y='b'\n)"
   },
   {
-    "objectID": "posts/2024-08-31-uv/index.html#uv-workflow",
-    "href": "posts/2024-08-31-uv/index.html#uv-workflow",
-    "title": "uv instead of venv/pip",
-    "section": "uv workflow",
-    "text": "uv workflow\nSpecify Python dependencies in a pyproject.toml (see Projects below).\nuv add ruff\n\nuv run ruff check\n\nuv lock --upgrade\nuv sync\n\nsource .venv/bin/activate\nwhich python"
+    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#http-requests",
+    "href": "posts/2023-11-23-py-jupyter-lite/index.html#http-requests",
+    "title": "JupyterLite",
+    "section": "http requests",
+    "text": "http requests\nI played around a little with making http requests. You can install the requests package but the http requests don’t work. You have to use the js module provided by pyodide instead.\nHere is the notebook I wrote.\nnetwork-requests.ipynb.txt\nI added a txt extension because I don’t want the notebook to be rendered in Quarto. Save it, remove the txt extension, drag and drop it into the JupyterLite browser window and run it."
   },
   {
-    "objectID": "posts/2024-08-31-uv/index.html#projects",
-    "href": "posts/2024-08-31-uv/index.html#projects",
-    "title": "uv instead of venv/pip",
-    "section": "Projects",
-    "text": "Projects\nCreate a project with a README.md, a pyproject.toml, and an example script.\nuv init\nuv run hello.py\nYou can also specify a project name to create the project in a new folder."
+    "objectID": "posts/2023-11-23-py-jupyter-lite/index.html#pip-with-micropip",
+    "href": "posts/2023-11-23-py-jupyter-lite/index.html#pip-with-micropip",
+    "title": "JupyterLite",
+    "section": "pip with micropip",
+    "text": "pip with micropip\nYou can install packages with pip. In JupyterLite, it is based on micropip.\nThe recommended way to install packages is:\n%pip install -q snowballstemmer\nSo far, I have been reluctant to use pip with a magic command but may use it more regularly in the future.\nHere is a Python version to use micropip.\nimport micropip\n\nif \"snowballstemmer\" not in micropip.list():\n    await micropip.install(\"snowballstemmer\")"
   },
   {
-    "objectID": "posts/2024-08-31-uv/index.html#python-versions",
-    "href": "posts/2024-08-31-uv/index.html#python-versions",
-    "title": "uv instead of venv/pip",
-    "section": "Python versions",
-    "text": "Python versions\nuv can install a specific Python version from python-build-standalone.\nThe Python version in a pyproject.toml or a .python-version file is used.\nThis allows me to replace pyenv, which I have used to manage different Python versions.\nuv venv --python 3.11\n\nuv python list\nuv python install --reinstall 3.10 3.11\nThere may be minor differences with other Python builds."
-  },
-  {
-    "objectID": "posts/2024-08-31-uv/index.html#scripts",
-    "href": "posts/2024-08-31-uv/index.html#scripts",
-    "title": "uv instead of venv/pip",
-    "section": "Scripts",
-    "text": "Scripts\nYou can specify dependencies as embedded metadata in a script. uv will run the script and install the dependencies.\necho 'import urllib3; print(urllib3.request(\"GET\", \"http://httpbin.org/robots.txt\").data)' &gt; robots.py\n\nuv add --script robots.py urllib3\n\nuv run robots.py"
-  },
-  {
-    "objectID": "posts/2024-08-31-uv/index.html#python-tools",
-    "href": "posts/2024-08-31-uv/index.html#python-tools",
-    "title": "uv instead of venv/pip",
-    "section": "Python tools",
-    "text": "Python tools\nYou can run and install Python tools with uvx.\nIt can be used as a replacement for pipx.\nuvx ruff clean\n\nuv tool install ruff\nls -l $(which ruff)\n\nuv tool list\nuv tool upgrade --all"
-  },
-  {
-    "objectID": "posts/2024-08-31-uv/index.html#venvpip-workflow",
-    "href": "posts/2024-08-31-uv/index.html#venvpip-workflow",
-    "title": "uv instead of venv/pip",
-    "section": "venv/pip workflow",
-    "text": "venv/pip workflow\nMy goal is to use the uv workflow, but here are some examples of using uv as as venv/pip/pip-tools replacement with the respective parameters.\nuv venv\nuv pip install urllib3\nsource .venv/bin/activate\nwhich python\n\necho \"urllib3\" &gt; requirements.in\nuv pip compile -U requirements.in -o requirements.txt\nuv pip sync requirements.txt"
-  },
-  {
-    "objectID": "posts/2024-08-31-uv/index.html#clean-up",
-    "href": "posts/2024-08-31-uv/index.html#clean-up",
-    "title": "uv instead of venv/pip",
-    "section": "Clean-up",
-    "text": "Clean-up\nThe uv cache folder can get large quickly, so it is helpful to clean it up regularly\nuv cache prune\n\nuv cache clean\n\ndu -h -d 1 $(uv cache dir)\nKeep in mind that many .venv folders are created with a uv workflow, so you may want to remove them at some point.\nfind . -type d -name \".venv\" -print0 | xargs -0 du -sh"
-  },
-  {
-    "objectID": "posts/2025-07-16-post/index.html",
-    "href": "posts/2025-07-16-post/index.html",
-    "title": "Claude Sonnet 4 coding agent",
+    "objectID": "posts/2024-07-16-r-bar-chart/index.html",
+    "href": "posts/2024-07-16-r-bar-chart/index.html",
+    "title": "Bar charts with ggplot",
     "section": "",
-    "text": "This week I explored Claude Sonnet 4 and GitHub Copilot’s new Agent Mode. Claude Sonnet 4, recently released by Anthropic, is particularly strong at coding tasks. Agent Mode was added to Copilot and VS Code earlier this year. I was inspired to try them both after reading a recent post that advocates delegating all development tasks to a coding agent."
+    "text": "Bar charts with ggplot\nHorizontal bar charts are a regular part of my work with graphs in R. Nevertheless, I have to look up the details regularly, so here is another example.\nThe graph visualizes the disproportionality of the results in the recent UK election 2024.\nIt uses forcats to order categories, here the parties, by another value in the dataset, here the vote share.\nThe color codes of the parties are based on the BBC election page. I just used inspect on the internet browser to find the respective color code used on the page.\nFinding the details for the parameters to customize the legend and the axes in ggplot took some time. GitHub Copilot, my new AI pair programmer, was very helpful. In fact, I use it a lot now to get examples for the use of various tidyverse functions, that I used to look up regularly.\n\n\nCode\nlibrary(tidyverse)\nlibrary(patchwork)\n\nggplot2::theme_set(theme_minimal())\n\n\nelec_raw &lt;- read_csv(\"uk-election-2024_bbc.csv\")\n\npl_dt &lt;-\n  elec_raw |&gt;\n  mutate(\n    seat_share = round(seats / 650 * 100, 1), # total seats UK Parliament: 650\n    party = fct_reorder(party, vote_share)\n  ) |&gt;\n  filter(vote_share &gt;= 2.5)\n\nparty_colors &lt;-\n  c(\n    \"Lab\" = \"#E91D0E\",\n    \"Con\" = \"#0575C9\",\n    \"R-UK\" = \"#12b6cf\",\n    \"Lib\" = \"#FF9A02\",\n    \"Green\" = \"#99CC33\",\n    \"SNP\" = \"#0AD1E0\"\n  )\n\npl1 &lt;-\n  ggplot(pl_dt, aes(x = vote_share, y = party, fill = party)) +\n  geom_col() +\n  xlim(0, 60) +\n  scale_fill_manual(values = party_colors) +\n  labs(y = NULL) +\n  theme(legend.position = \"none\")\n\npl2 &lt;-\n  ggplot(pl_dt, aes(x = seat_share, y = party, fill = party)) +\n  geom_col() +\n  scale_fill_manual(values = party_colors) +\n  labs(y = NULL) +\n  theme(axis.text.y = element_blank(), legend.position = \"none\")\n\npl1 + pl2 +\n  plot_annotation(\n    title = \"UK election 2024\",\n    caption = \"Source: BBC\"\n  )\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhoto by Kristina Gadeikyte on Unsplash"
   },
   {
-    "objectID": "posts/2025-07-16-post/index.html#what-is-agent-mode",
-    "href": "posts/2025-07-16-post/index.html#what-is-agent-mode",
-    "title": "Claude Sonnet 4 coding agent",
-    "section": "What Is Agent Mode?",
-    "text": "What Is Agent Mode?\nUntil now, I’ve mainly interacted with LLMs via chat and through Copilot’s inline suggestions in VS Code. Agent Mode is something more: it’s like a true pair programmer. It reads files in your project, executes commands, makes and reviews changes, commits code, and creates pull requests. It supports nearly the full programming workflow autonomously."
-  },
-  {
-    "objectID": "posts/2025-07-16-post/index.html#what-i-tried",
-    "href": "posts/2025-07-16-post/index.html#what-i-tried",
-    "title": "Claude Sonnet 4 coding agent",
-    "section": "What I Tried",
-    "text": "What I Tried\nI used the Claude coding agent for several tasks—code reviews, feature implementation, and changelog updates—and was impressed across the board.\n\nCode Reviews\nFirst, I asked Claude to review multiple projects. For two current ones, it gave helpful feedback and practical improvement suggestions. For two legacy codebases, Claude’s assessments were insightful: one codebase was maintainable but needed refactoring, while the other was outdated beyond repair—though Claude acknowledged the embedded domain expertise.\n\n\nIssue Resolution\nNext, I asked Claude to fix an open GitHub issue, replacing one package with another offering similar functionality. Claude reviewed the GitHub issue, checked the documentation for both packages, implemented the change, validated it, and refined it after testing. It then created a branch, made the commit, and opened a PR. I only had to supervise and approve command execution. The entire task, from reading the issue to a working PR, was handled autonomously.\n\n\nChangelog Updates\nFinally, I asked Claude to generate and update changelogs for several projects. I provided a template from one project, and Claude analyzed commits, PRs, and issues to generate changelogs for each project, following the structure I shared."
-  },
-  {
-    "objectID": "posts/2025-07-16-post/index.html#what-didnt-work",
-    "href": "posts/2025-07-16-post/index.html#what-didnt-work",
-    "title": "Claude Sonnet 4 coding agent",
-    "section": "What Didn’t Work?",
-    "text": "What Didn’t Work?\nIn one code review, Claude overemphasized legacy documentation included in the repo, resulting in an overly critical assessment.\nAdditionally, I realized that the way I phrased my prompt had a significant impact on its interpretation. Once reframed, Claude’s feedback was more balanced."
-  },
-  {
-    "objectID": "posts/2025-07-16-post/index.html#final-thoughts",
-    "href": "posts/2025-07-16-post/index.html#final-thoughts",
-    "title": "Claude Sonnet 4 coding agent",
-    "section": "Final Thoughts",
-    "text": "Final Thoughts\nClaude Sonnet 4 in VS Code Copilot agent mode impressed me. It felt less like a tool and more like a colleague. I also tested GPT-4 in a similar setup, but Claude was noticeably more capable. To me, these tools signal a real shift in how we write and maintain code—one where LLMs become integral to the development workflow."
+    "objectID": "posts/2023-06-12-py-nbdev-clean/index.html",
+    "href": "posts/2023-06-12-py-nbdev-clean/index.html",
+    "title": "Jupyter notebooks in Git",
+    "section": "",
+    "text": "Jupyter notebooks in Git\nWorking with Jupyter notebooks in Git repositories has always caused some struggles for me with the Git commit history. Jupyter notebooks use the json-format and include some metadata such as the number of times a notebook has been run. So far, I have just cleared the output restarted and run notebooks once to have somewhat clean metadata. This has not always worked and let to some slightly noisy git commits.\nNow, I have tried a solution that I remembered when I wanted to commit a Jupyter notebook and run into noisy git diffs again. nbdev_clean removes cell execution related metadata from a notebook.\nnbdev_clean --fname . cleans all Juypter notebooks in a repository. I run it on this learning diary Git repository to clean the two notebooks in the snippets folder. I also used it in the project that initially caused me to look into nbdev.\nFinally, i used Codespaces to quickly create minimal, reproducible examples of git diffs without and with nbdev_clean. Again, Codespaces are really nice."
   },
   {
     "objectID": "posts/2023-11-17-py-python-pizza/index.html",
@@ -1019,6 +1061,6 @@
     "href": "index.html",
     "title": "Learning",
     "section": "",
-    "text": "Today I learned (TIL) · 2025\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nDec 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nClaude Sonnet 4 coding agent\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nColor Chart page with AI\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJan 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nhttp requests with urllib3\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPublic broadcasting Germany\n\n\n\nR\n\nggplot\n\ngeo\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nArrange plots with tables\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nuv instead of venv/pip\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nAug 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThousands categories\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nJul 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRound to first two digits\n\n\n\nR\n\nAI\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSelect map region in R\n\n\n\nR\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 17, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBar charts with ggplot\n\n\n\nR\n\nggplot\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in R\n\n\n\nR\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nDOI reference with httr2\n\n\n\nR\n\nAPI\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2024\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\npip install in cell\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nR in Docker and Codespaces\n\n\n\nR\n\ncloud\n\nDocker\n\npackaging\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRequests in JupyterLite\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nMar 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPython f-strings\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2023\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\nR\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\nR\n\npackaging\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\nDocker\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\nR\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\nR\n\npackaging\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\nR\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\nR\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\nR\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\ncloud\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\nPython\n\nAI\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\nPython\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\nR\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\nR\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\nR\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\nPython\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\nDocker\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\nPython\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\nR\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\nNo matching items"
+    "text": "Farbtafeln AI code review\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJan 4, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2025\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nDec 23, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nClaude Sonnet 4 coding agent\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nColor Chart page with AI\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJan 5, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nhttp requests with urllib3\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPublic broadcasting Germany\n\n\n\nR\n\nggplot\n\ngeo\n\n\n\n\n\n\n\n\n\nOct 25, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nArrange plots with tables\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nSep 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nuv instead of venv/pip\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nAug 31, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nThousands categories\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nJul 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRound to first two digits\n\n\n\nR\n\nAI\n\n\n\n\n\n\n\n\n\nJul 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSelect map region in R\n\n\n\nR\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 17, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nBar charts with ggplot\n\n\n\nR\n\nggplot\n\nAI\n\n\n\n\n\n\n\n\n\nJul 16, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in R\n\n\n\nR\n\ngeo\n\n\n\n\n\n\n\n\n\nJul 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nDOI reference with httr2\n\n\n\nR\n\nAPI\n\n\n\n\n\n\n\n\n\nJul 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2024\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\npip install in cell\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nApr 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nR in Docker and Codespaces\n\n\n\nR\n\ncloud\n\nDocker\n\npackaging\n\n\n\n\n\n\n\n\n\nMar 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nRequests in JupyterLite\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nMar 21, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nPython f-strings\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nToday I learned (TIL) · 2023\n\n\n\nTIL yearly\n\n\n\n\n\n\n\n\n\nNov 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\niPython display\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyterLite\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAPI requests with httr2\n\n\n\nR\n\nAPI\n\n\n\n\n\n\n\n\n\nNov 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython Pizza Hamburg\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nNov 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\npyproject.toml metadata and dependencies\n\n\n\nPython\n\npackaging\n\n\n\n\n\n\n\n\n\nNov 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nZenodo API\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGet DOI metadata\n\n\n\nPython\n\nAPI\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR packages with pak\n\n\n\nR\n\npackaging\n\n\n\n\n\n\n\n\n\nOct 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto version in Docker\n\n\n\nDocker\n\nQuarto\n\n\n\n\n\n\n\n\n\nAug 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFile hashing\n\n\n\nR\n\n\n\n\n\n\n\n\n\nAug 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr join_by() argument\n\n\n\nR\n\ntidyverse\n\n\n\n\n\n\n\n\n\nAug 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nScreenshots with Playwright\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJul 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPackage versions with renv\n\n\n\nR\n\npackaging\n\n\n\n\n\n\n\n\n\nJul 29, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nFirst pull request accepted · 😊\n\n\n\nR\n\ngit\n\n\n\n\n\n\n\n\n\nJul 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\ndplyr programming\n\n\n\nR\n\ntidyverse\n\n\n\n\n\n\n\n\n\nJun 30, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nstring interpolation with str_glue()\n\n\n\nR\n\n\n\n\n\n\n\n\n\nJun 24, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nConditional R cells\n\n\n\nR\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGit rebase interactive\n\n\n\ngit\n\n\n\n\n\n\n\n\n\nJun 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks in Git\n\n\n\nPython\n\n\n\n\n\n\n\n\n\nJun 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Codespaces\n\n\n\ncloud\n\nPython\n\n\n\n\n\n\n\n\n\nJun 4, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGitHub Pages\n\n\n\nQuarto\n\n\n\n\n\n\n\n\n\nJun 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nAI images with DALL-E\n\n\n\nAI\n\n\n\n\n\n\n\n\n\nJun 2, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia, Python, ChatGPT\n\n\n\nPython\n\nAI\n\ngeo\n\n\n\n\n\n\n\n\n\nMay 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nGeocoding in Python\n\n\n\nPython\n\ngeo\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDataverse URLs\n\n\n\nR\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPosit Cloud\n\n\n\nR\n\ncloud\n\n\n\n\n\n\n\n\n\nApr 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nR coding with ChatGPT\n\n\n\nR\n\nAI\n\n\n\n\n\n\n\n\n\nApr 23, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nWebR (WebAssembly)\n\n\n\nR\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPyScript (WebAssembly)\n\n\n\nPython\n\ncloud\n\n\n\n\n\n\n\n\n\nMar 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nA few days of Quarto\n\n\n\nDocker\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nPython visualization with Altair\n\n\n\nPython\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHello Jupyter\n\n\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nJupyter notebooks with Quarto\n\n\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nHorizontal bar chart\n\n\n\nR\n\nggplot\n\n\n\n\n\n\n\n\n\nFeb 17, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nThings I learned: A new TIL\n\n\n\nR\n\nPython\n\nQuarto\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\n\n\n\nNo matching items"
   }
 ]
