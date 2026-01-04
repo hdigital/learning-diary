@@ -26,6 +26,7 @@ lint:
   Rscript -e "styler::style_dir(exclude_dirs = c('.venv')); lintr::lint_dir()"
   uv run ruff format .
   uv run ruff check --fix .
+  uv run typos --write-changes .
   uv run pre-commit run --all-files
 
 # create new post
