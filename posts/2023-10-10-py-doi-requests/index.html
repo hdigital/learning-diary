@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c9ce1c6c3778b1e6e1f293e57c34e94b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="doi-api-access">DOI API access</h2>
 <p>I was interested in getting the metadata for a DOI without using a package in Python or R. My goal was to get a better understanding of the APIs that are available to access DOI metadata.</p>
 <p>Here is an example with a request for my first peer-reviewed publication.</p>
-<div id="358886f3" class="cell" data-execution_count="1">
+<div id="53e3261f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>doi_url <span class="op">=</span> <span class="st">"https://doi.org/10.1177/1465116507076430"</span></span>
@@ -237,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Schema.org in JSON-LD // <code>application/vnd.schemaorg.ld+json</code> (only DataCite)</li>
 </ul>
 <p>It is actually nice to put a request into a function. I start with a simple example.</p>
-<div id="601357ef" class="cell" data-execution_count="2">
+<div id="58238e09" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_doi_bib(doi):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return a bibliography for a given DOI."""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To get the different formats I am interested in, I can rewrite the function.</p>
-<div id="4fd4c78e" class="cell" data-execution_count="3">
+<div id="86da10ab" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -304,7 +304,7 @@ No acceptable resource available.
 <h2 class="anchored" data-anchor-id="linked-data-json-ld">Linked data json-ld</h2>
 <p><em>json-ld</em> is only available for content registered with <a href="https://datacite.org/">DataCite</a>.</p>
 <p>A DOI for an article does not return <em>json-ld</em> metadata.</p>
-<div id="d9c01259" class="cell" data-execution_count="4">
+<div id="241cc574" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>doi_content <span class="op">=</span> get_doi_data(doi, <span class="st">"json-ld"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>doi_content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -312,7 +312,7 @@ No acceptable resource available.
 <pre><code>&lt;Response [406]&gt;</code></pre>
 </div>
 </div>
-<div id="31cfd8bd" class="cell" data-execution_count="5">
+<div id="8e2dc3d8" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>doi_content.text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'No acceptable resource available.'</code></pre>
@@ -320,7 +320,7 @@ No acceptable resource available.
 </div>
 <hr>
 <p>A DOI for a dataset returns <em>json-ld</em> metadata.</p>
-<div id="52abca4e" class="cell" data-execution_count="6">
+<div id="eb1d0119" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>doi_content <span class="op">=</span> get_doi_data(<span class="st">"10.7910/DVN/BUWAAF"</span>, <span class="st">"json-ld"</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>doi_content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -328,13 +328,13 @@ No acceptable resource available.
 <pre><code>&lt;Response [200]&gt;</code></pre>
 </div>
 </div>
-<div id="d4365f50" class="cell" data-execution_count="7">
+<div id="274b8831" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>doi_content.text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>'{\n  "@context": "http://schema.org",\n  "@type": "Dataset",\n  "@id": "https://doi.org/10.7910/dvn/buwaaf",\n  "url": "https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/BUWAAF",\n  "name": "Party Facts – Version 2022",\n  "author": [\n    {\n      "name": "Paul Bederke",\n      "givenName": "Paul",\n      "familyName": "Bederke",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "University of Konstanz"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0001-7555-8656"\n    },\n    {\n      "name": "Holger Döring",\n      "givenName": "Holger",\n      "familyName": "Döring",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "GESIS – Leibniz Institute for the Social Sciences"\n      },\n      "@type": "Person",\n      "@id": "https://orcid.org/0000-0002-6616-8805"\n    },\n    {\n      "name": "Sven Regel",\n      "givenName": "Sven",\n      "familyName": "Regel",\n      "affiliation": {\n        "@type": "Organization",\n        "name": "WZB Berlin Social Science Center"\n      },\n      "@type": "Person"\n    }\n  ],\n  "editor": {\n    "name": "Paul Bederke",\n    "givenName": "Paul",\n    "familyName": "Bederke",\n    "affiliation": {\n      "@type": "Organization",\n      "name": "University of Konstanz"\n    },\n    "contributorType": "ContactPerson",\n    "@type": "Person"\n  },\n  "description": "Party Facts links datasets on political parties",\n  "license": [\n    "info:eu-repo/semantics/openAccess",\n    "https://creativecommons.org/publicdomain/zero/1.0/legalcode"\n  ],\n  "version": "1.0",\n  "keywords": "Social Sciences",\n  "contentSize": [\n    "8063454",\n    "1430994",\n    "1619721",\n    "21778",\n    "9673",\n    "8747276"\n  ],\n  "encodingFormat": [\n    "application/zip",\n    "text/html",\n    "text/tab-separated-values",\n    "text/tab-separated-values",\n    "text/tab-separated-values",\n    "text/csv"\n  ],\n  "datePublished": "2022",\n  "dateModified": "2022-12-16",\n  "@reverse": {\n    "isBasedOn": {\n      "@id": "https://doi.org/10.1177/1354068818820671",\n      "@type": "ScholarlyArticle"\n    }\n  },\n  "schemaVersion": "http://datacite.org/schema/kernel-4",\n  "publisher": {\n    "@type": "Organization",\n    "name": "Harvard Dataverse"\n  },\n  "provider": {\n    "@type": "Organization",\n    "name": "datacite"\n  }\n}'</code></pre>
 </div>
 </div>
-<div id="b4ac70de" class="cell" data-execution_count="8">
+<div id="d24d1a97" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>doi_content.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>{'@context': 'http://schema.org',
@@ -398,7 +398,7 @@ No acceptable resource available.
 <p>“Content negotiated requests to doi.org that ask for a content type which isn’t”text/html” will be redirected to a metadata service hosted by the DOI’s registration agency. Crossref, DataCite and mEDRA support content negotiated DOIs via their respective resolvers.”</p>
 </blockquote>
 <p>However, it seems that the content is returned by <em>doi.org</em>.</p>
-<div id="631f9897" class="cell" data-execution_count="9">
+<div id="8a1a59b2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> request_history <span class="kw">in</span> doi_content.history:</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(request_history.status_code, request_history.url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -406,7 +406,7 @@ No acceptable resource available.
 </div>
 </div>
 <p>A request to <strong>http</strong>://doi.org is redirected to <strong>https</strong>://doi.org, but there is no further redirect to a DOI registration agency.</p>
-<div id="0daf3a75" class="cell" data-execution_count="10">
+<div id="8825d806" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>doi_url <span class="op">=</span> <span class="ss">f"http://doi.org/</span><span class="sc">{</span>doi<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">"accept"</span>: <span class="st">"text/x-bibliography"</span>}</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>

@@ -10,7 +10,7 @@
 <atom:link href="https://hdigital.github.io/learning-diary/index.xml" rel="self" type="application/rss+xml"/>
 <description>Things I learned</description>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Sun, 04 Jan 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 03 Jan 2026 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Farbtafeln AI code review</title>
   <link>https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/</link>
@@ -21,57 +21,72 @@
 
 
 <p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Code review and updates · 🤖🔧</p>
-<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored AI as a code reviewer rather than just a generator, with human guidance directing the process.</p>
+<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
+<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored using AI as a code reviewer rather than just a code generator, with human guidance directing the process.</p>
 <section id="code-review" class="level2">
-<h2 class="anchored" data-anchor-id="code-review">Code Review · 🔍</h2>
+<h2 class="anchored" data-anchor-id="code-review">Code review · 🔍</h2>
 <p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
-<p><strong>Critical:</strong></p>
+<p><strong>Critical issues:</strong></p>
 <ul>
-<li>Color shuffle only shuffled rows as units, not individual colors across the grid</li>
-<li>p5.js drawing continuously at 60fps despite static content</li>
-<li>Outdated p5.js version (1.11.2)</li>
+<li>The color shuffle only shuffled rows as units, not individual colors across the grid.</li>
+<li>p5.js was drawing continuously at 60fps despite static content.</li>
+<li>The p5.js version (1.11.2) was outdated.</li>
 </ul>
-<p><strong>Best Practices:</strong></p>
+<p><strong>Best practice improvements:</strong></p>
 <ul>
-<li>Missing security attributes on external link</li>
-<li>Fixed 600px canvas not responsive</li>
-<li>No window resize handler</li>
+<li>The external link was missing security attributes.</li>
+<li>The canvas had a fixed 600px width and wasn’t responsive.</li>
+<li>There was no window resize handler.</li>
 </ul>
 </section>
 <section id="the-update-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-update-process">The Update Process · 🛠️</h2>
+<h2 class="anchored" data-anchor-id="the-update-process">The update process · 🛠️</h2>
 <section id="planning-and-clarification" class="level3">
-<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and Clarification</h3>
-<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve row structure. Clarifying intent upfront avoided implementation assumptions.</p>
+<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and clarification</h3>
+<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve the row structure. Clarifying the intent upfront avoided implementation assumptions.</p>
 </section>
 <section id="implementation-iterations" class="level3">
-<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation Iterations</h3>
-<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out the simpler approach: flatten colors, shuffle them, read sequentially with an index. Much cleaner.</p>
+<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation iterations</h3>
+<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out a simpler approach: flatten colors, shuffle them, and read sequentially with an index.</p>
 </section>
-<section id="finding-p5.js-v2" class="level3">
-<h3 class="anchored" data-anchor-id="finding-p5.js-v2">Finding p5.js v2</h3>
-<p>Claude found v2.0.5 on cdnjs, but I noted GitHub showed v2.1.2. cdnjs lagged behind—jsdelivr had the latest. Lesson: check multiple CDN sources.</p>
+<section id="finding-p5.js-version-2" class="level3">
+<h3 class="anchored" data-anchor-id="finding-p5.js-version-2">Finding p5.js version 2</h3>
+<p>Claude found version 2.0.5 on cdnjs, but I noted that GitHub showed version 2.1.2. The cdnjs repository lagged behind—jsdelivr had the latest version. Lesson learned: check multiple CDN sources.</p>
 </section>
-<section id="testing" class="level3">
-<h3 class="anchored" data-anchor-id="testing">Testing</h3>
-<p>At my suggestion, Claude created verification scripts checking CDN availability, p5.js functions, shuffle algorithm, HTML structure, and v2 API compatibility. All tests passed.</p>
+<section id="testing-the-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-implementation">Testing the implementation</h3>
+<p>At my suggestion, Claude created verification scripts that checked the following:</p>
+<ul>
+<li>CDN availability</li>
+<li>p5.js functions</li>
+<li>Shuffle algorithm</li>
+<li>HTML structure</li>
+<li>Version 2 API compatibility</li>
+</ul>
+<p>All tests passed.</p>
 </section>
 </section>
 <section id="lessons-learned" class="level2">
-<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned · 💡</h2>
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons learned · 💡</h2>
 <p><strong>Human guidance matters.</strong> AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.</p>
-<p><strong>Keep it simple.</strong> Flatten, shuffle, index—the simplest solution won over initial complexity.</p>
-<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just if code worked, but why.</p>
-<p><strong>AI as reviewer.</strong> Claude’s code review was effective, identifying real issues and explaining them clearly while leaving implementation open for refinement.</p>
+<p><strong>Keep it simple.</strong> The simplest solution (flatten, shuffle, index) was better than the initial complexity.</p>
+<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just whether the code worked, but why it worked.</p>
+<p><strong>Use AI as a reviewer.</strong> Claude’s code review was effective at identifying real issues and explaining them clearly while leaving the implementation open for refinement.</p>
 </section>
 <section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
-<p>This session demonstrated AI’s effectiveness at reviewing and improving existing code with human oversight. The page now runs p5.js v2.1.2, shuffles colors correctly, performs efficiently, and adapts to screen sizes. The iterative process felt like pair programming rather than delegation.</p>
+<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts · 💭</h2>
+<p>This session demonstrated how effective AI can be at reviewing and improving existing code with human oversight. The page now:</p>
+<ul>
+<li>Shuffles colors correctly</li>
+<li>Adapts to different screen sizes</li>
+<li>Performs efficiently</li>
+<li>Runs p5.js version 2.1.2</li>
+</ul>
+<p>The iterative process felt like pair programming rather than delegation.</p>
 <hr>
-<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
 </section>
 <section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
+<h2 class="anchored" data-anchor-id="links">Links</h2>
 <ul>
 <li><a href="../../posts/2025-01-05-farbtafeln/">Original Farbtafeln Post</a></li>
 <li><a href="../../snippets/farbtafeln-2025.html">2025 Version</a></li>
@@ -86,7 +101,7 @@
  ]]></description>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/</guid>
-  <pubDate>Sun, 04 Jan 2026 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 03 Jan 2026 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2026-01-04-farbtafeln-review/farbtafeln.png" medium="image" type="image/png" height="135" width="144"/>
 </item>
 <item>
@@ -144,7 +159,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
  ]]></description>
   <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-til/</guid>
-  <pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 22 Dec 2025 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -193,7 +208,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
  ]]></description>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/</guid>
-  <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 15 Jul 2025 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-07-16-claude-ai-coding/anthropic-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -297,7 +312,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
  ]]></description>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/</guid>
-  <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 04 Jan 2025 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2025-01-05-farbtafeln/farbtafeln.png" medium="image" type="image/png" height="135" width="144"/>
 </item>
 <item>
@@ -311,7 +326,7 @@ font-style: inherit;">#!/usr/bin/env -S uv run --script</span></span></code></pr
 
 <p>My goal is to use the <a href="https://urllib3.readthedocs.io/en/stable/user-guide.html">urllib3</a> more regularly. It is a library that has no dependencies (see below)</p>
 <p>Here are some examples of making http requests with <em>urllib3</em>.</p>
-<div id="9ee1bca5" class="cell" data-execution_count="1">
+<div id="3cc88cd6" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> urllib3</span>
@@ -334,13 +349,13 @@ background-color: null;
 font-style: inherit;">"application/vnd.citationstyles.csl+json"</span>}</span>
 <span id="cb1-7">  )</span></code></pre></div></div>
 </div>
-<div id="fee63ed0" class="cell" data-execution_count="2">
+<div id="9384ab6b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">resp.status</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>200</code></pre>
 </div>
 </div>
-<div id="7dce70f5" class="cell" data-execution_count="3">
+<div id="41f84214" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">doi_json <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> resp.json()</span>
@@ -354,7 +369,7 @@ font-style: inherit;">'author'</span>]</span></code></pre></div></div>
   'affiliation': [{'name': 'Max Planck Institute for the Study of Societies, Germany,'}]}]</code></pre>
 </div>
 </div>
-<div id="9eb0fdb2" class="cell" data-execution_count="4">
+<div id="788c3025" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">resp.data[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">100</span>]</span></code></pre></div></div>
@@ -408,7 +423,7 @@ font-style: inherit;">uv</span> tree</span></code></pre></div></div>
   <category>Python</category>
   <category>API</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-10-27-py-urllib3/</guid>
-  <pubDate>Sun, 27 Oct 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 26 Oct 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-10-27-py-urllib3/urllib3-logo.png" medium="image" type="image/png" height="43" width="144"/>
 </item>
 <item>
@@ -826,7 +841,7 @@ font-style: inherit;">st_drop_geometry</span>()</span></code></pre></div></div>
   <category>ggplot</category>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-10-25-r-broadcaster/</guid>
-  <pubDate>Fri, 25 Oct 2024 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 24 Oct 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-10-25-r-broadcaster/broadcaster-deu.png" medium="image" type="image/png" height="240" width="144"/>
 </item>
 <item>
@@ -995,7 +1010,7 @@ font-style: inherit;">+</span> gt1</span></code></pre></div></div>
   <category>R</category>
   <category>ggplot</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/</guid>
-  <pubDate>Sun, 22 Sep 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 21 Sep 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-09-22-r-patchwork/patchwork-logo.png" medium="image" type="image/png" height="166" width="144"/>
 </item>
 <item>
@@ -1217,7 +1232,7 @@ font-style: inherit;">-sh</span></span></code></pre></div></div>
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/</guid>
-  <pubDate>Sat, 31 Aug 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 30 Aug 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-08-31-uv/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
@@ -1599,7 +1614,7 @@ font-style: inherit;">label_comma</span>())</span>
   <category>R</category>
   <category>ggplot</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/</guid>
-  <pubDate>Sun, 28 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 27 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-28-r-log10/log10-plot.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
@@ -1808,7 +1823,7 @@ font-style: inherit;">map_dbl</span>(x2, round_first_two_digits)</span></code></
   <category>R</category>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/</guid>
-  <pubDate>Sat, 20 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 19 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-20-r-round/r-logo.png" medium="image" type="image/png" height="112" width="144"/>
 </item>
 <item>
@@ -2131,7 +2146,7 @@ font-style: inherit;">theme_void</span>()</span></code></pre></div></div>
   <category>R</category>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-17-r-sf-intersection/</guid>
-  <pubDate>Wed, 17 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 16 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-17-r-sf-intersection/sf-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2416,7 +2431,7 @@ font-style: inherit;">"Source: BBC"</span></span>
   <category>ggplot</category>
   <category>AI</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/</guid>
-  <pubDate>Tue, 16 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-16-r-bar-chart/bar-chart.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
@@ -2608,7 +2623,7 @@ font-style: inherit;">theme_void</span>()</span></code></pre></div></div>
   <category>R</category>
   <category>geo</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/</guid>
-  <pubDate>Sun, 14 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 13 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-14-r-geocoding/tidygeocoder-logo.png" medium="image" type="image/png" height="167" width="144"/>
 </item>
 <item>
@@ -2748,7 +2763,7 @@ font-style: inherit;">map_chr</span>(doi, get_doi_reference))</span>
   <category>R</category>
   <category>API</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/</guid>
-  <pubDate>Sat, 13 Jul 2024 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 12 Jul 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-07-13-r-httr-doi/doi-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2795,7 +2810,7 @@ font-style: inherit;">--force-if-includes</span></span></code></pre></div></div>
  ]]></description>
   <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-til/</guid>
-  <pubDate>Tue, 11 Jun 2024 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 10 Jun 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2861,7 +2876,7 @@ font-style: inherit;">=</span>url)</span>
   <category>Python</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/</guid>
-  <pubDate>Tue, 30 Apr 2024 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 29 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-04-30-py-pip-cell/jupyter-logo.png" medium="image" type="image/png" height="161" width="144"/>
 </item>
 <item>
@@ -2906,7 +2921,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
   <category>Docker</category>
   <category>packaging</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/</guid>
-  <pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate>
+  <pubDate>Thu, 21 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-22-r-codespaces/rocker-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2923,7 +2938,7 @@ RUN R -e 'pak::lockfile_install()'</code></pre>
 <p>In a recent <a href="../2023-11-23-jupyter-lite">post</a>, I tried to use <a href="https://requests.readthedocs.io/en/latest/user/quickstart/">requests</a> in <a href="https://jupyterlite.github.io/demo/lab/index.html">JupyterLite</a>. It did not work at the time.</p>
 <p>Today, I have found out that <a href="https://github.com/urllib3/urllib3">urllib3</a> recently <a href="https://urllib3.readthedocs.io/en/stable/changelog.html#id2">announced</a> support for <a href="https://pyodide.org/en/stable/">Pyodide</a>, the Python distribution used by JupyterLite.</p>
 <p>Now, you can use <code>requests</code> or <code>urllib3</code> in JupyterLite and this code does also work in the browser environment (install packages with <code>micropip</code>).</p>
-<div id="1af049c2" class="cell" data-execution_count="1">
+<div id="f8cf01aa" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import micropip</span></span>
@@ -2970,7 +2985,7 @@ font-style: inherit;">=</span>headers)</span>
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/</guid>
-  <pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 20 Mar 2024 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-03-21-py-jupyterlite-urllib3/jupyter-lite-logo.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
@@ -2985,7 +3000,7 @@ font-style: inherit;">=</span>headers)</span>
 <section id="python-f-strings" class="level1">
 <h1>Python f-strings</h1>
 <p>Here are some examples of <a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">f-strings</a> in Python inspired by a <a href="https://note.nkmk.me/en/python-f-strings/">post</a> and a <a href="https://fstring.help/cheat/">cheat sheet</a>.</p>
-<div id="bde5682b" class="cell" data-execution_count="1">
+<div id="4269e051" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">a <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -2997,7 +3012,7 @@ font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span></span></code></pre></div></div>
 </div>
-<div id="3e685f69" class="cell" data-execution_count="2">
+<div id="35fc16ae" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -3017,7 +3032,7 @@ font-style: inherit;">"</span></span></code></pre></div></div>
 <pre><code>'2 + 3'</code></pre>
 </div>
 </div>
-<div id="4a57d73e" class="cell" data-execution_count="3">
+<div id="6b11c143" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
@@ -3041,7 +3056,7 @@ font-style: inherit;">"</span></span></code></pre></div></div>
 <pre><code>'a=2 and b=3'</code></pre>
 </div>
 </div>
-<div id="02d4da6f" class="cell" data-execution_count="4">
+<div id="704a192e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f"a + b = </span><span class="sc" style="color: #5E5E5E;
@@ -3058,7 +3073,7 @@ font-style: inherit;">"</span></span></code></pre></div></div>
 </div>
 </div>
 <p>Curly brackets in an f-string</p>
-<div id="2d1ca7ea" class="cell" data-execution_count="5">
+<div id="aafb92de" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3094,7 +3109,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 </div>
 <section id="number-formatting" class="level4">
 <h4 class="anchored" data-anchor-id="number-formatting">Number formatting</h4>
-<div id="6a84ffcf" class="cell" data-execution_count="6">
+<div id="7ca1cb0d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">var <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -3114,7 +3129,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="0f96030d" class="cell" data-execution_count="7">
+<div id="44ddd662" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'round: </span><span class="sc" style="color: #5E5E5E;
@@ -3128,7 +3143,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'round: 1234567890.12'</code></pre>
 </div>
 </div>
-<div id="1f35a01c" class="cell" data-execution_count="8">
+<div id="2a8b2928" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -3142,7 +3157,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'comma: 1,234,567,890.1234'</code></pre>
 </div>
 </div>
-<div id="70379c9c" class="cell" data-execution_count="9">
+<div id="a8fe29dd" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'comma: </span><span class="sc" style="color: #5E5E5E;
@@ -3156,7 +3171,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'comma: 1,234,567,890.12'</code></pre>
 </div>
 </div>
-<div id="deb9825a" class="cell" data-execution_count="10">
+<div id="b5a45ceb" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> datetime</span>
@@ -3190,7 +3205,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'2026-02-21 19:45:30'</code></pre>
 </div>
 </div>
-<div id="027c3092" class="cell" data-execution_count="11">
+<div id="117e02b4" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -3212,7 +3227,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
 <pre><code>'2026-02-21'</code></pre>
 </div>
 </div>
-<div id="13a841de" class="cell" data-execution_count="12">
+<div id="09ea842c" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
@@ -3238,7 +3253,7 @@ font-style: inherit;">'</span></span></code></pre></div></div>
  ]]></description>
   <category>Python</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/</guid>
-  <pubDate>Mon, 26 Feb 2024 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 25 Feb 2024 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2024-02-26-py-f-strings/python-logo.png" medium="image" type="image/png" height="175" width="144"/>
 </item>
 <item>
@@ -3541,7 +3556,7 @@ font-style: inherit;">fi</span></span></code></pre></div></div>
  ]]></description>
   <category>TIL yearly</category>
   <guid>https://hdigital.github.io/learning-diary/posts/2023-til/</guid>
-  <pubDate>Sun, 26 Nov 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 25 Nov 2023 23:00:00 GMT</pubDate>
   <media:content url="https://hdigital.github.io/learning-diary/posts/2023-til/computer_ai.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>

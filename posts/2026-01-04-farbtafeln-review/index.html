@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c9ce1c6c3778b1e6e1f293e57c34e94b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,17 +147,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#code-review" id="toc-code-review" class="nav-link active" data-scroll-target="#code-review">Code Review · 🔍</a></li>
-  <li><a href="#the-update-process" id="toc-the-update-process" class="nav-link" data-scroll-target="#the-update-process">The Update Process · 🛠️</a>
+  <li><a href="#code-review" id="toc-code-review" class="nav-link active" data-scroll-target="#code-review">Code review · 🔍</a></li>
+  <li><a href="#the-update-process" id="toc-the-update-process" class="nav-link" data-scroll-target="#the-update-process">The update process · 🛠️</a>
   <ul class="collapse">
-  <li><a href="#planning-and-clarification" id="toc-planning-and-clarification" class="nav-link" data-scroll-target="#planning-and-clarification">Planning and Clarification</a></li>
-  <li><a href="#implementation-iterations" id="toc-implementation-iterations" class="nav-link" data-scroll-target="#implementation-iterations">Implementation Iterations</a></li>
-  <li><a href="#finding-p5.js-v2" id="toc-finding-p5.js-v2" class="nav-link" data-scroll-target="#finding-p5.js-v2">Finding p5.js v2</a></li>
-  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#planning-and-clarification" id="toc-planning-and-clarification" class="nav-link" data-scroll-target="#planning-and-clarification">Planning and clarification</a></li>
+  <li><a href="#implementation-iterations" id="toc-implementation-iterations" class="nav-link" data-scroll-target="#implementation-iterations">Implementation iterations</a></li>
+  <li><a href="#finding-p5.js-version-2" id="toc-finding-p5.js-version-2" class="nav-link" data-scroll-target="#finding-p5.js-version-2">Finding p5.js version 2</a></li>
+  <li><a href="#testing-the-implementation" id="toc-testing-the-implementation" class="nav-link" data-scroll-target="#testing-the-implementation">Testing the implementation</a></li>
   </ul></li>
-  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned">Lessons Learned · 💡</a></li>
-  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts · 💭</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links · 🔗</a></li>
+  <li><a href="#lessons-learned" id="toc-lessons-learned" class="nav-link" data-scroll-target="#lessons-learned">Lessons learned · 💡</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts · 💭</a></li>
+  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
   </ul>
 </nav>
     </div>
@@ -169,57 +169,72 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Code review and updates · 🤖🔧</p>
-<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored AI as a code reviewer rather than just a generator, with human guidance directing the process.</p>
+<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
+<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored using AI as a code reviewer rather than just a code generator, with human guidance directing the process.</p>
 <section id="code-review" class="level2">
-<h2 class="anchored" data-anchor-id="code-review">Code Review · 🔍</h2>
+<h2 class="anchored" data-anchor-id="code-review">Code review · 🔍</h2>
 <p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
-<p><strong>Critical:</strong></p>
+<p><strong>Critical issues:</strong></p>
 <ul>
-<li>Color shuffle only shuffled rows as units, not individual colors across the grid</li>
-<li>p5.js drawing continuously at 60fps despite static content</li>
-<li>Outdated p5.js version (1.11.2)</li>
+<li>The color shuffle only shuffled rows as units, not individual colors across the grid.</li>
+<li>p5.js was drawing continuously at 60fps despite static content.</li>
+<li>The p5.js version (1.11.2) was outdated.</li>
 </ul>
-<p><strong>Best Practices:</strong></p>
+<p><strong>Best practice improvements:</strong></p>
 <ul>
-<li>Missing security attributes on external link</li>
-<li>Fixed 600px canvas not responsive</li>
-<li>No window resize handler</li>
+<li>The external link was missing security attributes.</li>
+<li>The canvas had a fixed 600px width and wasn’t responsive.</li>
+<li>There was no window resize handler.</li>
 </ul>
 </section>
 <section id="the-update-process" class="level2">
-<h2 class="anchored" data-anchor-id="the-update-process">The Update Process · 🛠️</h2>
+<h2 class="anchored" data-anchor-id="the-update-process">The update process · 🛠️</h2>
 <section id="planning-and-clarification" class="level3">
-<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and Clarification</h3>
-<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve row structure. Clarifying intent upfront avoided implementation assumptions.</p>
+<h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and clarification</h3>
+<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve the row structure. Clarifying the intent upfront avoided implementation assumptions.</p>
 </section>
 <section id="implementation-iterations" class="level3">
-<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation Iterations</h3>
-<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out the simpler approach: flatten colors, shuffle them, read sequentially with an index. Much cleaner.</p>
+<h3 class="anchored" data-anchor-id="implementation-iterations">Implementation iterations</h3>
+<p>The first implementation overcomplicated things by restructuring shuffled colors into a 2D array. I pointed out a simpler approach: flatten colors, shuffle them, and read sequentially with an index.</p>
 </section>
-<section id="finding-p5.js-v2" class="level3">
-<h3 class="anchored" data-anchor-id="finding-p5.js-v2">Finding p5.js v2</h3>
-<p>Claude found v2.0.5 on cdnjs, but I noted GitHub showed v2.1.2. cdnjs lagged behind—jsdelivr had the latest. Lesson: check multiple CDN sources.</p>
+<section id="finding-p5.js-version-2" class="level3">
+<h3 class="anchored" data-anchor-id="finding-p5.js-version-2">Finding p5.js version 2</h3>
+<p>Claude found version 2.0.5 on cdnjs, but I noted that GitHub showed version 2.1.2. The cdnjs repository lagged behind—jsdelivr had the latest version. Lesson learned: check multiple CDN sources.</p>
 </section>
-<section id="testing" class="level3">
-<h3 class="anchored" data-anchor-id="testing">Testing</h3>
-<p>At my suggestion, Claude created verification scripts checking CDN availability, p5.js functions, shuffle algorithm, HTML structure, and v2 API compatibility. All tests passed.</p>
+<section id="testing-the-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-implementation">Testing the implementation</h3>
+<p>At my suggestion, Claude created verification scripts that checked the following:</p>
+<ul>
+<li>CDN availability</li>
+<li>p5.js functions</li>
+<li>Shuffle algorithm</li>
+<li>HTML structure</li>
+<li>Version 2 API compatibility</li>
+</ul>
+<p>All tests passed.</p>
 </section>
 </section>
 <section id="lessons-learned" class="level2">
-<h2 class="anchored" data-anchor-id="lessons-learned">Lessons Learned · 💡</h2>
+<h2 class="anchored" data-anchor-id="lessons-learned">Lessons learned · 💡</h2>
 <p><strong>Human guidance matters.</strong> AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.</p>
-<p><strong>Keep it simple.</strong> Flatten, shuffle, index—the simplest solution won over initial complexity.</p>
-<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just if code worked, but why.</p>
-<p><strong>AI as reviewer.</strong> Claude’s code review was effective, identifying real issues and explaining them clearly while leaving implementation open for refinement.</p>
+<p><strong>Keep it simple.</strong> The simplest solution (flatten, shuffle, index) was better than the initial complexity.</p>
+<p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just whether the code worked, but why it worked.</p>
+<p><strong>Use AI as a reviewer.</strong> Claude’s code review was effective at identifying real issues and explaining them clearly while leaving the implementation open for refinement.</p>
 </section>
 <section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts · 💭</h2>
-<p>This session demonstrated AI’s effectiveness at reviewing and improving existing code with human oversight. The page now runs p5.js v2.1.2, shuffles colors correctly, performs efficiently, and adapts to screen sizes. The iterative process felt like pair programming rather than delegation.</p>
+<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts · 💭</h2>
+<p>This session demonstrated how effective AI can be at reviewing and improving existing code with human oversight. The page now:</p>
+<ul>
+<li>Shuffles colors correctly</li>
+<li>Adapts to different screen sizes</li>
+<li>Performs efficiently</li>
+<li>Runs p5.js version 2.1.2</li>
+</ul>
+<p>The iterative process felt like pair programming rather than delegation.</p>
 <hr>
-<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
 </section>
 <section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links · 🔗</h2>
+<h2 class="anchored" data-anchor-id="links">Links</h2>
 <ul>
 <li><a href="../../posts/2025-01-05-farbtafeln/">Original Farbtafeln Post</a></li>
 <li><a href="../../snippets/farbtafeln-2025.html">2025 Version</a></li>
