@@ -20,16 +20,16 @@
 
 
 
-<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — Code review and updates · 🤖🔧</p>
-<p><em>Note: This post was drafted by Claude Sonnet 4 and reviewed by me.</em></p>
-<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited it with Claude Sonnet 4 for a code review and updates. This session explored using AI as a code reviewer rather than just a code generator, with human guidance directing the process.</p>
+<p><a href="../../snippets/farbtafeln.html">Farbtafel (Color Chart)</a> webpage — code review and updates · 🤖🔧</p>
+<p><em>Note: This post was drafted by Claude Sonnet 4 and revised by me.</em></p>
+<p>A year after creating the <a href="../../posts/2025-01-05-farbtafeln/">Farbtafeln page</a> (<a href="../../snippets/farbtafeln-2025.html">2025 version</a>) with ChatGPT and GitHub Copilot, I revisited the project with Claude Sonnet 4 for a code review and updates. This session explored using AI as a code reviewer rather than just a code generator, with human guidance directing the process.</p>
 <section id="code-review" class="level2">
 <h2 class="anchored" data-anchor-id="code-review">Code review · 🔍</h2>
 <p>Claude reviewed the ‘farbtafeln’ page and identified several issues:</p>
 <p><strong>Critical issues:</strong></p>
 <ul>
 <li>The color shuffle only shuffled rows as units, not individual colors across the grid.</li>
-<li>p5.js was drawing continuously at 60fps despite static content.</li>
+<li><a href="https://github.com/processing/p5.js">p5.js</a> was drawing continuously at 60fps despite static content.</li>
 <li>The p5.js version (1.11.2) was outdated.</li>
 </ul>
 <p><strong>Best practice improvements:</strong></p>
@@ -43,7 +43,7 @@
 <h2 class="anchored" data-anchor-id="the-update-process">The update process · 🛠️</h2>
 <section id="planning-and-clarification" class="level3">
 <h3 class="anchored" data-anchor-id="planning-and-clarification">Planning and clarification</h3>
-<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve the row structure. Clarifying the intent upfront avoided implementation assumptions.</p>
+<p>Claude proposed six improvements. I asked whether to shuffle all colors individually or preserve the row structure.</p>
 </section>
 <section id="implementation-iterations" class="level3">
 <h3 class="anchored" data-anchor-id="implementation-iterations">Implementation iterations</h3>
@@ -51,38 +51,38 @@
 </section>
 <section id="finding-p5.js-version-2" class="level3">
 <h3 class="anchored" data-anchor-id="finding-p5.js-version-2">Finding p5.js version 2</h3>
-<p>Claude found version 2.0.5 on cdnjs, but I noted that GitHub showed version 2.1.2. The cdnjs repository lagged behind—jsdelivr had the latest version. Lesson learned: check multiple CDN sources.</p>
+<p>Claude found version 2.0.5 on cdnjs, but I noted that GitHub showed version 2.1.2. The cdnjs repository lagged behind—jsdelivr had the latest version.</p>
 </section>
 <section id="testing-the-implementation" class="level3">
 <h3 class="anchored" data-anchor-id="testing-the-implementation">Testing the implementation</h3>
 <p>At my suggestion, Claude created verification scripts that checked the following:</p>
 <ul>
-<li>CDN availability</li>
-<li>p5.js functions</li>
 <li>Shuffle algorithm</li>
 <li>HTML structure</li>
 <li>Version 2 API compatibility</li>
+<li>CDN availability</li>
+<li>p5.js functions</li>
 </ul>
 <p>All tests passed.</p>
 </section>
 </section>
 <section id="lessons-learned" class="level2">
 <h2 class="anchored" data-anchor-id="lessons-learned">Lessons learned · 💡</h2>
-<p><strong>Human guidance matters.</strong> AI proposed sensible updates, but corrections at key decision points prevented overengineering and ensured we found the actual latest version.</p>
-<p><strong>Keep it simple.</strong> The simplest solution (flatten, shuffle, index) was better than the initial complexity.</p>
+<p><strong>Human guidance matters.</strong> AI proposed important updates, but corrections at key decision points prevented overengineering and ensured we used the latest p5.js version.</p>
+<p><strong>Keep it simple.</strong> A simple solution (flatten, shuffle, index) was better than the initial complexity.</p>
 <p><strong>Test thoroughly.</strong> Comprehensive testing revealed not just whether the code worked, but why it worked.</p>
 <p><strong>Use AI as a reviewer.</strong> Claude’s code review was effective at identifying real issues and explaining them clearly while leaving the implementation open for refinement.</p>
 </section>
 <section id="final-thoughts" class="level2">
 <h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts · 💭</h2>
-<p>This session demonstrated how effective AI can be at reviewing and improving existing code with human oversight. The page now:</p>
+<p>This session demonstrated to me once more how effective AI can be at reviewing and improving existing code. The page now:</p>
 <ul>
 <li>Shuffles colors correctly</li>
 <li>Adapts to different screen sizes</li>
 <li>Performs efficiently</li>
 <li>Runs p5.js version 2.1.2</li>
 </ul>
-<p>The iterative process felt like pair programming rather than delegation.</p>
+<p>The iterative process felt like pair programming rather than simple delegation or passive code generation.</p>
 <hr>
 </section>
 <section id="links" class="level2">
