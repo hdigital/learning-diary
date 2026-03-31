@@ -1,0 +1,37 @@
+---
+date: "2026-03-30"
+title: Today I learned (TIL) · 2026
+categories: [TIL yearly]
+image: computer_ai.png
+format:
+  html:
+    toc: true
+---
+
+<!--- Keeping brief information here that don't create a post. -->
+<!--- Update date in header for new entries. -->
+
+## 30. March
+
+Split dev dependencies into sub-groups in
+[uv](https://docs.astral.sh/uv/concepts/dependencies/#dependency-groups)
+and use `include-group`.
+
+```toml
+[dependency-groups]
+dev = [
+  { include-group = "code-quality" },
+  { include-group = "tests" },
+]
+code-quality = ["ruff", "typos", "pre-commit"]
+tests = ["pytest", "pytest-cov"]
+```
+
+```sh
+uv sync --group code-quality
+uv sync --only-group tests
+```
+
+---
+
+![](computer_ai.png){ width=300 }
