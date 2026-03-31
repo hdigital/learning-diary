@@ -21,7 +21,8 @@ RUN quarto install tinytex
 # Install R packages with 'pak'
 RUN install2.r pak
 COPY pkg.lock .
-RUN R -e 'pak::lockfile_install(update = FALSE)'
+COPY snippets/r-rocker-build.R .
+RUN Rscript r-rocker-build.R
 
 # Install Python packages with 'uv'
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
