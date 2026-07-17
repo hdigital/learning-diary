@@ -7,7 +7,7 @@ repos:
         exclude: ^_freeze/
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.10
+    rev: v0.15.22
     hooks:
       # Run Ruff linter.
       - id: ruff

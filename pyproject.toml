@@ -75,7 +75,6 @@ select = [
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-
 ## ----------------------------------------------------------------------------
 ## Typos settings
 
@@ -87,3 +86,11 @@ extend-exclude = ["*.html"]
 # https://github.com/crate-ci/typos/blob/master/docs/reference.md#defaultextend-words
 arange = "arange" # NumPy function
 Unter = "Unter"   # German word (street name)
+
+## ----------------------------------------------------------------------------
+## uv settings
+
+[tool.uv]
+# https://docs.astral.sh/uv/reference/settings/#project-metadata
+exclude-newer = "7 days"
+package = false
